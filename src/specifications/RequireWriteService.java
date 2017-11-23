@@ -1,8 +1,6 @@
 /* ******************************************************
- * Project alpha - Composants logiciels 2015.
- * Copyright (C) 2015 <Binh-Minh.Bui-Xuan@ens-lyon.org>.
- * GPL version>=3 <http://www.gnu.org/licenses/>.
- * $Id: specifications/RequireWriteService.java 2015-03-11 buixuan.
+ * Defuse Project - Composants logiciels 2017.
+ * Copyright (C) 2017 S. MINES, A. ORDOGH, R. RICHARD
  * ******************************************************/
 package specifications;
 
