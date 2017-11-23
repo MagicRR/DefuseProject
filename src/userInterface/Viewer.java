@@ -11,10 +11,11 @@ import tools.HardCodedParameters;
 import specifications.ViewerService;
 import specifications.ReadService;
 import specifications.RequireReadService;
-
+import javafx.scene.Cursor;
 import javafx.scene.Group;
 import javafx.scene.Parent;
 import javafx.scene.control.TextArea;
+import javafx.scene.control.TextField;
 import javafx.scene.effect.Lighting;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
@@ -77,13 +78,15 @@ public class Viewer implements ViewerService, RequireReadService{
 	  Rectangle logs = new Rectangle(3*HardCodedParameters.defaultWidth/4,HardCodedParameters.defaultHeight/4);
 	  logs.setLayoutY(3*HardCodedParameters.defaultHeight/4);
 	  logs.setStroke(Color.RED);
-	  logs.setFill(Color.GREY);
+	  logs.setFill(Color.BLACK);
 	  
-	  TextArea textLogs = new TextArea("Logs");
+	  TextField textLogs = new TextField(">> Bienvenue !");
+	  textLogs.setCursor(Cursor.DEFAULT);
+	  textLogs.setEditable(false);
 	  textLogs.setPrefHeight(HardCodedParameters.defaultHeight/4);
 	  textLogs.setPrefWidth(3*HardCodedParameters.defaultWidth/4);
-	  textLogs.setEditable(false);
 	  textLogs.setLayoutY(3*HardCodedParameters.defaultHeight/4);
+	  textLogs.setStyle("-fx-text-fill: green; -fx-control-inner-background: black;");
 	  
 	  //Ajoute les élèments principaux dans les 3sous groupes
 	  malette_group.getChildren().addAll(malette);
