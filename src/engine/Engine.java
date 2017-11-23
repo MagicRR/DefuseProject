@@ -41,7 +41,7 @@ public class Engine implements EngineService, RequireDataService{
   public void start(){
     engineClock.schedule(new TimerTask(){
       public void run() {
-        System.out.println("Game step #"+data.getStepNumber()+": checked.");
+        //System.out.println("Game step #"+data.getStepNumber()+": checked.");
       }
     },0,100);
   }

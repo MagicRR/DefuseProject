@@ -9,6 +9,7 @@ import engine.Engine;
 import javafx.animation.AnimationTimer;
 import javafx.application.Application;
 import javafx.event.EventHandler;
+import javafx.geometry.Rectangle2D;
 import javafx.scene.Scene;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
@@ -19,6 +20,7 @@ import specifications.EngineService;
 import specifications.ViewerService;
 import tools.HardCodedParameters;
 import tools.User;
+import javafx.stage.Screen;
 import userInterface.Viewer;
 
 public class Main extends Application{
@@ -49,39 +51,62 @@ public class Main extends Application{
 	    launch(args);
 	  }
 
-	  @Override public void start(Stage stage) {
-	    final Scene scene = new Scene(((Viewer)viewer).getPanel());
-	    scene.setOnKeyPressed(new EventHandler<KeyEvent>(){
-	      @Override
-	        public void handle(KeyEvent event) {
-//	          CODE ACTIONS UTILISATEUR
-	        }
-	    });
-	    
-	    stage.setScene(scene);
-	    stage.setWidth(HardCodedParameters.defaultWidth);
-	    stage.setHeight(HardCodedParameters.defaultHeight);
-	    stage.setOnShown(new EventHandler<WindowEvent>() {
-	      @Override
-	        public void handle(WindowEvent event) {
-	          engine.start();
-	        }
-	    });
-	    stage.setOnCloseRequest(new EventHandler<WindowEvent>() {
-	      @Override
-	        public void handle(WindowEvent event) {
-	          engine.stop();
-	        }
-	    });
-	    stage.show();
-	    
-	    timer = new AnimationTimer() {
-	      @Override
-	        public void handle(long l) {
-	          scene.setRoot(((Viewer)viewer).getPanel());
-	        }
-	    };
-	    timer.start();
+	  @Override 
+	  public void start(Stage stage) {
+		  
+		    final Scene scene = new Scene(((Viewer)viewer).getPanel());
+	
+		    scene.setOnKeyPressed(new EventHandler<KeyEvent>(){
+		      @Override
+		        public void handle(KeyEvent event) {
+		    	  		//
+		    	  }
+		    });
+		    
+		    //Récupère la taille de l'écran de l'utilisateur et adapte les HardCodedParameters
+		    Screen screen = Screen.getPrimary();
+			Rectangle2D bounds = screen.getVisualBounds();
+
+			stage.setX(bounds.getMinX());
+			stage.setY(bounds.getMinY());
+			HardCodedParameters.defaultWidth=bounds.getWidth();
+			HardCodedParameters.defaultHeight=bounds.getHeight();
+			stage.setWidth(bounds.getWidth());
+			stage.setHeight(bounds.getHeight());			  
+		    
+			//Définis un titre à la fenetre + empeche de resize la fenetre et définis le fullscreen mode au démarrage
+		    stage.setTitle("Defuse Project");
+		    stage.setResizable(false);
+		    //stage.setFullScreen(true);
+		    
+		    stage.setScene(scene);
+		    stage.setWidth(HardCodedParameters.defaultWidth);
+		    stage.setHeight(HardCodedParameters.defaultHeight);
+		    stage.setOnShown(new EventHandler<WindowEvent>() {
+		      @Override
+		        public void handle(WindowEvent event) {
+		          engine.start();
+		        }
+		    });
+		    
+		    //Gère la fermeture de la fenetre lorsque l'on clique sur la croix en stoppant le programme
+		    stage.setOnCloseRequest(new EventHandler<WindowEvent>() {
+		        @Override
+		        public void handle(WindowEvent event) {
+		            //event.consume();
+			          engine.stop();
+		        }
+		    });
+		    stage.show();
+		    
+		    timer = new AnimationTimer() {
+		      @Override
+		        public void handle(long l) {
+		          scene.setRoot(((Viewer)viewer).getPanel());
+		        }
+		    };
+		    
+		    timer.start();
 	  }
 
 	  //---ARGUMENTS---//
