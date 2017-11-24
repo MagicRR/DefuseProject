@@ -14,6 +14,9 @@ import specifications.RequireReadService;
 import javafx.scene.Cursor;
 import javafx.scene.Group;
 import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.effect.Lighting;
@@ -25,6 +28,12 @@ import javafx.scene.text.Font;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Border;
+import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.ColumnConstraints;
+import javafx.scene.layout.GridPane;
+import javafx.scene.layout.Priority;
+import javafx.geometry.HPos;
+import javafx.geometry.Insets;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.paint.ImagePattern;
 
@@ -56,10 +65,56 @@ public class Viewer implements ViewerService, RequireReadService{
 	  Group stats_group = new Group();
 
 	  //Malette
-	  Rectangle malette = new Rectangle(3*HardCodedParameters.defaultWidth/4,3*HardCodedParameters.defaultHeight/4);
-	  Image img = new Image("/images/malette.png");
-	  malette.setFill(new ImagePattern(img));
-	  malette.setStroke(Color.RED);
+	  //Rectangle malette = new Rectangle(3*HardCodedParameters.defaultWidth/4,3*HardCodedParameters.defaultHeight/4);
+	  //Image img = new Image("/images/malette.png");
+	  //malette.setFill(new ImagePattern(img));
+	  //malette.setStroke(Color.RED);
+	  
+	  BorderPane root = new BorderPane();
+	  Scene scene = new Scene(root, 380, 150, Color.WHITE);
+	  
+	  GridPane gridpane = new GridPane();
+	  gridpane.setPadding(new Insets(5));
+	  gridpane.setHgap(5);
+	  gridpane.setVgap(5);
+	  ColumnConstraints column1 = new ColumnConstraints(100);
+	  ColumnConstraints column2 = new ColumnConstraints(50, 150, 300);
+	  column2.setHgrow(Priority.ALWAYS);
+	  gridpane.getColumnConstraints().addAll(column1, column2);
+
+	  TextField img1 = new TextField("img1");
+	  TextField img2 = new TextField("img2");
+	  TextField img3 = new TextField("img3");
+	  TextField img4 = new TextField("img4");
+	  TextField img5 = new TextField("img5");
+	  TextField img6 = new TextField("img6");
+
+	  
+	  // First name label
+	  GridPane.setHalignment(img1, HPos.RIGHT);
+	  gridpane.add(img1, 0, 0);
+
+	  // Last name label
+	  GridPane.setHalignment(img2, HPos.RIGHT);
+	  gridpane.add(img2, 0, 1);
+
+	  // First name field
+	  GridPane.setHalignment(img3, HPos.LEFT);
+	  gridpane.add(img3, 1, 0);
+
+	  // Last name field
+	  GridPane.setHalignment(img4, HPos.LEFT);
+	  gridpane.add(img4, 1, 1);
+	  
+	  // Last name field
+	  GridPane.setHalignment(img5, HPos.LEFT);
+	  gridpane.add(img5, 2, 0);
+	  
+	  // Last name field
+	  GridPane.setHalignment(img6, HPos.LEFT);
+	  gridpane.add(img6, 2, 1);
+	  
+	  root.setCenter(gridpane);	    
 	  
 	  //Stats
 	  Rectangle stats = new Rectangle(HardCodedParameters.defaultWidth/4,HardCodedParameters.defaultHeight);
@@ -89,7 +144,7 @@ public class Viewer implements ViewerService, RequireReadService{
 	  textLogs.setStyle("-fx-text-fill: green; -fx-control-inner-background: black;");
 	  
 	  //Ajoute les élèments principaux dans les 3sous groupes
-	  malette_group.getChildren().addAll(malette);
+	  malette_group.getChildren().addAll(root);
 	  logs_group.getChildren().addAll(logs, textLogs);  
 	  stats_group.getChildren().addAll(stats, camembert);  
 
