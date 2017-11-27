@@ -115,16 +115,7 @@ public class Viewer implements ViewerService, RequireReadService{
 	  gridpane_malette.add(zone3,1,0);
 	  GridPane.setMargin(zone3, new Insets(0, 0, 0, 13));
 	  
-	  //Zone en bas au milieu, gridpane simon
-	  /*Image image_block = new Image("/images/block.png");
-	  ImageView zone4 = new ImageView();
-	  zone4.setFitWidth(((3*HardCodedParameters.defaultWidth/4)/3)-35);
-	  zone4.setFitHeight(((3*HardCodedParameters.defaultHeight/4)/2)-15);
-	  zone4.setImage(image_block);
-	  gridpane_malette.add(zone4,1,1);
-	  GridPane.setMargin(zone4, new Insets(8, 0, 0, 13));
-	   */
-	  
+	  //Zone en bas au milieu, gridpane simon	  
 	  //GridPane du simon
 	  GridPane gridpane_simon = new GridPane();
 	  
@@ -163,13 +154,73 @@ public class Viewer implements ViewerService, RequireReadService{
 	  
 	  
 	  //Zone en haut à droite
-	  Image pose_cable = new Image("/images/pose-cable.png");
+	  /*Image pose_cable = new Image("/images/pose-cable.png");
 	  ImageView zone5 = new ImageView();
 	  zone5.setFitWidth(((3*HardCodedParameters.defaultWidth/4)/3)-20);
 	  zone5.setFitHeight(((3*HardCodedParameters.defaultHeight/4)/2)-8);
 	  zone5.setImage(pose_cable);
 	  gridpane_malette.add(zone5,2,0);
-	  GridPane.setMargin(zone5, new Insets(0, 0, 0, -10));
+	  GridPane.setMargin(zone5, new Insets(0, 0, 0, -10));*/
+	  
+	  //gridpane cable	  	  
+	  GridPane gridpane_cable = new GridPane();
+	  
+	  //Gestion des contraintes de colonne style padding ..
+	  gridpane_cable.setPadding(new Insets(15,0,0,0));
+	  gridpane_cable.setHgap(15);
+	  gridpane_cable.setVgap(10);
+	  
+	  ColumnConstraints colonne1 = new ColumnConstraints(-10 + (3*HardCodedParameters.defaultWidth/4)/3, -10 + (3*HardCodedParameters.defaultWidth/4)/3, -10 + (3*HardCodedParameters.defaultWidth/4)/3);
+	  colonne1.setHgrow(Priority.ALWAYS);
+
+	  
+	  gridpane_cable.getColumnConstraints().addAll(column1); 
+	 
+	  //Background de la malette(du gridpane)
+	  BackgroundImage pose_cable= new BackgroundImage(new Image("/images/pose-cable.png",((3*HardCodedParameters.defaultWidth/4)/3)-20, ((3*HardCodedParameters.defaultHeight/4)/2)-8,false,true),
+		        BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT,
+		          BackgroundSize.DEFAULT);
+	  gridpane_cable.setBackground(new Background(pose_cable));
+	  	
+	  //Premier cable
+	  Image cable_rouge = new Image("/images/cable-red.png");
+	  ImageView zone5_1 = new ImageView();
+	  zone5_1.setFitWidth(((3*HardCodedParameters.defaultWidth/4)/3)-70);
+	  zone5_1.setFitHeight((((3*HardCodedParameters.defaultHeight/4)/2)/4)-8);
+	  zone5_1.setImage(cable_rouge);
+	  gridpane_cable.add(zone5_1,0,0);
+	  GridPane.setMargin(zone5_1, new Insets(-15, 0, 0, 40));
+	  
+	  //Deuxieme cable
+	  Image cable_jaune = new Image("/images/cable-yellow-cut.png");
+	  ImageView zone5_2 = new ImageView();
+	  zone5_2.setFitWidth(((3*HardCodedParameters.defaultWidth/4)/3)-70);
+	  zone5_2.setFitHeight((((3*HardCodedParameters.defaultHeight/4)/2)/4)-8);
+	  zone5_2.setImage(cable_jaune);
+	  gridpane_cable.add(zone5_2,0,1);
+	  GridPane.setMargin(zone5_2, new Insets(-30, 0, 0, 45));
+	  
+	  //Troisième cable
+	  Image cable_vert = new Image("/images/cable-green.png");
+	  ImageView zone5_3 = new ImageView();
+	  zone5_3.setFitWidth(((3*HardCodedParameters.defaultWidth/4)/3)-70);
+	  zone5_3.setFitHeight((((3*HardCodedParameters.defaultHeight/4)/2)/4)-8);
+	  zone5_3.setImage(cable_vert);
+	  gridpane_cable.add(zone5_3,0,2);
+	  GridPane.setMargin(zone5_3, new Insets(-20, 0, 0, 45));
+	  
+	  //Quatrieme cable
+	  Image cable_bleu = new Image("/images/cable-blue.png");
+	  ImageView zone5_4 = new ImageView();
+	  zone5_4.setFitWidth(((3*HardCodedParameters.defaultWidth/4)/3)-70);
+	  zone5_4.setFitHeight((((3*HardCodedParameters.defaultHeight/4)/2)/4)-8);
+	  zone5_4.setImage(cable_bleu);
+	  gridpane_cable.add(zone5_4,0,3);
+	  GridPane.setMargin(zone5_4, new Insets(-25, 0, 0, 50));
+	  
+	  gridpane_malette.add(gridpane_cable,2,0);
+
+	  
 	  
 	  //Zone en bas à droite
 	  Image image_block2 = new Image("/images/block.png");
@@ -206,7 +257,7 @@ public class Viewer implements ViewerService, RequireReadService{
 	  logs.setStroke(Color.RED);
 	  logs.setFill(Color.BLACK);
 	  
-	  TextField textLogs = new TextField(">> Bienvenue ! Il vous reste: pas longtemps ...vraiment .. pas longtemps .. PAFFFFF T'ES MORT!!");
+	  TextField textLogs = new TextField(">> Bienvenue !");
 	  textLogs.setCursor(Cursor.DEFAULT);
 	  textLogs.setEditable(false);
 	  textLogs.autosize();
