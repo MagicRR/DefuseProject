@@ -14,6 +14,7 @@ import specifications.RequireReadService;
 import javafx.scene.Cursor;
 import javafx.scene.Group;
 import javafx.scene.Parent;
+import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.effect.Lighting;
 import javafx.scene.paint.Color;
@@ -103,7 +104,7 @@ public class Viewer implements ViewerService, RequireReadService{
 	  zone2.setFitHeight(((3*HardCodedParameters.defaultHeight/4)/2)-15);
 	  zone2.setImage(image_block5);
 	  gridpane_malette.add(zone2,0,1);
-	  GridPane.setMargin(zone2, new Insets(8, 0, 0, 20));
+	  GridPane.setMargin(zone2, new Insets(-5, 0, 0, 20));
 	  
 	  //Zone en haut au milieu
 	  Image boutton_rouge = new Image("/images/red-button.png");
@@ -126,24 +127,39 @@ public class Viewer implements ViewerService, RequireReadService{
 	  
 	  //GridPane du simon
 	  GridPane gridpane_simon = new GridPane();
-	  Rectangle rec_simon1 = new Rectangle(-18+((3*HardCodedParameters.defaultWidth/4)/3)/2,5+((HardCodedParameters.defaultHeight/3)/2));
+	  
+	  Rectangle rec_simon1 = new Rectangle(-33+((3*HardCodedParameters.defaultWidth/4)/3)/2, 5+((HardCodedParameters.defaultHeight/3)/2));
 	  rec_simon1.setFill(Color.RED);
-	  gridpane_simon.add(rec_simon1,0,0);
 	  
-	  Rectangle rec_simon2 = new Rectangle(-18+((3*HardCodedParameters.defaultWidth/4)/3)/2,5+((HardCodedParameters.defaultHeight/3)/2));
+	  Rectangle rec_simon2 = new Rectangle(-33+((3*HardCodedParameters.defaultWidth/4)/3)/2, 5+((HardCodedParameters.defaultHeight/3)/2));
 	  rec_simon2.setFill(Color.GREEN);
-	  gridpane_simon.add(rec_simon2,0,1);
 	  
-	  Rectangle rec_simon3 = new Rectangle(-18+((3*HardCodedParameters.defaultWidth/4)/3)/2,5+((HardCodedParameters.defaultHeight/3)/2));
+	  Rectangle rec_simon3 = new Rectangle(-33+((3*HardCodedParameters.defaultWidth/4)/3)/2, 5+((HardCodedParameters.defaultHeight/3)/2));
 	  rec_simon3.setFill(Color.YELLOW);
-	  gridpane_simon.add(rec_simon3,1,0);
 	  
-	  Rectangle rec_simon4 = new Rectangle(-18+((3*HardCodedParameters.defaultWidth/4)/3)/2,5+((HardCodedParameters.defaultHeight/3)/2));
+	  Rectangle rec_simon4 = new Rectangle(-33+((3*HardCodedParameters.defaultWidth/4)/3)/2, 5+((HardCodedParameters.defaultHeight/3)/2));
 	  rec_simon4.setFill(Color.BLUE);
-	  gridpane_simon.add(rec_simon4,1,1);
 	  
-	  gridpane_malette.add(gridpane_simon,1,1);
-	  GridPane.setMargin(gridpane_simon, new Insets(8, 0, 0, 13));
+
+	  
+	  Button but_simon1 = new Button();
+	  but_simon1.setGraphic(rec_simon1);
+	  gridpane_simon.add(but_simon1,0,0);
+	  
+	  Button but_simon2 = new Button();
+	  but_simon2.setGraphic(rec_simon2);
+	  gridpane_simon.add(but_simon2,0,1);
+	  
+	  Button but_simon3 = new Button();
+	  but_simon3.setGraphic(rec_simon3);
+	  gridpane_simon.add(but_simon3,1,0);
+	  
+	  Button but_simon4 = new Button();
+	  but_simon4.setGraphic(rec_simon4);
+	  gridpane_simon.add(but_simon4,1,1);
+	  	  
+	  gridpane_malette.add(gridpane_simon,1,1);	  
+	  GridPane.setMargin(gridpane_simon, new Insets(5, 0, 0, 13));
 	  
 	  
 	  //Zone en haut à droite
@@ -162,7 +178,7 @@ public class Viewer implements ViewerService, RequireReadService{
 	  zone6.setFitHeight(((3*HardCodedParameters.defaultHeight/4)/2)-15);
 	  zone6.setImage(image_block2);
 	  gridpane_malette.add(zone6,2,1);
-	  GridPane.setMargin(zone6, new Insets(8, 0, 0, -10));
+	  GridPane.setMargin(zone6, new Insets(-5, 0, 0, -10));
 	  
 	  
 	  
