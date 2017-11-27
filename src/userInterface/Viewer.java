@@ -14,30 +14,24 @@ import specifications.RequireReadService;
 import javafx.scene.Cursor;
 import javafx.scene.Group;
 import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.effect.Lighting;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
-import javafx.scene.text.Text;
-import javafx.scene.text.Font;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.Border;
-import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.Background;
+import javafx.scene.layout.BackgroundImage;
+import javafx.scene.layout.BackgroundPosition;
+import javafx.scene.layout.BackgroundRepeat;
+import javafx.scene.layout.BackgroundSize;
 import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Priority;
 import javafx.geometry.HPos;
 import javafx.geometry.Insets;
-import javafx.geometry.Rectangle2D;
 import javafx.scene.paint.ImagePattern;
-
-import java.util.ArrayList;
 
 public class Viewer implements ViewerService, RequireReadService{
   private ReadService data;
@@ -70,51 +64,79 @@ public class Viewer implements ViewerService, RequireReadService{
 	  //malette.setFill(new ImagePattern(img));
 	  //malette.setStroke(Color.RED);
 	  
-	  BorderPane root = new BorderPane();
-	  Scene scene = new Scene(root, 380, 150, Color.WHITE);
 	  
-	  GridPane gridpane = new GridPane();
-	  gridpane.setPadding(new Insets(5));
-	  gridpane.setHgap(5);
-	  gridpane.setVgap(5);
-	  ColumnConstraints column1 = new ColumnConstraints(100);
-	  ColumnConstraints column2 = new ColumnConstraints(50, 150, 300);
+	  	  
+	  GridPane gridpane_malette = new GridPane();
+	  
+	  //Gestion des contraintes de colonne style padding ..
+	  gridpane_malette.setPadding(new Insets(0,28,0,0));
+	  //gridpane_malette.setHgap(5);
+	  //gridpane_malette.setVgap(5);
+	  
+	  ColumnConstraints column1 = new ColumnConstraints(-10 + (3*HardCodedParameters.defaultWidth/4)/3, -10 + (3*HardCodedParameters.defaultWidth/4)/3, -10 + (3*HardCodedParameters.defaultWidth/4)/3);
+	  ColumnConstraints column2 = new ColumnConstraints(-10 + (3*HardCodedParameters.defaultWidth/4)/3, -10 + (3*HardCodedParameters.defaultWidth/4)/3, -10 + (3*HardCodedParameters.defaultWidth/4)/3);
+	  ColumnConstraints column3 = new ColumnConstraints(-10 + (3*HardCodedParameters.defaultWidth/4)/3, -10 + (3*HardCodedParameters.defaultWidth/4)/3, -10 + (3*HardCodedParameters.defaultWidth/4)/3);
+	  column1.setHgrow(Priority.ALWAYS);
 	  column2.setHgrow(Priority.ALWAYS);
-	  gridpane.getColumnConstraints().addAll(column1, column2);
-
-	  TextField img1 = new TextField("img1");
-	  TextField img2 = new TextField("img2");
-	  TextField img3 = new TextField("img3");
-	  TextField img4 = new TextField("img4");
-	  TextField img5 = new TextField("img5");
-	  TextField img6 = new TextField("img6");
-
+	  column3.setHgrow(Priority.ALWAYS);
+	  gridpane_malette.getColumnConstraints().addAll(column1, column2, column3);	  
+	 
+	  //Background de la malette(du gridpane)
+	  BackgroundImage fond_malette= new BackgroundImage(new Image("/images/bordure.png",3*HardCodedParameters.defaultWidth/4,3*HardCodedParameters.defaultHeight/4,false,true),
+		        BackgroundRepeat.REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER,
+		          BackgroundSize.DEFAULT);
+	  gridpane_malette.setBackground(new Background(fond_malette));
 	  
-	  // First name label
-	  GridPane.setHalignment(img1, HPos.RIGHT);
-	  gridpane.add(img1, 0, 0);
-
-	  // Last name label
-	  GridPane.setHalignment(img2, HPos.RIGHT);
-	  gridpane.add(img2, 0, 1);
-
-	  // First name field
-	  GridPane.setHalignment(img3, HPos.LEFT);
-	  gridpane.add(img3, 1, 0);
-
-	  // Last name field
-	  GridPane.setHalignment(img4, HPos.LEFT);
-	  gridpane.add(img4, 1, 1);
+	  //Zone en haut à gauche
+	  Image image_bouton_rouge = new Image("/images/red-button.png");
+	  ImageView zone1 = new ImageView();
+	  zone1.setFitWidth((3*HardCodedParameters.defaultWidth/4)/3);
+	  zone1.setFitHeight((3*HardCodedParameters.defaultHeight/4)/2);
+	  zone1.setImage(image_bouton_rouge);
+	  gridpane_malette.add(zone1,0,0);
 	  
-	  // Last name field
-	  GridPane.setHalignment(img5, HPos.LEFT);
-	  gridpane.add(img5, 2, 0);
+	  //Zone en bas à gauche
+	  Image image_bouton_vert = new Image("/images/green-button.png");
+	  ImageView zone2 = new ImageView();
+	  zone2.setFitWidth((3*HardCodedParameters.defaultWidth/4)/3);
+	  zone2.setFitHeight((3*HardCodedParameters.defaultHeight/4)/2);
+	  zone2.setImage(image_bouton_vert);
+	  gridpane_malette.add(zone2,0,1);
 	  
-	  // Last name field
-	  GridPane.setHalignment(img6, HPos.LEFT);
-	  gridpane.add(img6, 2, 1);
+	  //Zone en haut au milieu
+	  Image image_bouton_vert2 = new Image("/images/green-button.png");
+	  ImageView zone3 = new ImageView();
+	  zone3.setFitWidth((3*HardCodedParameters.defaultWidth/4)/3);
+	  zone3.setFitHeight((3*HardCodedParameters.defaultHeight/4)/2);
+	  zone3.setImage(image_bouton_vert2);
+	  gridpane_malette.add(zone3,1,0);
 	  
-	  root.setCenter(gridpane);	    
+	  //Zone en bas au milieu
+	  Image image_bouton_rouge2 = new Image("/images/red-button.png");
+	  ImageView zone4 = new ImageView();
+	  zone4.setFitWidth((3*HardCodedParameters.defaultWidth/4)/3);
+	  zone4.setFitHeight((3*HardCodedParameters.defaultHeight/4)/2);
+	  zone4.setImage(image_bouton_rouge2);
+	  gridpane_malette.add(zone4,1,1);
+	  
+	  //Zone en haut à droite
+	  Image image_bouton_vert3 = new Image("/images/green-button.png");
+	  ImageView zone5 = new ImageView();
+	  zone5.setFitWidth((3*HardCodedParameters.defaultWidth/4)/3);
+	  zone5.setFitHeight((3*HardCodedParameters.defaultHeight/4)/2);
+	  zone5.setImage(image_bouton_vert3);
+	  gridpane_malette.add(zone5,2,0);
+	  
+	  //Zone en bas à droite
+	  Image image_bouton_rouge3 = new Image("/images/red-button.png");
+	  ImageView zone6 = new ImageView();
+	  zone6.setFitWidth((3*HardCodedParameters.defaultWidth/4)/3);
+	  zone6.setFitHeight((3*HardCodedParameters.defaultHeight/4)/2);
+	  zone6.setImage(image_bouton_rouge3);
+	  gridpane_malette.add(zone6,2,1);
+	  
+	  
+	  
 	  
 	  //Stats
 	  Rectangle stats = new Rectangle(HardCodedParameters.defaultWidth/4,HardCodedParameters.defaultHeight);
@@ -128,6 +150,10 @@ public class Viewer implements ViewerService, RequireReadService{
       camembert.setEffect(new Lighting());
       camembert.setLayoutX(7*HardCodedParameters.defaultWidth/8);
       camembert.setLayoutY(HardCodedParameters.defaultHeight/4);
+      
+      
+      
+      
 	  
       //Logs
 	  Rectangle logs = new Rectangle(3*HardCodedParameters.defaultWidth/4,HardCodedParameters.defaultHeight/4);
@@ -144,9 +170,11 @@ public class Viewer implements ViewerService, RequireReadService{
 	  textLogs.setStyle("-fx-text-fill: green; -fx-control-inner-background: black;");
 	  
 	  //Ajoute les élèments principaux dans les 3sous groupes
-	  malette_group.getChildren().addAll(root);
+	  malette_group.getChildren().addAll(gridpane_malette);
 	  logs_group.getChildren().addAll(logs, textLogs);  
-	  stats_group.getChildren().addAll(stats, camembert);  
+	  stats_group.getChildren().addAll(stats, camembert);
+	  
+	  
 
 	  //Ajoute les 3sous groupes
 	  window.getChildren().addAll(malette_group,stats_group,logs_group);
