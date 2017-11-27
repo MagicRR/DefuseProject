@@ -234,6 +234,7 @@ public class Viewer implements ViewerService, RequireReadService{
 	  
 	  
 	  
+	  
 	  //Stats
 	  Rectangle stats = new Rectangle(HardCodedParameters.defaultWidth/4,HardCodedParameters.defaultHeight);
 	  stats.setLayoutX(3*HardCodedParameters.defaultWidth/4);
