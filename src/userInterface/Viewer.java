@@ -69,9 +69,9 @@ public class Viewer implements ViewerService, RequireReadService{
 	  GridPane gridpane_malette = new GridPane();
 	  
 	  //Gestion des contraintes de colonne style padding ..
-	  gridpane_malette.setPadding(new Insets(0,28,0,0));
-	  //gridpane_malette.setHgap(5);
-	  //gridpane_malette.setVgap(5);
+	  gridpane_malette.setPadding(new Insets(0,0,0,0));
+	  gridpane_malette.setHgap(15);
+	  gridpane_malette.setVgap(15);
 	  
 	  ColumnConstraints column1 = new ColumnConstraints(-10 + (3*HardCodedParameters.defaultWidth/4)/3, -10 + (3*HardCodedParameters.defaultWidth/4)/3, -10 + (3*HardCodedParameters.defaultWidth/4)/3);
 	  ColumnConstraints column2 = new ColumnConstraints(-10 + (3*HardCodedParameters.defaultWidth/4)/3, -10 + (3*HardCodedParameters.defaultWidth/4)/3, -10 + (3*HardCodedParameters.defaultWidth/4)/3);
@@ -79,6 +79,7 @@ public class Viewer implements ViewerService, RequireReadService{
 	  column1.setHgrow(Priority.ALWAYS);
 	  column2.setHgrow(Priority.ALWAYS);
 	  column3.setHgrow(Priority.ALWAYS);
+	  
 	  gridpane_malette.getColumnConstraints().addAll(column1, column2, column3);	  
 	 
 	  //Background de la malette(du gridpane)
@@ -87,53 +88,62 @@ public class Viewer implements ViewerService, RequireReadService{
 		          BackgroundSize.DEFAULT);
 	  gridpane_malette.setBackground(new Background(fond_malette));
 	  
+	  
+	 
+	 
 	  //Zone en haut à gauche
-	  Image image_bouton_rouge = new Image("/images/red-button.png");
+	  Image image_block6 = new Image("/images/block.png");
 	  ImageView zone1 = new ImageView();
-	  zone1.setFitWidth((3*HardCodedParameters.defaultWidth/4)/3);
-	  zone1.setFitHeight((3*HardCodedParameters.defaultHeight/4)/2);
-	  zone1.setImage(image_bouton_rouge);
+	  zone1.setFitWidth(((3*HardCodedParameters.defaultWidth/4)/3)-15);
+	  zone1.setFitHeight(((3*HardCodedParameters.defaultHeight/4)/2)-30);
+	  zone1.setImage(image_block6);
 	  gridpane_malette.add(zone1,0,0);
+	  GridPane.setMargin(zone1, new Insets(0, 0, 0, 20));
 	  
 	  //Zone en bas à gauche
-	  Image image_bouton_vert = new Image("/images/green-button.png");
+	  Image image_block5 = new Image("/images/block.png");
 	  ImageView zone2 = new ImageView();
-	  zone2.setFitWidth((3*HardCodedParameters.defaultWidth/4)/3);
-	  zone2.setFitHeight((3*HardCodedParameters.defaultHeight/4)/2);
-	  zone2.setImage(image_bouton_vert);
+	  zone2.setFitWidth(((3*HardCodedParameters.defaultWidth/4)/3)-15);
+	  zone2.setFitHeight(((3*HardCodedParameters.defaultHeight/4)/2)-30);
+	  zone2.setImage(image_block5);
 	  gridpane_malette.add(zone2,0,1);
+	  GridPane.setMargin(zone2, new Insets(0, 0, 0, 20));
 	  
 	  //Zone en haut au milieu
-	  Image image_bouton_vert2 = new Image("/images/green-button.png");
+	  Image image_block4 = new Image("/images/block.png");
 	  ImageView zone3 = new ImageView();
-	  zone3.setFitWidth((3*HardCodedParameters.defaultWidth/4)/3);
-	  zone3.setFitHeight((3*HardCodedParameters.defaultHeight/4)/2);
-	  zone3.setImage(image_bouton_vert2);
+	  zone3.setFitWidth(((3*HardCodedParameters.defaultWidth/4)/3)-35);
+	  zone3.setFitHeight(((3*HardCodedParameters.defaultHeight/4)/2)-30);
+	  zone3.setImage(image_block4);
 	  gridpane_malette.add(zone3,1,0);
+	  GridPane.setMargin(zone3, new Insets(0, 0, 0, 15));
 	  
 	  //Zone en bas au milieu
-	  Image image_bouton_rouge2 = new Image("/images/red-button.png");
+	  Image image_block = new Image("/images/block.png");
 	  ImageView zone4 = new ImageView();
-	  zone4.setFitWidth((3*HardCodedParameters.defaultWidth/4)/3);
-	  zone4.setFitHeight((3*HardCodedParameters.defaultHeight/4)/2);
-	  zone4.setImage(image_bouton_rouge2);
+	  zone4.setFitWidth(((3*HardCodedParameters.defaultWidth/4)/3)-35);
+	  zone4.setFitHeight(((3*HardCodedParameters.defaultHeight/4)/2)-30);
+	  zone4.setImage(image_block);
 	  gridpane_malette.add(zone4,1,1);
-	  
+	  GridPane.setMargin(zone4, new Insets(0, 0, 0, 15));
+
 	  //Zone en haut à droite
-	  Image image_bouton_vert3 = new Image("/images/green-button.png");
+	  Image image_block3 = new Image("/images/block.png");
 	  ImageView zone5 = new ImageView();
-	  zone5.setFitWidth((3*HardCodedParameters.defaultWidth/4)/3);
-	  zone5.setFitHeight((3*HardCodedParameters.defaultHeight/4)/2);
-	  zone5.setImage(image_bouton_vert3);
+	  zone5.setFitWidth(((3*HardCodedParameters.defaultWidth/4)/3)-20);
+	  zone5.setFitHeight(((3*HardCodedParameters.defaultHeight/4)/2)-30);
+	  zone5.setImage(image_block3);
 	  gridpane_malette.add(zone5,2,0);
+	  GridPane.setMargin(zone5, new Insets(0, 0, 0, -10));
 	  
 	  //Zone en bas à droite
-	  Image image_bouton_rouge3 = new Image("/images/red-button.png");
+	  Image image_block2 = new Image("/images/block.png");
 	  ImageView zone6 = new ImageView();
-	  zone6.setFitWidth((3*HardCodedParameters.defaultWidth/4)/3);
-	  zone6.setFitHeight((3*HardCodedParameters.defaultHeight/4)/2);
-	  zone6.setImage(image_bouton_rouge3);
+	  zone6.setFitWidth(((3*HardCodedParameters.defaultWidth/4)/3)-20);
+	  zone6.setFitHeight(((3*HardCodedParameters.defaultHeight/4)/2)-30);
+	  zone6.setImage(image_block2);
 	  gridpane_malette.add(zone6,2,1);
+	  GridPane.setMargin(zone6, new Insets(0, 0, 0, -10));
 	  
 	  
 	  
