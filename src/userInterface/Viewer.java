@@ -19,6 +19,7 @@ import javafx.scene.effect.Lighting;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
+import javafx.scene.text.TextAlignment;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Background;
@@ -29,8 +30,10 @@ import javafx.scene.layout.BackgroundSize;
 import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Priority;
+import data.Minuteur;
 import javafx.geometry.HPos;
 import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.paint.ImagePattern;
 
 public class Viewer implements ViewerService, RequireReadService{
@@ -56,16 +59,9 @@ public class Viewer implements ViewerService, RequireReadService{
 	  //3 sous groupes
 	  Group malette_group = new Group();
 	  Group logs_group = new Group();
-	  Group stats_group = new Group();
-
-	  //Malette
-	  //Rectangle malette = new Rectangle(3*HardCodedParameters.defaultWidth/4,3*HardCodedParameters.defaultHeight/4);
-	  //Image img = new Image("/images/malette.png");
-	  //malette.setFill(new ImagePattern(img));
-	  //malette.setStroke(Color.RED);
+	  Group stats_group = new Group();	  
 	  
-	  
-	  	  
+	  //Malette	  	  
 	  GridPane gridpane_malette = new GridPane();
 	  
 	  //Gestion des contraintes de colonne style padding ..
@@ -110,29 +106,52 @@ public class Viewer implements ViewerService, RequireReadService{
 	  GridPane.setMargin(zone2, new Insets(8, 0, 0, 20));
 	  
 	  //Zone en haut au milieu
-	  Image image_block4 = new Image("/images/block.png");
+	  Image boutton_rouge = new Image("/images/red-button.png");
 	  ImageView zone3 = new ImageView();
 	  zone3.setFitWidth(((3*HardCodedParameters.defaultWidth/4)/3)-35);
 	  zone3.setFitHeight(((3*HardCodedParameters.defaultHeight/4)/2)-8);
-	  zone3.setImage(image_block4);
+	  zone3.setImage(boutton_rouge);
 	  gridpane_malette.add(zone3,1,0);
 	  GridPane.setMargin(zone3, new Insets(0, 0, 0, 13));
 	  
-	  //Zone en bas au milieu
-	  Image image_block = new Image("/images/block.png");
+	  //Zone en bas au milieu, gridpane simon
+	  /*Image image_block = new Image("/images/block.png");
 	  ImageView zone4 = new ImageView();
 	  zone4.setFitWidth(((3*HardCodedParameters.defaultWidth/4)/3)-35);
 	  zone4.setFitHeight(((3*HardCodedParameters.defaultHeight/4)/2)-15);
 	  zone4.setImage(image_block);
 	  gridpane_malette.add(zone4,1,1);
 	  GridPane.setMargin(zone4, new Insets(8, 0, 0, 13));
-
+	   */
+	  
+	  //GridPane du simon
+	  GridPane gridpane_simon = new GridPane();
+	  Rectangle rec_simon1 = new Rectangle(-18+((3*HardCodedParameters.defaultWidth/4)/3)/2,5+((HardCodedParameters.defaultHeight/3)/2));
+	  rec_simon1.setFill(Color.RED);
+	  gridpane_simon.add(rec_simon1,0,0);
+	  
+	  Rectangle rec_simon2 = new Rectangle(-18+((3*HardCodedParameters.defaultWidth/4)/3)/2,5+((HardCodedParameters.defaultHeight/3)/2));
+	  rec_simon2.setFill(Color.GREEN);
+	  gridpane_simon.add(rec_simon2,0,1);
+	  
+	  Rectangle rec_simon3 = new Rectangle(-18+((3*HardCodedParameters.defaultWidth/4)/3)/2,5+((HardCodedParameters.defaultHeight/3)/2));
+	  rec_simon3.setFill(Color.YELLOW);
+	  gridpane_simon.add(rec_simon3,1,0);
+	  
+	  Rectangle rec_simon4 = new Rectangle(-18+((3*HardCodedParameters.defaultWidth/4)/3)/2,5+((HardCodedParameters.defaultHeight/3)/2));
+	  rec_simon4.setFill(Color.BLUE);
+	  gridpane_simon.add(rec_simon4,1,1);
+	  
+	  gridpane_malette.add(gridpane_simon,1,1);
+	  GridPane.setMargin(gridpane_simon, new Insets(8, 0, 0, 13));
+	  
+	  
 	  //Zone en haut à droite
-	  Image image_block3 = new Image("/images/block.png");
+	  Image pose_cable = new Image("/images/pose-cable.png");
 	  ImageView zone5 = new ImageView();
 	  zone5.setFitWidth(((3*HardCodedParameters.defaultWidth/4)/3)-20);
 	  zone5.setFitHeight(((3*HardCodedParameters.defaultHeight/4)/2)-8);
-	  zone5.setImage(image_block3);
+	  zone5.setImage(pose_cable);
 	  gridpane_malette.add(zone5,2,0);
 	  GridPane.setMargin(zone5, new Insets(0, 0, 0, -10));
 	  
@@ -171,12 +190,14 @@ public class Viewer implements ViewerService, RequireReadService{
 	  logs.setStroke(Color.RED);
 	  logs.setFill(Color.BLACK);
 	  
-	  TextField textLogs = new TextField(">> Bienvenue !");
+	  TextField textLogs = new TextField(">> Bienvenue ! Il vous reste: pas longtemps ...vraiment .. pas longtemps .. PAFFFFF T'ES MORT!!");
 	  textLogs.setCursor(Cursor.DEFAULT);
 	  textLogs.setEditable(false);
+	  textLogs.autosize();
 	  textLogs.setPrefHeight(HardCodedParameters.defaultHeight/4);
 	  textLogs.setPrefWidth(3*HardCodedParameters.defaultWidth/4);
 	  textLogs.setLayoutY(3*HardCodedParameters.defaultHeight/4);
+	  textLogs.setAlignment(Pos.TOP_LEFT);
 	  textLogs.setStyle("-fx-text-fill: green; -fx-control-inner-background: black;");
 	  
 	  //Ajoute les élèments principaux dans les 3sous groupes
