@@ -1,10 +1,12 @@
 package data;
 
-public class Module {
-	private int id;
-	private EnigmeBoard enigmeBoard;
-	private boolean isActive;
-	private boolean isResolved;
+import specifications.MalletteService;
+
+public class Module{
+	public int id;
+	public EnigmeBoard enigmeBoard;
+	public boolean isActive;
+	public boolean isResolved;
 	
 	public Module(int id, EnigmeBoard enigmeBoard, boolean isActive, boolean isResolved) {
 		super();

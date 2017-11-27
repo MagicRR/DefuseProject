@@ -4,6 +4,10 @@
  * ******************************************************/
 package specifications;
 
+import java.util.Timer;
+
 public interface ReadService {
+	
 	public int getStepNumber();
+	public Timer getCountdown();
 }

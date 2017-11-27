@@ -6,7 +6,9 @@ package specifications;
 
 import java.util.Timer;
 
-public interface WriteService {
-	public void setStepNumber(int n);
-	public Timer setCountdown(Timer t);
+public interface MalletteReadService {
+	public String getNameEnigme();
+	
+	
+//	public Timer getCountdown();
 }

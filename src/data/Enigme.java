@@ -1,23 +1,23 @@
 package data;
 
 public class Enigme {
-	private String name;
+	private String nameEnigme;
 	private int difficulty;
 	private Indice indice;
 	
-	public Enigme(String name, int difficulty, Indice indice) {
+	public Enigme(String nameEnigme, int difficulty, Indice indice) {
 		super();
-		this.name = name;
+		this.nameEnigme = nameEnigme;
 		this.difficulty = difficulty;
 		this.indice = indice;
 	}
 
-	public String getName() {
-		return name;
+	public String getNameEnigme() {
+		return nameEnigme;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public void setName(String nameEnigme) {
+		this.nameEnigme = nameEnigme;
 	}
 
 	public int getDifficulty() {

@@ -2,9 +2,11 @@ package data;
 
 import java.util.ArrayList;
 
-public class Mallette {
+import specifications.MalletteService;
+
+public class Mallette implements MalletteService {
 	private String matricule;
-	private ArrayList<Module> modules;
+	public ArrayList<Module> modules;
 	
 	public Mallette(String matricule, ArrayList<Module> modules) {
 		this.matricule = matricule;
@@ -26,6 +28,14 @@ public class Mallette {
 	public void setModules(ArrayList<Module> modules) {
 		this.modules = modules;
 	}
+
+	@Override
+	public String getNameEnigme() {
+		return null;
+	}
+
+	@Override
+	public void init() {}
 	
 	
 }

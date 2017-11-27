@@ -4,9 +4,6 @@
  * ******************************************************/
 package specifications;
 
-import java.util.Timer;
-
-public interface WriteService {
-	public void setStepNumber(int n);
-	public Timer setCountdown(Timer t);
+public interface MalletteService extends MalletteReadService, MalletteWriteService{
+  public void init();
 }
