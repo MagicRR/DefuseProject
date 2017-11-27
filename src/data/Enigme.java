@@ -1,9 +1,14 @@
 package data;
 
-public class Enigme {
+import specifications.EnigmeService;
+
+public class Enigme implements EnigmeService {
 	private String nameEnigme;
 	private int difficulty;
 	private Indice indice;
+	
+	@Override
+	public void init() {}
 	
 	public Enigme(String nameEnigme, int difficulty, Indice indice) {
 		super();
@@ -35,5 +40,7 @@ public class Enigme {
 	public void setIndice(Indice indice) {
 		this.indice = indice;
 	}
+
+	
 	
 }
