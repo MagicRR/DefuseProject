@@ -38,6 +38,7 @@ import javafx.geometry.Pos;
 import javafx.scene.paint.ImagePattern;
 
 public class Viewer implements ViewerService, RequireReadService{
+	
   private ReadService data;
 
   public Viewer(){}
