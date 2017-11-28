@@ -1,6 +1,8 @@
 package data;
 
-public class Indice {
+import specifications.IndiceService;
+
+public class Indice implements IndiceService {
 	
 	private String indiceText;
 	
@@ -15,5 +17,8 @@ public class Indice {
 	public void setIndiceText(String indiceText) {
 		this.indiceText = indiceText;
 	}
+
+	@Override
+	public void init() {}
 	
 }
