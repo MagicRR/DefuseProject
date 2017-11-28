@@ -266,7 +266,7 @@ public class Viewer implements ViewerService, RequireReadService{
 	  zone6_1.setFitHeight(((3*HardCodedParameters.defaultHeight/4)/2)/6);
 	  zone6_1.setImage(chiffre1);
 	  gridpane_code.add(zone6_1,0,0);
-	  GridPane.setMargin(zone6_1, new Insets(20, 0, 0, 40));
+	  GridPane.setMargin(zone6_1, new Insets(((3*HardCodedParameters.defaultHeight/4)/2)/10, 0, 0, ((3*HardCodedParameters.defaultWidth/4)/3)/8));
 	  
 	  //Deuxieme chiffre
 	  Image chiffre2 = new Image("/images/chiffre-2.png");
@@ -275,7 +275,7 @@ public class Viewer implements ViewerService, RequireReadService{
 	  zone6_2.setFitHeight(((3*HardCodedParameters.defaultHeight/4)/2)/6);
 	  zone6_2.setImage(chiffre2);
 	  gridpane_code.add(zone6_2,1,0);
-	  GridPane.setMargin(zone6_2, new Insets(20, 0, 0, 50));
+	  GridPane.setMargin(zone6_2, new Insets(((3*HardCodedParameters.defaultHeight/4)/2)/10, 0, 0, ((3*HardCodedParameters.defaultWidth/4)/3)/8));
 	  
 	  //Troisième chiffre
 	  Image chiffre3 = new Image("/images/chiffre-3.png");
@@ -284,7 +284,7 @@ public class Viewer implements ViewerService, RequireReadService{
 	  zone6_3.setFitHeight(((3*HardCodedParameters.defaultHeight/4)/2)/6);
 	  zone6_3.setImage(chiffre3);
 	  gridpane_code.add(zone6_3,0,1);
-	  GridPane.setMargin(zone6_3, new Insets(0, 0, 0, 40));
+	  GridPane.setMargin(zone6_3, new Insets(0, 0, 0, ((3*HardCodedParameters.defaultWidth/4)/3)/8));
 	  
 	  //Quatrième chiffre
 	  Image chiffre4 = new Image("/images/chiffre-4.png");
@@ -293,7 +293,7 @@ public class Viewer implements ViewerService, RequireReadService{
 	  zone6_4.setFitHeight(((3*HardCodedParameters.defaultHeight/4)/2)/6);
 	  zone6_4.setImage(chiffre4);
 	  gridpane_code.add(zone6_4,1,1);
-	  GridPane.setMargin(zone6_4, new Insets(0, 0, 0, 50));
+	  GridPane.setMargin(zone6_4, new Insets(0, 0, 0, ((3*HardCodedParameters.defaultWidth/4)/3)/8));
 	  
 	  gridpane_malette.add(gridpane_code,2,1);
 
