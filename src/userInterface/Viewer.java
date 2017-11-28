@@ -120,34 +120,37 @@ public class Viewer implements ViewerService, RequireReadService{
 	  GridPane gridpane_simon = new GridPane();
 	  
 	  Rectangle rec_simon1 = new Rectangle(-33+((3*HardCodedParameters.defaultWidth/4)/3)/2, 5+((HardCodedParameters.defaultHeight/3)/2));
-	  rec_simon1.setFill(Color.RED);
+	  Image simon_rouge = new Image("/images/simon-rouge.png");
+	  rec_simon1.setFill(new ImagePattern(simon_rouge));
 	  
 	  Rectangle rec_simon2 = new Rectangle(-33+((3*HardCodedParameters.defaultWidth/4)/3)/2, 5+((HardCodedParameters.defaultHeight/3)/2));
-	  rec_simon2.setFill(Color.GREEN);
+	  Image simon_vert = new Image("/images/simon-vert.png");
+	  rec_simon2.setFill(new ImagePattern(simon_vert));
 	  
 	  Rectangle rec_simon3 = new Rectangle(-33+((3*HardCodedParameters.defaultWidth/4)/3)/2, 5+((HardCodedParameters.defaultHeight/3)/2));
-	  rec_simon3.setFill(Color.YELLOW);
+	  Image simon_jaune = new Image("/images/simon-jaune.png");
+	  rec_simon3.setFill(new ImagePattern(simon_jaune));
 	  
 	  Rectangle rec_simon4 = new Rectangle(-33+((3*HardCodedParameters.defaultWidth/4)/3)/2, 5+((HardCodedParameters.defaultHeight/3)/2));
-	  rec_simon4.setFill(Color.BLUE);
-	  
+	  Image simon_bleu = new Image("/images/simon-bleu.png");
+	  rec_simon4.setFill(new ImagePattern(simon_bleu));
 
-	  
+	 
 	  Button but_simon1 = new Button();
 	  but_simon1.setGraphic(rec_simon1);
 	  gridpane_simon.add(but_simon1,0,0);
 	  
 	  Button but_simon2 = new Button();
 	  but_simon2.setGraphic(rec_simon2);
-	  gridpane_simon.add(but_simon2,0,1);
+	  gridpane_simon.add(but_simon2,1,0);
 	  
 	  Button but_simon3 = new Button();
 	  but_simon3.setGraphic(rec_simon3);
-	  gridpane_simon.add(but_simon3,1,0);
+	  gridpane_simon.add(but_simon3,1,1);
 	  
 	  Button but_simon4 = new Button();
 	  but_simon4.setGraphic(rec_simon4);
-	  gridpane_simon.add(but_simon4,1,1);
+	  gridpane_simon.add(but_simon4,0,1);
 	  	  
 	  gridpane_malette.add(gridpane_simon,1,1);	  
 	  GridPane.setMargin(gridpane_simon, new Insets(5, 0, 0, 13));
@@ -174,9 +177,9 @@ public class Viewer implements ViewerService, RequireReadService{
 	  colonne1.setHgrow(Priority.ALWAYS);
 
 	  
-	  gridpane_cable.getColumnConstraints().addAll(column1); 
+	  gridpane_cable.getColumnConstraints().addAll(colonne1); 
 	 
-	  //Background de la malette(du gridpane)
+	  //Background des cables
 	  BackgroundImage pose_cable= new BackgroundImage(new Image("/images/pose-cable.png",((3*HardCodedParameters.defaultWidth/4)/3)-20, ((3*HardCodedParameters.defaultHeight/4)/2)-8,false,true),
 		        BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT,
 		          BackgroundSize.DEFAULT);
@@ -223,14 +226,77 @@ public class Viewer implements ViewerService, RequireReadService{
 	  
 	  
 	  //Zone en bas à droite
-	  Image image_block2 = new Image("/images/block.png");
+	  /*Image image_block2 = new Image("/images/block.png");
 	  ImageView zone6 = new ImageView();
 	  zone6.setFitWidth(((3*HardCodedParameters.defaultWidth/4)/3)-20);
 	  zone6.setFitHeight(((3*HardCodedParameters.defaultHeight/4)/2)-15);
 	  zone6.setImage(image_block2);
 	  gridpane_malette.add(zone6,2,1);
-	  GridPane.setMargin(zone6, new Insets(-5, 0, 0, -10));
+	  GridPane.setMargin(zone6, new Insets(-5, 0, 0, -10));*/
+	  	  
+	  //gridpane numérique	  	  
+	  GridPane gridpane_code = new GridPane();
 	  
+	  //Gestion des contraintes de colonne style padding ..
+	  gridpane_code.setPadding(new Insets(((3*HardCodedParameters.defaultWidth/4)/3)/3,0,0,50));
+	  gridpane_code.setHgap(15);
+	  gridpane_code.setVgap(10);
+	  
+	  ColumnConstraints col1 = new ColumnConstraints(-10 + ((3*HardCodedParameters.defaultWidth/4)/3)/5, -10 + ((3*HardCodedParameters.defaultWidth/4)/3)/5, -10 + ((3*HardCodedParameters.defaultWidth/4)/3)/5);
+	  ColumnConstraints col2 = new ColumnConstraints(-10 + ((3*HardCodedParameters.defaultWidth/4)/3)/5, -10 + ((3*HardCodedParameters.defaultWidth/4)/3)/5, -10 + ((3*HardCodedParameters.defaultWidth/4)/3)/5);
+	  ColumnConstraints col3 = new ColumnConstraints(-10 + ((3*HardCodedParameters.defaultWidth/4)/3)/5, -10 + ((3*HardCodedParameters.defaultWidth/4)/3)/5, -10 + ((3*HardCodedParameters.defaultWidth/4)/3)/5);
+	  ColumnConstraints col4 = new ColumnConstraints(-10 + ((3*HardCodedParameters.defaultWidth/4)/3)/5, -10 + ((3*HardCodedParameters.defaultWidth/4)/3)/5, -10 + ((3*HardCodedParameters.defaultWidth/4)/3)/5); 
+	  col1.setHgrow(Priority.ALWAYS);
+	  col2.setHgrow(Priority.ALWAYS);
+	  col3.setHgrow(Priority.ALWAYS);
+	  col4.setHgrow(Priority.ALWAYS);
+ 
+	  gridpane_code.getColumnConstraints().addAll(col1,col2,col3,col4);
+	  	 
+	  //Background du code numérique
+	  BackgroundImage cadenas = new BackgroundImage(new Image("/images/Cadenas.png",((3*HardCodedParameters.defaultWidth/4)/3)-20, ((3*HardCodedParameters.defaultHeight/4)/2)-8,false,true),
+		        BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT,
+		          BackgroundSize.DEFAULT);
+	  gridpane_code.setBackground(new Background(cadenas));
+	  	
+	  //Premier chiffre
+	  Image chiffre1 = new Image("/images/chiffre-1.png");
+	  ImageView zone6_1 = new ImageView();
+	  zone6_1.setFitWidth(((3*HardCodedParameters.defaultWidth/4)/3)/6);
+	  zone6_1.setFitHeight(((3*HardCodedParameters.defaultHeight/4)/2)/6);
+	  zone6_1.setImage(chiffre1);
+	  gridpane_code.add(zone6_1,0,0);
+	  GridPane.setMargin(zone6_1, new Insets(20, 0, 0, 40));
+	  
+	  //Deuxieme chiffre
+	  Image chiffre2 = new Image("/images/chiffre-2.png");
+	  ImageView zone6_2 = new ImageView();
+	  zone6_2.setFitWidth(((3*HardCodedParameters.defaultWidth/4)/3)/6);
+	  zone6_2.setFitHeight(((3*HardCodedParameters.defaultHeight/4)/2)/6);
+	  zone6_2.setImage(chiffre2);
+	  gridpane_code.add(zone6_2,1,0);
+	  GridPane.setMargin(zone6_2, new Insets(20, 0, 0, 50));
+	  
+	  //Troisième chiffre
+	  Image chiffre3 = new Image("/images/chiffre-3.png");
+	  ImageView zone6_3 = new ImageView();
+	  zone6_3.setFitWidth(((3*HardCodedParameters.defaultWidth/4)/3)/6);
+	  zone6_3.setFitHeight(((3*HardCodedParameters.defaultHeight/4)/2)/6);
+	  zone6_3.setImage(chiffre3);
+	  gridpane_code.add(zone6_3,0,1);
+	  GridPane.setMargin(zone6_3, new Insets(0, 0, 0, 40));
+	  
+	  //Quatrième chiffre
+	  Image chiffre4 = new Image("/images/chiffre-4.png");
+	  ImageView zone6_4 = new ImageView();
+	  zone6_4.setFitWidth(((3*HardCodedParameters.defaultWidth/4)/3)/6);
+	  zone6_4.setFitHeight(((3*HardCodedParameters.defaultHeight/4)/2)/6);
+	  zone6_4.setImage(chiffre4);
+	  gridpane_code.add(zone6_4,1,1);
+	  GridPane.setMargin(zone6_4, new Insets(0, 0, 0, 50));
+	  
+	  gridpane_malette.add(gridpane_code,2,1);
+
 	  
 	  
 	  
