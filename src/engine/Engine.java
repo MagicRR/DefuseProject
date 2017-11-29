@@ -52,6 +52,9 @@ public class Engine implements EngineService, RequireDataService, RequireMallett
   private int finalCountdownFormatedMinutes;
   private int finalCountdownFormatedSeconds;
   
+  // ACTIVER LES LOGS OU NON. 1 = DESACTIVE
+  private int disableConsoleLogs = 1;
+  
   //CREATION DE LA MALETTE, DES MODULES, DES BOARDS, DES ENIGMES ET DES INDICES
   private ArrayList<Module> modules = new ArrayList<Module>();
   private int i = 0;
@@ -164,10 +167,11 @@ public class Engine implements EngineService, RequireDataService, RequireMallett
   public void start(){
 	  
 	  // CHECK-LIST
-	  System.out.println("Initialisation Malette...");
-	  System.out.println("Initialisation Malette : CHECK");
-	  System.out.println("Initialisation Modules...");
-	  
+	  if(disableConsoleLogs != 1) {
+		  System.out.println("Initialisation Malette...");
+		  System.out.println("Initialisation Malette : CHECK");
+		  System.out.println("Initialisation Modules...");
+	  }
 	  
 	  // ON INITIALISE TOUS LES ARRAYS
 	  initialisationArrays();
@@ -222,15 +226,20 @@ public class Engine implements EngineService, RequireDataService, RequireMallett
 		  i++;
 	  }
 	  
-	  // CHECK-LIST MODULES, INITIALISATION MINUTEUR
-	  System.out.println("Initialisation Modules : CHECK");
-	  System.out.println("Initialisation Minuteur...");
+	  if(disableConsoleLogs != 1) {
+		// CHECK-LIST MODULES, INITIALISATION MINUTEUR
+		  System.out.println("Initialisation Modules : CHECK");
+		  System.out.println("Initialisation Minuteur...");
+	  }
+	  
 	  
 	  // INITIALISATION MINUTEUR
 	  startingCountdown();
 	  
 	  //CHECK-LIST MINUTEUR
-	  System.out.println("Initialisation Minuteur : CHECK");
+	  if(disableConsoleLogs != 1) {
+		  System.out.println("Initialisation Minuteur : CHECK");
+	  }
 	  
 	  //GAME STEP, TOUJOURS UTILE
 //      engineClock.schedule(new TimerTask(){
@@ -302,8 +311,9 @@ public class Engine implements EngineService, RequireDataService, RequireMallett
 	  	for(int x = 0; x < 4; x++) {
 	  		ordreDesTouchesSimon.add(couleursSimon.get(gen.nextInt(couleursSimon.size())));
 	  	}
-	  	  
-	  	System.out.println(ordreDesTouchesSimon);
+	  	if(disableConsoleLogs != 1) {
+		  	System.out.println(ordreDesTouchesSimon);
+	  	}
   	}
   	
   	private void generationEnigmePaveNumerique() {
@@ -329,7 +339,9 @@ public class Engine implements EngineService, RequireDataService, RequireMallett
   	    else{
   	    	ordreDesTouchesPaveNumerique = 1234;
   	    }
-  	    System.out.println(ordreDesTouchesPaveNumerique);
+  	    if(disableConsoleLogs != 1) {
+  	    	System.out.println(ordreDesTouchesPaveNumerique);
+  	  }
   	}
   	
   	private void generationEnigmePaveAlphabetique() {
@@ -380,15 +392,18 @@ public class Engine implements EngineService, RequireDataService, RequireMallett
   	}
   	
   	private void printingLogs(){
-  		System.out.println("Module numéro "+i+" initialisé. Ce module de type : '"+modules.get(i).getEnigmeBoard().getNameBoard()+
-				  "' comporte une énigme de type : '"+modules.get(i).getEnigmeBoard().getEnigme().getNameEnigme()+
-				  "' ainsi que l'indice suivant associé : "+modules.get(i).getEnigmeBoard().getEnigme().getIndice().getIndiceText()+
-				  ".");
-  		
+  		if(disableConsoleLogs != 1) {
+  			System.out.println("Module numéro "+i+" initialisé. Ce module de type : '"+modules.get(i).getEnigmeBoard().getNameBoard()+
+  				  "' comporte une énigme de type : '"+modules.get(i).getEnigmeBoard().getEnigme().getNameEnigme()+
+  				  "' ainsi que l'indice suivant associé : "+modules.get(i).getEnigmeBoard().getEnigme().getIndice().getIndiceText()+
+  				  ".");
+  		}
   	}
   	
   	private void printingMinuteurLog() {
-		  System.out.println("Module numéro "+i+" initialisé. Ce module de type : 'Minuteur' ne comporte pas d'énigme.");
+  		if(disableConsoleLogs != 1) {
+  			System.out.println("Module numéro "+i+" initialisé. Ce module de type : 'Minuteur' ne comporte pas d'énigme.");
+  		}
   	}
   	
   	// COMPTE A REBOURS, GAME STEPS
@@ -410,10 +425,15 @@ public class Engine implements EngineService, RequireDataService, RequireMallett
   			  
   			  // PRINT, IF COUNTDOWN ECOULE = VOUS ETES MORT
   			  if(finalCountdownFormatedMinutes > 0 || finalCountdownFormatedSeconds > -1) {
-  				System.out.println("Le final countdown formaté est à : "+finalCountdownFormatedMinutes+" minutes et "+finalCountdownFormatedSeconds+" secondes.");
+  				  if(disableConsoleLogs != 1) {
+  					System.out.println("Le final countdown formaté est à : "+finalCountdownFormatedMinutes+" minutes et "+finalCountdownFormatedSeconds+" secondes.");
+  				  }
+  				
   			  }
   			  else {
-  				System.out.println("Partie terminée, vous êtes mort.");
+  				if(disableConsoleLogs != 1) {
+  					System.out.println("Partie terminée, vous êtes mort.");
+  				}
   			  }
   			  
   			    
