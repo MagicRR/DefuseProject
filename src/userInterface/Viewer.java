@@ -20,6 +20,8 @@ import javafx.scene.effect.Lighting;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
+import javafx.scene.text.Font;
+import javafx.scene.text.FontWeight;
 import javafx.scene.text.TextAlignment;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -31,6 +33,11 @@ import javafx.scene.layout.BackgroundSize;
 import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Priority;
+
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+
 import data.Minuteur;
 import javafx.geometry.HPos;
 import javafx.geometry.Insets;
@@ -49,8 +56,7 @@ public class Viewer implements ViewerService, RequireReadService{
   }
 
   @Override
-  public void init(){
-  }
+  public void init(){}
 
   @Override
   public Parent getPanel(){
@@ -90,13 +96,26 @@ public class Viewer implements ViewerService, RequireReadService{
 	 
 	 
 	  //Zone en haut à gauche
-	  Image image_block6 = new Image("/images/block.png");
-	  ImageView zone1 = new ImageView();
-	  zone1.setFitWidth(((3*HardCodedParameters.defaultWidth/4)/3)-20);
-	  zone1.setFitHeight(((3*HardCodedParameters.defaultHeight/4)/2)-8);
-	  zone1.setImage(image_block6);
-	  gridpane_malette.add(zone1,0,0);
-	  GridPane.setMargin(zone1, new Insets(0, 0, 0, 20));
+	  TextField timer = new TextField("01:00");
+	  timer.setCursor(Cursor.DEFAULT);
+	  timer.setEditable(false);
+	  timer.setPrefHeight((3*HardCodedParameters.defaultHeight/4)/2-8);
+	  timer.setAlignment(Pos.CENTER);
+	  timer.setPrefColumnCount(5);
+	  
+//	  try {
+//		  final Font f = Font.loadFont(new FileInputStream(new File("./fonts/DS-DIGI.TTF")), 12);
+//		  timer.setFont(f);
+//	  } catch (FileNotFoundException e) {
+//	      e.printStackTrace();
+//	  }
+	  
+	  timer.setFont(Font.font("",FontWeight.BOLD, 70));
+	  //timer.setFont(Font.loadFont("/fonts/DS-DIGI.TTF", 70) );
+
+	  timer.setStyle("-fx-text-fill: red; -fx-font-family: 'DS-DIGI'; -fx-control-inner-background: black;");
+	  gridpane_malette.add(timer,0,0);
+	  GridPane.setMargin(timer, new Insets(0, 0, 0, 20));
 	  
 	  //Zone en bas à gauche
 	  Image image_block5 = new Image("/images/block.png");
@@ -326,10 +345,6 @@ public class Viewer implements ViewerService, RequireReadService{
       
 	  
       //Logs
-	  Rectangle logs = new Rectangle(3*HardCodedParameters.defaultWidth/4,HardCodedParameters.defaultHeight/4);
-	  logs.setLayoutY(3*HardCodedParameters.defaultHeight/4);
-	  logs.setStroke(Color.RED);
-	  logs.setFill(Color.BLACK);
 	  
 	  TextField textLogs = new TextField(">> Bienvenue !");
 	  textLogs.setCursor(Cursor.DEFAULT);
@@ -343,7 +358,7 @@ public class Viewer implements ViewerService, RequireReadService{
 	  
 	  //Ajoute les élèments principaux dans les 3sous groupes
 	  malette_group.getChildren().addAll(gridpane_malette);
-	  logs_group.getChildren().addAll(logs, textLogs);  
+	  logs_group.getChildren().addAll( textLogs);  
 	  stats_group.getChildren().addAll(stats, camembert);
 	  
 	  

@@ -21,7 +21,10 @@ import javafx.scene.layout.BackgroundRepeat;
 import javafx.scene.layout.BackgroundSize;
 import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.Pane;
 import javafx.scene.layout.Priority;
+import javafx.scene.paint.ImagePattern;
+import javafx.scene.shape.Rectangle;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
@@ -47,13 +50,13 @@ public class Viewer_accueil implements ViewerService, RequireReadService{
   public Parent getPanel(){
 	  
 	  //Groupe de l'interface global
-	  Group window = new Group();
+	  Pane window = new Pane();
 	  
 	  //Malette	  	  
 	  GridPane gridpane_accueil = new GridPane();
 	  
 	  //Gestion des contraintes de colonne style padding ..
-	  gridpane_accueil.setPadding(new Insets(50,0,0,0));
+	  gridpane_accueil.setPadding(new Insets(0,0,0,0));
 	  gridpane_accueil.setHgap(15);
 	  gridpane_accueil.setVgap(10);
 	  
@@ -61,12 +64,12 @@ public class Viewer_accueil implements ViewerService, RequireReadService{
 	  column1.setHgrow(Priority.ALWAYS);
 	  
 	  gridpane_accueil.getColumnConstraints().addAll(column1);	  
-	 
-	  //Background de l'accueil
+	
 	  BackgroundImage fond_accueil= new BackgroundImage(new Image("/images/explosion.jpeg",HardCodedParameters.defaultWidth,HardCodedParameters.defaultHeight,false,true),
 	  	        BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT,
 	  	          BackgroundSize.DEFAULT);
-	  gridpane_accueil.setBackground(new Background(fond_accueil));
+	  
+	  window.setBackground(new Background(fond_accueil));
 	 
 	  //Image du jeu
 	  Image accueil = new Image("/images/logo.png");
@@ -81,7 +84,7 @@ public class Viewer_accueil implements ViewerService, RequireReadService{
 	  jouer = new Button("Commencer");
 	  jouer.setId("jouer");
 	  jouer.arm();
-	  GridPane.setMargin(jouer, new Insets(-1*HardCodedParameters.defaultHeight/4, 0, 0, -50+1*HardCodedParameters.defaultWidth/2));
+	  GridPane.setMargin(jouer, new Insets(-1*HardCodedParameters.defaultHeight/5, 0, 0, -50+1*HardCodedParameters.defaultWidth/2));
 	  gridpane_accueil.add(jouer,0,1);
 	  
 	  //Button instruction

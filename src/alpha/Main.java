@@ -61,10 +61,7 @@ public class Main extends Application{
 	  @Override 
 	  public void start(Stage stage) {
 		  
-		    final Scene scene_accueil = new Scene(((Viewer_accueil)viewer_accueil).getPanel());
-		    final Scene scene = new Scene(((Viewer)viewer).getPanel());
-		    
-		    //Récupère la taille de l'écran de l'utilisateur et adapte les HardCodedParameters
+		  	//Récupère la taille de l'écran de l'utilisateur et adapte les HardCodedParameters
 		    Screen screen = Screen.getPrimary();
 			Rectangle2D bounds = screen.getVisualBounds();
 
@@ -72,16 +69,21 @@ public class Main extends Application{
 			stage.setY(bounds.getMinY());
 			HardCodedParameters.defaultWidth=bounds.getWidth();
 			HardCodedParameters.defaultHeight=bounds.getHeight();
-			stage.setWidth(bounds.getWidth());
-			stage.setHeight(bounds.getHeight());			  
-		    
+			stage.setWidth(HardCodedParameters.defaultWidth);
+			stage.setHeight(HardCodedParameters.defaultHeight);			
+		  
+		    final Scene scene_accueil = new Scene(((Viewer_accueil)viewer_accueil).getPanel());
+		    final Scene scene = new Scene(((Viewer)viewer).getPanel());
+		    		    
 			//Définis un titre à la fenetre + empeche de resize la fenetre et définis le fullscreen mode au démarrage
 		    stage.setTitle("Defuse Project");
 		    stage.setResizable(false);
 		    //stage.setFullScreen(true);
 		    
 		    stage.setScene(scene_accueil);
-
+		    stage.setWidth(HardCodedParameters.defaultWidth);
+		    stage.setHeight(HardCodedParameters.defaultHeight);
+		    
 		    viewer_accueil.getJouer().setOnMousePressed(new EventHandler<MouseEvent>(){
 			      @Override
 			        public void handle(MouseEvent event) {
@@ -91,11 +93,7 @@ public class Main extends Application{
 			            }			            
 			    	  }
 			    });
-		    
-		    stage.setWidth(HardCodedParameters.defaultWidth);
-		    stage.setHeight(HardCodedParameters.defaultHeight);
-		    
-		    
+		        
 		    stage.setOnShown(new EventHandler<WindowEvent>() {
 		      @Override
 		        public void handle(WindowEvent event) {
