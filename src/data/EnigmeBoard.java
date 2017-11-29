@@ -1,10 +1,8 @@
 package data;
 
-import java.awt.Button;
 import java.util.ArrayList;
 
-import javax.swing.JButton;
-
+import javafx.scene.control.Button;
 import specifications.EnigmeBoardService;
 
 public class EnigmeBoard implements EnigmeBoardService{

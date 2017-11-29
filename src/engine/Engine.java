@@ -4,10 +4,6 @@
  * ******************************************************/
 package engine;
 
-import tools.HardCodedParameters;
-import tools.User;
-import tools.Position;
-
 import specifications.EngineService;
 import specifications.EnigmeBoardService;
 import specifications.EnigmeService;
@@ -23,15 +19,12 @@ import specifications.RequireIndiceService;
 import java.util.Timer;
 import java.util.TimerTask;
 
-import javax.swing.JButton;
-
-import java.awt.Button;
-
 import data.Enigme;
 import data.EnigmeBoard;
 import data.Indice;
 import data.Minuteur;
 import data.Module;
+import javafx.scene.control.Button;
 
 import java.util.ArrayList;
 import java.util.Random;
@@ -44,7 +37,6 @@ public class Engine implements EngineService, RequireDataService, RequireMallett
   private EnigmeBoardService board;
   private EnigmeService enigme;
   private IndiceService indice;
-  private User.COMMAND command;
   private Random gen;
   private int delaiMinuteur = 300;
   private Minuteur deathClock;
@@ -159,7 +151,6 @@ public class Engine implements EngineService, RequireDataService, RequireMallett
 	// INITIALISATION, CREATION DES TIMERS
     engineClock = new Timer();
     countdown = new Timer();
-    command = User.COMMAND.NONE;
     gen = new Random();
   }
 
@@ -452,14 +443,5 @@ public class Engine implements EngineService, RequireDataService, RequireMallett
 	  public void stop(){
 	    engineClock.cancel();
 	  }
-	
-	  @Override
-	  public void setHeroesCommand(User.COMMAND c){
-	    command=c;
-	  }
-	  
-	  
-
-
 
 }
