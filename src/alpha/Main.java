@@ -11,6 +11,7 @@ import javafx.application.Application;
 import javafx.event.EventHandler;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
@@ -33,6 +34,7 @@ public class Main extends Application{
 	  private static DataService data;
 	  private static EngineService engine;
 	  private static ViewerService viewer;
+	  private static ViewerService viewer_accueil;
 	  private static AnimationTimer timer;
 
 	  //---EXECUTABLE---//
@@ -41,14 +43,17 @@ public class Main extends Application{
 
 	    data = new Data();
 	    engine = new Engine();
-	    viewer = new Viewer_accueil();
+	    viewer = new Viewer();
+	    viewer_accueil = new Viewer_accueil();
 
 	    ((Engine)engine).bindDataService(data);
-	    ((Viewer_accueil)viewer).bindReadService(data);
+	    ((Viewer)viewer).bindReadService(data);
+	    ((Viewer_accueil)viewer_accueil).bindReadService(data);
 
 	    data.init();
 	    engine.init();
 	    viewer.init();
+	    viewer_accueil.init();
 
 	    launch(args);
 	  }
@@ -56,14 +61,8 @@ public class Main extends Application{
 	  @Override 
 	  public void start(Stage stage) {
 		  
-		    final Scene scene = new Scene(((Viewer_accueil)viewer).getPanel());
-	
-		    scene.lookup("#jouer").setOnMouseClicked(new EventHandler<MouseEvent>(){
-		      @Override
-		        public void handle(MouseEvent event) {
-		    	  		System.out.println("azrazrazrazrazrazr3");
-		    	  }
-		    });
+		    final Scene scene_accueil = new Scene(((Viewer_accueil)viewer_accueil).getPanel());
+		    final Scene scene = new Scene(((Viewer)viewer).getPanel());
 		    
 		    //Récupère la taille de l'écran de l'utilisateur et adapte les HardCodedParameters
 		    Screen screen = Screen.getPrimary();
@@ -81,9 +80,22 @@ public class Main extends Application{
 		    stage.setResizable(false);
 		    //stage.setFullScreen(true);
 		    
-		    stage.setScene(scene);
+		    stage.setScene(scene_accueil);
+
+		    viewer_accueil.getJouer().setOnMousePressed(new EventHandler<MouseEvent>(){
+			      @Override
+			        public void handle(MouseEvent event) {
+			    	  
+			            if(event.getSource().equals(scene_accueil.lookup("#jouer"))) {
+			    		    stage.setScene(scene);
+			            }			            
+			    	  }
+			    });
+		    
 		    stage.setWidth(HardCodedParameters.defaultWidth);
 		    stage.setHeight(HardCodedParameters.defaultHeight);
+		    
+		    
 		    stage.setOnShown(new EventHandler<WindowEvent>() {
 		      @Override
 		        public void handle(WindowEvent event) {
@@ -104,7 +116,7 @@ public class Main extends Application{
 		    timer = new AnimationTimer() {
 		      @Override
 		        public void handle(long l) {
-		          scene.setRoot(((Viewer_accueil)viewer).getPanel());
+		          scene.setRoot(((Viewer)viewer).getPanel());
 		        }
 		    };
 		    

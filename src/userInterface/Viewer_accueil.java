@@ -9,16 +9,9 @@ import tools.HardCodedParameters;
 import specifications.ViewerService;
 import specifications.ReadService;
 import specifications.RequireReadService;
-import javafx.scene.Cursor;
 import javafx.scene.Group;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
-import javafx.scene.control.TextField;
-import javafx.scene.effect.Lighting;
-import javafx.scene.paint.Color;
-import javafx.scene.shape.Circle;
-import javafx.scene.shape.Rectangle;
-import javafx.scene.text.TextAlignment;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Background;
@@ -29,15 +22,15 @@ import javafx.scene.layout.BackgroundSize;
 import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Priority;
-import data.Minuteur;
-import javafx.geometry.HPos;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.geometry.Insets;
-import javafx.geometry.Pos;
-import javafx.scene.paint.ImagePattern;
 
 public class Viewer_accueil implements ViewerService, RequireReadService{
 	
   private ReadService data;
+  private Button jouer;
+  private Button instruction;
 
   public Viewer_accueil(){}
 
@@ -85,14 +78,22 @@ public class Viewer_accueil implements ViewerService, RequireReadService{
 	  gridpane_accueil.add(accueil_image,0,0);
 
 	  //Button jouer
-	  Button jouer = new Button("Commencer");
+	  jouer = new Button("Commencer");
 	  jouer.setId("jouer");
+	  jouer.arm();
 	  GridPane.setMargin(jouer, new Insets(-1*HardCodedParameters.defaultHeight/4, 0, 0, -50+1*HardCodedParameters.defaultWidth/2));
 	  gridpane_accueil.add(jouer,0,1);
 	  
+	  jouer.setOnAction(new EventHandler<ActionEvent>() {
+		    @Override public void handle(ActionEvent e) {
+		    	jouer.setText("Accepted");
+		    }
+		});
+	  
 	  //Button instruction
-	  Button instruction = new Button("Instruction");
+	  instruction = new Button("Instruction");
 	  instruction.setId("instruction");
+	  instruction.arm();
 	  GridPane.setMargin(instruction, new Insets(-1*HardCodedParameters.defaultHeight/8, 0, 0, -50+1*HardCodedParameters.defaultWidth/2));
 	  gridpane_accueil.add(instruction,0,2);
 	 
@@ -101,5 +102,15 @@ public class Viewer_accueil implements ViewerService, RequireReadService{
 	   
 	  return window;
   }
+
+@Override
+public Button getJouer() {
+	return jouer;
+}
+
+@Override
+public Button getInstruction() {
+	return instruction;
+}
   
 }
