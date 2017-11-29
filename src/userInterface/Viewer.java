@@ -47,6 +47,16 @@ import javafx.scene.paint.ImagePattern;
 public class Viewer implements ViewerService, RequireReadService{
 	
   private ReadService data;
+  private TextField timer;
+  private Button boutton_rouge;
+  private Button but_simon1;
+  private Button but_simon2;
+  private Button but_simon3;
+  private Button but_simon4;
+  private Button zone_cable_1;
+  private Button zone_cable_2;
+  private Button zone_cable_3;
+  private Button zone_cable_4;
 
   public Viewer(){}
 
@@ -96,24 +106,14 @@ public class Viewer implements ViewerService, RequireReadService{
 	 
 	 
 	  //Zone en haut à gauche
-	  TextField timer = new TextField("01:00");
+	  timer = new TextField("01:00");
 	  timer.setCursor(Cursor.DEFAULT);
 	  timer.setEditable(false);
 	  timer.setPrefHeight((3*HardCodedParameters.defaultHeight/4)/2-8);
 	  timer.setAlignment(Pos.CENTER);
 	  timer.setPrefColumnCount(5);
-	  
-//	  try {
-//		  final Font f = Font.loadFont(new FileInputStream(new File("./fonts/DS-DIGI.TTF")), 12);
-//		  timer.setFont(f);
-//	  } catch (FileNotFoundException e) {
-//	      e.printStackTrace();
-//	  }
-	  
-	  timer.setFont(Font.font("",FontWeight.BOLD, 70));
-	  //timer.setFont(Font.loadFont("/fonts/DS-DIGI.TTF", 70) );
-
-	  timer.setStyle("-fx-text-fill: red; -fx-font-family: 'DS-DIGI'; -fx-control-inner-background: black;");
+	  timer.setFont(javafx.scene.text.Font.loadFont("file:src/fonts/DS-DIGI.TTF", ((3*HardCodedParameters.defaultWidth/4)/3)/5));
+	  timer.setStyle("-fx-text-fill: red; -fx-control-inner-background: black;");
 	  gridpane_malette.add(timer,0,0);
 	  GridPane.setMargin(timer, new Insets(0, 0, 0, 20));
 	  
@@ -128,10 +128,9 @@ public class Viewer implements ViewerService, RequireReadService{
 	  
 	  //Zone en haut au milieu
 	  Image red_button = new Image("/images/red-button.png");
-	  ImageView zone3 = new ImageView();
 	  Rectangle rec_bouton_rouge = new Rectangle(((3*HardCodedParameters.defaultWidth/4)/4), ((3*HardCodedParameters.defaultHeight/4)/3));
 	  rec_bouton_rouge.setFill(new ImagePattern(red_button));
-	  Button boutton_rouge = new Button();
+	  boutton_rouge = new Button();
 	  boutton_rouge.setGraphic(rec_bouton_rouge);
 	  boutton_rouge.setStyle("-fx-background-color: transparent;");
 	  gridpane_malette.add(boutton_rouge,1,0);
@@ -158,22 +157,22 @@ public class Viewer implements ViewerService, RequireReadService{
 	  rec_simon4.setFill(new ImagePattern(simon_bleu));
 
 	 
-	  Button but_simon1 = new Button();
+	  but_simon1 = new Button();
 	  but_simon1.setGraphic(rec_simon1);
 	  but_simon1.setStyle("-fx-background-color: transparent;");
 	  gridpane_simon.add(but_simon1,0,0);
 	  
-	  Button but_simon2 = new Button();
+	  but_simon2 = new Button();
 	  but_simon2.setGraphic(rec_simon2);
 	  but_simon2.setStyle("-fx-background-color: transparent;");
 	  gridpane_simon.add(but_simon2,1,0);
 	  
-	  Button but_simon3 = new Button();
+	  but_simon3 = new Button();
 	  but_simon3.setGraphic(rec_simon3);
 	  but_simon3.setStyle("-fx-background-color: transparent;");
 	  gridpane_simon.add(but_simon3,1,1);
 	  
-	  Button but_simon4 = new Button();
+	  but_simon4 = new Button();
 	  but_simon4.setGraphic(rec_simon4);
 	  but_simon4.setStyle("-fx-background-color: transparent;");
 	  gridpane_simon.add(but_simon4,0,1);
@@ -210,42 +209,65 @@ public class Viewer implements ViewerService, RequireReadService{
 		        BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT,
 		          BackgroundSize.DEFAULT);
 	  gridpane_cable.setBackground(new Background(pose_cable));
+	  
+	  
+	  
+	  
+	  
+	  
+	 
+
+	 
+	  but_simon1 = new Button();
+	  but_simon1.setGraphic(rec_simon1);
+	  but_simon1.setStyle("-fx-background-color: transparent;");
+	  gridpane_simon.add(but_simon1,0,0);
+	  
+	  
+	  
+	  
+	  
+	  
 	  	
 	  //Premier cable
+	  Button zone_cable_1 = new Button();
+	  Rectangle rec_cable1 = new Rectangle(((3*HardCodedParameters.defaultWidth/4)/3)-70, (((3*HardCodedParameters.defaultHeight/4)/2)/4)-8);
 	  Image cable_rouge = new Image("/images/cable-red.png");
-	  ImageView zone5_1 = new ImageView();
-	  zone5_1.setFitWidth(((3*HardCodedParameters.defaultWidth/4)/3)-70);
-	  zone5_1.setFitHeight((((3*HardCodedParameters.defaultHeight/4)/2)/4)-8);
-	  zone5_1.setImage(cable_rouge);
-	  gridpane_cable.add(zone5_1,0,0);
-	  GridPane.setMargin(zone5_1, new Insets(-15, 0, 0, 40));
+	  rec_cable1.setFill(new ImagePattern(cable_rouge));
+	  zone_cable_1.setGraphic(rec_cable1);
+	  zone_cable_1.setStyle("-fx-background-color: transparent;");
+	  gridpane_cable.add(zone_cable_1,0,0);
+	  GridPane.setMargin(zone_cable_1, new Insets(-20, 0, 0, 40));
 	  
 	  //Deuxieme cable
+	  Button zone_cable_2 = new Button();
+	  Rectangle rec_cable2 = new Rectangle(((3*HardCodedParameters.defaultWidth/4)/3)-70, (((3*HardCodedParameters.defaultHeight/4)/2)/4)-8);
 	  Image cable_jaune = new Image("/images/cable-yellow-cut.png");
-	  ImageView zone5_2 = new ImageView();
-	  zone5_2.setFitWidth(((3*HardCodedParameters.defaultWidth/4)/3)-70);
-	  zone5_2.setFitHeight((((3*HardCodedParameters.defaultHeight/4)/2)/4)-8);
-	  zone5_2.setImage(cable_jaune);
-	  gridpane_cable.add(zone5_2,0,1);
-	  GridPane.setMargin(zone5_2, new Insets(-30, 0, 0, 45));
+	  rec_cable2.setFill(new ImagePattern(cable_jaune));
+	  zone_cable_2.setGraphic(rec_cable2);
+	  zone_cable_2.setStyle("-fx-background-color: transparent;");
+	  gridpane_cable.add(zone_cable_2,0,1);
+	  GridPane.setMargin(zone_cable_2, new Insets(10, 0, 0, 45));
 	  
 	  //Troisième cable
+	  Button zone_cable_3 = new Button();
+	  Rectangle rec_cable3 = new Rectangle(((3*HardCodedParameters.defaultWidth/4)/3)-70, (((3*HardCodedParameters.defaultHeight/4)/2)/4)-8);
 	  Image cable_vert = new Image("/images/cable-green.png");
-	  ImageView zone5_3 = new ImageView();
-	  zone5_3.setFitWidth(((3*HardCodedParameters.defaultWidth/4)/3)-70);
-	  zone5_3.setFitHeight((((3*HardCodedParameters.defaultHeight/4)/2)/4)-8);
-	  zone5_3.setImage(cable_vert);
-	  gridpane_cable.add(zone5_3,0,2);
-	  GridPane.setMargin(zone5_3, new Insets(-20, 0, 0, 45));
+	  rec_cable3.setFill(new ImagePattern(cable_vert));
+	  zone_cable_3.setGraphic(rec_cable3);
+	  zone_cable_3.setStyle("-fx-background-color: transparent;");
+	  gridpane_cable.add(zone_cable_3,0,2);
+	  GridPane.setMargin(zone_cable_3, new Insets(-25, 0, 0, 45));
 	  
 	  //Quatrieme cable
+	  Button zone_cable_4 = new Button();
+	  Rectangle rec_cable4 = new Rectangle(((3*HardCodedParameters.defaultWidth/4)/3)-70, (((3*HardCodedParameters.defaultHeight/4)/2)/4)-8);
 	  Image cable_bleu = new Image("/images/cable-blue.png");
-	  ImageView zone5_4 = new ImageView();
-	  zone5_4.setFitWidth(((3*HardCodedParameters.defaultWidth/4)/3)-70);
-	  zone5_4.setFitHeight((((3*HardCodedParameters.defaultHeight/4)/2)/4)-8);
-	  zone5_4.setImage(cable_bleu);
-	  gridpane_cable.add(zone5_4,0,3);
-	  GridPane.setMargin(zone5_4, new Insets(-25, 0, 0, 50));
+	  rec_cable4.setFill(new ImagePattern(cable_bleu));
+	  zone_cable_4.setGraphic(rec_cable4);
+	  zone_cable_4.setStyle("-fx-background-color: transparent;");
+	  gridpane_cable.add(zone_cable_4,0,3);
+	  GridPane.setMargin(zone_cable_4, new Insets(-30, 0, 0, 50));
 	  
 	  gridpane_malette.add(gridpane_cable,2,0);
 
