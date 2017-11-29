@@ -59,6 +59,11 @@ public class Viewer implements ViewerService, RequireReadService{
   private Button zone_cable_2;
   private Button zone_cable_3;
   private Button zone_cable_4;
+  private Button zone_chiffre_1;
+  private Button zone_chiffre_2;
+  private Button zone_chiffre_3;
+  private Button zone_chiffre_4;
+
 
   public Viewer(){}
 
@@ -145,6 +150,8 @@ public class Viewer implements ViewerService, RequireReadService{
 		    }
 	  });
 	  
+	  
+	  
 	  //Zone en bas au milieu, gridpane simon	  
 	  //GridPane du simon
 	  GridPane gridpane_simon = new GridPane();
@@ -190,6 +197,7 @@ public class Viewer implements ViewerService, RequireReadService{
 	  GridPane.setMargin(gridpane_simon, new Insets(5, 0, 0, 13));
 	  
 	  
+	  
 	  //Zone en haut à droite
 	  /*Image pose_cable = new Image("/images/pose-cable.png");
 	  ImageView zone5 = new ImageView();
@@ -220,26 +228,9 @@ public class Viewer implements ViewerService, RequireReadService{
 	  gridpane_cable.setBackground(new Background(pose_cable));
 	  
 	  
-	  
-	  
-	  
-	  
-	 
-
-	 
-	  but_simon1 = new Button();
-	  but_simon1.setGraphic(rec_simon1);
-	  but_simon1.setStyle("-fx-background-color: transparent;");
-	  gridpane_simon.add(but_simon1,0,0);
-	  
-	  
-	  
-	  
-	  
-	  
 	  	
 	  //Premier cable
-	  Button zone_cable_1 = new Button();
+	  zone_cable_1 = new Button();
 	  Rectangle rec_cable1 = new Rectangle(((3*HardCodedParameters.defaultWidth/4)/3)-70, (((3*HardCodedParameters.defaultHeight/4)/2)/4)-8);
 	  Image cable_rouge = new Image("/images/cable-red.png");
 	  rec_cable1.setFill(new ImagePattern(cable_rouge));
@@ -249,7 +240,7 @@ public class Viewer implements ViewerService, RequireReadService{
 	  GridPane.setMargin(zone_cable_1, new Insets(-20, 0, 0, 40));
 	  
 	  //Deuxieme cable
-	  Button zone_cable_2 = new Button();
+	  zone_cable_2 = new Button();
 	  Rectangle rec_cable2 = new Rectangle(((3*HardCodedParameters.defaultWidth/4)/3)-70, (((3*HardCodedParameters.defaultHeight/4)/2)/4)-8);
 	  Image cable_jaune = new Image("/images/cable-yellow-cut.png");
 	  rec_cable2.setFill(new ImagePattern(cable_jaune));
@@ -259,7 +250,7 @@ public class Viewer implements ViewerService, RequireReadService{
 	  GridPane.setMargin(zone_cable_2, new Insets(10, 0, 0, 45));
 	  
 	  //Troisième cable
-	  Button zone_cable_3 = new Button();
+	  zone_cable_3 = new Button();
 	  Rectangle rec_cable3 = new Rectangle(((3*HardCodedParameters.defaultWidth/4)/3)-70, (((3*HardCodedParameters.defaultHeight/4)/2)/4)-8);
 	  Image cable_vert = new Image("/images/cable-green.png");
 	  rec_cable3.setFill(new ImagePattern(cable_vert));
@@ -269,7 +260,7 @@ public class Viewer implements ViewerService, RequireReadService{
 	  GridPane.setMargin(zone_cable_3, new Insets(-25, 0, 0, 45));
 	  
 	  //Quatrieme cable
-	  Button zone_cable_4 = new Button();
+	  zone_cable_4 = new Button();
 	  Rectangle rec_cable4 = new Rectangle(((3*HardCodedParameters.defaultWidth/4)/3)-70, (((3*HardCodedParameters.defaultHeight/4)/2)/4)-8);
 	  Image cable_bleu = new Image("/images/cable-blue.png");
 	  rec_cable4.setFill(new ImagePattern(cable_bleu));
@@ -317,40 +308,44 @@ public class Viewer implements ViewerService, RequireReadService{
 	  gridpane_code.setBackground(new Background(cadenas));
 	  	
 	  //Premier chiffre
+	  zone_chiffre_1 = new Button();
+	  Rectangle rec_chiffre1 = new Rectangle(((3*HardCodedParameters.defaultWidth/4)/3)/6, ((3*HardCodedParameters.defaultHeight/4)/2)/6);
 	  Image chiffre1 = new Image("/images/chiffre-1.png");
-	  ImageView zone6_1 = new ImageView();
-	  zone6_1.setFitWidth(((3*HardCodedParameters.defaultWidth/4)/3)/6);
-	  zone6_1.setFitHeight(((3*HardCodedParameters.defaultHeight/4)/2)/6);
-	  zone6_1.setImage(chiffre1);
-	  gridpane_code.add(zone6_1,0,0);
-	  GridPane.setMargin(zone6_1, new Insets(((3*HardCodedParameters.defaultHeight/4)/2)/10, 0, 0, ((3*HardCodedParameters.defaultWidth/4)/3)/8));
+	  rec_chiffre1.setFill(new ImagePattern(chiffre1));
+	  zone_chiffre_1.setGraphic(rec_chiffre1);
+	  zone_chiffre_1.setStyle("-fx-background-color: transparent;");
+	  gridpane_code.add(zone_chiffre_1,0,0);
+	  GridPane.setMargin(zone_chiffre_1, new Insets(((3*HardCodedParameters.defaultHeight/4)/2)/10, 0, 0, ((3*HardCodedParameters.defaultWidth/4)/3)/8));
 	  
 	  //Deuxieme chiffre
+	  zone_chiffre_2 = new Button();
+	  Rectangle rec_chiffre2 = new Rectangle(((3*HardCodedParameters.defaultWidth/4)/3)/6, ((3*HardCodedParameters.defaultHeight/4)/2)/6);
 	  Image chiffre2 = new Image("/images/chiffre-2.png");
-	  ImageView zone6_2 = new ImageView();
-	  zone6_2.setFitWidth(((3*HardCodedParameters.defaultWidth/4)/3)/6);
-	  zone6_2.setFitHeight(((3*HardCodedParameters.defaultHeight/4)/2)/6);
-	  zone6_2.setImage(chiffre2);
-	  gridpane_code.add(zone6_2,1,0);
-	  GridPane.setMargin(zone6_2, new Insets(((3*HardCodedParameters.defaultHeight/4)/2)/10, 0, 0, ((3*HardCodedParameters.defaultWidth/4)/3)/8));
+	  rec_chiffre2.setFill(new ImagePattern(chiffre2));
+	  zone_chiffre_2.setGraphic(rec_chiffre2);
+	  zone_chiffre_2.setStyle("-fx-background-color: transparent;");
+	  gridpane_code.add(zone_chiffre_2,1,0);
+	  GridPane.setMargin(zone_chiffre_2, new Insets(((3*HardCodedParameters.defaultHeight/4)/2)/10, 0, 0, ((3*HardCodedParameters.defaultWidth/4)/3)/8));
 	  
 	  //Troisième chiffre
+	  zone_chiffre_3 = new Button();
+	  Rectangle rec_chiffre3 = new Rectangle(((3*HardCodedParameters.defaultWidth/4)/3)/6, ((3*HardCodedParameters.defaultHeight/4)/2)/6);
 	  Image chiffre3 = new Image("/images/chiffre-3.png");
-	  ImageView zone6_3 = new ImageView();
-	  zone6_3.setFitWidth(((3*HardCodedParameters.defaultWidth/4)/3)/6);
-	  zone6_3.setFitHeight(((3*HardCodedParameters.defaultHeight/4)/2)/6);
-	  zone6_3.setImage(chiffre3);
-	  gridpane_code.add(zone6_3,0,1);
-	  GridPane.setMargin(zone6_3, new Insets(0, 0, 0, ((3*HardCodedParameters.defaultWidth/4)/3)/8));
+	  rec_chiffre3.setFill(new ImagePattern(chiffre3));
+	  zone_chiffre_3.setGraphic(rec_chiffre3);
+	  zone_chiffre_3.setStyle("-fx-background-color: transparent;");
+	  gridpane_code.add(zone_chiffre_3,0,1);
+	  GridPane.setMargin(zone_chiffre_3, new Insets(0, 0, 0, ((3*HardCodedParameters.defaultWidth/4)/3)/8));
 	  
 	  //Quatrième chiffre
+	  zone_chiffre_4 = new Button();
+	  Rectangle rec_chiffre4 = new Rectangle(((3*HardCodedParameters.defaultWidth/4)/3)/6, ((3*HardCodedParameters.defaultHeight/4)/2)/6);
 	  Image chiffre4 = new Image("/images/chiffre-4.png");
-	  ImageView zone6_4 = new ImageView();
-	  zone6_4.setFitWidth(((3*HardCodedParameters.defaultWidth/4)/3)/6);
-	  zone6_4.setFitHeight(((3*HardCodedParameters.defaultHeight/4)/2)/6);
-	  zone6_4.setImage(chiffre4);
-	  gridpane_code.add(zone6_4,1,1);
-	  GridPane.setMargin(zone6_4, new Insets(0, 0, 0, ((3*HardCodedParameters.defaultWidth/4)/3)/8));
+	  rec_chiffre4.setFill(new ImagePattern(chiffre4));
+	  zone_chiffre_4.setGraphic(rec_chiffre4);
+	  zone_chiffre_4.setStyle("-fx-background-color: transparent;");
+	  gridpane_code.add(zone_chiffre_4,1,1);
+	  GridPane.setMargin(zone_chiffre_4, new Insets(0, 0, 0, ((3*HardCodedParameters.defaultWidth/4)/3)/8));
 	  
 	  gridpane_malette.add(gridpane_code,2,1);
 
