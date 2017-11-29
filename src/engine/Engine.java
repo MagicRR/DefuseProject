@@ -364,7 +364,7 @@ public class Engine implements EngineService, RequireDataService, RequireMallett
 								  new Indice(
 										  libelleDeLIndice)
 								  ), 
-						  new JButton()
+						  new Button()
 						  ),
 				  false, 
 				  false
@@ -383,7 +383,7 @@ public class Engine implements EngineService, RequireDataService, RequireMallett
 								  new Indice(
 										  "Pas d'indice")
 								  ), 
-						  new JButton()
+						  new Button()
 						  ),
 				  false, 
 				  false
@@ -442,6 +442,11 @@ public class Engine implements EngineService, RequireDataService, RequireMallett
   	  },0,1000);
   	}
 	  
+  	  public void abortMission() {
+  		if(disableConsoleLogs != 1) {
+			System.out.println("Partie terminée, vous avez choisi la mort.");
+		}
+  	  }
 
 	  @Override
 	  public void stop(){
@@ -452,6 +457,8 @@ public class Engine implements EngineService, RequireDataService, RequireMallett
 	  public void setHeroesCommand(User.COMMAND c){
 	    command=c;
 	  }
+	  
+	  
 
 
 

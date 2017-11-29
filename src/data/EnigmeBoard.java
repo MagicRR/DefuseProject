@@ -15,12 +15,12 @@ public class EnigmeBoard implements EnigmeBoardService{
 	private Simon simon;
 	private PaveNum paveNum;
 	private PaveAlpha paveAlpha;
-	private JButton button;
+	private Button button;
 	
 	@Override
 	public void init() {}
 	
-	public EnigmeBoard(String nameBoard, Enigme enigme, JButton button) {
+	public EnigmeBoard(String nameBoard, Enigme enigme, Button button) {
 		this.nameBoard = nameBoard;
 		this.enigme = enigme;
 		this.button = button;
@@ -99,11 +99,11 @@ public class EnigmeBoard implements EnigmeBoardService{
 		this.paveAlpha = paveAlpha;
 	}
 
-	public JButton getButton() {
+	public Button getButton() {
 		return button;
 	}
 
-	public void setButton(JButton button) {
+	public void setButton(Button button) {
 		this.button = button;
 	}
 	

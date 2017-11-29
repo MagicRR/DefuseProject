@@ -4,6 +4,8 @@
  * ******************************************************/
 package specifications;
 
+import java.awt.event.ActionEvent;
+
 import tools.User;
 
 public interface EngineService{
@@ -11,4 +13,5 @@ public interface EngineService{
   public void start();
   public void stop();
   public void setHeroesCommand(User.COMMAND c);
+//  public void actionPerformed(ActionEvent e);
 }
