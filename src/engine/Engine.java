@@ -46,6 +46,11 @@ public class Engine implements EngineService, RequireDataService, RequireMallett
   private IndiceService indice;
   private User.COMMAND command;
   private Random gen;
+  private int delaiMinuteur = 300;
+  private Minuteur deathClock;
+  private int finalCountdown;
+  private int finalCountdownFormatedMinutes;
+  private int finalCountdownFormatedSeconds;
   
   //CREATION DE LA MALETTE, DES MODULES, DES BOARDS, DES ENIGMES ET DES INDICES
   private ArrayList<Module> modules = new ArrayList<Module>();
@@ -111,7 +116,7 @@ public class Engine implements EngineService, RequireDataService, RequireMallett
 	  listeEnigmesPaveNumerique.add("Fin de la Seconde Guerre Mondiale.");
 	  listeEnigmesPaveNumerique.add("L'Homme a marché sur la Lune.");
 	  listeEnigmesPaveNumerique.add("La France est championne du monde de football.");
-	  listeEnigmesPaveNumerique.add("Suite de quatre chiffres commençant par 1.");
+	  listeEnigmesPaveNumerique.add("Suite de quatre chiffres de 1 à 4.");
 	  
 	  listeEnigmesBouton.add("Appuyer sur le bouton");
   	  listeEnigmesBouton.add("N'appuie pas sur le bouton");
@@ -164,7 +169,7 @@ public class Engine implements EngineService, RequireDataService, RequireMallett
 	  System.out.println("Initialisation Modules...");
 	  
 	  
-	  
+	  // ON INITIALISE TOUS LES ARRAYS
 	  initialisationArrays();
 	  
 	  
@@ -204,6 +209,7 @@ public class Engine implements EngineService, RequireDataService, RequireMallett
 		      // GENERATION MODULE UNE FOIS TOUTES LES INFOS DISPOS
 		      initiatingModule();
 		      
+		      // GENERATION DES LOGS
 		      printingLogs();
 			  
 			  
@@ -226,14 +232,14 @@ public class Engine implements EngineService, RequireDataService, RequireMallett
 	  //CHECK-LIST MINUTEUR
 	  System.out.println("Initialisation Minuteur : CHECK");
 	  
-	  
-      engineClock.schedule(new TimerTask(){
-    	  
-    	  public void run() {
-//    		  System.out.println("Game step #"+data.getStepNumber()+": checked.");
-//    		  data.setStepNumber(data.getStepNumber() + 1);
-    	  }
-      },0,10);
+	  //GAME STEP, TOUJOURS UTILE
+//      engineClock.schedule(new TimerTask(){
+//    	  
+//    	  public void run() {
+////    		  System.out.println("Game step #"+data.getStepNumber()+": checked.");
+////    		  data.setStepNumber(data.getStepNumber() + 1);
+//    	  }
+//      },0,100);
   }
   
   	  
@@ -309,19 +315,19 @@ public class Engine implements EngineService, RequireDataService, RequireMallett
   	    nomDeLEnigme = choixDeLEnigme;
   	  
   	    if(nomDeLEnigme == "Découverte de l'Amerique par Christophe Colomb.") {
-  		    ordreDesTouchesPaveNumerique = 1437;
+  		    ordreDesTouchesPaveNumerique = 1492;
   	    }
   	    else if(nomDeLEnigme == "Fin de la Seconde Guerre Mondiale.") {
   	    	ordreDesTouchesPaveNumerique = 1945;
   	    }
-  	    else if(nomDeLEnigme == "L'Homme a marché sur la Lune.") {
+  	    else if(nomDeLEnigme == "L'Homme a marché sur la Lune.") { 
   	    	ordreDesTouchesPaveNumerique = 1969;
   	    }
   	    else if(nomDeLEnigme == "La France est championne du monde de football.") {
   	    	ordreDesTouchesPaveNumerique = 1998;
   	    }
   	    else{
-  	    	ordreDesTouchesPaveNumerique = 0000;
+  	    	ordreDesTouchesPaveNumerique = 1234;
   	    }
   	    System.out.println(ordreDesTouchesPaveNumerique);
   	}
@@ -385,11 +391,33 @@ public class Engine implements EngineService, RequireDataService, RequireMallett
 		  System.out.println("Module numéro "+i+" initialisé. Ce module de type : 'Minuteur' ne comporte pas d'énigme.");
   	}
   	
+  	// COMPTE A REBOURS, GAME STEPS
   	private void startingCountdown() {
+  		
+  	  // INSTANCIATION DU MINUTEUR
+  	  Minuteur deathClock = new Minuteur(delaiMinuteur);
   	  countdown.schedule(new TimerTask() {
   		  public void run() {
+  			  
   			  data.setStepNumber(data.getStepNumber() + 1);
-  			  System.out.println("Le timer est à : "+data.getStepNumber()+" secondes.");
+//			  System.out.println("Le timer est à : "+data.getStepNumber()+" secondes.");
+//			  System.out.println("La deathClock est à : "+deathClock.getCompteARebours()+" secondes.");
+  			  
+  			  // CALCUL DES MINUTES ET SECONDES
+  			  finalCountdown = deathClock.getCompteARebours() - data.getStepNumber();
+  			  finalCountdownFormatedMinutes = finalCountdown/60;
+  			  finalCountdownFormatedSeconds = finalCountdown%60;
+  			  
+  			  // PRINT, IF COUNTDOWN ECOULE = VOUS ETES MORT
+  			  if(finalCountdownFormatedMinutes > 0 || finalCountdownFormatedSeconds > -1) {
+  				System.out.println("Le final countdown formaté est à : "+finalCountdownFormatedMinutes+" minutes et "+finalCountdownFormatedSeconds+" secondes.");
+  			  }
+  			  else {
+  				System.out.println("Partie terminée, vous êtes mort.");
+  			  }
+  			  
+  			    
+  			  
   		  }
   	  },0,1000);
   	}
