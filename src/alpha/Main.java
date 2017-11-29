@@ -21,6 +21,7 @@ import tools.HardCodedParameters;
 import javafx.stage.Screen;
 import userInterface.Viewer;
 import userInterface.Viewer_accueil;
+import userInterface.Viewer_instruction;
 
 public class Main extends Application{
 	  //---HARD-CODED-PARAMETERS---//
@@ -31,6 +32,7 @@ public class Main extends Application{
 	  private static EngineService engine;
 	  private static ViewerService viewer;
 	  private static Viewer_accueil viewer_accueil;
+	  private static Viewer_instruction viewer_instruction;
 	  private static AnimationTimer timer;
 
 	  //---EXECUTABLE---//
@@ -41,15 +43,18 @@ public class Main extends Application{
 	    engine = new Engine();
 	    viewer = new Viewer();
 	    viewer_accueil = new Viewer_accueil();
+	    viewer_instruction = new Viewer_instruction();
 
 	    ((Engine)engine).bindDataService(data);
 	    ((Viewer)viewer).bindReadService(data);
 	    ((Viewer_accueil)viewer_accueil).bindReadService(data);
+	    ((Viewer_instruction)viewer_instruction).bindReadService(data);
 
 	    data.init();
 	    engine.init();
 	    viewer.init();
 	    viewer_accueil.init();
+	    viewer_instruction.init();
 
 	    launch(args);
 	  }
@@ -69,6 +74,7 @@ public class Main extends Application{
 			stage.setHeight(HardCodedParameters.defaultHeight);			
 		  
 		    final Scene scene_accueil = new Scene(((Viewer_accueil)viewer_accueil).getPanel());
+		    final Scene scene_instruction = new Scene(((Viewer_instruction)viewer_instruction).getPanel());
 		    final Scene scene = new Scene(((Viewer)viewer).getPanel());
 		    		    
 			//Définis un titre à la fenetre + empeche de resize la fenetre et définis le fullscreen mode au démarrage
@@ -80,13 +86,27 @@ public class Main extends Application{
 		    stage.setWidth(HardCodedParameters.defaultWidth);
 		    stage.setHeight(HardCodedParameters.defaultHeight);
 		    
+		    //Envoi de accueil au jeu
 		    viewer_accueil.getJouer().setOnMousePressed(new EventHandler<MouseEvent>(){
 			      @Override
+			        public void handle(MouseEvent event) {			    	  
+			    		    stage.setScene(scene);			                 
+			    	  }
+			    });
+		    
+		    //Envoi de accueil à instruction
+		    viewer_accueil.getInstruction().setOnMousePressed(new EventHandler<MouseEvent>(){
+			      @Override
 			        public void handle(MouseEvent event) {
-			    	  
-			            if(event.getSource().equals(scene_accueil.lookup("#jouer"))) {
+			    		    stage.setScene(scene_instruction);
+			    	  }
+			    });
+		    
+		    //Envoi de instruction au jeu
+		    viewer_instruction.getJouer().setOnMousePressed(new EventHandler<MouseEvent>(){
+			      @Override
+			        public void handle(MouseEvent event) {
 			    		    stage.setScene(scene);
-			            }			            
 			    	  }
 			    });
 		        
