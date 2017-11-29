@@ -34,7 +34,7 @@ public class Main extends Application{
 	  private static DataService data;
 	  private static EngineService engine;
 	  private static ViewerService viewer;
-	  private static ViewerService viewer_accueil;
+	  private static Viewer_accueil viewer_accueil;
 	  private static AnimationTimer timer;
 
 	  //---EXECUTABLE---//

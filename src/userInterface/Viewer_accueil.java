@@ -6,10 +6,9 @@ package userInterface;
 
 import tools.HardCodedParameters;
 
-import specifications.ViewerService;
 import specifications.ReadService;
 import specifications.RequireReadService;
-import javafx.scene.Group;
+import specifications.ViewerAccueilService;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
@@ -23,13 +22,9 @@ import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.Priority;
-import javafx.scene.paint.ImagePattern;
-import javafx.scene.shape.Rectangle;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 
-public class Viewer_accueil implements ViewerService, RequireReadService{
+public class Viewer_accueil implements ViewerAccueilService, RequireReadService{
 	
   private ReadService data;
   private Button jouer;

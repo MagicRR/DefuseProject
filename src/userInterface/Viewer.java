@@ -369,17 +369,4 @@ public class Viewer implements ViewerService, RequireReadService{
 	  return window;
   }
 
-	//Ne concerne pas cette classe
-	@Override
-	public Button getJouer() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-	
-	//Ne concerne pas cette classe
-	@Override
-	public Button getInstruction() {
-		// TODO Auto-generated method stub
-		return null;
-	}
 }
