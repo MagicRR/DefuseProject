@@ -1,8 +1,6 @@
 /* ******************************************************
- * Project alpha - Composants logiciels 2015.
- * Copyright (C) 2015 <Binh-Minh.Bui-Xuan@ens-lyon.org>.
- * GPL version>=3 <http://www.gnu.org/licenses/>.
- * $Id: userInterface/Viewer.java 2015-03-11 buixuan.
+ * Defuse Project - Composants logiciels 2017.
+ * Copyright (C) 2017 S. MINES, A. ORDOGH, R. RICHARD
  * ******************************************************/
 package userInterface;
 
@@ -66,24 +64,35 @@ public class Viewer_accueil implements ViewerService, RequireReadService{
 	  gridpane_accueil.setHgap(15);
 	  gridpane_accueil.setVgap(10);
 	  
-	  ColumnConstraints column1 = new ColumnConstraints(-10 + (3*HardCodedParameters.defaultWidth/4)/3, -10 + (3*HardCodedParameters.defaultWidth/4)/3, -10 + (3*HardCodedParameters.defaultWidth/4)/3);
+	  ColumnConstraints column1 = new ColumnConstraints(HardCodedParameters.defaultWidth,HardCodedParameters.defaultWidth, HardCodedParameters.defaultWidth);
 	  column1.setHgrow(Priority.ALWAYS);
 	  
 	  gridpane_accueil.getColumnConstraints().addAll(column1);	  
 	 
 	  //Background de l'accueil
-	  BackgroundImage fond_accueil= new BackgroundImage(new Image("/images/bordure.png",2*HardCodedParameters.defaultWidth/3,1*HardCodedParameters.defaultHeight/3,false,true),
-		        BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT,
-		          BackgroundSize.DEFAULT);
+	  BackgroundImage fond_accueil= new BackgroundImage(new Image("/images/explosion.jpeg",HardCodedParameters.defaultWidth,HardCodedParameters.defaultHeight,false,true),
+	  	        BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT,
+	  	          BackgroundSize.DEFAULT);
 	  gridpane_accueil.setBackground(new Background(fond_accueil));
 	 
-	  Image accueil = new Image("/images/red-button.png");
-	  ImageView accueil_titre = new ImageView();
-	  accueil_titre.setFitWidth(2*HardCodedParameters.defaultWidth/3);
-	  accueil_titre.setFitHeight(2*HardCodedParameters.defaultWidth/3);
-	  accueil_titre.setImage(accueil);
-	  gridpane_accueil.add(accueil_titre,0,0);
-	  GridPane.setMargin(accueil_titre, new Insets(0, 0, 0, 13));
+	  //Image du jeu
+	  Image accueil = new Image("/images/logo.jpg");
+	  ImageView accueil_image = new ImageView();
+	  accueil_image.setFitWidth(HardCodedParameters.defaultWidth);
+	  accueil_image.setFitHeight(HardCodedParameters.defaultWidth/2);
+	  accueil_image.setImage(accueil);
+	  GridPane.setMargin(accueil_image, new Insets(0, 0, 0, 13));
+	  gridpane_accueil.add(accueil_image,0,0);
+
+	  //Button jouer
+	  Button jouer = new Button("Commencer");
+	  GridPane.setMargin(jouer, new Insets(0, 0, 0, 13));
+	  gridpane_accueil.add(jouer,0,1);
+	  
+	  //Button instruction
+	  Button instruction = new Button("Instruction");
+	  GridPane.setMargin(instruction, new Insets(0, 0, 0, 13));
+	  gridpane_accueil.add(instruction,0,2);
 	 
 	  //Ajoute le gridpane à la fenetre
 	  window.getChildren().addAll(gridpane_accueil);

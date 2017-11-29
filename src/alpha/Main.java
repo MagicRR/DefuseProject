@@ -22,6 +22,7 @@ import tools.HardCodedParameters;
 import tools.User;
 import javafx.stage.Screen;
 import userInterface.Viewer;
+import userInterface.Viewer_accueil;
 
 public class Main extends Application{
 	  //---HARD-CODED-PARAMETERS---//
@@ -39,10 +40,10 @@ public class Main extends Application{
 
 	    data = new Data();
 	    engine = new Engine();
-	    viewer = new Viewer();
+	    viewer = new Viewer_accueil();
 
 	    ((Engine)engine).bindDataService(data);
-	    ((Viewer)viewer).bindReadService(data);
+	    ((Viewer_accueil)viewer).bindReadService(data);
 
 	    data.init();
 	    engine.init();
@@ -54,7 +55,7 @@ public class Main extends Application{
 	  @Override 
 	  public void start(Stage stage) {
 		  
-		    final Scene scene = new Scene(((Viewer)viewer).getPanel());
+		    final Scene scene = new Scene(((Viewer_accueil)viewer).getPanel());
 	
 		    scene.setOnKeyPressed(new EventHandler<KeyEvent>(){
 		      @Override
@@ -102,7 +103,7 @@ public class Main extends Application{
 		    timer = new AnimationTimer() {
 		      @Override
 		        public void handle(long l) {
-		          scene.setRoot(((Viewer)viewer).getPanel());
+		          scene.setRoot(((Viewer_accueil)viewer).getPanel());
 		        }
 		    };
 		    
