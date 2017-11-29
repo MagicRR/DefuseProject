@@ -60,7 +60,7 @@ public class Viewer_accueil implements ViewerService, RequireReadService{
 	  GridPane gridpane_accueil = new GridPane();
 	  
 	  //Gestion des contraintes de colonne style padding ..
-	  gridpane_accueil.setPadding(new Insets(15,0,0,0));
+	  gridpane_accueil.setPadding(new Insets(50,0,0,0));
 	  gridpane_accueil.setHgap(15);
 	  gridpane_accueil.setVgap(10);
 	  
@@ -76,22 +76,24 @@ public class Viewer_accueil implements ViewerService, RequireReadService{
 	  gridpane_accueil.setBackground(new Background(fond_accueil));
 	 
 	  //Image du jeu
-	  Image accueil = new Image("/images/logo.jpg");
+	  Image accueil = new Image("/images/logo.png");
 	  ImageView accueil_image = new ImageView();
-	  accueil_image.setFitWidth(HardCodedParameters.defaultWidth);
+	  accueil_image.setFitWidth(4*HardCodedParameters.defaultWidth/5);
 	  accueil_image.setFitHeight(HardCodedParameters.defaultWidth/2);
 	  accueil_image.setImage(accueil);
-	  GridPane.setMargin(accueil_image, new Insets(0, 0, 0, 13));
+	  GridPane.setMargin(accueil_image, new Insets(-1*HardCodedParameters.defaultHeight/15, 0, 0, 1*HardCodedParameters.defaultWidth/10));
 	  gridpane_accueil.add(accueil_image,0,0);
 
 	  //Button jouer
 	  Button jouer = new Button("Commencer");
-	  GridPane.setMargin(jouer, new Insets(0, 0, 0, 13));
+	  jouer.setId("jouer");
+	  GridPane.setMargin(jouer, new Insets(-1*HardCodedParameters.defaultHeight/4, 0, 0, -50+1*HardCodedParameters.defaultWidth/2));
 	  gridpane_accueil.add(jouer,0,1);
 	  
 	  //Button instruction
 	  Button instruction = new Button("Instruction");
-	  GridPane.setMargin(instruction, new Insets(0, 0, 0, 13));
+	  instruction.setId("instruction");
+	  GridPane.setMargin(instruction, new Insets(-1*HardCodedParameters.defaultHeight/8, 0, 0, -50+1*HardCodedParameters.defaultWidth/2));
 	  gridpane_accueil.add(instruction,0,2);
 	 
 	  //Ajoute le gridpane à la fenetre
@@ -99,4 +101,5 @@ public class Viewer_accueil implements ViewerService, RequireReadService{
 	   
 	  return window;
   }
+  
 }

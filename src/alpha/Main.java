@@ -13,6 +13,7 @@ import javafx.geometry.Rectangle2D;
 import javafx.scene.Scene;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 import specifications.DataService;
@@ -57,10 +58,10 @@ public class Main extends Application{
 		  
 		    final Scene scene = new Scene(((Viewer_accueil)viewer).getPanel());
 	
-		    scene.setOnKeyPressed(new EventHandler<KeyEvent>(){
+		    scene.lookup("#jouer").setOnMouseClicked(new EventHandler<MouseEvent>(){
 		      @Override
-		        public void handle(KeyEvent event) {
-		    	  		//
+		        public void handle(MouseEvent event) {
+		    	  		System.out.println("azrazrazrazrazrazr3");
 		    	  }
 		    });
 		    
