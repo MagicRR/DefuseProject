@@ -39,6 +39,8 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 
 import data.Minuteur;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.geometry.HPos;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -135,6 +137,13 @@ public class Viewer implements ViewerService, RequireReadService{
 	  boutton_rouge.setStyle("-fx-background-color: transparent;");
 	  gridpane_malette.add(boutton_rouge,1,0);
 	  GridPane.setMargin(boutton_rouge, new Insets(0, 0, 0, ((3*HardCodedParameters.defaultWidth/4)/3)/11));
+	  
+	  boutton_rouge.setOnAction(new EventHandler<ActionEvent>() {
+		    @Override
+		    public void handle(ActionEvent e) {
+		    		System.out.println("plop, ca appui");
+		    }
+	  });
 	  
 	  //Zone en bas au milieu, gridpane simon	  
 	  //GridPane du simon
