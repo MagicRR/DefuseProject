@@ -108,13 +108,15 @@ public class Viewer implements ViewerService, RequireReadService{
 	  GridPane.setMargin(zone2, new Insets(-5, 0, 0, 20));
 	  
 	  //Zone en haut au milieu
-	  Image boutton_rouge = new Image("/images/red-button.png");
+	  Image red_button = new Image("/images/red-button.png");
 	  ImageView zone3 = new ImageView();
-	  zone3.setFitWidth(((3*HardCodedParameters.defaultWidth/4)/3)-35);
-	  zone3.setFitHeight(((3*HardCodedParameters.defaultHeight/4)/2)-8);
-	  zone3.setImage(boutton_rouge);
-	  gridpane_malette.add(zone3,1,0);
-	  GridPane.setMargin(zone3, new Insets(0, 0, 0, 13));
+	  Rectangle rec_bouton_rouge = new Rectangle(((3*HardCodedParameters.defaultWidth/4)/3)-20, (((3*HardCodedParameters.defaultHeight/4)/2)-8));
+	  rec_bouton_rouge.setFill(new ImagePattern(red_button));
+	  Button boutton_rouge = new Button();
+	  boutton_rouge.setGraphic(rec_bouton_rouge);
+	  //boutton_rouge.setStyle("-fx-background-color: transparent;");
+	  gridpane_malette.add(boutton_rouge,1,0);
+	  GridPane.setMargin(boutton_rouge, new Insets(0, 0, 0, 0));
 	  
 	  //Zone en bas au milieu, gridpane simon	  
 	  //GridPane du simon
@@ -139,18 +141,22 @@ public class Viewer implements ViewerService, RequireReadService{
 	 
 	  Button but_simon1 = new Button();
 	  but_simon1.setGraphic(rec_simon1);
+	  but_simon1.setStyle("-fx-background-color: transparent;");
 	  gridpane_simon.add(but_simon1,0,0);
 	  
 	  Button but_simon2 = new Button();
 	  but_simon2.setGraphic(rec_simon2);
+	  but_simon2.setStyle("-fx-background-color: transparent;");
 	  gridpane_simon.add(but_simon2,1,0);
 	  
 	  Button but_simon3 = new Button();
 	  but_simon3.setGraphic(rec_simon3);
+	  but_simon3.setStyle("-fx-background-color: transparent;");
 	  gridpane_simon.add(but_simon3,1,1);
 	  
 	  Button but_simon4 = new Button();
 	  but_simon4.setGraphic(rec_simon4);
+	  but_simon4.setStyle("-fx-background-color: transparent;");
 	  gridpane_simon.add(but_simon4,0,1);
 	  	  
 	  gridpane_malette.add(gridpane_simon,1,1);	  

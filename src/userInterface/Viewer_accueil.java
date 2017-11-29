@@ -84,12 +84,6 @@ public class Viewer_accueil implements ViewerService, RequireReadService{
 	  GridPane.setMargin(jouer, new Insets(-1*HardCodedParameters.defaultHeight/4, 0, 0, -50+1*HardCodedParameters.defaultWidth/2));
 	  gridpane_accueil.add(jouer,0,1);
 	  
-	  jouer.setOnAction(new EventHandler<ActionEvent>() {
-		    @Override public void handle(ActionEvent e) {
-		    	jouer.setText("Accepted");
-		    }
-		});
-	  
 	  //Button instruction
 	  instruction = new Button("Instruction");
 	  instruction.setId("instruction");
