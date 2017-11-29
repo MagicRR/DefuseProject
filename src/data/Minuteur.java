@@ -4,17 +4,17 @@ import java.util.Timer;
 
 public class Minuteur {
 	
-	private Timer countdown;
+	private int compteARebours;
 	
-	public Minuteur(Timer countdown) {
-		this.countdown = countdown;
+	public Minuteur(int compteARebours) {
+		this.compteARebours = compteARebours;
 	}
 
-	public Timer getCountdown() {
-		return countdown;
+	public int getCompteARebours() {
+		return compteARebours;
 	}
 
-	public void setCountdown(Timer countdown) {
-		this.countdown = countdown;
+	public void setCompteARebours(int compteARebours) {
+		this.compteARebours = compteARebours;
 	}
 }
