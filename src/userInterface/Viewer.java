@@ -110,13 +110,13 @@ public class Viewer implements ViewerService, RequireReadService{
 	  //Zone en haut au milieu
 	  Image red_button = new Image("/images/red-button.png");
 	  ImageView zone3 = new ImageView();
-	  Rectangle rec_bouton_rouge = new Rectangle(((3*HardCodedParameters.defaultWidth/4)/3)-20, (((3*HardCodedParameters.defaultHeight/4)/2)-8));
+	  Rectangle rec_bouton_rouge = new Rectangle(((3*HardCodedParameters.defaultWidth/4)/4), ((3*HardCodedParameters.defaultHeight/4)/3));
 	  rec_bouton_rouge.setFill(new ImagePattern(red_button));
 	  Button boutton_rouge = new Button();
 	  boutton_rouge.setGraphic(rec_bouton_rouge);
-	  //boutton_rouge.setStyle("-fx-background-color: transparent;");
+	  boutton_rouge.setStyle("-fx-background-color: transparent;");
 	  gridpane_malette.add(boutton_rouge,1,0);
-	  GridPane.setMargin(boutton_rouge, new Insets(0, 0, 0, 0));
+	  GridPane.setMargin(boutton_rouge, new Insets(0, 0, 0, ((3*HardCodedParameters.defaultWidth/4)/3)/11));
 	  
 	  //Zone en bas au milieu, gridpane simon	  
 	  //GridPane du simon
