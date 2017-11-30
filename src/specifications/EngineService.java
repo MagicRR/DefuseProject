@@ -8,7 +8,7 @@ import java.awt.event.ActionEvent;
 
 public interface EngineService{
   public void init();
-  public void start();
+  public void initializingBoard();
   public void stop();
 //  public void actionPerformed(ActionEvent e);
 }

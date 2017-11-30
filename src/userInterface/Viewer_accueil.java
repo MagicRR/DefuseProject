@@ -41,6 +41,7 @@ public class Viewer_accueil extends HBox{
 		  final Engine engine = new Engine(primaryStage);
 		  final Scene scene = new Scene(engine.getView());
 		  primaryStage.setScene(scene);
+		  engine.initializingBoard();
 	  });
 	  this.getChildren().addAll(jouer);
   }
