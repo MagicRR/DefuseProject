@@ -8,9 +8,7 @@ package userInterface;
 
 import tools.HardCodedParameters;
 
-import specifications.ViewerService;
 import specifications.ReadService;
-import specifications.RequireReadService;
 import javafx.scene.Cursor;
 import javafx.scene.Group;
 import javafx.scene.Parent;
@@ -20,11 +18,7 @@ import javafx.scene.effect.Lighting;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
-import javafx.scene.text.Font;
-import javafx.scene.text.FontWeight;
-import javafx.scene.text.TextAlignment;
 import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundImage;
 import javafx.scene.layout.BackgroundPosition;
@@ -35,15 +29,7 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Priority;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-
-import data.Minuteur;
 import engine.Engine;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
-import javafx.geometry.HPos;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.paint.ImagePattern;
@@ -52,7 +38,7 @@ public class Viewer extends HBox{
 	
   private ReadService data;
   private GridPane gridpane_malette;
-  private TextField timer;
+  private final TextField timer = new TextField("01:00");
   private final Button boutton_rouge = new Button();
   private final Button but_simon1 = new Button();
   private final Button but_simon2 = new Button();
@@ -61,30 +47,55 @@ public class Viewer extends HBox{
   private final Image button_red_img = new Image("/images/red-button.png");
   private final Image button_green_img = new Image("/images/green-button.png");
   private final Rectangle rec_bouton_rouge = new Rectangle(((3*HardCodedParameters.defaultWidth/4)/4), ((3*HardCodedParameters.defaultHeight/4)/3));
-  private Button bouton_up1;
-  private Button bouton_up2;
-  private Button bouton_up3;
-  private Button bouton_up4;
-  private TextField lettre1;
-  private TextField lettre2;
-  private TextField lettre3;
-  private TextField lettre4;
-  private Button bouton_down1;
-  private Button bouton_down2;
-  private Button bouton_down3;
-  private Button bouton_down4;
-  private Button zone_cable_1;
-  private Button zone_cable_2;
-  private Button zone_cable_3;
-  private Button zone_cable_4;
-  private Button zone_chiffre_1;
-  private Button zone_chiffre_2;
-  private Button zone_chiffre_3;
-  private Button zone_chiffre_4;
-  private ImageView code_alpha;
-  private Image camembert_img;
-  private Circle camembert;
-  private TextField textLogs;
+  private final Button bouton_up1 = new Button();
+  private final Button bouton_up2 = new Button();
+  private final Button bouton_up3 = new Button();
+  private final Button bouton_up4 = new Button();
+  private final TextField lettre1 = new TextField("C");
+  private final TextField lettre2 = new TextField("O");
+  private final TextField lettre3 = new TextField("D");
+  private final TextField lettre4 = new TextField("E");
+  private final Button bouton_down1 = new Button();
+  private final Button bouton_down2 = new Button();
+  private final Button bouton_down3 = new Button();
+  private final Button bouton_down4 = new Button();
+  private final Rectangle rec_simon1 = new Rectangle(-33+((3*HardCodedParameters.defaultWidth/4)/3)/2, 5+((HardCodedParameters.defaultHeight/3)/2));
+  private final Rectangle rec_simon2 = new Rectangle(-33+((3*HardCodedParameters.defaultWidth/4)/3)/2, 5+((HardCodedParameters.defaultHeight/3)/2));
+  private final Rectangle rec_simon3 = new Rectangle(-33+((3*HardCodedParameters.defaultWidth/4)/3)/2, 5+((HardCodedParameters.defaultHeight/3)/2));
+  private final Rectangle rec_simon4 = new Rectangle(-33+((3*HardCodedParameters.defaultWidth/4)/3)/2, 5+((HardCodedParameters.defaultHeight/3)/2));
+  private final Image simon_rouge = new Image("/images/simon-rouge.png");
+  private final Image simon_bleu = new Image("/images/simon-bleu.png");
+  private final Image simon_vert = new Image("/images/simon-vert.png");
+  private final Image simon_jaune = new Image("/images/simon-jaune.png");
+  private final Button zone_cable_1 = new Button();
+  private final Button zone_cable_2 = new Button();
+  private final Button zone_cable_3 = new Button();
+  private final Button zone_cable_4 = new Button();
+  private final Rectangle rec_cable1 = new Rectangle(((3*HardCodedParameters.defaultWidth/4)/3)-70, (((3*HardCodedParameters.defaultHeight/4)/2)/4)-8);
+  private final Rectangle rec_cable2 = new Rectangle(((3*HardCodedParameters.defaultWidth/4)/3)-70, (((3*HardCodedParameters.defaultHeight/4)/2)/4)-8);
+  private final Rectangle rec_cable3 = new Rectangle(((3*HardCodedParameters.defaultWidth/4)/3)-70, (((3*HardCodedParameters.defaultHeight/4)/2)/4)-8);
+  private final Rectangle rec_cable4 = new Rectangle(((3*HardCodedParameters.defaultWidth/4)/3)-70, (((3*HardCodedParameters.defaultHeight/4)/2)/4)-8);
+  private final Image cable_bleu = new Image("/images/cable-blue.png");
+  private final Image cable_rouge = new Image("/images/cable-red.png");
+  private final Image cable_vert = new Image("/images/cable-green.png");
+  private final Image cable_jaune = new Image("/images/cable-yellow.png");
+  private final Button zone_chiffre_1 = new Button();
+  private final Button zone_chiffre_2 = new Button();
+  private final Button zone_chiffre_3 = new Button();
+  private final Button zone_chiffre_4 = new Button();
+  private final Rectangle rec_chiffre1 = new Rectangle(((3*HardCodedParameters.defaultWidth/4)/3)/6, ((3*HardCodedParameters.defaultHeight/4)/2)/6);
+  private final Rectangle rec_chiffre2 = new Rectangle(((3*HardCodedParameters.defaultWidth/4)/3)/6, ((3*HardCodedParameters.defaultHeight/4)/2)/6);
+  private final Rectangle rec_chiffre3 = new Rectangle(((3*HardCodedParameters.defaultWidth/4)/3)/6, ((3*HardCodedParameters.defaultHeight/4)/2)/6);
+  private final Rectangle rec_chiffre4 = new Rectangle(((3*HardCodedParameters.defaultWidth/4)/3)/6, ((3*HardCodedParameters.defaultHeight/4)/2)/6);
+
+  private final Image chiffre1 = new Image("/images/chiffre-1.png");
+  private final Image chiffre2 = new Image("/images/chiffre-2.png");
+  private final Image chiffre3 = new Image("/images/chiffre-3.png");
+  private final Image chiffre4 = new Image("/images/chiffre-4.png");
+
+  private final Image camembert_img = new Image("/images/camembert_img.png");
+  private final Circle camembert = new Circle(100,  Color.rgb(255,0,0));
+  private final TextField textLogs = new TextField(">> Bienvenue !\n");;
 
 
   public Viewer(final Engine engine){
@@ -131,7 +142,6 @@ public class Viewer extends HBox{
 	  
 	  	 
 	  //Zone en haut à gauche
-	  timer = new TextField("01:00");
 	  timer.setCursor(Cursor.DEFAULT);
 	  timer.setEditable(false);
 	  timer.setPrefHeight((3*HardCodedParameters.defaultHeight/4)/2-8);
@@ -164,7 +174,6 @@ public class Viewer extends HBox{
 	  Rectangle rec_fleche_haut = new Rectangle((3*HardCodedParameters.defaultWidth/4)/3/10, (3*HardCodedParameters.defaultHeight/4)/2/4);
 	  rec_fleche_haut.setFill(new ImagePattern(fleche_haut));
 	  
-	  bouton_up1 = new Button();
 	  bouton_up1.setGraphic(rec_fleche_haut);
 	  bouton_up1.setStyle("-fx-background-color: transparent;");
 	  alpha.add(bouton_up1,0,0);
@@ -172,7 +181,6 @@ public class Viewer extends HBox{
 	  Rectangle rec_fleche_haut2 = new Rectangle((3*HardCodedParameters.defaultWidth/4)/3/10, (3*HardCodedParameters.defaultHeight/4)/2/4);
 	  rec_fleche_haut2.setFill(new ImagePattern(fleche_haut));
 	  
-	  bouton_up2 = new Button();
 	  bouton_up2.setGraphic(rec_fleche_haut2);
 	  bouton_up2.setStyle("-fx-background-color: transparent;");
 	  alpha.add(bouton_up2,1,0);
@@ -180,7 +188,6 @@ public class Viewer extends HBox{
 	  Rectangle rec_fleche_haut3 = new Rectangle((3*HardCodedParameters.defaultWidth/4)/3/10, (3*HardCodedParameters.defaultHeight/4)/2/4);
 	  rec_fleche_haut3.setFill(new ImagePattern(fleche_haut));
 	  
-	  bouton_up3 = new Button();
 	  bouton_up3.setGraphic(rec_fleche_haut3);
 	  bouton_up3.setStyle("-fx-background-color: transparent;");
 	  alpha.add(bouton_up3,2,0);
@@ -188,14 +195,12 @@ public class Viewer extends HBox{
 	  Rectangle rec_fleche_haut4 = new Rectangle((3*HardCodedParameters.defaultWidth/4)/3/10, (3*HardCodedParameters.defaultHeight/4)/2/4);
 	  rec_fleche_haut4.setFill(new ImagePattern(fleche_haut));
 
-	  bouton_up4 = new Button();
 	  bouton_up4.setGraphic(rec_fleche_haut4);
 	  bouton_up4.setStyle("-fx-background-color: transparent;");
 	  alpha.add(bouton_up4,3,0);
 
 	  
 	  //lettre
-	  lettre1 = new TextField("C");
 	  lettre1.setCursor(Cursor.DEFAULT);
 	  lettre1.setEditable(false);
 	  lettre1.setPrefColumnCount(1);
@@ -206,7 +211,6 @@ public class Viewer extends HBox{
 	  lettre1.setStyle("-fx-text-fill: green; -fx-control-inner-background: black;");
 	  alpha.add(lettre1,0,1);
 	  
-	  lettre2 = new TextField("O");
 	  lettre2.setCursor(Cursor.DEFAULT);
 	  lettre2.setEditable(false);
 	  lettre2.setPrefColumnCount(1);
@@ -217,7 +221,6 @@ public class Viewer extends HBox{
 	  lettre2.setStyle("-fx-text-fill: green; -fx-control-inner-background: black;");
 	  alpha.add(lettre2,1,1);
 	  
-	  lettre3 = new TextField("D");
 	  lettre3.setCursor(Cursor.DEFAULT);
 	  lettre3.setEditable(false);
 	  lettre3.setPrefColumnCount(1);
@@ -228,7 +231,6 @@ public class Viewer extends HBox{
 	  lettre3.setStyle("-fx-text-fill: green; -fx-control-inner-background: black;");
 	  alpha.add(lettre3,2,1);
 	  
-	  lettre4 = new TextField("E");
 	  lettre4.setCursor(Cursor.DEFAULT);
 	  lettre4.setEditable(false);
 	  lettre4.setPrefColumnCount(1);
@@ -244,7 +246,6 @@ public class Viewer extends HBox{
 	  Rectangle rec_fleche_bas = new Rectangle((3*HardCodedParameters.defaultWidth/4)/3/10, (3*HardCodedParameters.defaultHeight/4)/2/4);
 	  rec_fleche_bas.setFill(new ImagePattern(fleche_bas));
 	  
-	  bouton_down1 = new Button();
 	  bouton_down1.setGraphic(rec_fleche_bas);
 	  bouton_down1.setStyle("-fx-background-color: transparent;");
 	  alpha.add(bouton_down1,0,2);
@@ -252,7 +253,6 @@ public class Viewer extends HBox{
 	  Rectangle rec_fleche_bas2 = new Rectangle((3*HardCodedParameters.defaultWidth/4)/3/10, (3*HardCodedParameters.defaultHeight/4)/2/4);
 	  rec_fleche_bas2.setFill(new ImagePattern(fleche_bas));
 
-	  bouton_down2 = new Button();
 	  bouton_down2.setGraphic(rec_fleche_bas2);
 	  bouton_down2.setStyle("-fx-background-color: transparent;");
 	  alpha.add(bouton_down2,1,2);
@@ -260,7 +260,6 @@ public class Viewer extends HBox{
 	  Rectangle rec_fleche_bas3 = new Rectangle((3*HardCodedParameters.defaultWidth/4)/3/10, (3*HardCodedParameters.defaultHeight/4)/2/4);
 	  rec_fleche_bas3.setFill(new ImagePattern(fleche_bas));
 	  
-	  bouton_down3 = new Button();
 	  bouton_down3.setGraphic(rec_fleche_bas3);
 	  bouton_down3.setStyle("-fx-background-color: transparent;");
 	  alpha.add(bouton_down3,2,2);
@@ -268,7 +267,6 @@ public class Viewer extends HBox{
 	  Rectangle rec_fleche_bas4 = new Rectangle((3*HardCodedParameters.defaultWidth/4)/3/10, (3*HardCodedParameters.defaultHeight/4)/2/4);
 	  rec_fleche_bas4.setFill(new ImagePattern(fleche_bas));
 
-	  bouton_down4 = new Button();
 	  bouton_down4.setGraphic(rec_fleche_bas4);
 	  bouton_down4.setStyle("-fx-background-color: transparent;");
 	  alpha.add(bouton_down4,3,2);
@@ -290,20 +288,12 @@ public class Viewer extends HBox{
 	  //GridPane du simon
 	  GridPane gridpane_simon = new GridPane();
 	  
-	  Rectangle rec_simon1 = new Rectangle(-33+((3*HardCodedParameters.defaultWidth/4)/3)/2, 5+((HardCodedParameters.defaultHeight/3)/2));
-	  Image simon_rouge = new Image("/images/simon-rouge.png");
 	  rec_simon1.setFill(new ImagePattern(simon_rouge));
 	  
-	  Rectangle rec_simon2 = new Rectangle(-33+((3*HardCodedParameters.defaultWidth/4)/3)/2, 5+((HardCodedParameters.defaultHeight/3)/2));
-	  Image simon_vert = new Image("/images/simon-vert.png");
 	  rec_simon2.setFill(new ImagePattern(simon_vert));
 	  
-	  Rectangle rec_simon3 = new Rectangle(-33+((3*HardCodedParameters.defaultWidth/4)/3)/2, 5+((HardCodedParameters.defaultHeight/3)/2));
-	  Image simon_jaune = new Image("/images/simon-jaune.png");
 	  rec_simon3.setFill(new ImagePattern(simon_jaune));
 	  
-	  Rectangle rec_simon4 = new Rectangle(-33+((3*HardCodedParameters.defaultWidth/4)/3)/2, 5+((HardCodedParameters.defaultHeight/3)/2));
-	  Image simon_bleu = new Image("/images/simon-bleu.png");
 	  rec_simon4.setFill(new ImagePattern(simon_bleu));
 
 	 
@@ -349,9 +339,6 @@ public class Viewer extends HBox{
 	  
 	  	
 	  //Premier cable
-	  zone_cable_1 = new Button();
-	  Rectangle rec_cable1 = new Rectangle(((3*HardCodedParameters.defaultWidth/4)/3)-70, (((3*HardCodedParameters.defaultHeight/4)/2)/4)-8);
-	  Image cable_rouge = new Image("/images/cable-red.png");
 	  rec_cable1.setFill(new ImagePattern(cable_rouge));
 	  zone_cable_1.setGraphic(rec_cable1);
 	  zone_cable_1.setStyle("-fx-background-color: transparent;");
@@ -359,9 +346,6 @@ public class Viewer extends HBox{
 	  GridPane.setMargin(zone_cable_1, new Insets(-20, 0, 0, ((3*HardCodedParameters.defaultWidth/4)/3)/15));
 	  
 	  //Deuxieme cable
-	  zone_cable_2 = new Button();
-	  Rectangle rec_cable2 = new Rectangle(((3*HardCodedParameters.defaultWidth/4)/3)-70, (((3*HardCodedParameters.defaultHeight/4)/2)/4)-8);
-	  Image cable_jaune = new Image("/images/cable-yellow-cut.png");
 	  rec_cable2.setFill(new ImagePattern(cable_jaune));
 	  zone_cable_2.setGraphic(rec_cable2);
 	  zone_cable_2.setStyle("-fx-background-color: transparent;");
@@ -369,9 +353,6 @@ public class Viewer extends HBox{
 	  GridPane.setMargin(zone_cable_2, new Insets(10, 0, 0, ((3*HardCodedParameters.defaultWidth/4)/3)/15));
 	  
 	  //Troisième cable
-	  zone_cable_3 = new Button();
-	  Rectangle rec_cable3 = new Rectangle(((3*HardCodedParameters.defaultWidth/4)/3)-70, (((3*HardCodedParameters.defaultHeight/4)/2)/4)-8);
-	  Image cable_vert = new Image("/images/cable-green.png");
 	  rec_cable3.setFill(new ImagePattern(cable_vert));
 	  zone_cable_3.setGraphic(rec_cable3);
 	  zone_cable_3.setStyle("-fx-background-color: transparent;");
@@ -379,9 +360,6 @@ public class Viewer extends HBox{
 	  GridPane.setMargin(zone_cable_3, new Insets(-25, 0, 0, ((3*HardCodedParameters.defaultWidth/4)/3)/15));
 	  
 	  //Quatrieme cable
-	  zone_cable_4 = new Button();
-	  Rectangle rec_cable4 = new Rectangle(((3*HardCodedParameters.defaultWidth/4)/3)-70, (((3*HardCodedParameters.defaultHeight/4)/2)/4)-8);
-	  Image cable_bleu = new Image("/images/cable-blue.png");
 	  rec_cable4.setFill(new ImagePattern(cable_bleu));
 	  zone_cable_4.setGraphic(rec_cable4);
 	  zone_cable_4.setStyle("-fx-background-color: transparent;");
@@ -427,9 +405,6 @@ public class Viewer extends HBox{
 	  gridpane_code.setBackground(new Background(cadenas));
 	  	
 	  //Premier chiffre
-	  zone_chiffre_1 = new Button();
-	  Rectangle rec_chiffre1 = new Rectangle(((3*HardCodedParameters.defaultWidth/4)/3)/6, ((3*HardCodedParameters.defaultHeight/4)/2)/6);
-	  Image chiffre1 = new Image("/images/chiffre-1.png");
 	  rec_chiffre1.setFill(new ImagePattern(chiffre1));
 	  zone_chiffre_1.setGraphic(rec_chiffre1);
 	  zone_chiffre_1.setStyle("-fx-background-color: transparent;");
@@ -437,9 +412,6 @@ public class Viewer extends HBox{
 	  GridPane.setMargin(zone_chiffre_1, new Insets(((3*HardCodedParameters.defaultHeight/4)/2)/20, 0, 0, ((3*HardCodedParameters.defaultWidth/4)/3)/8));
 	  
 	  //Deuxieme chiffre
-	  zone_chiffre_2 = new Button();
-	  Rectangle rec_chiffre2 = new Rectangle(((3*HardCodedParameters.defaultWidth/4)/3)/6, ((3*HardCodedParameters.defaultHeight/4)/2)/6);
-	  Image chiffre2 = new Image("/images/chiffre-2.png");
 	  rec_chiffre2.setFill(new ImagePattern(chiffre2));
 	  zone_chiffre_2.setGraphic(rec_chiffre2);
 	  zone_chiffre_2.setStyle("-fx-background-color: transparent;");
@@ -447,9 +419,6 @@ public class Viewer extends HBox{
 	  GridPane.setMargin(zone_chiffre_2, new Insets(((3*HardCodedParameters.defaultHeight/4)/2)/20, 0, 0, ((3*HardCodedParameters.defaultWidth/4)/3)/8));
 	  
 	  //Troisième chiffre
-	  zone_chiffre_3 = new Button();
-	  Rectangle rec_chiffre3 = new Rectangle(((3*HardCodedParameters.defaultWidth/4)/3)/6, ((3*HardCodedParameters.defaultHeight/4)/2)/6);
-	  Image chiffre3 = new Image("/images/chiffre-3.png");
 	  rec_chiffre3.setFill(new ImagePattern(chiffre3));
 	  zone_chiffre_3.setGraphic(rec_chiffre3);
 	  zone_chiffre_3.setStyle("-fx-background-color: transparent;");
@@ -457,9 +426,6 @@ public class Viewer extends HBox{
 	  GridPane.setMargin(zone_chiffre_3, new Insets(0, 0, 0, ((3*HardCodedParameters.defaultWidth/4)/3)/8));
 	  
 	  //Quatrième chiffre
-	  zone_chiffre_4 = new Button();
-	  Rectangle rec_chiffre4 = new Rectangle(((3*HardCodedParameters.defaultWidth/4)/3)/6, ((3*HardCodedParameters.defaultHeight/4)/2)/6);
-	  Image chiffre4 = new Image("/images/chiffre-4.png");
 	  rec_chiffre4.setFill(new ImagePattern(chiffre4));
 	  zone_chiffre_4.setGraphic(rec_chiffre4);
 	  zone_chiffre_4.setStyle("-fx-background-color: transparent;");
@@ -472,29 +438,21 @@ public class Viewer extends HBox{
 	  malette_group.getChildren().addAll(gridpane_malette);
 	  
 	  
-	  
-	  
 	  //Stats
 	  Rectangle stats = new Rectangle(HardCodedParameters.defaultWidth/4,HardCodedParameters.defaultHeight);
 	  Image fond_metal = new Image("/images/fond_stat.png");
 	  stats.setFill(new ImagePattern(fond_metal));
 	  stats.setLayoutX(3*HardCodedParameters.defaultWidth/4);
 	  
-	  camembert = new Circle(100,  Color.rgb(255,0,0));
-      Image camembert_img = new Image("/images/camembert_img.png");
       camembert.setFill(new ImagePattern(camembert_img));
       camembert.setEffect(new Lighting());
       camembert.setLayoutX(7*HardCodedParameters.defaultWidth/8);
       camembert.setLayoutY(HardCodedParameters.defaultHeight/4);
       
 	  stats_group.getChildren().addAll(stats, camembert);
-      
-      
-      
-      
+
 	  
       //Logs
-	  textLogs = new TextField(">> Bienvenue !\n");
 	  textLogs.setCursor(Cursor.DEFAULT);
 	  textLogs.setEditable(false);
 	  textLogs.autosize();
@@ -516,24 +474,12 @@ public class Viewer extends HBox{
 		return data;
 	}
 	
-	public void setData(ReadService data) {
-		this.data = data;
-	}
-	
 	public GridPane getGridpane_malette() {
 		return gridpane_malette;
 	}
 
-	public void setGridpane_malette(GridPane gridpane_malette) {
-		this.gridpane_malette = gridpane_malette;
-	}
-
 	public TextField getTimer() {
 		return timer;
-	}
-	
-	public void setTimer(TextField timer) {
-		this.timer = timer;
 	}
 	
 	public Button getBoutton_rouge() {
@@ -544,96 +490,48 @@ public class Viewer extends HBox{
 		return bouton_up1;
 	}
 
-	public void setBouton_up1(Button bouton_up1) {
-		this.bouton_up1 = bouton_up1;
-	}
-
 	public Button getBouton_up2() {
 		return bouton_up2;
-	}
-
-	public void setBouton_up2(Button bouton_up2) {
-		this.bouton_up2 = bouton_up2;
 	}
 
 	public Button getBouton_up3() {
 		return bouton_up3;
 	}
 
-	public void setBouton_up3(Button bouton_up3) {
-		this.bouton_up3 = bouton_up3;
-	}
-
 	public Button getBouton_up4() {
 		return bouton_up4;
-	}
-
-	public void setBouton_up4(Button bouton_up4) {
-		this.bouton_up4 = bouton_up4;
 	}
 
 	public TextField getLettre1() {
 		return lettre1;
 	}
 
-	public void setLettre1(TextField lettre1) {
-		this.lettre1 = lettre1;
-	}
-
 	public TextField getLettre2() {
 		return lettre2;
-	}
-
-	public void setLettre2(TextField lettre2) {
-		this.lettre2 = lettre2;
 	}
 
 	public TextField getLettre3() {
 		return lettre3;
 	}
 
-	public void setLettre3(TextField lettre3) {
-		this.lettre3 = lettre3;
-	}
-
 	public TextField getLettre4() {
 		return lettre4;
-	}
-
-	public void setLettre4(TextField lettre4) {
-		this.lettre4 = lettre4;
 	}
 
 	public Button getBouton_down1() {
 		return bouton_down1;
 	}
 
-	public void setBouton_down1(Button bouton_down1) {
-		this.bouton_down1 = bouton_down1;
-	}
-
 	public Button getBouton_down2() {
 		return bouton_down2;
-	}
-
-	public void setBouton_down2(Button bouton_down2) {
-		this.bouton_down2 = bouton_down2;
 	}
 
 	public Button getBouton_down3() {
 		return bouton_down3;
 	}
 
-	public void setBouton_down3(Button bouton_down3) {
-		this.bouton_down3 = bouton_down3;
-	}
-
 	public Button getBouton_down4() {
 		return bouton_down4;
-	}
-
-	public void setBouton_down4(Button bouton_down4) {
-		this.bouton_down4 = bouton_down4;
 	}
 
 	public Image getButton_red_img() {
@@ -646,6 +544,162 @@ public class Viewer extends HBox{
 
 	public Rectangle getRec_bouton_rouge() {
 		return rec_bouton_rouge;
+	}
+
+	public Button getBut_simon1() {
+		return but_simon1;
+	}
+
+	public Button getBut_simon2() {
+		return but_simon2;
+	}
+
+	public Button getBut_simon3() {
+		return but_simon3;
+	}
+
+	public Button getBut_simon4() {
+		return but_simon4;
+	}
+
+	public Rectangle getRec_simon1() {
+		return rec_simon1;
+	}
+
+	public Rectangle getRec_simon2() {
+		return rec_simon2;
+	}
+
+	public Rectangle getRec_simon3() {
+		return rec_simon3;
+	}
+
+	public Rectangle getRec_simon4() {
+		return rec_simon4;
+	}
+
+	public Image getSimon_rouge() {
+		return simon_rouge;
+	}
+
+	public Image getSimon_bleu() {
+		return simon_bleu;
+	}
+
+	public Image getSimon_vert() {
+		return simon_vert;
+	}
+
+	public Image getSimon_jaune() {
+		return simon_jaune;
+	}
+
+	public Button getZone_cable_1() {
+		return zone_cable_1;
+	}
+
+	public Button getZone_cable_2() {
+		return zone_cable_2;
+	}
+
+	public Button getZone_cable_3() {
+		return zone_cable_3;
+	}
+
+	public Button getZone_cable_4() {
+		return zone_cable_4;
+	}
+
+	public Rectangle getRec_cable1() {
+		return rec_cable1;
+	}
+
+	public Rectangle getRec_cable2() {
+		return rec_cable2;
+	}
+
+	public Rectangle getRec_cable3() {
+		return rec_cable3;
+	}
+
+	public Rectangle getRec_cable4() {
+		return rec_cable4;
+	}
+
+	public Image getCable_bleu() {
+		return cable_bleu;
+	}
+
+	public Image getCable_rouge() {
+		return cable_rouge;
+	}
+
+	public Image getCable_vert() {
+		return cable_vert;
+	}
+
+	public Image getCable_jaune() {
+		return cable_jaune;
+	}
+
+	public Button getZone_chiffre_1() {
+		return zone_chiffre_1;
+	}
+
+	public Button getZone_chiffre_2() {
+		return zone_chiffre_2;
+	}
+
+	public Button getZone_chiffre_3() {
+		return zone_chiffre_3;
+	}
+
+	public Button getZone_chiffre_4() {
+		return zone_chiffre_4;
+	}
+
+	public Rectangle getRec_chiffre1() {
+		return rec_chiffre1;
+	}
+
+	public Rectangle getRec_chiffre2() {
+		return rec_chiffre2;
+	}
+
+	public Rectangle getRec_chiffre3() {
+		return rec_chiffre3;
+	}
+
+	public Rectangle getRec_chiffre4() {
+		return rec_chiffre4;
+	}
+
+	public Image getChiffre1() {
+		return chiffre1;
+	}
+
+	public Image getChiffre2() {
+		return chiffre2;
+	}
+
+	public Image getChiffre3() {
+		return chiffre3;
+	}
+
+	public Image getChiffre4() {
+		return chiffre4;
+	}
+
+	public Image getCamembert_img() {
+		return camembert_img;
+	}
+
+	public Circle getCamembert() {
+		return camembert;
+	}
+
+	public TextField getTextLogs() {
+		return textLogs;
 	}
 	
 	
