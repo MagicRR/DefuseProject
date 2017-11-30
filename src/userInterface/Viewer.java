@@ -352,7 +352,7 @@ public class Viewer extends HBox{
 		  zone5.setFitHeight(((3*HardCodedParameters.defaultHeight/4)/2)-8);
 		  zone5.setImage(pose_cable);
 		  gridpane_malette.add(zone5,2,0);
-		  GridPane.setMargin(zone5, new Insets(0, 0, 0, 0));
+		  GridPane.setMargin(zone5, new Insets(0, 0, 0, -((HardCodedParameters.defaultWidth)/5)/9));
 	  }else {
 		//gridpane cable	  	  
 		  GridPane gridpane_cable = new GridPane();
@@ -391,7 +391,7 @@ public class Viewer extends HBox{
 		  gridpane_cable.add(zone_cable_4,0,3);
 		  GridPane.setMargin(zone_cable_4, new Insets(-30, 0, 0, ((3*HardCodedParameters.defaultWidth/4)/3)/15));
 		  
-		  GridPane.setMargin(gridpane_cable, new Insets(5, 0, 0, -(((3*HardCodedParameters.defaultWidth/4)/3)/12)));
+		  GridPane.setMargin(gridpane_cable, new Insets(5, 0, 0, -((3*HardCodedParameters.defaultWidth)/5)/15));
 		  gridpane_malette.add(gridpane_cable,2,0);
 	  }
 	  
@@ -403,7 +403,7 @@ public class Viewer extends HBox{
 		  zone6.setFitHeight(((3*HardCodedParameters.defaultHeight/4)/2)-15);
 		  zone6.setImage(image_block2);
 		  gridpane_malette.add(zone6,2,1);
-		  GridPane.setMargin(zone6, new Insets(-5, 0, 0, 0));
+		  GridPane.setMargin(zone6, new Insets(0, 0, 0, -((HardCodedParameters.defaultWidth)/5)/9));
 	  }else {
 		//gridpane numérique	  	  
 		  GridPane gridpane_code = new GridPane();
