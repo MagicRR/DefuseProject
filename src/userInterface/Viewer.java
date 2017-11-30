@@ -63,6 +63,9 @@ public class Viewer implements ViewerService, RequireReadService{
   private Button zone_chiffre_2;
   private Button zone_chiffre_3;
   private Button zone_chiffre_4;
+  private ImageView code_alpha;
+  private Circle camembert;
+  private TextField textLogs;
 
 
   public Viewer(){}
@@ -125,13 +128,13 @@ public class Viewer implements ViewerService, RequireReadService{
 	  GridPane.setMargin(timer, new Insets(0, 0, 0, 20));
 	  
 	  //Zone en bas à gauche
-	  Image image_block5 = new Image("/images/block.png");
-	  ImageView zone2 = new ImageView();
-	  zone2.setFitWidth(((3*HardCodedParameters.defaultWidth/4)/3)-20);
-	  zone2.setFitHeight(((3*HardCodedParameters.defaultHeight/4)/2)-15);
-	  zone2.setImage(image_block5);
-	  gridpane_malette.add(zone2,0,1);
-	  GridPane.setMargin(zone2, new Insets(-5, 0, 0, 20));
+	  Image image_alpha = new Image("/images/block.png");
+	  ImageView code_alpha = new ImageView();
+	  code_alpha.setFitWidth(((3*HardCodedParameters.defaultWidth/4)/3)-20);
+	  code_alpha.setFitHeight(((3*HardCodedParameters.defaultHeight/4)/2)-15);
+	  code_alpha.setImage(image_alpha);
+	  gridpane_malette.add(code_alpha,0,1);
+	  GridPane.setMargin(code_alpha, new Insets(-5, 0, 0, 20));
 	  
 	  //Zone en haut au milieu
 	  Image red_button = new Image("/images/red-button.png");
@@ -359,7 +362,7 @@ public class Viewer implements ViewerService, RequireReadService{
 	  stats.setStroke(Color.RED);
 	  stats.setFill(Color.GREY);
 	  
-	  Circle camembert = new Circle(100,  Color.rgb(255,0,0));
+	  camembert = new Circle(100,  Color.rgb(255,0,0));
       Image camembert_img = new Image("/images/camembert_img.png");
       camembert.setFill(new ImagePattern(camembert_img));
       camembert.setEffect(new Lighting());
@@ -371,8 +374,7 @@ public class Viewer implements ViewerService, RequireReadService{
       
 	  
       //Logs
-	  
-	  TextField textLogs = new TextField(">> Bienvenue !");
+	  textLogs = new TextField(">> Bienvenue !\n");
 	  textLogs.setCursor(Cursor.DEFAULT);
 	  textLogs.setEditable(false);
 	  textLogs.autosize();
@@ -394,5 +396,149 @@ public class Viewer implements ViewerService, RequireReadService{
 	   
 	  return window;
   }
+
+	public ReadService getData() {
+		return data;
+	}
+	
+	public void setData(ReadService data) {
+		this.data = data;
+	}
+	
+	public TextField getTimer() {
+		return timer;
+	}
+	
+	public void setTimer(TextField timer) {
+		this.timer = timer;
+	}
+	
+	public Button getBoutton_rouge() {
+		return boutton_rouge;
+	}
+	
+	public void setBoutton_rouge(Button boutton_rouge) {
+		this.boutton_rouge = boutton_rouge;
+	}
+	
+	public Button getBut_simon1() {
+		return but_simon1;
+	}
+	
+	public void setBut_simon1(Button but_simon1) {
+		this.but_simon1 = but_simon1;
+	}
+	
+	public Button getBut_simon2() {
+		return but_simon2;
+	}
+	
+	public void setBut_simon2(Button but_simon2) {
+		this.but_simon2 = but_simon2;
+	}
+	
+	public Button getBut_simon3() {
+		return but_simon3;
+	}
+	
+	public void setBut_simon3(Button but_simon3) {
+		this.but_simon3 = but_simon3;
+	}
+	
+	public Button getBut_simon4() {
+		return but_simon4;
+	}
+	
+	public void setBut_simon4(Button but_simon4) {
+		this.but_simon4 = but_simon4;
+	}
+	
+	public Button getZone_cable_1() {
+		return zone_cable_1;
+	}
+	
+	public void setZone_cable_1(Button zone_cable_1) {
+		this.zone_cable_1 = zone_cable_1;
+	}
+	
+	public Button getZone_cable_2() {
+		return zone_cable_2;
+	}
+	
+	public void setZone_cable_2(Button zone_cable_2) {
+		this.zone_cable_2 = zone_cable_2;
+	}
+	
+	public Button getZone_cable_3() {
+		return zone_cable_3;
+	}
+	
+	public void setZone_cable_3(Button zone_cable_3) {
+		this.zone_cable_3 = zone_cable_3;
+	}
+	
+	public Button getZone_cable_4() {
+		return zone_cable_4;
+	}
+	
+	public void setZone_cable_4(Button zone_cable_4) {
+		this.zone_cable_4 = zone_cable_4;
+	}
+	
+	public Button getZone_chiffre_1() {
+		return zone_chiffre_1;
+	}
+	
+	public void setZone_chiffre_1(Button zone_chiffre_1) {
+		this.zone_chiffre_1 = zone_chiffre_1;
+	}
+	
+	public Button getZone_chiffre_2() {
+		return zone_chiffre_2;
+	}
+	
+	public void setZone_chiffre_2(Button zone_chiffre_2) {
+		this.zone_chiffre_2 = zone_chiffre_2;
+	}
+	
+	public Button getZone_chiffre_3() {
+		return zone_chiffre_3;
+	}
+	
+	public void setZone_chiffre_3(Button zone_chiffre_3) {
+		this.zone_chiffre_3 = zone_chiffre_3;
+	}
+	
+	public Button getZone_chiffre_4() {
+		return zone_chiffre_4;
+	}
+	
+	public void setZone_chiffre_4(Button zone_chiffre_4) {
+		this.zone_chiffre_4 = zone_chiffre_4;
+	}
+	
+	public ImageView getCode_alpha() {
+		return code_alpha;
+	}
+	
+	public void setCode_alpha(ImageView code_alpha) {
+		this.code_alpha = code_alpha;
+	}
+	
+	public Circle getCamembert() {
+		return camembert;
+	}
+	
+	public void setCamembert(Circle camembert) {
+		this.camembert = camembert;
+	}
+	
+	public TextField getTextLogs() {
+		return textLogs;
+	}
+	
+	public void setTextLogs(TextField textLogs) {
+		this.textLogs = textLogs;
+	}
 
 }
