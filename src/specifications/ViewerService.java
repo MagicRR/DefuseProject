@@ -26,6 +26,43 @@ public interface ViewerService{
 	  public Button getBoutton_rouge();
 	  public void setBoutton_rouge(Button boutton_rouge);
 	  
+	  public Button getBouton_up1();
+	  public void setBouton_up1(Button bouton_up1);
+	  
+	  public Button getBouton_up2();
+	  public void setBouton_up2(Button bouton_up2);
+	  
+	  public Button getBouton_up3();
+	  public void setBouton_up3(Button bouton_up3);
+	  
+	  public Button getBouton_up4();
+	  public void setBouton_up4(Button bouton_up4);
+	  
+	  public TextField getLettre1();
+	  public void setLettre1(TextField lettre1);
+	  
+	  public TextField getLettre2();
+	  public void setLettre2(TextField lettre2);
+
+	  public TextField getLettre3();
+	  public void setLettre3(TextField lettre3);
+	  
+	  public TextField getLettre4();
+	  public void setLettre4(TextField lettre4);
+
+	  public Button getBouton_down1();
+	  public void setBouton_down1(Button bouton_down1);
+	  
+	  public Button getBouton_down2();
+	  public void setBouton_down2(Button bouton_down2);
+	  
+	  public Button getBouton_down3();
+	  public void setBouton_down3(Button bouton_down3);
+	  
+	  public Button getBouton_down4();
+	  public void setBouton_down4(Button bouton_down4);
+
+	  
 	  public Button getBut_simon1();
 	  public void setBut_simon1(Button but_simon1);
 	  

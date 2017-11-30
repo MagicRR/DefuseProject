@@ -52,6 +52,18 @@ public class Viewer implements ViewerService, RequireReadService{
   private GridPane gridpane_malette;
   private TextField timer;
   private Button boutton_rouge;
+  private Button bouton_up1;
+  private Button bouton_up2;
+  private Button bouton_up3;
+  private Button bouton_up4;
+  private TextField lettre1;
+  private TextField lettre2;
+  private TextField lettre3;
+  private TextField lettre4;
+  private Button bouton_down1;
+  private Button bouton_down2;
+  private Button bouton_down3;
+  private Button bouton_down4;
   private Button but_simon1;
   private Button but_simon2;
   private Button but_simon3;
@@ -149,7 +161,7 @@ public class Viewer implements ViewerService, RequireReadService{
 	  Rectangle rec_fleche_haut = new Rectangle((3*HardCodedParameters.defaultWidth/4)/3/10, (3*HardCodedParameters.defaultHeight/4)/2/4);
 	  rec_fleche_haut.setFill(new ImagePattern(fleche_haut));
 	  
-	  Button bouton_up1 = new Button();
+	  bouton_up1 = new Button();
 	  bouton_up1.setGraphic(rec_fleche_haut);
 	  bouton_up1.setStyle("-fx-background-color: transparent;");
 	  alpha.add(bouton_up1,0,0);
@@ -157,7 +169,7 @@ public class Viewer implements ViewerService, RequireReadService{
 	  Rectangle rec_fleche_haut2 = new Rectangle((3*HardCodedParameters.defaultWidth/4)/3/10, (3*HardCodedParameters.defaultHeight/4)/2/4);
 	  rec_fleche_haut2.setFill(new ImagePattern(fleche_haut));
 	  
-	  Button bouton_up2 = new Button();
+	  bouton_up2 = new Button();
 	  bouton_up2.setGraphic(rec_fleche_haut2);
 	  bouton_up2.setStyle("-fx-background-color: transparent;");
 	  alpha.add(bouton_up2,1,0);
@@ -165,7 +177,7 @@ public class Viewer implements ViewerService, RequireReadService{
 	  Rectangle rec_fleche_haut3 = new Rectangle((3*HardCodedParameters.defaultWidth/4)/3/10, (3*HardCodedParameters.defaultHeight/4)/2/4);
 	  rec_fleche_haut3.setFill(new ImagePattern(fleche_haut));
 	  
-	  Button bouton_up3 = new Button();
+	  bouton_up3 = new Button();
 	  bouton_up3.setGraphic(rec_fleche_haut3);
 	  bouton_up3.setStyle("-fx-background-color: transparent;");
 	  alpha.add(bouton_up3,2,0);
@@ -173,14 +185,14 @@ public class Viewer implements ViewerService, RequireReadService{
 	  Rectangle rec_fleche_haut4 = new Rectangle((3*HardCodedParameters.defaultWidth/4)/3/10, (3*HardCodedParameters.defaultHeight/4)/2/4);
 	  rec_fleche_haut4.setFill(new ImagePattern(fleche_haut));
 
-	  Button bouton_up4 = new Button();
+	  bouton_up4 = new Button();
 	  bouton_up4.setGraphic(rec_fleche_haut4);
 	  bouton_up4.setStyle("-fx-background-color: transparent;");
 	  alpha.add(bouton_up4,3,0);
 
 	  
 	  //lettre
-	  TextField lettre1 = new TextField("C");
+	  lettre1 = new TextField("C");
 	  lettre1.setCursor(Cursor.DEFAULT);
 	  lettre1.setEditable(false);
 	  lettre1.setPrefColumnCount(1);
@@ -191,7 +203,7 @@ public class Viewer implements ViewerService, RequireReadService{
 	  lettre1.setStyle("-fx-text-fill: green; -fx-control-inner-background: black;");
 	  alpha.add(lettre1,0,1);
 	  
-	  TextField lettre2 = new TextField("O");
+	  lettre2 = new TextField("O");
 	  lettre2.setCursor(Cursor.DEFAULT);
 	  lettre2.setEditable(false);
 	  lettre2.setPrefColumnCount(1);
@@ -202,7 +214,7 @@ public class Viewer implements ViewerService, RequireReadService{
 	  lettre2.setStyle("-fx-text-fill: green; -fx-control-inner-background: black;");
 	  alpha.add(lettre2,1,1);
 	  
-	  TextField lettre3 = new TextField("D");
+	  lettre3 = new TextField("D");
 	  lettre3.setCursor(Cursor.DEFAULT);
 	  lettre3.setEditable(false);
 	  lettre3.setPrefColumnCount(1);
@@ -213,7 +225,7 @@ public class Viewer implements ViewerService, RequireReadService{
 	  lettre3.setStyle("-fx-text-fill: green; -fx-control-inner-background: black;");
 	  alpha.add(lettre3,2,1);
 	  
-	  TextField lettre4 = new TextField("E");
+	  lettre4 = new TextField("E");
 	  lettre4.setCursor(Cursor.DEFAULT);
 	  lettre4.setEditable(false);
 	  lettre4.setPrefColumnCount(1);
@@ -229,7 +241,7 @@ public class Viewer implements ViewerService, RequireReadService{
 	  Rectangle rec_fleche_bas = new Rectangle((3*HardCodedParameters.defaultWidth/4)/3/10, (3*HardCodedParameters.defaultHeight/4)/2/4);
 	  rec_fleche_bas.setFill(new ImagePattern(fleche_bas));
 	  
-	  Button bouton_down1 = new Button();
+	  bouton_down1 = new Button();
 	  bouton_down1.setGraphic(rec_fleche_bas);
 	  bouton_down1.setStyle("-fx-background-color: transparent;");
 	  alpha.add(bouton_down1,0,2);
@@ -237,7 +249,7 @@ public class Viewer implements ViewerService, RequireReadService{
 	  Rectangle rec_fleche_bas2 = new Rectangle((3*HardCodedParameters.defaultWidth/4)/3/10, (3*HardCodedParameters.defaultHeight/4)/2/4);
 	  rec_fleche_bas2.setFill(new ImagePattern(fleche_bas));
 
-	  Button bouton_down2 = new Button();
+	  bouton_down2 = new Button();
 	  bouton_down2.setGraphic(rec_fleche_bas2);
 	  bouton_down2.setStyle("-fx-background-color: transparent;");
 	  alpha.add(bouton_down2,1,2);
@@ -245,7 +257,7 @@ public class Viewer implements ViewerService, RequireReadService{
 	  Rectangle rec_fleche_bas3 = new Rectangle((3*HardCodedParameters.defaultWidth/4)/3/10, (3*HardCodedParameters.defaultHeight/4)/2/4);
 	  rec_fleche_bas3.setFill(new ImagePattern(fleche_bas));
 	  
-	  Button bouton_down3 = new Button();
+	  bouton_down3 = new Button();
 	  bouton_down3.setGraphic(rec_fleche_bas3);
 	  bouton_down3.setStyle("-fx-background-color: transparent;");
 	  alpha.add(bouton_down3,2,2);
@@ -253,7 +265,7 @@ public class Viewer implements ViewerService, RequireReadService{
 	  Rectangle rec_fleche_bas4 = new Rectangle((3*HardCodedParameters.defaultWidth/4)/3/10, (3*HardCodedParameters.defaultHeight/4)/2/4);
 	  rec_fleche_bas4.setFill(new ImagePattern(fleche_bas));
 
-	  Button bouton_down4 = new Button();
+	  bouton_down4 = new Button();
 	  bouton_down4.setGraphic(rec_fleche_bas4);
 	  bouton_down4.setStyle("-fx-background-color: transparent;");
 	  alpha.add(bouton_down4,3,2);
@@ -467,7 +479,8 @@ public class Viewer implements ViewerService, RequireReadService{
 	  
 	  GridPane.setMargin(gridpane_code, new Insets(5, 0, 0, -(((3*HardCodedParameters.defaultWidth/4)/3)/12)));
 	  gridpane_malette.add(gridpane_code,2,1);
-
+	  
+	  malette_group.getChildren().addAll(gridpane_malette);
 	  
 	  
 	  
@@ -485,6 +498,8 @@ public class Viewer implements ViewerService, RequireReadService{
       camembert.setLayoutX(7*HardCodedParameters.defaultWidth/8);
       camembert.setLayoutY(HardCodedParameters.defaultHeight/4);
       
+	  stats_group.getChildren().addAll(stats, camembert);
+      
       
       
       
@@ -499,14 +514,9 @@ public class Viewer implements ViewerService, RequireReadService{
 	  textLogs.setLayoutY(3*HardCodedParameters.defaultHeight/4);
 	  textLogs.setAlignment(Pos.TOP_LEFT);
 	  textLogs.setStyle("-fx-text-fill: green; -fx-control-inner-background: black;");
-	
 	  
-	  
-	  //Ajoute les élèments principaux dans les 3sous groupes
-	  malette_group.getChildren().addAll(gridpane_malette);
 	  logs_group.getChildren().addAll( textLogs);  
-	  stats_group.getChildren().addAll(stats, camembert);
-	  
+
 	  //Ajoute les 3sous groupes
 	  window.getChildren().addAll(malette_group,stats_group,logs_group);
 	   
@@ -545,6 +555,102 @@ public class Viewer implements ViewerService, RequireReadService{
 		this.boutton_rouge = boutton_rouge;
 	}
 	
+	public Button getBouton_up1() {
+		return bouton_up1;
+	}
+
+	public void setBouton_up1(Button bouton_up1) {
+		this.bouton_up1 = bouton_up1;
+	}
+
+	public Button getBouton_up2() {
+		return bouton_up2;
+	}
+
+	public void setBouton_up2(Button bouton_up2) {
+		this.bouton_up2 = bouton_up2;
+	}
+
+	public Button getBouton_up3() {
+		return bouton_up3;
+	}
+
+	public void setBouton_up3(Button bouton_up3) {
+		this.bouton_up3 = bouton_up3;
+	}
+
+	public Button getBouton_up4() {
+		return bouton_up4;
+	}
+
+	public void setBouton_up4(Button bouton_up4) {
+		this.bouton_up4 = bouton_up4;
+	}
+
+	public TextField getLettre1() {
+		return lettre1;
+	}
+
+	public void setLettre1(TextField lettre1) {
+		this.lettre1 = lettre1;
+	}
+
+	public TextField getLettre2() {
+		return lettre2;
+	}
+
+	public void setLettre2(TextField lettre2) {
+		this.lettre2 = lettre2;
+	}
+
+	public TextField getLettre3() {
+		return lettre3;
+	}
+
+	public void setLettre3(TextField lettre3) {
+		this.lettre3 = lettre3;
+	}
+
+	public TextField getLettre4() {
+		return lettre4;
+	}
+
+	public void setLettre4(TextField lettre4) {
+		this.lettre4 = lettre4;
+	}
+
+	public Button getBouton_down1() {
+		return bouton_down1;
+	}
+
+	public void setBouton_down1(Button bouton_down1) {
+		this.bouton_down1 = bouton_down1;
+	}
+
+	public Button getBouton_down2() {
+		return bouton_down2;
+	}
+
+	public void setBouton_down2(Button bouton_down2) {
+		this.bouton_down2 = bouton_down2;
+	}
+
+	public Button getBouton_down3() {
+		return bouton_down3;
+	}
+
+	public void setBouton_down3(Button bouton_down3) {
+		this.bouton_down3 = bouton_down3;
+	}
+
+	public Button getBouton_down4() {
+		return bouton_down4;
+	}
+
+	public void setBouton_down4(Button bouton_down4) {
+		this.bouton_down4 = bouton_down4;
+	}
+
 	public Button getBut_simon1() {
 		return but_simon1;
 	}
