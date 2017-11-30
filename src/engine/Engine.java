@@ -438,6 +438,8 @@ public class Engine implements EventHandler{
 	  			  finalCountdownFormatedMinutes = finalCountdown/60;
 	  			  finalCountdownFormatedSeconds = finalCountdown%60;
 	  			  
+	  			  view.getTimer().setText(finalCountdownFormatedMinutes+":"+finalCountdownFormatedSeconds);
+	  			  
 	  			  // PRINT, IF COUNTDOWN ECOULE = VOUS ETES MORT
 	  			  if(finalCountdownFormatedMinutes > 0 || finalCountdownFormatedSeconds > -1) {
 	  				  if(disableConsoleLogs != 1) {
