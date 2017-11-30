@@ -55,5 +55,14 @@ public interface ViewerService{
 	  public Image getChiffre3();
 	  public Image getChiffre4();
 	  public Circle getCamembert();
-		
+	  public Boolean getModuleSimon();
+	  public Boolean getModuleAlpha();
+	  public Boolean getModuleNum();
+	  public Boolean getModuleCable();
+	  public Button getIndice();
+	  public void setModuleAlpha(Boolean moduleAlpha);
+	  public void setModuleNum(Boolean moduleNum);
+	  public void setModuleCable(Boolean moduleCable);
+	  public void setModuleSimon(Boolean moduleSimon);
+
 }

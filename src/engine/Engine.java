@@ -59,8 +59,10 @@ public class Engine implements EventHandler{
 	
 	@Override
 	public void handle(Event event) {
+		
 		final Object source = event.getSource();
 		System.out.println("In handler !!");
+		
         if (source.equals(view.getBoutton_rouge())) {
             System.out.println("ButtonA has been pressed, switching to ViewB.");
             view.getRec_bouton_rouge().setFill(new ImagePattern(view.getButton_green_img()));
@@ -367,7 +369,7 @@ public class Engine implements EventHandler{
   	}
   	
   	private void initiatingModule() {
-  		
+
   		modules.add(new Module(
 				  i, 
 				  new EnigmeBoard(
@@ -423,7 +425,6 @@ public class Engine implements EventHandler{
   	// COMPTE A REBOURS, GAME STEPS
   	private void startingCountdown() {
   		
-  		
 	  	// INSTANCIATION DU MINUTEUR
 	  	Minuteur deathClock = new Minuteur(delaiMinuteur);
 	  	
@@ -449,6 +450,7 @@ public class Engine implements EventHandler{
 	  			  }
 	  			  else {
 	  				if(disableConsoleLogs != 1) {
+	  	  			  view.getTimer().setText("BOOM");
 	  					System.out.println("Partie terminée, vous êtes mort.");
 	  				}
 	  			  }
