@@ -49,6 +49,7 @@ import javafx.scene.paint.ImagePattern;
 public class Viewer implements ViewerService, RequireReadService{
 	
   private ReadService data;
+  private GridPane gridpane_malette;
   private TextField timer;
   private Button boutton_rouge;
   private Button but_simon1;
@@ -64,6 +65,7 @@ public class Viewer implements ViewerService, RequireReadService{
   private Button zone_chiffre_3;
   private Button zone_chiffre_4;
   private ImageView code_alpha;
+  private Image camembert_img;
   private Circle camembert;
   private TextField textLogs;
 
@@ -90,7 +92,7 @@ public class Viewer implements ViewerService, RequireReadService{
 	  Group stats_group = new Group();	  
 	  
 	  //Malette	  	  
-	  GridPane gridpane_malette = new GridPane();
+	  gridpane_malette = new GridPane();
 	  
 	  //Gestion des contraintes de colonne style padding ..
 	  gridpane_malette.setPadding(new Insets(15,0,0,0));
@@ -405,6 +407,14 @@ public class Viewer implements ViewerService, RequireReadService{
 		this.data = data;
 	}
 	
+	public GridPane getGridpane_malette() {
+		return gridpane_malette;
+	}
+
+	public void setGridpane_malette(GridPane gridpane_malette) {
+		this.gridpane_malette = gridpane_malette;
+	}
+
 	public TextField getTimer() {
 		return timer;
 	}
@@ -539,6 +549,14 @@ public class Viewer implements ViewerService, RequireReadService{
 	
 	public void setTextLogs(TextField textLogs) {
 		this.textLogs = textLogs;
+	}
+
+	public Image getCamembert_img() {
+		return camembert_img;
+	}
+
+	public void setCamembert_img(Image camembert_img) {
+		this.camembert_img = camembert_img;
 	}
 
 }

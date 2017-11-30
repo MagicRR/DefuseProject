@@ -7,6 +7,8 @@ package specifications;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.layout.GridPane;
 
 public interface ViewerService{
 	public void init();
@@ -15,6 +17,9 @@ public interface ViewerService{
 	  public ReadService getData();
 	  public void setData(ReadService data);
 	  
+	  public GridPane getGridpane_malette();
+	  public void setGridpane_malette(GridPane gridpane_malette);
+  
 	  public TextField getTimer();
 	  public void setTimer(TextField timer);
 	  
@@ -59,5 +64,8 @@ public interface ViewerService{
 
 	  public TextField getTextLogs();
 	  public void setTextLogs(TextField textLogs);
+	  
+	  public Image getCamembert_img();
+	  public void setCamembert_img(Image camembert_img);
 
 }
