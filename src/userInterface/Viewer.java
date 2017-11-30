@@ -167,7 +167,7 @@ public class Viewer extends HBox{
 		  code_alpha.setFitHeight(((3*HardCodedParameters.defaultHeight/4)/2)-15);
 		  code_alpha.setImage(image_alpha);
 		  gridpane_malette.add(code_alpha,0,1);
-		  GridPane.setMargin(code_alpha, new Insets(-5, 0, 0, 20));
+		  GridPane.setMargin(code_alpha, new Insets(0, 0, 0, 20));
 		  System.out.println("plop");
 	  }else {
 		  System.out.println("ploppas");
