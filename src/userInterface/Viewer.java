@@ -32,6 +32,7 @@ import javafx.scene.layout.BackgroundRepeat;
 import javafx.scene.layout.BackgroundSize;
 import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.Priority;
 
 import java.io.File;
@@ -39,6 +40,7 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 
 import data.Minuteur;
+import engine.Engine;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.HPos;
@@ -46,16 +48,19 @@ import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.paint.ImagePattern;
 
-public class Viewer implements ViewerService, RequireReadService{
+public class Viewer extends HBox{
 	
   private ReadService data;
   private GridPane gridpane_malette;
   private TextField timer;
-  private Button boutton_rouge;
-  private Button but_simon1;
-  private Button but_simon2;
-  private Button but_simon3;
-  private Button but_simon4;
+  private final Button boutton_rouge = new Button();
+  private final Button but_simon1 = new Button();
+  private final Button but_simon2 = new Button();
+  private final Button but_simon3 = new Button();
+  private final Button but_simon4 = new Button();
+  private final Image button_red_img = new Image("/images/red-button.png");
+  private final Image button_green_img = new Image("/images/green-button.png");
+  private final Rectangle rec_bouton_rouge = new Rectangle(((3*HardCodedParameters.defaultWidth/4)/4), ((3*HardCodedParameters.defaultHeight/4)/3));
   private Button zone_cable_1;
   private Button zone_cable_2;
   private Button zone_cable_3;
@@ -70,17 +75,15 @@ public class Viewer implements ViewerService, RequireReadService{
   private TextField textLogs;
 
 
-  public Viewer(){}
-
-  @Override
-  public void bindReadService(ReadService service){
-    data=service;
+  public Viewer(final Engine engine){
+	  boutton_rouge.setOnAction(engine);
+	  but_simon1.setOnAction(engine);
+	  but_simon2.setOnAction(engine);
+	  but_simon3.setOnAction(engine);
+	  but_simon4.setOnAction(engine);
+	  this.getChildren().addAll(boutton_rouge);
   }
 
-  @Override
-  public void init(){}
-
-  @Override
   public Parent getPanel(){
 	  
 	  //Groupe de l'interface global
@@ -139,21 +142,11 @@ public class Viewer implements ViewerService, RequireReadService{
 	  GridPane.setMargin(code_alpha, new Insets(-5, 0, 0, 20));
 	  
 	  //Zone en haut au milieu
-	  Image red_button = new Image("/images/red-button.png");
-	  Rectangle rec_bouton_rouge = new Rectangle(((3*HardCodedParameters.defaultWidth/4)/4), ((3*HardCodedParameters.defaultHeight/4)/3));
-	  rec_bouton_rouge.setFill(new ImagePattern(red_button));
-	  boutton_rouge = new Button();
+	  rec_bouton_rouge.setFill(new ImagePattern(getButton_red_img()));
 	  boutton_rouge.setGraphic(rec_bouton_rouge);
 	  boutton_rouge.setStyle("-fx-background-color: transparent;");
 	  gridpane_malette.add(boutton_rouge,1,0);
 	  GridPane.setMargin(boutton_rouge, new Insets(0, 0, 0, ((3*HardCodedParameters.defaultWidth/4)/3)/11));
-	  
-	  boutton_rouge.setOnAction(new EventHandler<ActionEvent>() {
-		    @Override
-		    public void handle(ActionEvent e) {
-		    		System.out.println("plop, ca appui");
-		    }
-	  });
 	  
 	  
 	  
@@ -178,22 +171,18 @@ public class Viewer implements ViewerService, RequireReadService{
 	  rec_simon4.setFill(new ImagePattern(simon_bleu));
 
 	 
-	  but_simon1 = new Button();
 	  but_simon1.setGraphic(rec_simon1);
 	  but_simon1.setStyle("-fx-background-color: transparent;");
 	  gridpane_simon.add(but_simon1,0,0);
 	  
-	  but_simon2 = new Button();
 	  but_simon2.setGraphic(rec_simon2);
 	  but_simon2.setStyle("-fx-background-color: transparent;");
 	  gridpane_simon.add(but_simon2,1,0);
 	  
-	  but_simon3 = new Button();
 	  but_simon3.setGraphic(rec_simon3);
 	  but_simon3.setStyle("-fx-background-color: transparent;");
 	  gridpane_simon.add(but_simon3,1,1);
 	  
-	  but_simon4 = new Button();
 	  but_simon4.setGraphic(rec_simon4);
 	  but_simon4.setStyle("-fx-background-color: transparent;");
 	  gridpane_simon.add(but_simon4,0,1);
@@ -427,40 +416,20 @@ public class Viewer implements ViewerService, RequireReadService{
 		return boutton_rouge;
 	}
 	
-	public void setBoutton_rouge(Button boutton_rouge) {
-		this.boutton_rouge = boutton_rouge;
-	}
-	
 	public Button getBut_simon1() {
 		return but_simon1;
-	}
-	
-	public void setBut_simon1(Button but_simon1) {
-		this.but_simon1 = but_simon1;
 	}
 	
 	public Button getBut_simon2() {
 		return but_simon2;
 	}
 	
-	public void setBut_simon2(Button but_simon2) {
-		this.but_simon2 = but_simon2;
-	}
-	
 	public Button getBut_simon3() {
 		return but_simon3;
 	}
 	
-	public void setBut_simon3(Button but_simon3) {
-		this.but_simon3 = but_simon3;
-	}
-	
 	public Button getBut_simon4() {
 		return but_simon4;
-	}
-	
-	public void setBut_simon4(Button but_simon4) {
-		this.but_simon4 = but_simon4;
 	}
 	
 	public Button getZone_cable_1() {
@@ -559,4 +528,17 @@ public class Viewer implements ViewerService, RequireReadService{
 		this.camembert_img = camembert_img;
 	}
 
+	public Image getButton_red_img() {
+		return button_red_img;
+	}
+
+	public Image getButton_green_img() {
+		return button_green_img;
+	}
+
+	public Rectangle getRec_bouton_rouge() {
+		return rec_bouton_rouge;
+	}
+	
+	
 }

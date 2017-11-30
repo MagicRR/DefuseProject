@@ -10,6 +10,7 @@ import specifications.ReadService;
 import specifications.RequireReadService;
 import specifications.ViewerAccueilService;
 import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -20,28 +21,30 @@ import javafx.scene.layout.BackgroundRepeat;
 import javafx.scene.layout.BackgroundSize;
 import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.Priority;
+import javafx.stage.Stage;
+import engine.ControllerMain;
+import engine.Engine;
 import javafx.geometry.Insets;
 
-public class Viewer_accueil implements ViewerAccueilService, RequireReadService{
-	
-  private ReadService data;
-  private Button jouer;
-  private Button instruction;
+public class Viewer_accueil extends HBox{
 
-  public Viewer_accueil(){}
+  private final Button jouer = new Button("Commencer");
+  private final Button instruction = new Button("Instructions");
 
-  @Override
-  public void bindReadService(ReadService service){
-    data=service;
+  public Viewer_accueil(final ControllerMain controllerMain){
+	  jouer.setOnAction(event -> {
+		  System.out.println("Bouton Commencer utilisé");
+		  final Stage primaryStage = controllerMain.getPrimaryStage();
+		  final Engine engine = new Engine(primaryStage);
+		  final Scene scene = new Scene(engine.getView());
+		  primaryStage.setScene(scene);
+	  });
+	  this.getChildren().addAll(jouer);
   }
 
-  @Override
-  public void init(){
-  }
-
-  @Override
   public Parent getPanel(){
 	  
 	  //Groupe de l'interface global
@@ -76,14 +79,12 @@ public class Viewer_accueil implements ViewerAccueilService, RequireReadService{
 	  gridpane_accueil.add(accueil_image,0,0);
 
 	  //Button jouer
-	  jouer = new Button("Commencer");
 	  jouer.setId("jouer");
 	  jouer.arm();
 	  GridPane.setMargin(jouer, new Insets(-1*HardCodedParameters.defaultHeight/5, 0, 0, -50+1*HardCodedParameters.defaultWidth/2));
 	  gridpane_accueil.add(jouer,0,1);
 	  
 	  //Button instruction
-	  instruction = new Button("Instruction");
 	  instruction.setId("instruction");
 	  instruction.arm();
 	  GridPane.setMargin(instruction, new Insets(-1*HardCodedParameters.defaultHeight/8, 0, 0, -50+1*HardCodedParameters.defaultWidth/2));
@@ -95,14 +96,12 @@ public class Viewer_accueil implements ViewerAccueilService, RequireReadService{
 	  return window;
   }
 
-@Override
-public Button getJouer() {
-	return jouer;
-}
-
-@Override
-public Button getInstruction() {
-	return instruction;
-}
+	public Button getJouer() {
+		return jouer;
+	}
+	
+	public Button getInstruction() {
+		return instruction;
+	}
   
 }
