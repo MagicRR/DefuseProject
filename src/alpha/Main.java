@@ -35,28 +35,32 @@ public class Main extends Application{
 
 	  @Override 
 	  public void start(final Stage stage) throws Exception {
+		  
+		  //Récupère la taille de l'écran de l'utilisateur et adapte les HardCodedParameters
+		  Screen screen = Screen.getPrimary();
+		  Rectangle2D bounds = screen.getVisualBounds();
+
+		  stage.setX(bounds.getMinX());
+		  stage.setY(bounds.getMinY());
+		  HardCodedParameters.defaultWidth=bounds.getWidth();
+		  HardCodedParameters.defaultHeight=bounds.getHeight();
+		  stage.setWidth(HardCodedParameters.defaultWidth);
+		  stage.setHeight(HardCodedParameters.defaultHeight);
+		  stage.setResizable(false);
+          stage.setTitle("Defuse Project");
+		  
 		  final Scene scene = new Scene(new ControllerMain(stage).getView());
+		  
 		  stage.setScene(scene);
 		  stage.show();
 		  
-//		  	//Récupère la taille de l'écran de l'utilisateur et adapte les HardCodedParameters
-//		    Screen screen = Screen.getPrimary();
-//			Rectangle2D bounds = screen.getVisualBounds();
-//
-//			stage.setX(bounds.getMinX());
-//			stage.setY(bounds.getMinY());
-//			HardCodedParameters.defaultWidth=bounds.getWidth();
-//			HardCodedParameters.defaultHeight=bounds.getHeight();
-//			stage.setWidth(HardCodedParameters.defaultWidth);
-//			stage.setHeight(HardCodedParameters.defaultHeight);			
+		  	
 //		  
 //		    final Scene scene_accueil = new Scene(((Viewer_accueil)viewer_accueil).getPanel());
 //		    final Scene scene_instruction = new Scene(((Viewer_instruction)viewer_instruction).getPanel());
 //		    final Scene scene = new Scene(((Viewer)viewer).getPanel());
 //		    		    
 //			//Définis un titre à la fenetre + empeche de resize la fenetre et définis le fullscreen mode au démarrage
-//		    stage.setTitle("Defuse Project");
-//		    stage.setResizable(false);
 //		    //stage.setFullScreen(true);
 //		    
 //		    stage.setScene(scene_accueil);
