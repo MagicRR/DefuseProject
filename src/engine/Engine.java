@@ -30,6 +30,7 @@ import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
+import javafx.scene.image.Image;
 import javafx.scene.paint.ImagePattern;
 import javafx.stage.Stage;
 
@@ -64,8 +65,23 @@ public class Engine implements EventHandler{
 		System.out.println("In handler !!");
 		
         if (source.equals(view.getBoutton_rouge())) {
-            System.out.println("ButtonA has been pressed, switching to ViewB.");
             view.getRec_bouton_rouge().setFill(new ImagePattern(view.getButton_green_img()));
+        }
+        
+        if (source.equals(view.getZone_cable_1())) {
+        	view.getRec_cable1().setFill(new ImagePattern(view.getCable_rouge_cut()));
+        }
+        
+        if (source.equals(view.getZone_cable_2())) {
+        	view.getRec_cable2().setFill(new ImagePattern(view.getCable_jaune_cut()));
+        }
+        
+        if (source.equals(view.getZone_cable_3())) {
+        	view.getRec_cable3().setFill(new ImagePattern(view.getCable_vert_cut()));
+        }
+        
+        if (source.equals(view.getZone_cable_4())) {
+        	view.getRec_cable4().setFill(new ImagePattern(view.getCable_bleu_cut()));
         }
 	}
 	

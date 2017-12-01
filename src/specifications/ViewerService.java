@@ -64,5 +64,8 @@ public interface ViewerService{
 	  public void setModuleNum(Boolean moduleNum);
 	  public void setModuleCable(Boolean moduleCable);
 	  public void setModuleSimon(Boolean moduleSimon);
-
+	  public Image getCable_bleu_cut();
+	  public Image getCable_rouge_cut();
+	  public Image getCable_vert_cut();
+	  public Image getCable_jaune_cut();
 }

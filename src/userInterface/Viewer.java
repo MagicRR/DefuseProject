@@ -39,10 +39,10 @@ public class Viewer extends HBox{
 	
   private ReadService data;
   private GridPane gridpane_malette;
-  private Boolean module_alpha = false;
-  private Boolean module_simon = false;
-  private Boolean module_cable = false;
-  private Boolean module_num = false;
+  private Boolean module_alpha = true;
+  private Boolean module_simon = true;
+  private Boolean module_cable = true;
+  private Boolean module_num = true;
   
   private final TextField timer = new TextField("01:00");
   private final Button boutton_rouge = new Button();
@@ -85,6 +85,10 @@ public class Viewer extends HBox{
   private final Image cable_rouge = new Image("/images/cable-red.png");
   private final Image cable_vert = new Image("/images/cable-green.png");
   private final Image cable_jaune = new Image("/images/cable-yellow.png");
+  private final Image cable_bleu_cut = new Image("/images/cable-blue-cut.png");
+  private final Image cable_rouge_cut = new Image("/images/cable-red-cut.png");
+  private final Image cable_vert_cut = new Image("/images/cable-green-cut.png");
+  private final Image cable_jaune_cut = new Image("/images/cable-yellow-cut.png");
   private final Button zone_chiffre_1 = new Button();
   private final Button zone_chiffre_2 = new Button();
   private final Button zone_chiffre_3 = new Button();
@@ -107,6 +111,10 @@ public class Viewer extends HBox{
 
   public Viewer(final Engine engine){
 	  boutton_rouge.setOnAction(engine);
+	  zone_cable_1.setOnAction(engine);
+	  zone_cable_2.setOnAction(engine);
+	  zone_cable_3.setOnAction(engine);
+	  zone_cable_4.setOnAction(engine);
 	  but_simon1.setOnAction(engine);
 	  but_simon2.setOnAction(engine);
 	  but_simon3.setOnAction(engine);
@@ -773,6 +781,22 @@ public class Viewer extends HBox{
 
 	public void setModule_num(Boolean module_num) {
 		this.module_num = module_num;
+	}
+
+	public Image getCable_bleu_cut() {
+		return cable_bleu_cut;
+	}
+
+	public Image getCable_rouge_cut() {
+		return cable_rouge_cut;
+	}
+
+	public Image getCable_vert_cut() {
+		return cable_vert_cut;
+	}
+
+	public Image getCable_jaune_cut() {
+		return cable_jaune_cut;
 	}
 	
 }
