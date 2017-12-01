@@ -27,6 +27,7 @@ import javafx.scene.layout.Priority;
 import javafx.stage.Stage;
 import engine.ControllerMain;
 import engine.Engine;
+import engine.InstruEngine;
 import javafx.geometry.Insets;
 
 public class Viewer_accueil extends HBox{
@@ -43,7 +44,13 @@ public class Viewer_accueil extends HBox{
 		  primaryStage.setScene(scene);
 		  engine.initializingBoard();
 	  });
-	  this.getChildren().addAll(jouer);
+	  instruction.setOnAction(event -> {
+		  final Stage primaryStage = controllerMain.getPrimaryStage();
+		  final InstruEngine engine = new InstruEngine(primaryStage);
+		  final Scene scene = new Scene(engine.getView());
+		  primaryStage.setScene(scene);
+	  });
+	  this.getChildren().addAll(jouer, instruction);
   }
 
   public Parent getPanel(){

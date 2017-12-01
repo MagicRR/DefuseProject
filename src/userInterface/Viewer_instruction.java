@@ -11,6 +11,7 @@ import specifications.RequireReadService;
 import specifications.ViewerAccueilService;
 import specifications.ViewerInstructionService;
 import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -21,27 +22,29 @@ import javafx.scene.layout.BackgroundRepeat;
 import javafx.scene.layout.BackgroundSize;
 import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.Priority;
+import javafx.stage.Stage;
+import engine.ControllerMain;
+import engine.Engine;
+import engine.InstruEngine;
 import javafx.geometry.Insets;
 
-public class Viewer_instruction implements ViewerInstructionService, RequireReadService{
+public class Viewer_instruction extends HBox{
 	
   private ReadService data;
-  private Button jouer;
+  private final Button retour = new Button("Retour à l'accueil");
 
-  public Viewer_instruction(){}
-
-  @Override
-  public void bindReadService(ReadService service){
-    data=service;
+  public Viewer_instruction(InstruEngine engine){
+	  retour.setOnAction(event -> {
+		  final Stage primaryStage = engine.getPrimaryStage();
+		  final ControllerMain controllerMain = new ControllerMain(primaryStage);
+		  final Scene scene = new Scene(controllerMain.getView());
+		  primaryStage.setScene(scene);
+	  });
   }
 
-  @Override
-  public void init(){
-  }
-
-  @Override
   public Parent getPanel(){
 	  
 	  //Groupe de l'interface global
@@ -75,12 +78,10 @@ public class Viewer_instruction implements ViewerInstructionService, RequireRead
 	  GridPane.setMargin(accueil_image, new Insets(-1*HardCodedParameters.defaultHeight/15, 0, 0, 1*HardCodedParameters.defaultWidth/10));
 	  gridpane_accueil.add(accueil_image,0,0);
 
-	  //Button jouer
-	  jouer = new Button("Commencer");
-	  jouer.setId("jouer");
-	  jouer.arm();
-	  GridPane.setMargin(jouer, new Insets(-1*HardCodedParameters.defaultHeight/5, 0, 0, -50+1*HardCodedParameters.defaultWidth/2));
-	  gridpane_accueil.add(jouer,0,1);
+	  //Button retour
+	  retour.arm();
+	  GridPane.setMargin(retour, new Insets(-1*HardCodedParameters.defaultHeight/5, 0, 0, -50+1*HardCodedParameters.defaultWidth/2));
+	  gridpane_accueil.add(retour,0,1);
 	
 	  
 	  //Ajoute le gridpane à la fenetre
@@ -89,9 +90,8 @@ public class Viewer_instruction implements ViewerInstructionService, RequireRead
 	  return window;
   }
 
-	@Override
-	public Button getJouer() {
-		return jouer;
+	public Button getRetour() {
+		return retour;
 	}
 
 }
