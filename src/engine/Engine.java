@@ -253,6 +253,16 @@ public class Engine implements EventHandler{
             }  
         }
         
+        if (source.equals(view.getBoutton_rouge())) {
+        	
+            if(modules.get(1).isResolved() == true && modules.get(2).isResolved == true && modules.get(3).isResolved == true && modules.get(4).isResolved == true && modules.get(5).isResolved == true) {
+            	victory();
+            }
+            else {
+            	defeat();
+            }
+        }
+        
 	}
 	
 	public Stage getPrimaryStage() {
@@ -652,4 +662,35 @@ public class Engine implements EventHandler{
 			System.out.println("Partie terminée, vous avez choisi la mort.");
 		}
   	  }
+  	  
+  	  public void revealModule(int i) {
+		  modules.get(i).isActive = true;
+	  }
+	  
+	  public void resolvedModule(int i) {
+		  modules.get(i).isResolved = true;
+	  }
+	  
+	  public void checkIfDefeat() {
+		  
+	  }
+
+//	  public void checkIfCodeIsValidated(){
+//	  	  if(){
+//	  	  	
+//	  	  }
+//	  	view.getAlphabet().get(i).equals(view.getLettre1().getText())
+//	  }
+	  
+	  public void victory() {
+		  engineClock.cancel();
+		  view.getTimer().setText("VICTOIRE");
+		  System.out.println("L'opérateur a désamorcé la bombe avec succès.");
+	  }
+	  
+	  public void defeat() {
+		  engineClock.cancel();
+		  view.getTimer().setText("BOOM");
+		  System.out.println("Partie terminée, l'opérateur a été tué par l'explosion.");
+	  }
 }
