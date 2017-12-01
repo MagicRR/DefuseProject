@@ -119,6 +119,7 @@ public class Viewer extends HBox{
   private final TextField textCheckSimon = new TextField("Module simon désamorcé: ");
   private final TextField textCheckCode = new TextField("Module code désamorcé: ");
 
+  private final Image check = new Image("/images/Check_mark.png");
   private final Rectangle rec_check1 = new Rectangle(HardCodedParameters.defaultWidth/24,25);
   private final Rectangle rec_check2 = new Rectangle(HardCodedParameters.defaultWidth/24,25);
   private final Rectangle rec_check3 = new Rectangle(HardCodedParameters.defaultWidth/24,25);
