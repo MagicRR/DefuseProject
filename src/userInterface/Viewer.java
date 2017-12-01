@@ -114,6 +114,16 @@ public class Viewer extends HBox{
 
   private final Image camembert_img = new Image("/images/camembert_img.png");
   private final Circle camembert = new Circle(100,  Color.rgb(255,0,0));
+  private final TextField textCheckCable = new TextField("Module cable désamorcé: ");
+  private final TextField textCheckAlpha = new TextField("Module alpha désamorcé: ");
+  private final TextField textCheckSimon = new TextField("Module simon désamorcé: ");
+  private final TextField textCheckCode = new TextField("Module code désamorcé: ");
+
+  private final Image check = new Image("/images/Check_mark.png");
+  private final Rectangle rec_check1 = new Rectangle(HardCodedParameters.defaultWidth/24,25);
+  private final Rectangle rec_check2 = new Rectangle(HardCodedParameters.defaultWidth/24,25);
+  private final Rectangle rec_check3 = new Rectangle(HardCodedParameters.defaultWidth/24,25);
+  private final Rectangle rec_check4 = new Rectangle(HardCodedParameters.defaultWidth/24,25);
   private final Button indice = new Button("Demander un indice");
   private final TextField textLogs = new TextField(">> Bienvenue !\n");;
 
@@ -508,19 +518,70 @@ public class Viewer extends HBox{
       camembert.setLayoutX(7*HardCodedParameters.defaultWidth/8);
       camembert.setLayoutY(HardCodedParameters.defaultHeight/4);
       
-      //Rectangle rec_indice = new Rectangle(3*HardCodedParameters.defaultWidth/12,HardCodedParameters.defaultHeight/10);
-	  //Image fond_indice = new Image("/images/indice.jpg");
-	  //rec_indice.setFill(new ImagePattern(fond_indice));
-      //indice.setGraphic(rec_indice);
-      //indice.setStyle("-fx-background-color: transparent;");
-      indice.setLayoutX(9*HardCodedParameters.defaultWidth/12);
-      indice.setLayoutY(3*HardCodedParameters.defaultHeight/4);
-      indice.setPrefWidth(3*HardCodedParameters.defaultWidth/12);
+      GridPane gridCheckValidate = new GridPane();
+      gridCheckValidate.setLayoutX(3*HardCodedParameters.defaultWidth/4);
+      gridCheckValidate.setLayoutY(2*HardCodedParameters.defaultHeight/3);
+      gridCheckValidate.setHgap(15);
+      gridCheckValidate.setVgap(10);
+      
+      textCheckCable.setCursor(Cursor.DEFAULT);
+      textCheckCable.setEditable(false);
+      textCheckCable.autosize();
+      textCheckCable.setPrefWidth(HardCodedParameters.defaultWidth/8);
+      textCheckCable.setAlignment(Pos.BASELINE_LEFT);
+      textCheckCable.setStyle("-fx-text-fill: green; -fx-control-inner-background: black;");
+      gridCheckValidate.add(textCheckCable,0,0);
+	  GridPane.setMargin(textCheckCable, new Insets(0, 0, 0, HardCodedParameters.defaultWidth/25));
+
+      rec_check1.setFill(Color.BLACK);
+      gridCheckValidate.add(rec_check1,1,0);
+	  
+	  textCheckSimon.setCursor(Cursor.DEFAULT);
+	  textCheckSimon.setEditable(false);
+	  textCheckSimon.autosize();
+	  textCheckSimon.setPrefWidth(HardCodedParameters.defaultWidth/8);
+	  textCheckSimon.setAlignment(Pos.BASELINE_LEFT);
+	  textCheckSimon.setStyle("-fx-text-fill: green; -fx-control-inner-background: black;");
+      gridCheckValidate.add(textCheckSimon,0,1);
+	  GridPane.setMargin(textCheckSimon, new Insets(0, 0, 0, HardCodedParameters.defaultWidth/25));
+     
+      rec_check2.setFill(Color.BLACK);
+      gridCheckValidate.add(rec_check2,1,1);
+	  
+      textCheckAlpha.setCursor(Cursor.DEFAULT);
+      textCheckAlpha.setEditable(false);
+      textCheckAlpha.autosize();
+      textCheckAlpha.setPrefWidth(HardCodedParameters.defaultWidth/8);
+      textCheckAlpha.setAlignment(Pos.BASELINE_LEFT);
+      textCheckAlpha.setStyle("-fx-text-fill: green; -fx-control-inner-background: black;");
+      gridCheckValidate.add(textCheckAlpha,0,2);
+	  GridPane.setMargin(textCheckAlpha, new Insets(0, 0, 0, HardCodedParameters.defaultWidth/25));
+      
+      rec_check3.setFill(Color.BLACK);
+      gridCheckValidate.add(rec_check3,1,2);
+      
+      textCheckCode.setCursor(Cursor.DEFAULT);
+      textCheckCode.setEditable(false);
+      textCheckCode.autosize();
+      textCheckCode.setPrefWidth(HardCodedParameters.defaultWidth/8);
+      textCheckCode.setAlignment(Pos.BASELINE_LEFT);
+      textCheckCode.setStyle("-fx-text-fill: green; -fx-control-inner-background: black;");
+      gridCheckValidate.add(textCheckCode,0,3);
+	  GridPane.setMargin(textCheckCode, new Insets(0, 0, 0, HardCodedParameters.defaultWidth/25));
+      
+      rec_check4.setFill(Color.BLACK);
+      gridCheckValidate.add(rec_check4,1,3);
+      
+	  GridPane.setMargin(gridCheckValidate, new Insets(0, 0, 0, 0));
+      
+      indice.setLayoutX(19*HardCodedParameters.defaultWidth/24);
+      indice.setLayoutY(HardCodedParameters.defaultHeight-75);
+      indice.setPrefWidth(3*HardCodedParameters.defaultWidth/17);
       
       camembert.setLayoutX(7*HardCodedParameters.defaultWidth/8);
       camembert.setLayoutY(HardCodedParameters.defaultHeight/4);
       
-	  stats_group.getChildren().addAll(stats, camembert, indice);
+	  stats_group.getChildren().addAll(stats, camembert, gridCheckValidate,indice);
 
 	  
       //Logs

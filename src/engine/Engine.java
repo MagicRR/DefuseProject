@@ -46,7 +46,7 @@ public class Engine implements EventHandler{
     private Timer engineClock = new Timer();
 //    private Timer countdown = new Timer();
 	
-	private int delaiMinuteur = 1000;
+	private int delaiMinuteur = 300;
 	private int finalCountdown;
 	private int finalCountdownFormatedMinutes;
 	private int finalCountdownFormatedSeconds;
@@ -56,8 +56,10 @@ public class Engine implements EventHandler{
 	private String lettre3 = "D";
 	private String lettre4 = "E";
 	
+	private int moduleEnCours;
+	
 	// ACTIVER LES LOGS OU NON. 1 = DESACTIVE
-	private int disableConsoleLogs = 1;
+	private int disableConsoleLogs = 0;
 	
 	public Engine(final Stage primaryStage) {
 		this.primaryStage = primaryStage;
@@ -418,7 +420,7 @@ public class Engine implements EventHandler{
 	  while(i < 6) {
 		  
 		  // LE PREMIER MODULE (0) EST TOUJOURS LE MINUTEUR
-		  if(i > 0 && i < 6) {
+		  if(i > 1 && i < 6) {
 			  generationEnigmeBoard();
 			  
 	    	  // ENIGME BOUTON
@@ -456,9 +458,14 @@ public class Engine implements EventHandler{
 			  
 		  }
 		  // ELSE --> MINUTEUR
-		  else {
+		  else if (i == 0){
 			  initiatingModuleMinuteur();
+//			  System.out.println("Minuteur");
 //			  printingMinuteurLog();
+		  }
+		  else {
+			  initiatingModuleAbortButton();
+//			  System.out.println("Abort");
 		  }
 		  i++;
 	  }
@@ -622,8 +629,27 @@ public class Engine implements EventHandler{
 								  ), 
 						  new Button()
 						  ),
-				  false, 
-				  false
+				  true, 
+				  true
+				  )
+		  );
+  	}
+  	
+  	private void initiatingModuleAbortButton() {
+  		modules.add(new Module(
+				  i, 
+				  new EnigmeBoard(
+						  "Abort", 
+						  new Enigme(
+								  "Pas d'énigme",
+								  1, 
+								  new Indice(
+										  "Pas d'indice")
+								  ), 
+						  new Button()
+						  ),
+				  true, 
+				  true
 				  )
 		  );
   	}
@@ -669,7 +695,12 @@ public class Engine implements EventHandler{
 	  				 }
 	  			  }
 	  			  else {
-		  			  view.getTimer().setText(finalCountdownFormatedMinutes+":"+finalCountdownFormatedSeconds);
+	  				if(finalCountdownFormatedSeconds < 10) {
+		  				view.getTimer().setText(finalCountdownFormatedMinutes+":0"+finalCountdownFormatedSeconds);
+	  				}
+	  				else {
+			  			  view.getTimer().setText(finalCountdownFormatedMinutes+":"+finalCountdownFormatedSeconds);
+	  				}
 	  			  }
 	  			  
 	  			  
@@ -693,6 +724,8 @@ public class Engine implements EventHandler{
 	  		  }
 	  	  },0,1000);
 	  }
+  	
+  	  
 	  
   	  public void abortMission() {
   		if(disableConsoleLogs != 1) {
@@ -700,21 +733,53 @@ public class Engine implements EventHandler{
 		}
   	  }
   	  
+  	  public void initializingSimon() {
+  		  System.out.println("C'est bien un Simon");
+	  }
+  	  
+  	  public void initializingPaveNumerique() {
+  		  System.out.println("C'est bien un Pavé Numérique");
+	  }
+  	  
+  	  public void initializingPaveAlphabetique() {
+		  System.out.println("C'est bien un Pavé Alphabétique");
+	  }
+  	  
+  	  public void initializingCables() {
+		  System.out.println("C'est bien des câbles");
+	  }
+  	  
   	  public void revealModule(int i) {
-		  modules.get(i).isActive = true;
+  		  if(modules.get(i).isActive == true && i > 1) {
+  			  if(modules.get(i+1) != null) {
+  	  			  modules.get(i+1).isActive();
+  	  			  moduleEnCours = i + 1;
+  			  }
+  		  }
+  		  if (modules.get(moduleEnCours).getEnigmeBoard().getNameBoard().equals("Simon")) {
+  			  initializingSimon();
+		  }
+  		  if (modules.get(moduleEnCours).getEnigmeBoard().getNameBoard().equals("Pavé Numérique")) {
+			  initializingPaveNumerique();
+		  }
+  		  if (modules.get(moduleEnCours).getEnigmeBoard().getNameBoard().equals("Pavé Alphabétique")) {
+  			initializingPaveAlphabetique();
+		  }
+  		  if (modules.get(moduleEnCours).getEnigmeBoard().getNameBoard().equals("Câbles")) {
+  			initializingCables();
+		  }
+		  
 	  }
 	  
-	  public void resolvedModule(int i) {
-		  modules.get(i).isResolved = true;
+	  public void resolvedModule(int moduleEnCours) {
+		  modules.get(moduleEnCours).isResolved = true;
 	  }
-	  
-	  
 
 	  public void checkIfCodeIsValidated(){
 		  
 	  	  if(view.getLettre1().getText().equals(lettre1) && view.getLettre2().getText().equals(lettre2) && view.getLettre3().getText().equals(lettre3) && view.getLettre4().getText().equals(lettre4)){
 	  		  System.out.println("L'opérateur a passé le pavé alphabétique avec succès.");
-	  		  
+	  		  revealModule(moduleEnCours);
 	  	  }
 	  }
 	  
