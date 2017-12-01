@@ -51,8 +51,13 @@ public class Engine implements EventHandler{
 	private int finalCountdownFormatedMinutes;
 	private int finalCountdownFormatedSeconds;
 	
+	private String lettre1 = "C";
+	private String lettre2 = "O";
+	private String lettre3 = "D";
+	private String lettre4 = "E";
+	
 	// ACTIVER LES LOGS OU NON. 1 = DESACTIVE
-	private int disableConsoleLogs = 0;
+	private int disableConsoleLogs = 1;
 	
 	public Engine(final Stage primaryStage) {
 		this.primaryStage = primaryStage;
@@ -98,6 +103,8 @@ public class Engine implements EventHandler{
                 	  }else {
                 		  view.getLettre1().setText(new String((String)view.getAlphabet().get(i+1)));
                 	  }
+                	  
+                	  checkIfCodeIsValidated();
 
                 	  trouve = true;  
                   }
@@ -119,6 +126,8 @@ public class Engine implements EventHandler{
               	  }else {
               		  view.getLettre2().setText(new String((String)view.getAlphabet().get(i+1)));
               	  }
+              	  
+              	  checkIfCodeIsValidated();
 
               	  trouve = true;  
                 }
@@ -140,6 +149,8 @@ public class Engine implements EventHandler{
               	  }else {
               		  view.getLettre3().setText(new String((String)view.getAlphabet().get(i+1)));
               	  }
+              	  
+              	  checkIfCodeIsValidated();
 
               	  trouve = true;  
                 }
@@ -161,6 +172,8 @@ public class Engine implements EventHandler{
               	  }else {
               		  view.getLettre4().setText(new String((String)view.getAlphabet().get(i+1)));
               	  }
+              	  
+              	  checkIfCodeIsValidated();
 
               	  trouve = true;  
                 }
@@ -183,6 +196,8 @@ public class Engine implements EventHandler{
               		  view.getLettre1().setText(new String((String)view.getAlphabet().get(i-1)));
               	  }
 
+              	  checkIfCodeIsValidated();
+
               	  trouve = true;  
                 }
      
@@ -203,6 +218,8 @@ public class Engine implements EventHandler{
              	  }else {
              		  view.getLettre2().setText(new String((String)view.getAlphabet().get(i-1)));
              	  }
+             	  
+              	  checkIfCodeIsValidated();
 
              	  trouve = true;  
                }
@@ -224,6 +241,8 @@ public class Engine implements EventHandler{
              	  }else {
              		  view.getLettre3().setText(new String((String)view.getAlphabet().get(i-1)));
              	  }
+             	  
+              	  checkIfCodeIsValidated();
 
              	  trouve = true;  
                }
@@ -245,6 +264,8 @@ public class Engine implements EventHandler{
              	  }else {
              		  view.getLettre4().setText(new String((String)view.getAlphabet().get(i-1)));
              	  }
+             	  
+              	  checkIfCodeIsValidated();
 
              	  trouve = true;  
                }
@@ -671,21 +692,24 @@ public class Engine implements EventHandler{
 		  modules.get(i).isResolved = true;
 	  }
 	  
-	  public void checkIfDefeat() {
-		  
-	  }
+	  
 
-//	  public void checkIfCodeIsValidated(){
-//	  	  if(){
-//	  	  	
-//	  	  }
-//	  	view.getAlphabet().get(i).equals(view.getLettre1().getText())
-//	  }
+	  public void checkIfCodeIsValidated(){
+		  
+	  	  if(view.getLettre1().getText().equals(lettre1) && view.getLettre2().getText().equals(lettre2) && view.getLettre3().getText().equals(lettre3) && view.getLettre4().getText().equals(lettre4)){
+	  		  System.out.println("L'opérateur a passé le pavé alphabétique avec succès.");
+	  		  
+	  	  }
+	  }
 	  
 	  public void victory() {
 		  engineClock.cancel();
 		  view.getTimer().setText("VICTOIRE");
 		  System.out.println("L'opérateur a désamorcé la bombe avec succès.");
+	  }
+	  
+	  public void checkIfDefeat() {
+		  
 	  }
 	  
 	  public void defeat() {
