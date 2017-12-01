@@ -83,6 +83,137 @@ public class Engine implements EventHandler{
         if (source.equals(view.getZone_cable_4())) {
         	view.getRec_cable4().setFill(new ImagePattern(view.getCable_bleu_cut()));
         }
+        
+        if (source.equals(view.getBouton_up1())) {
+        	
+        	   boolean trouve = false;
+        	   int i = 0;
+        	   
+               while(!trouve){  
+            	   
+                  if(view.getAlphabet().get(i).equals(view.getLettre1().getText())) 
+                  {  
+                     String nextLetter = new String((String)view.getAlphabet().get(i+1));
+                     view.getLettre1().setText(nextLetter);
+                     trouve = true;  
+                  }
+                  i++;
+               }  
+        	
+        }
+        
+        if (source.equals(view.getBouton_up2())) {
+        	boolean trouve = false;
+     	   	int i = 0;
+     	   
+            while(!trouve){  
+         	   
+               if(view.getAlphabet().get(i).equals(view.getLettre2().getText())) 
+               {  
+                  String nextLetter = new String((String)view.getAlphabet().get(i+1));
+                  view.getLettre2().setText(nextLetter);
+                  trouve = true;  
+               }
+               i++;
+            } 
+        }
+        
+        if (source.equals(view.getBouton_up3())) {
+        	boolean trouve = false;
+     	   	int i = 0;
+     	   
+            while(!trouve){  
+         	   
+               if(view.getAlphabet().get(i).equals(view.getLettre3().getText())) 
+               {  
+                  String nextLetter = new String((String)view.getAlphabet().get(i+1));
+                  view.getLettre3().setText(nextLetter);
+                  trouve = true;  
+               }
+               i++;
+            } 
+        }
+        
+        if (source.equals(view.getBouton_up4())) {
+        	boolean trouve = false;
+     	   	int i = 0;
+     	   
+            while(!trouve){  
+         	   
+               if(view.getAlphabet().get(i).equals(view.getLettre4().getText())) 
+               {  
+                  String nextLetter = new String((String)view.getAlphabet().get(i+1));
+                  view.getLettre4().setText(nextLetter);
+                  trouve = true;  
+               }
+               i++;
+            } 
+        }
+        
+        if (source.equals(view.getBouton_down1())) {
+        	boolean trouve = false;
+     	   	int i = 0;
+     	   
+            while(!trouve){  
+         	   
+               if(view.getAlphabet().get(i).equals(view.getLettre1().getText())) 
+               {  
+                  String nextLetter = new String((String)view.getAlphabet().get(i-1));
+                  view.getLettre1().setText(nextLetter);
+                  trouve = true;  
+               }
+               i++;
+            } 
+        }
+
+        if (source.equals(view.getBouton_down2())) {
+        	boolean trouve = false;
+     	   	int i = 0;
+     	   
+            while(!trouve){  
+         	   
+               if(view.getAlphabet().get(i).equals(view.getLettre2().getText())) 
+               {  
+                  String nextLetter = new String((String)view.getAlphabet().get(i-1));
+                  view.getLettre2().setText(nextLetter);
+                  trouve = true;  
+               }
+               i++;
+            } 
+        }
+        
+        if (source.equals(view.getBouton_down3())) {
+        	boolean trouve = false;
+     	   	int i = 0;
+     	   
+            while(!trouve){  
+         	   
+               if(view.getAlphabet().get(i).equals(view.getLettre3().getText())) 
+               {  
+                  String nextLetter = new String((String)view.getAlphabet().get(i-1));
+                  view.getLettre3().setText(nextLetter);
+                  trouve = true;  
+               }
+               i++;
+            } 
+        }
+        
+        if (source.equals(view.getBouton_down4())) {
+        	boolean trouve = false;
+     	   	int i = 0;
+     	   
+            while(!trouve){  
+         	   
+               if(view.getAlphabet().get(i).equals(view.getLettre4().getText())) 
+               {  
+                  String nextLetter = new String((String)view.getAlphabet().get(i-1));
+                  view.getLettre4().setText(nextLetter);
+                  trouve = true;  
+               }
+               i++;
+            } 
+        }
+        
 	}
 	
 	public Stage getPrimaryStage() {

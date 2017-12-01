@@ -30,6 +30,10 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Priority;
 
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+import java.util.Arrays;
+
 import engine.Engine;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -65,6 +69,7 @@ public class Viewer extends HBox{
   private final Button bouton_down2 = new Button();
   private final Button bouton_down3 = new Button();
   private final Button bouton_down4 = new Button();
+  private final ArrayList alphabet = new ArrayList(Arrays.asList("A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"));
   private final Rectangle rec_simon1 = new Rectangle(-33+((3*HardCodedParameters.defaultWidth/4)/3)/2, 5+((HardCodedParameters.defaultHeight/3)/2));
   private final Rectangle rec_simon2 = new Rectangle(-33+((3*HardCodedParameters.defaultWidth/4)/3)/2, 5+((HardCodedParameters.defaultHeight/3)/2));
   private final Rectangle rec_simon3 = new Rectangle(-33+((3*HardCodedParameters.defaultWidth/4)/3)/2, 5+((HardCodedParameters.defaultHeight/3)/2));
@@ -111,10 +116,23 @@ public class Viewer extends HBox{
 
   public Viewer(final Engine engine){
 	  boutton_rouge.setOnAction(engine);
+	  bouton_up1.setOnAction(engine);
+	  bouton_up2.setOnAction(engine);
+	  bouton_up3.setOnAction(engine);
+	  bouton_up4.setOnAction(engine);
+	  bouton_down1.setOnAction(engine);
+	  bouton_down2.setOnAction(engine);
+	  bouton_down3.setOnAction(engine);
+	  bouton_down4.setOnAction(engine);
+	  lettre1.setOnAction(engine);
+	  lettre2.setOnAction(engine);
+	  lettre3.setOnAction(engine);
+	  lettre4.setOnAction(engine);
 	  zone_cable_1.setOnAction(engine);
 	  zone_cable_2.setOnAction(engine);
 	  zone_cable_3.setOnAction(engine);
 	  zone_cable_4.setOnAction(engine);
+	  indice.setOnAction(engine);
 	  but_simon1.setOnAction(engine);
 	  but_simon2.setOnAction(engine);
 	  but_simon3.setOnAction(engine);
@@ -798,5 +816,10 @@ public class Viewer extends HBox{
 	public Image getCable_jaune_cut() {
 		return cable_jaune_cut;
 	}
+
+	public ArrayList getAlphabet() {
+		return alphabet;
+	}
+	
 	
 }
