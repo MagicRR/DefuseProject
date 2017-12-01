@@ -46,7 +46,7 @@ public class Engine implements EventHandler{
     private Timer engineClock = new Timer();
 //    private Timer countdown = new Timer();
 	
-	private int delaiMinuteur = 300;
+	private int delaiMinuteur = 1000;
 	private int finalCountdown;
 	private int finalCountdownFormatedMinutes;
 	private int finalCountdownFormatedSeconds;
@@ -656,7 +656,19 @@ public class Engine implements EventHandler{
 	  			  finalCountdownFormatedMinutes = finalCountdown/60;
 	  			  finalCountdownFormatedSeconds = finalCountdown%60;
 	  			  
-	  			  view.getTimer().setText(finalCountdownFormatedMinutes+":"+finalCountdownFormatedSeconds);
+	  			  if(finalCountdownFormatedMinutes < 10) {
+	  				 if(finalCountdownFormatedSeconds < 10) {
+			  				view.getTimer().setText("0"+finalCountdownFormatedMinutes+":0"+finalCountdownFormatedSeconds);
+	  				 }
+	  				 else {
+			  			  view.getTimer().setText("0"+finalCountdownFormatedMinutes+":"+finalCountdownFormatedSeconds);
+	  				 }
+	  			  }
+	  			  else {
+		  			  view.getTimer().setText(finalCountdownFormatedMinutes+":"+finalCountdownFormatedSeconds);
+	  			  }
+	  			  
+	  			  
 	  			  
 	  			  // PRINT, IF COUNTDOWN ECOULE = VOUS ETES MORT
 	  			  if(finalCountdownFormatedMinutes > 0 || finalCountdownFormatedSeconds > -1) {
