@@ -90,128 +90,167 @@ public class Engine implements EventHandler{
         	   int i = 0;
         	   
                while(!trouve){  
-            	   
-                  if(view.getAlphabet().get(i).equals(view.getLettre1().getText())) 
-                  {  
-                     String nextLetter = new String((String)view.getAlphabet().get(i+1));
-                     view.getLettre1().setText(nextLetter);
-                     trouve = true;  
+            	
+                  if(view.getAlphabet().get(i).equals(view.getLettre1().getText())) {
+                	  
+                	  if(view.getAlphabet().get(25).equals(view.getLettre1().getText())) {
+                		  view.getLettre1().setText("A");
+                	  }else {
+                		  view.getLettre1().setText(new String((String)view.getAlphabet().get(i+1)));
+                	  }
+
+                	  trouve = true;  
                   }
+       
                   i++;
-               }  
-        	
+               } 
         }
         
         if (source.equals(view.getBouton_up2())) {
-        	boolean trouve = false;
-     	   	int i = 0;
-     	   
-            while(!trouve){  
-         	   
-               if(view.getAlphabet().get(i).equals(view.getLettre2().getText())) 
-               {  
-                  String nextLetter = new String((String)view.getAlphabet().get(i+1));
-                  view.getLettre2().setText(nextLetter);
-                  trouve = true;  
-               }
-               i++;
-            } 
+        	 boolean trouve = false;
+      	   	 int i = 0;
+      	   
+             while(!trouve){  
+          	
+                if(view.getAlphabet().get(i).equals(view.getLettre2().getText())) {
+              	  
+              	  if(view.getAlphabet().get(25).equals(view.getLettre2().getText())) {
+              		  view.getLettre2().setText("A");
+              	  }else {
+              		  view.getLettre2().setText(new String((String)view.getAlphabet().get(i+1)));
+              	  }
+
+              	  trouve = true;  
+                }
+     
+                i++;
+             } 
         }
         
         if (source.equals(view.getBouton_up3())) {
-        	boolean trouve = false;
-     	   	int i = 0;
-     	   
-            while(!trouve){  
-         	   
-               if(view.getAlphabet().get(i).equals(view.getLettre3().getText())) 
-               {  
-                  String nextLetter = new String((String)view.getAlphabet().get(i+1));
-                  view.getLettre3().setText(nextLetter);
-                  trouve = true;  
-               }
-               i++;
-            } 
+        	 boolean trouve = false;
+      	   	 int i = 0;
+      	   
+             while(!trouve){  
+          	
+                if(view.getAlphabet().get(i).equals(view.getLettre3().getText())) {
+              	  
+              	  if(view.getAlphabet().get(25).equals(view.getLettre3().getText())) {
+              		  view.getLettre3().setText("A");
+              	  }else {
+              		  view.getLettre3().setText(new String((String)view.getAlphabet().get(i+1)));
+              	  }
+
+              	  trouve = true;  
+                }
+     
+                i++;
+             } 
         }
         
         if (source.equals(view.getBouton_up4())) {
-        	boolean trouve = false;
-     	   	int i = 0;
-     	   
-            while(!trouve){  
-         	   
-               if(view.getAlphabet().get(i).equals(view.getLettre4().getText())) 
-               {  
-                  String nextLetter = new String((String)view.getAlphabet().get(i+1));
-                  view.getLettre4().setText(nextLetter);
-                  trouve = true;  
-               }
-               i++;
-            } 
+        	 boolean trouve = false;
+      	     int i = 0;
+      	   
+             while(!trouve){  
+          	
+                if(view.getAlphabet().get(i).equals(view.getLettre4().getText())) {
+              	  
+              	  if(view.getAlphabet().get(25).equals(view.getLettre4().getText())) {
+              		  view.getLettre4().setText("A");
+              	  }else {
+              		  view.getLettre4().setText(new String((String)view.getAlphabet().get(i+1)));
+              	  }
+
+              	  trouve = true;  
+                }
+     
+                i++;
+             } 
         }
         
         if (source.equals(view.getBouton_down1())) {
-        	boolean trouve = false;
-     	   	int i = 0;
-     	   
-            while(!trouve){  
-         	   
-               if(view.getAlphabet().get(i).equals(view.getLettre1().getText())) 
-               {  
-                  String nextLetter = new String((String)view.getAlphabet().get(i-1));
-                  view.getLettre1().setText(nextLetter);
-                  trouve = true;  
-               }
-               i++;
-            } 
+        	 boolean trouve = false;
+      	     int i = 0;
+      	   
+             while(!trouve){  
+          	
+                if(view.getAlphabet().get(i).equals(view.getLettre1().getText())) {
+              	  
+              	  if(view.getAlphabet().get(0).equals(view.getLettre1().getText())) {
+              		  view.getLettre1().setText("Z");
+              	  }else {
+              		  view.getLettre1().setText(new String((String)view.getAlphabet().get(i-1)));
+              	  }
+
+              	  trouve = true;  
+                }
+     
+                i++;
+             }  
         }
 
         if (source.equals(view.getBouton_down2())) {
         	boolean trouve = false;
-     	   	int i = 0;
+     	    int i = 0;
      	   
             while(!trouve){  
-         	   
-               if(view.getAlphabet().get(i).equals(view.getLettre2().getText())) 
-               {  
-                  String nextLetter = new String((String)view.getAlphabet().get(i-1));
-                  view.getLettre2().setText(nextLetter);
-                  trouve = true;  
+         	
+               if(view.getAlphabet().get(i).equals(view.getLettre2().getText())) {
+             	  
+             	  if(view.getAlphabet().get(0).equals(view.getLettre2().getText())) {
+             		  view.getLettre2().setText("Z");
+             	  }else {
+             		  view.getLettre2().setText(new String((String)view.getAlphabet().get(i-1)));
+             	  }
+
+             	  trouve = true;  
                }
+    
                i++;
-            } 
+            }  
         }
         
         if (source.equals(view.getBouton_down3())) {
         	boolean trouve = false;
-     	   	int i = 0;
+     	    int i = 0;
      	   
             while(!trouve){  
-         	   
-               if(view.getAlphabet().get(i).equals(view.getLettre3().getText())) 
-               {  
-                  String nextLetter = new String((String)view.getAlphabet().get(i-1));
-                  view.getLettre3().setText(nextLetter);
-                  trouve = true;  
+         	
+               if(view.getAlphabet().get(i).equals(view.getLettre3().getText())) {
+             	  
+             	  if(view.getAlphabet().get(0).equals(view.getLettre3().getText())) {
+             		  view.getLettre3().setText("Z");
+             	  }else {
+             		  view.getLettre3().setText(new String((String)view.getAlphabet().get(i-1)));
+             	  }
+
+             	  trouve = true;  
                }
+    
                i++;
-            } 
+            }  
         }
         
         if (source.equals(view.getBouton_down4())) {
         	boolean trouve = false;
-     	   	int i = 0;
+     	    int i = 0;
      	   
             while(!trouve){  
-         	   
-               if(view.getAlphabet().get(i).equals(view.getLettre4().getText())) 
-               {  
-                  String nextLetter = new String((String)view.getAlphabet().get(i-1));
-                  view.getLettre4().setText(nextLetter);
-                  trouve = true;  
+         	
+               if(view.getAlphabet().get(i).equals(view.getLettre4().getText())) {
+             	  
+             	  if(view.getAlphabet().get(0).equals(view.getLettre4().getText())) {
+             		  view.getLettre4().setText("Z");
+             	  }else {
+             		  view.getLettre4().setText(new String((String)view.getAlphabet().get(i-1)));
+             	  }
+
+             	  trouve = true;  
                }
+    
                i++;
-            } 
+            }  
         }
         
 	}
