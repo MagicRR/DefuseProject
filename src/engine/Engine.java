@@ -31,6 +31,7 @@ import javafx.event.EventHandler;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
+import javafx.scene.paint.Color;
 import javafx.scene.paint.ImagePattern;
 import javafx.stage.Stage;
 
@@ -59,7 +60,7 @@ public class Engine implements EventHandler{
 	private int moduleEnCours;
 	
 	// ACTIVER LES LOGS OU NON. 1 = DESACTIVE
-	private int disableConsoleLogs = 0;
+	private int disableConsoleLogs = 1;
 	
 	public Engine(final Stage primaryStage) {
 		this.primaryStage = primaryStage;
@@ -69,30 +70,42 @@ public class Engine implements EventHandler{
 	public void handle(Event event) {
 		
 		final Object source = event.getSource();
-		System.out.println("In handler !!");
+		System.out.println("In handler !!" +modules.get(moduleEnCours).getEnigmeBoard().getEnigme().getNameEnigme());
 		
         if (source.equals(view.getBoutton_rouge())) {
             view.getRec_bouton_rouge().setFill(new ImagePattern(view.getButton_green_img()));
         }
         
         if (source.equals(view.getZone_cable_1())) {
+        	if(modules.get(moduleEnCours).getEnigmeBoard().getEnigme().getNameEnigme()=="Cut red cable") {
+        		view.getRec_check1().setFill(Color.GREEN);
+        	}
         	view.getRec_cable1().setFill(new ImagePattern(view.getCable_rouge_cut()));
         }
         
         if (source.equals(view.getZone_cable_2())) {
+        	if(modules.get(moduleEnCours).getEnigmeBoard().getEnigme().getNameEnigme()=="Cut yellow cable") {
+        		view.getRec_check1().setFill(Color.GREEN);
+        	}
         	view.getRec_cable2().setFill(new ImagePattern(view.getCable_jaune_cut()));
         }
         
         if (source.equals(view.getZone_cable_3())) {
+        	if(modules.get(moduleEnCours).getEnigmeBoard().getEnigme().getNameEnigme()=="Cut green cable") {
+        		view.getRec_check1().setFill(Color.GREEN);
+        	}
         	view.getRec_cable3().setFill(new ImagePattern(view.getCable_vert_cut()));
         }
         
         if (source.equals(view.getZone_cable_4())) {
+        	if(modules.get(moduleEnCours).getEnigmeBoard().getEnigme().getNameEnigme()=="Cut blue cable") {
+        		view.getRec_check1().setFill(Color.GREEN);
+        	}
         	view.getRec_cable4().setFill(new ImagePattern(view.getCable_bleu_cut()));
         }
         
         if (source.equals(view.getIndice())) {
-        	view.getTextLogs().setText(libelleDeLIndice);
+        	view.getTextLogs().setText(modules.get(moduleEnCours).getEnigmeBoard().getEnigme().getIndice().getIndiceText());
         }
         
         if (source.equals(view.getBouton_up1())) {
@@ -340,10 +353,10 @@ public class Engine implements EventHandler{
 	  listeEnigmeBoards.add("Pavé Numérique");
 	  listeEnigmeBoards.add("Pavé Alphabétique");
 	  
-	  listeEnigmesCables.add("Couper le câble rouge");
-	  listeEnigmesCables.add("Couper le câble vert");
-	  listeEnigmesCables.add("Couper le câble bleu");
-	  listeEnigmesCables.add("Couper le câble jaune");
+	  listeEnigmesCables.add("Cut red cable");
+	  listeEnigmesCables.add("Cut green cable");
+	  listeEnigmesCables.add("Cut blue cable");
+	  listeEnigmesCables.add("Cut yellow cable");
 	  
 	  couleursSimon.add("Rouge");
 	  couleursSimon.add("Bleu");
@@ -420,43 +433,61 @@ public class Engine implements EventHandler{
 	  while(i < 6) {
 		  
 		  // LE PREMIER MODULE (0) EST TOUJOURS LE MINUTEUR
-		  if(i > 1 && i < 6) {
-			  generationEnigmeBoard();
-			  
-	    	  // ENIGME BOUTON
-		      if(nomDuBoard == "Bouton") {
-		    	  generationEnigmeBouton();
-		      }
-		      
-		      // ENIGME CABLES
-		      else if(nomDuBoard == "Câbles") {
-		    	  generationEnigmeCables();
-		      }
-		      
-		      // ENIGME SIMON
-		      else if(nomDuBoard == "Simon") {
-		    	  generationEnigmeSimon();
-
-		      }
-		      
-		      // ENIGME PAVE NUMERIQUE
-		      else if(nomDuBoard == "Pavé Numérique") {
-		    	  generationEnigmePaveNumerique();
-		      }
-		      
-		      // ENIGME PAVE ALPHABETIQUE
-		      else{
-		    	  generationEnigmePaveAlphabetique();
-		      }
-		      
+//		  if(i > 1 && i < 6) {
+//			  generationEnigmeBoard();
+//			  
+//	    	  // ENIGME BOUTON
+//		      if(nomDuBoard == "Bouton") {
+//		    	  generationEnigmeBouton();
+//		      }
+//		      
+//		      // ENIGME CABLES
+//		      else if(nomDuBoard == "Câbles") {
+//		    	  generationEnigmeCables();
+//		      }
+//		      
+//		      // ENIGME SIMON
+//		      else if(nomDuBoard == "Simon") {
+//		    	  generationEnigmeSimon();
+//
+//		      }
+//		      
+//		      // ENIGME PAVE NUMERIQUE
+//		      else if(nomDuBoard == "Pavé Numérique") {
+//		    	  generationEnigmePaveNumerique();
+//		      }
+//		      
+//		      // ENIGME PAVE ALPHABETIQUE
+//		      else{
+//		    	  generationEnigmePaveAlphabetique();
+//		      }
+//		      
 		      // GENERATION MODULE UNE FOIS TOUTES LES INFOS DISPOS
-		      initiatingModule();
+//		      initiatingModule();
 		      
 		      // GENERATION DES LOGS
-		      printingLogs();
-			  
-			  
+//		      printingLogs();
+//			  
+//			  
+//		  }
+		  
+		  if(i == 2) {
+			  generationEnigmeCables();
+			  initiatingModule();
 		  }
+		  else if(i == 3) {
+			  generationEnigmePaveAlphabetique();
+			  initiatingModule();
+		  }
+		  else if(i == 4) {
+			  generationEnigmePaveNumerique();
+			  initiatingModule();
+		  }
+		  else if(i == 5) {
+			  generationEnigmeSimon();
+			  initiatingModule();
+		  }
+		  
 		  // ELSE --> MINUTEUR
 		  else if (i == 0){
 			  initiatingModuleMinuteur();
@@ -467,6 +498,7 @@ public class Engine implements EventHandler{
 			  initiatingModuleAbortButton();
 //			  System.out.println("Abort");
 		  }
+		  
 		  i++;
 	  }
 	  
@@ -526,21 +558,27 @@ public class Engine implements EventHandler{
   		
   		purgeArrays();
 		initialisationArrays();
+		
+		System.out.println("Câbles");
   		
   		String choixDeLEnigme = listeEnigmesCables.get(gen.nextInt(listeEnigmesCables.size()));
 	  	nomDeLEnigme = choixDeLEnigme;
-	  	if(nomDeLEnigme == "Couper le câble rouge") {
+	  	if(nomDeLEnigme == "Cut red cable") {
 	  		libelleDeLIndice = "Vous devez couper le câble rouge";
 	  	}
-	  	else if(nomDeLEnigme == "Couper le câble vert") {
+	  	else if(nomDeLEnigme == "Cut green cable") {
 	  		libelleDeLIndice = "Vous devez couper le câble vert";
 	  	}
-	  	else if(nomDeLEnigme == "Couper le câble bleu") {
+	  	else if(nomDeLEnigme == "Cut blue cable") {
 	  		libelleDeLIndice = "Vous devez couper le câble bleu";
 	  	}
 	  	else {
 	  		libelleDeLIndice = "Vous devez couper le câble jaune";
 	  	}
+	  	
+	  	modules.get(moduleEnCours).getEnigmeBoard().getEnigme().setName(nomDeLEnigme);
+  		modules.get(moduleEnCours).getEnigmeBoard().getEnigme().getIndice().setIndiceText(libelleDeLIndice);
+
   	}
   	
   	private void generationEnigmeSimon() {
@@ -558,6 +596,7 @@ public class Engine implements EventHandler{
 	  	if(disableConsoleLogs != 1) {
 		  	System.out.println(ordreDesTouchesSimon);
 	  	}
+	  	modules.get(moduleEnCours).getEnigmeBoard().getEnigme().setName(nomDeLEnigme);
   	}
   	
   	private void generationEnigmePaveNumerique() {
@@ -586,6 +625,7 @@ public class Engine implements EventHandler{
   	    if(disableConsoleLogs != 1) {
   	    	System.out.println(ordreDesTouchesPaveNumerique);
   	  }
+  	  modules.get(moduleEnCours).getEnigmeBoard().getEnigme().setName(nomDeLEnigme);
   	}
   	
   	private void generationEnigmePaveAlphabetique() {
@@ -593,7 +633,9 @@ public class Engine implements EventHandler{
 		initialisationArrays();
 
 	  	nomDeLEnigme = "Pavé Alphabétique";
-	  	libelleDeLIndice = "Appuyez sur ABC";
+	  	libelleDeLIndice = "Ecrivez le mot 'CODE'";
+	  	
+	  	modules.get(moduleEnCours).getEnigmeBoard().getEnigme().setName(nomDeLEnigme);
   	}
   	
   	private void initiatingModule() {

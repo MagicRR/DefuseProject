@@ -905,5 +905,42 @@ public class Viewer extends HBox{
 	public Image getSimon_jaune_light() {
 		return simon_jaune_light;
 	}
+
+	public TextField getTextCheckCable() {
+		return textCheckCable;
+	}
+
+	public TextField getTextCheckAlpha() {
+		return textCheckAlpha;
+	}
+
+	public TextField getTextCheckSimon() {
+		return textCheckSimon;
+	}
+
+	public TextField getTextCheckCode() {
+		return textCheckCode;
+	}
+
+	public Image getCheck() {
+		return check;
+	}
+
+	public Rectangle getRec_check1() {
+		return rec_check1;
+	}
+
+	public Rectangle getRec_check2() {
+		return rec_check2;
+	}
+
+	public Rectangle getRec_check3() {
+		return rec_check3;
+	}
+
+	public Rectangle getRec_check4() {
+		return rec_check4;
+	}
+	
 	
 }
