@@ -78,28 +78,28 @@ public class Engine implements EventHandler{
         
         if (source.equals(view.getZone_cable_1())) {
         	if(modules.get(moduleEnCours).getEnigmeBoard().getEnigme().getNameEnigme()=="Cut red cable") {
-        		view.getRec_check1().setFill(Color.GREEN);
+        		view.getRec_check1().setFill(new ImagePattern(view.getCheck()));
         	}
         	view.getRec_cable1().setFill(new ImagePattern(view.getCable_rouge_cut()));
         }
         
         if (source.equals(view.getZone_cable_2())) {
         	if(modules.get(moduleEnCours).getEnigmeBoard().getEnigme().getNameEnigme()=="Cut yellow cable") {
-        		view.getRec_check1().setFill(Color.GREEN);
+        		view.getRec_check1().setFill(new ImagePattern(view.getCheck()));
         	}
         	view.getRec_cable2().setFill(new ImagePattern(view.getCable_jaune_cut()));
         }
         
         if (source.equals(view.getZone_cable_3())) {
         	if(modules.get(moduleEnCours).getEnigmeBoard().getEnigme().getNameEnigme()=="Cut green cable") {
-        		view.getRec_check1().setFill(Color.GREEN);
+        		view.getRec_check1().setFill(new ImagePattern(view.getCheck()));
         	}
         	view.getRec_cable3().setFill(new ImagePattern(view.getCable_vert_cut()));
         }
         
         if (source.equals(view.getZone_cable_4())) {
         	if(modules.get(moduleEnCours).getEnigmeBoard().getEnigme().getNameEnigme()=="Cut blue cable") {
-        		view.getRec_check1().setFill(Color.GREEN);
+        		view.getRec_check1().setFill(new ImagePattern(view.getCheck()));
         	}
         	view.getRec_cable4().setFill(new ImagePattern(view.getCable_bleu_cut()));
         }
@@ -596,7 +596,7 @@ public class Engine implements EventHandler{
 	  	if(disableConsoleLogs != 1) {
 		  	System.out.println(ordreDesTouchesSimon);
 	  	}
-	  	modules.get(moduleEnCours).getEnigmeBoard().getEnigme().setName(nomDeLEnigme);
+	  	//modules.get(moduleEnCours).getEnigmeBoard().getEnigme().setName(nomDeLEnigme);
   	}
   	
   	private void generationEnigmePaveNumerique() {
@@ -625,7 +625,7 @@ public class Engine implements EventHandler{
   	    if(disableConsoleLogs != 1) {
   	    	System.out.println(ordreDesTouchesPaveNumerique);
   	  }
-  	  modules.get(moduleEnCours).getEnigmeBoard().getEnigme().setName(nomDeLEnigme);
+  	  //modules.get(moduleEnCours).getEnigmeBoard().getEnigme().setName(nomDeLEnigme);
   	}
   	
   	private void generationEnigmePaveAlphabetique() {
@@ -635,7 +635,7 @@ public class Engine implements EventHandler{
 	  	nomDeLEnigme = "Pavé Alphabétique";
 	  	libelleDeLIndice = "Ecrivez le mot 'CODE'";
 	  	
-	  	modules.get(moduleEnCours).getEnigmeBoard().getEnigme().setName(nomDeLEnigme);
+	  	//modules.get(moduleEnCours).getEnigmeBoard().getEnigme().setName(nomDeLEnigme);
   	}
   	
   	private void initiatingModule() {
