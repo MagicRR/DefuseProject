@@ -101,7 +101,7 @@ public class Viewer extends HBox{
 
   private final Image camembert_img = new Image("/images/camembert_img.png");
   private final Circle camembert = new Circle(100,  Color.rgb(255,0,0));
-  private final Button indice = new Button("Indice");
+  private final Button indice = new Button("Demander un indice");
   private final TextField textLogs = new TextField(">> Bienvenue !\n");;
 
 
@@ -168,9 +168,7 @@ public class Viewer extends HBox{
 		  code_alpha.setImage(image_alpha);
 		  gridpane_malette.add(code_alpha,0,1);
 		  GridPane.setMargin(code_alpha, new Insets(0, 0, 0, 20));
-		  System.out.println("plop");
 	  }else {
-		  System.out.println("ploppas");
 
 		  //GridPane composant 3 GridPane (bouton_up, lettre, bouton_down);
 		  GridPane alpha = new GridPane();
@@ -476,11 +474,17 @@ public class Viewer extends HBox{
       camembert.setLayoutX(7*HardCodedParameters.defaultWidth/8);
       camembert.setLayoutY(HardCodedParameters.defaultHeight/4);
       
-      //indice.setGraphic(rec_fleche_haut3);
+      //Rectangle rec_indice = new Rectangle(3*HardCodedParameters.defaultWidth/12,HardCodedParameters.defaultHeight/10);
+	  //Image fond_indice = new Image("/images/indice.jpg");
+	  //rec_indice.setFill(new ImagePattern(fond_indice));
+      //indice.setGraphic(rec_indice);
+      //indice.setStyle("-fx-background-color: transparent;");
+      indice.setLayoutX(9*HardCodedParameters.defaultWidth/12);
+      indice.setLayoutY(3*HardCodedParameters.defaultHeight/4);
+      indice.setPrefWidth(3*HardCodedParameters.defaultWidth/12);
       
       camembert.setLayoutX(7*HardCodedParameters.defaultWidth/8);
       camembert.setLayoutY(HardCodedParameters.defaultHeight/4);
-      //indice.setStyle("-fx-background-color: transparent;");
       
 	  stats_group.getChildren().addAll(stats, camembert, indice);
 
