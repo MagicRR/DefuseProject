@@ -4,6 +4,8 @@
  * ******************************************************/
 package specifications;
 
+import java.util.ArrayList;
+
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
@@ -68,4 +70,10 @@ public interface ViewerService{
 	  public Image getCable_rouge_cut();
 	  public Image getCable_vert_cut();
 	  public Image getCable_jaune_cut();
+	  public ArrayList getAlphabet();
+	  public Image getSimon_rouge_light();
+	  public Image getSimon_jaune_light();
+	  public Image getSimon_bleu_light();
+	  public Image getSimon_vert_light();
+
 }

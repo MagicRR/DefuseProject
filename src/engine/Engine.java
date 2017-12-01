@@ -89,6 +89,10 @@ public class Engine implements EventHandler{
         	view.getRec_cable4().setFill(new ImagePattern(view.getCable_bleu_cut()));
         }
         
+        if (source.equals(view.getIndice())) {
+        	view.getTextLogs().setText(libelleDeLIndice);
+        }
+        
         if (source.equals(view.getBouton_up1())) {
         	
         	   boolean trouve = false;

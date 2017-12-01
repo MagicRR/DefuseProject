@@ -78,6 +78,10 @@ public class Viewer extends HBox{
   private final Image simon_bleu = new Image("/images/simon-bleu.png");
   private final Image simon_vert = new Image("/images/simon-vert.png");
   private final Image simon_jaune = new Image("/images/simon-jaune.png");
+  private final Image simon_rouge_light = new Image("/images/simon-rouge-light.png");
+  private final Image simon_bleu_light = new Image("/images/simon-bleu-light.png");
+  private final Image simon_vert_light = new Image("/images/simon-vert-light.png");
+  private final Image simon_jaune_light = new Image("/images/simon-jaune-light.png");
   private final Button zone_cable_1 = new Button();
   private final Button zone_cable_2 = new Button();
   private final Button zone_cable_3 = new Button();
@@ -128,6 +132,10 @@ public class Viewer extends HBox{
 	  lettre2.setOnAction(engine);
 	  lettre3.setOnAction(engine);
 	  lettre4.setOnAction(engine);
+	  but_simon1.setOnAction(engine);
+	  but_simon2.setOnAction(engine);
+	  but_simon3.setOnAction(engine);
+	  but_simon4.setOnAction(engine);
 	  zone_cable_1.setOnAction(engine);
 	  zone_cable_2.setOnAction(engine);
 	  zone_cable_3.setOnAction(engine);
@@ -820,6 +828,21 @@ public class Viewer extends HBox{
 	public ArrayList getAlphabet() {
 		return alphabet;
 	}
-	
+
+	public Image getSimon_rouge_light() {
+		return simon_rouge_light;
+	}
+
+	public Image getSimon_bleu_light() {
+		return simon_bleu_light;
+	}
+
+	public Image getSimon_vert_light() {
+		return simon_vert_light;
+	}
+
+	public Image getSimon_jaune_light() {
+		return simon_jaune_light;
+	}
 	
 }
