@@ -56,7 +56,7 @@ public class Engine implements EventHandler{
 	private String lettre3 = "D";
 	private String lettre4 = "E";
 	
-	private int a;
+	private int moduleEnCours;
 	
 	// ACTIVER LES LOGS OU NON. 1 = DESACTIVE
 	private int disableConsoleLogs = 0;
@@ -750,37 +750,36 @@ public class Engine implements EventHandler{
 	  }
   	  
   	  public void revealModule(int i) {
-  		  if(modules.get(i).isActive = true && i > 1) {
+  		  if(modules.get(i).isActive == true && i > 1) {
   			  if(modules.get(i+1) != null) {
   	  			  modules.get(i+1).isActive();
-  	  			  a = i + 1;
+  	  			  moduleEnCours = i + 1;
   			  }
   		  }
-  		  if (modules.get(a).getEnigmeBoard().getNameBoard().equals("Simon")) {
+  		  if (modules.get(moduleEnCours).getEnigmeBoard().getNameBoard().equals("Simon")) {
   			  initializingSimon();
 		  }
-  		  if (modules.get(a).getEnigmeBoard().getNameBoard().equals("Pavé Numérique")) {
+  		  if (modules.get(moduleEnCours).getEnigmeBoard().getNameBoard().equals("Pavé Numérique")) {
 			  initializingPaveNumerique();
 		  }
-  		  if (modules.get(a).getEnigmeBoard().getNameBoard().equals("Pavé Alphabétique")) {
+  		  if (modules.get(moduleEnCours).getEnigmeBoard().getNameBoard().equals("Pavé Alphabétique")) {
   			initializingPaveAlphabetique();
 		  }
-  		  if (modules.get(a).getEnigmeBoard().getNameBoard().equals("Câbles")) {
+  		  if (modules.get(moduleEnCours).getEnigmeBoard().getNameBoard().equals("Câbles")) {
   			initializingCables();
 		  }
-  		  
 		  
 	  }
 	  
-	  public void resolvedModule(int a) {
-		  modules.get(a).isResolved = true;
+	  public void resolvedModule(int moduleEnCours) {
+		  modules.get(moduleEnCours).isResolved = true;
 	  }
 
 	  public void checkIfCodeIsValidated(){
 		  
 	  	  if(view.getLettre1().getText().equals(lettre1) && view.getLettre2().getText().equals(lettre2) && view.getLettre3().getText().equals(lettre3) && view.getLettre4().getText().equals(lettre4)){
 	  		  System.out.println("L'opérateur a passé le pavé alphabétique avec succès.");
-	  		  revealModule(a);
+	  		  revealModule(moduleEnCours);
 	  	  }
 	  }
 	  
