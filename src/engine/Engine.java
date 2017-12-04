@@ -730,18 +730,28 @@ public class Engine implements EventHandler{
 	  			  
 	  			  if(finalCountdownFormatedMinutes < 10) {
 	  				 if(finalCountdownFormatedSeconds < 10) {
+	  					if(finalCountdownFormatedMinutes > -1 && finalCountdownFormatedSeconds > -1) {
 			  				view.getTimer().setText("0"+finalCountdownFormatedMinutes+":0"+finalCountdownFormatedSeconds);
+	  					}
 	  				 }
 	  				 else {
-			  			  view.getTimer().setText("0"+finalCountdownFormatedMinutes+":"+finalCountdownFormatedSeconds);
+	  					 if(finalCountdownFormatedMinutes > -1 && finalCountdownFormatedSeconds > -1) {
+				  			  view.getTimer().setText("0"+finalCountdownFormatedMinutes+":"+finalCountdownFormatedSeconds);
+	  					 }
 	  				 }
 	  			  }
 	  			  else {
 	  				if(finalCountdownFormatedSeconds < 10) {
-		  				view.getTimer().setText(finalCountdownFormatedMinutes+":0"+finalCountdownFormatedSeconds);
+	  					if(finalCountdownFormatedMinutes > -1 && finalCountdownFormatedSeconds > -1) {
+	  						view.getTimer().setText(finalCountdownFormatedMinutes+":0"+finalCountdownFormatedSeconds);
+	  					}
+		  				
 	  				}
 	  				else {
-			  			  view.getTimer().setText(finalCountdownFormatedMinutes+":"+finalCountdownFormatedSeconds);
+	  					if(finalCountdownFormatedMinutes > -1 && finalCountdownFormatedSeconds > -1) {
+	  						view.getTimer().setText(finalCountdownFormatedMinutes+":"+finalCountdownFormatedSeconds);
+	  					}
+			  			  
 	  				}
 	  			  }
 	  			  
