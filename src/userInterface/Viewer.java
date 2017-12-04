@@ -112,7 +112,12 @@ public class Viewer extends HBox{
   private final Image chiffre3 = new Image("/images/chiffre-3.png");
   private final Image chiffre4 = new Image("/images/chiffre-4.png");
 
-  private final Image camembert_img = new Image("/images/camembert_img.png");
+  private final Image camembert_img = new Image("/images/step_false.png");
+  private final Image camembert_img2 = new Image("/images/step_1.png");
+  private final Image camembert_img3 = new Image("/images/step_2.png");
+  private final Image camembert_img4 = new Image("/images/step_3.png");
+  private final Image camembert_img5 = new Image("/images/step_true.png");
+
   private final Circle camembert = new Circle(100,  Color.rgb(255,0,0));
   private final TextField textCheckCable = new TextField("Module cable désamorcé: ");
   private final TextField textCheckAlpha = new TextField("Module alpha désamorcé: ");
@@ -120,6 +125,7 @@ public class Viewer extends HBox{
   private final TextField textCheckCode = new TextField("Module code désamorcé: ");
 
   private final Image check = new Image("/images/Check_mark.png");
+  private final Image noCheck = new Image("/images/NoCheckmark.png");
   private final Rectangle rec_check1 = new Rectangle(HardCodedParameters.defaultWidth/24,25);
   private final Rectangle rec_check2 = new Rectangle(HardCodedParameters.defaultWidth/24,25);
   private final Rectangle rec_check3 = new Rectangle(HardCodedParameters.defaultWidth/24,25);
@@ -940,6 +946,26 @@ public class Viewer extends HBox{
 
 	public Rectangle getRec_check4() {
 		return rec_check4;
+	}
+
+	public Image getNoCheck() {
+		return noCheck;
+	}
+
+	public Image getCamembert_img2() {
+		return camembert_img2;
+	}
+
+	public Image getCamembert_img3() {
+		return camembert_img3;
+	}
+
+	public Image getCamembert_img4() {
+		return camembert_img4;
+	}
+
+	public Image getCamembert_img5() {
+		return camembert_img5;
 	}
 	
 	

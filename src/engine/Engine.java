@@ -77,30 +77,54 @@ public class Engine implements EventHandler{
         }
         
         if (source.equals(view.getZone_cable_1())) {
+        	
+        	//Vérifie si c'est le bon cable à couper ou non
         	if(modules.get(moduleEnCours).getEnigmeBoard().getEnigme().getNameEnigme()=="Cut red cable") {
         		view.getRec_check1().setFill(new ImagePattern(view.getCheck()));
+        		view.getCamembert().setFill(new ImagePattern(view.getCamembert_img2()));
+        	}else {
+        		view.getRec_check1().setFill(new ImagePattern(view.getNoCheck()));
         	}
+        	
         	view.getRec_cable1().setFill(new ImagePattern(view.getCable_rouge_cut()));
         }
         
         if (source.equals(view.getZone_cable_2())) {
+        	
+        	//Vérifie si c'est le bon cable à couper ou non
         	if(modules.get(moduleEnCours).getEnigmeBoard().getEnigme().getNameEnigme()=="Cut yellow cable") {
         		view.getRec_check1().setFill(new ImagePattern(view.getCheck()));
+        		view.getCamembert().setFill(new ImagePattern(view.getCamembert_img2()));
+        	}else {
+        		view.getRec_check1().setFill(new ImagePattern(view.getNoCheck()));
         	}
+        	
         	view.getRec_cable2().setFill(new ImagePattern(view.getCable_jaune_cut()));
         }
         
         if (source.equals(view.getZone_cable_3())) {
+           	
+        	//Vérifie si c'est le bon cable à couper ou non
         	if(modules.get(moduleEnCours).getEnigmeBoard().getEnigme().getNameEnigme()=="Cut green cable") {
         		view.getRec_check1().setFill(new ImagePattern(view.getCheck()));
+        		view.getCamembert().setFill(new ImagePattern(view.getCamembert_img2()));
+        	}else {
+        		view.getRec_check1().setFill(new ImagePattern(view.getNoCheck()));
         	}
+        	
         	view.getRec_cable3().setFill(new ImagePattern(view.getCable_vert_cut()));
         }
         
         if (source.equals(view.getZone_cable_4())) {
+           	
+        	//Vérifie si c'est le bon cable à couper ou non
         	if(modules.get(moduleEnCours).getEnigmeBoard().getEnigme().getNameEnigme()=="Cut blue cable") {
         		view.getRec_check1().setFill(new ImagePattern(view.getCheck()));
+        		view.getCamembert().setFill(new ImagePattern(view.getCamembert_img2()));
+        	}else {
+        		view.getRec_check1().setFill(new ImagePattern(view.getNoCheck()));
         	}
+        	
         	view.getRec_cable4().setFill(new ImagePattern(view.getCable_bleu_cut()));
         }
         
