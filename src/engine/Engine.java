@@ -78,10 +78,6 @@ public class Engine implements EventHandler{
 			final Object source = event.getSource();
 			System.out.println("In handler !!" +modules.get(moduleEnCours).getEnigmeBoard().getEnigme().getNameEnigme());
 			
-	        if (source.equals(view.getBoutton_rouge())) {
-	            view.getRec_bouton_rouge().setFill(new ImagePattern(view.getButton_green_img()));
-	        }
-	        
 	        if (source.equals(view.getZone_cable_1())) {
 	        	
 	        	if(false == cable_fait) {
@@ -394,7 +390,10 @@ public class Engine implements EventHandler{
 	        
 	        if (source.equals(view.getBoutton_rouge())) {
 	        	
+	            view.getRec_bouton_rouge().setFill(new ImagePattern(view.getButton_green_img()));
+
 	            if(modules.get(1).isResolved() == true && modules.get(2).isResolved == true && modules.get(3).isResolved == true && modules.get(4).isResolved == true && modules.get(5).isResolved == true) {
+	            	
 	            	victory();
 	            }
 	            else {
