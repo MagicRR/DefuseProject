@@ -561,7 +561,7 @@ public class Engine implements EventHandler{
 	        	
 	            view.getRec_bouton_rouge().setFill(new ImagePattern(view.getButton_green_img()));
 
-	            if(modules.get(1).isResolved() == true && modules.get(2).isResolved == true && modules.get(3).isResolved == true && modules.get(4).isResolved == true && modules.get(5).isResolved == true) {
+	            if(modules.get(2).isResolved() == true && modules.get(3).isResolved() == true && modules.get(4).isResolved() == true && modules.get(5).isResolved() == true) {
 	            	
 	            	victory();
 	            }
