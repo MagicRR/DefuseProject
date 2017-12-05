@@ -46,7 +46,14 @@ public class Engine implements EventHandler{
 	private Random gen = new Random();
     private Timer engineClock = new Timer();
 //    private Timer countdown = new Timer();
+    
+    private Timer simonClock = new Timer();
+    
 	
+    private boolean showSimonOrder = false;
+    private int fourSteps;
+    private int fourStepsPlusFour;
+    
 	private int delaiMinuteur = 300;
 	private int finalCountdown;
 	private int finalCountdownFormatedMinutes;
@@ -57,6 +64,8 @@ public class Engine implements EventHandler{
 	private String lettre3 = "D";
 	private String lettre4 = "E";
 	
+	
+	private boolean cablesResolved = false;
 	private boolean defeat = false;
 	private boolean cable_fait = false;
 	private boolean alpha_fait = false;
@@ -78,6 +87,61 @@ public class Engine implements EventHandler{
 			final Object source = event.getSource();
 			System.out.println("In handler !!" +modules.get(moduleEnCours).getEnigmeBoard().getEnigme().getNameEnigme());
 			
+			if(true == cablesResolved) {
+	        	modules.get(2).setActive(false);
+	        	modules.get(5).setActive(true);
+	        	fourSteps = data.getStepNumber();
+	        	fourStepsPlusFour = fourSteps + 4;
+	        	
+	        	if(showSimonOrder == false) {
+	        		simonClock.schedule(new TimerTask(){
+		        		public void run() {
+		        				if(fourSteps == fourStepsPlusFour - 4) {
+		        					System.out.println("Simon rouge");
+		        					view.getRec_simon1().setFill(new ImagePattern(view.getSimon_rouge_light()));
+		        					view.getRec_simon2().setFill(new ImagePattern(view.getSimon_vert()));
+		        					view.getRec_simon3().setFill(new ImagePattern(view.getSimon_jaune()));
+		        					view.getRec_simon4().setFill(new ImagePattern(view.getSimon_bleu()));
+		        				}
+		        				if(fourSteps == fourStepsPlusFour - 3) {
+		        					System.out.println("Simon vert");	
+		        					view.getRec_simon2().setFill(new ImagePattern(view.getSimon_vert_light()));
+		        					view.getRec_simon1().setFill(new ImagePattern(view.getSimon_rouge()));
+		        					view.getRec_simon3().setFill(new ImagePattern(view.getSimon_jaune()));
+		        					view.getRec_simon4().setFill(new ImagePattern(view.getSimon_bleu()));
+		        				}
+		        				if(fourSteps == fourStepsPlusFour - 2) {
+		        					System.out.println("Simon jaune");
+		        					view.getRec_simon3().setFill(new ImagePattern(view.getSimon_jaune_light()));
+		        					view.getRec_simon2().setFill(new ImagePattern(view.getSimon_vert()));
+		        					view.getRec_simon1().setFill(new ImagePattern(view.getSimon_rouge()));
+		        					view.getRec_simon4().setFill(new ImagePattern(view.getSimon_bleu()));
+		        				}
+		        				if(fourSteps == fourStepsPlusFour - 1) {
+		        					System.out.println("Simon bleu");	
+		        					view.getRec_simon4().setFill(new ImagePattern(view.getSimon_bleu_light()));
+		        					view.getRec_simon2().setFill(new ImagePattern(view.getSimon_vert()));
+		        					view.getRec_simon3().setFill(new ImagePattern(view.getSimon_jaune()));
+		        					view.getRec_simon1().setFill(new ImagePattern(view.getSimon_rouge()));
+		        				}
+		        				if(fourSteps == fourStepsPlusFour) {
+		        					System.out.println("Aucun Simon");	
+		        					view.getRec_simon4().setFill(new ImagePattern(view.getSimon_bleu()));
+		        					view.getRec_simon2().setFill(new ImagePattern(view.getSimon_vert()));
+		        					view.getRec_simon3().setFill(new ImagePattern(view.getSimon_jaune()));
+		        					view.getRec_simon1().setFill(new ImagePattern(view.getSimon_rouge()));
+		        				}
+			        			fourSteps++;
+		        		}
+		        	},0,1000);
+	        	}
+	        	else {
+	        		System.out.println("Le simon a déjà été montré.");	
+	        	}
+        		
+        		showSimonOrder = true;
+	        }
+			
 	        if (source.equals(view.getZone_cable_1())) {
 	        	
 	        	if(false == cable_fait) {
@@ -86,6 +150,8 @@ public class Engine implements EventHandler{
 		        		view.getRec_check1().setFill(new ImagePattern(view.getCheck()));
 		        		view.getCamembert().setFill(new ImagePattern(view.getCamembert_img2()));
 		        		view.setModule_alpha(true);
+		        		// IF CABLES RESOLUS : SIMON
+		        		cablesResolved = true;
 		        	}else {
 		        		view.getRec_check1().setFill(new ImagePattern(view.getNoCheck()));
 		      		  	view.getTextLogs().setText(view.getTextLogs().getText()+">> Vous avez échoué.\n");
@@ -109,6 +175,8 @@ public class Engine implements EventHandler{
 		        		view.getRec_check2().setFill(new ImagePattern(view.getCheck()));
 		        		view.getCamembert().setFill(new ImagePattern(view.getCamembert_img2()));
 		        		view.setModule_alpha(true);
+		        		// IF CABLES RESOLUS : SIMON
+		        		cablesResolved = true;
 		        	}else {
 		        		view.getRec_check2().setFill(new ImagePattern(view.getNoCheck()));
 		      		  	view.getTextLogs().setText(view.getTextLogs().getText()+">> Vous avez échoué.\n");
@@ -132,6 +200,8 @@ public class Engine implements EventHandler{
 		        		view.getRec_check3().setFill(new ImagePattern(view.getCheck()));
 		        		view.getCamembert().setFill(new ImagePattern(view.getCamembert_img2()));
 		        		view.setModule_alpha(true);
+		        		// IF CABLES RESOLUS : SIMON
+		        		cablesResolved = true;
 		        	}else {
 		        		view.getRec_check3().setFill(new ImagePattern(view.getNoCheck()));
 		      		  	view.getTextLogs().setText(view.getTextLogs().getText()+">> Vous avez échoué.\n");
@@ -155,6 +225,8 @@ public class Engine implements EventHandler{
 		        		view.getRec_check4().setFill(new ImagePattern(view.getCheck()));
 		        		view.getCamembert().setFill(new ImagePattern(view.getCamembert_img2()));
 		        		view.setModule_alpha(true);
+		        		// IF CABLES RESOLUS : SIMON
+		        		cablesResolved = true;
 		        	}else {
 		        		view.getRec_check4().setFill(new ImagePattern(view.getNoCheck()));
 		      		  	view.getTextLogs().setText(view.getTextLogs().getText()+">> Vous avez échoué.\n");
@@ -171,8 +243,14 @@ public class Engine implements EventHandler{
 	        }
 	        
 	        if (source.equals(view.getIndice())) {
-	        	view.getTextLogs().setText(view.getTextLogs().getText()+">> "+modules.get(moduleEnCours).getEnigmeBoard().getEnigme().getIndice().getIndiceText()+".\n");
+	        	if(modules.get(5).isActive == true){
+	        		showSimonOrder = true;
+	        	}
+	        	if(modules.get(2).isActive == true){
+	        		view.getTextLogs().setText(view.getTextLogs().getText()+">> "+modules.get(moduleEnCours).getEnigmeBoard().getEnigme().getIndice().getIndiceText()+"\n");
+	        	}
 	        }
+
 	        
 	        if (source.equals(view.getBouton_up1())) {
 	        	
@@ -614,6 +692,8 @@ public class Engine implements EventHandler{
 	  if(disableConsoleLogs != 1) {
 		  System.out.println("Initialisation Minuteur : CHECK");
 	  }
+	  
+	  modules.get(2).setActive(true);
 	  
 	  //GAME STEP, TOUJOURS UTILE
 //      engineClock.schedule(new TimerTask(){
