@@ -349,38 +349,38 @@ public class Viewer extends HBox{
       rec_check1.setFill(Color.BLACK);
       gridCheckValidate.add(rec_check1,1,0);
 	  
-	  textCheckSimon.setCursor(Cursor.DEFAULT);
-	  textCheckSimon.setEditable(false);
-	  textCheckSimon.autosize();
-	  textCheckSimon.setPrefWidth(HardCodedParameters.defaultWidth/8);
-	  textCheckSimon.setAlignment(Pos.BASELINE_LEFT);
-	  textCheckSimon.setStyle("-fx-text-fill: green; -fx-control-inner-background: black;");
-      gridCheckValidate.add(textCheckSimon,0,1);
-	  GridPane.setMargin(textCheckSimon, new Insets(0, 0, 0, HardCodedParameters.defaultWidth/25));
+	  textCheckAlpha.setCursor(Cursor.DEFAULT);
+	  textCheckAlpha.setEditable(false);
+	  textCheckAlpha.autosize();
+	  textCheckAlpha.setPrefWidth(HardCodedParameters.defaultWidth/8);
+	  textCheckAlpha.setAlignment(Pos.BASELINE_LEFT);
+	  textCheckAlpha.setStyle("-fx-text-fill: green; -fx-control-inner-background: black;");
+      gridCheckValidate.add(textCheckAlpha,0,1);
+	  GridPane.setMargin(textCheckAlpha, new Insets(0, 0, 0, HardCodedParameters.defaultWidth/25));
      
       rec_check2.setFill(Color.BLACK);
       gridCheckValidate.add(rec_check2,1,1);
 	  
-      textCheckAlpha.setCursor(Cursor.DEFAULT);
-      textCheckAlpha.setEditable(false);
-      textCheckAlpha.autosize();
-      textCheckAlpha.setPrefWidth(HardCodedParameters.defaultWidth/8);
-      textCheckAlpha.setAlignment(Pos.BASELINE_LEFT);
-      textCheckAlpha.setStyle("-fx-text-fill: green; -fx-control-inner-background: black;");
-      gridCheckValidate.add(textCheckAlpha,0,2);
-	  GridPane.setMargin(textCheckAlpha, new Insets(0, 0, 0, HardCodedParameters.defaultWidth/25));
-      
-      rec_check3.setFill(Color.BLACK);
-      gridCheckValidate.add(rec_check3,1,2);
-      
       textCheckCode.setCursor(Cursor.DEFAULT);
       textCheckCode.setEditable(false);
       textCheckCode.autosize();
       textCheckCode.setPrefWidth(HardCodedParameters.defaultWidth/8);
       textCheckCode.setAlignment(Pos.BASELINE_LEFT);
       textCheckCode.setStyle("-fx-text-fill: green; -fx-control-inner-background: black;");
-      gridCheckValidate.add(textCheckCode,0,3);
+      gridCheckValidate.add(textCheckCode,0,2);
 	  GridPane.setMargin(textCheckCode, new Insets(0, 0, 0, HardCodedParameters.defaultWidth/25));
+      
+      rec_check3.setFill(Color.BLACK);
+      gridCheckValidate.add(rec_check3,1,2);
+      
+      textCheckSimon.setCursor(Cursor.DEFAULT);
+      textCheckSimon.setEditable(false);
+      textCheckSimon.autosize();
+      textCheckSimon.setPrefWidth(HardCodedParameters.defaultWidth/8);
+      textCheckSimon.setAlignment(Pos.BASELINE_LEFT);
+      textCheckSimon.setStyle("-fx-text-fill: green; -fx-control-inner-background: black;");
+      gridCheckValidate.add(textCheckSimon,0,3);
+	  GridPane.setMargin(textCheckSimon, new Insets(0, 0, 0, HardCodedParameters.defaultWidth/25));
       
       rec_check4.setFill(Color.BLACK);
       gridCheckValidate.add(rec_check4,1,3);

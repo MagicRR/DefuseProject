@@ -58,10 +58,10 @@ public class Engine implements EventHandler{
 	private int finalCountdownFormatedMinutes;
 	private int finalCountdownFormatedSeconds;
 	
-	private String lettre1 = "C";
-	private String lettre2 = "O";
-	private String lettre3 = "D";
-	private String lettre4 = "E";
+	private String lettre1 = "G";
+	private String lettre2 = "I";
+	private String lettre3 = "G";
+	private String lettre4 = "N";
 	
 	private int length_logs;
 	private int	nb_click_num = 0;
@@ -897,7 +897,7 @@ public class Engine implements EventHandler{
 		initialisationArrays();
 
 	  	nomDeLEnigme = "Pavé Alphabétique";
-	  	libelleDeLIndice = "Ecrivez le mot 'CODE'";
+	  	libelleDeLIndice = "Unité d'élite de la gendarmerie francaise";
 	  	
 	  	//modules.get(moduleEnCours).getEnigmeBoard().getEnigme().setName(nomDeLEnigme);
   	}
@@ -1097,8 +1097,8 @@ public class Engine implements EventHandler{
 	  	  if(view.getLettre1().getText().equals(lettre1) && view.getLettre2().getText().equals(lettre2) && view.getLettre3().getText().equals(lettre3) && view.getLettre4().getText().equals(lettre4)){
 	  		  System.out.println("L'opérateur a passé le pavé alphabétique avec succès.");
 	  		  view.getTextLogs().setText(view.getTextLogs().getText()+">> L'opérateur a passé le pavé alphabétique avec succès.\n");
-	  		  view.getRec_check3().setFill(new ImagePattern(view.getCheck()));
-	  		  view.getCamembert().setFill(new ImagePattern(view.getCamembert_img3()));
+	  		  view.getRec_check2().setFill(new ImagePattern(view.getCheck()));
+	  		  view.getCamembert().setFill(new ImagePattern(view.getCamembert_img2()));
 	  		  alpha_fait = true;
 	  		  view.refreshCadenas();
 //	  		  revealModule(moduleEnCours);
@@ -1113,8 +1113,8 @@ public class Engine implements EventHandler{
 		      String logs = new String(view.getTextLogs().getText(length_logs-3,length_logs+1));
 
 		      if(ordreDesTouchesPaveNumerique.equals(logs)) {
-	        		view.getRec_check4().setFill(new ImagePattern(view.getCheck()));
-	  	  		  	view.getCamembert().setFill(new ImagePattern(view.getCamembert_img4()));
+	        		view.getRec_check3().setFill(new ImagePattern(view.getCheck()));
+	  	  		  	view.getCamembert().setFill(new ImagePattern(view.getCamembert_img3()));
 	  	  		  	modules.get(4).setActive(false);
 	  	  		  	modules.get(4).setResolved(true);
 	  	  		  	modules.get(5).setActive(true);
