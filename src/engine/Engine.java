@@ -1109,6 +1109,7 @@ public class Engine implements EventHandler{
 
 		      if(ordreDesTouchesPaveNumerique.equals(logs)) {
 	        		view.getRec_check4().setFill(new ImagePattern(view.getCheck()));
+	  	  		  	view.getCamembert().setFill(new ImagePattern(view.getCamembert_img4()));
 		      }
 	  }
 	  
