@@ -44,7 +44,7 @@ public class Viewer extends HBox{
 	
   private ReadService data;
   private GridPane gridpane_malette;
-  private Boolean module_alpha = false;
+  private Boolean module_alpha = true;
   private Boolean module_simon = false;
   private Boolean module_cable = true;
   private Boolean module_num = false;
@@ -62,9 +62,9 @@ public class Viewer extends HBox{
   private final Button bouton_up2 = new Button();
   private final Button bouton_up3 = new Button();
   private final Button bouton_up4 = new Button();
-  private final TextField lettre1 = new TextField("C");
+  private final TextField lettre1 = new TextField("B");
   private final TextField lettre2 = new TextField("O");
-  private final TextField lettre3 = new TextField("D");
+  private final TextField lettre3 = new TextField("A");
   private final TextField lettre4 = new TextField("E");
   private final Button bouton_down1 = new Button();
   private final Button bouton_down2 = new Button();

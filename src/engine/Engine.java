@@ -59,6 +59,7 @@ public class Engine implements EventHandler{
 	
 	private boolean defeat = false;
 	private boolean cable_fait = false;
+	private boolean alpha_fait = false;
 	private int moduleEnCours;
 	
 	// ACTIVER LES LOGS OU NON. 1 = DESACTIVE
@@ -91,7 +92,7 @@ public class Engine implements EventHandler{
 		        		view.setModule_alpha(true);
 		        	}else {
 		        		view.getRec_check1().setFill(new ImagePattern(view.getNoCheck()));
-		      		  	view.getTextLogs().setText(view.getTextLogs().getText()+">> Vous avez échoué\n");
+		      		  	view.getTextLogs().setText(view.getTextLogs().getText()+">> Vous avez échoué.\n");
 
 		        		defeat();
 		        	}
@@ -114,7 +115,7 @@ public class Engine implements EventHandler{
 		        		view.setModule_alpha(true);
 		        	}else {
 		        		view.getRec_check2().setFill(new ImagePattern(view.getNoCheck()));
-		      		  	view.getTextLogs().setText(view.getTextLogs().getText()+">> Vous avez échoué\n");
+		      		  	view.getTextLogs().setText(view.getTextLogs().getText()+">> Vous avez échoué.\n");
 
 		        		defeat();
 		        	}
@@ -137,7 +138,7 @@ public class Engine implements EventHandler{
 		        		view.setModule_alpha(true);
 		        	}else {
 		        		view.getRec_check3().setFill(new ImagePattern(view.getNoCheck()));
-		      		  	view.getTextLogs().setText(view.getTextLogs().getText()+">> Vous avez échoué\n");
+		      		  	view.getTextLogs().setText(view.getTextLogs().getText()+">> Vous avez échoué.\n");
 
 		        		defeat();
 		        	}
@@ -160,7 +161,7 @@ public class Engine implements EventHandler{
 		        		view.setModule_alpha(true);
 		        	}else {
 		        		view.getRec_check4().setFill(new ImagePattern(view.getNoCheck()));
-		      		  	view.getTextLogs().setText(view.getTextLogs().getText()+">> Vous avez échoué\n");
+		      		  	view.getTextLogs().setText(view.getTextLogs().getText()+">> Vous avez échoué.\n");
 
 		        		defeat();
 		        	}
@@ -174,11 +175,13 @@ public class Engine implements EventHandler{
 	        }
 	        
 	        if (source.equals(view.getIndice())) {
-	        	view.getTextLogs().setText(view.getTextLogs().getText()+">> "+modules.get(moduleEnCours).getEnigmeBoard().getEnigme().getIndice().getIndiceText()+"\n");
+	        	view.getTextLogs().setText(view.getTextLogs().getText()+">> "+modules.get(moduleEnCours).getEnigmeBoard().getEnigme().getIndice().getIndiceText()+".\n");
 	        }
 	        
 	        if (source.equals(view.getBouton_up1())) {
 	        	
+	        	if(false == alpha_fait) {
+
 	        	   boolean trouve = false;
 	        	   int i = 0;
 	        	   
@@ -199,167 +202,194 @@ public class Engine implements EventHandler{
 	       
 	                  i++;
 	               } 
+	        	}else {
+	        		event.consume();
+	        	}
 	        }
 	        
 	        if (source.equals(view.getBouton_up2())) {
-	        	 boolean trouve = false;
-	      	   	 int i = 0;
-	      	   
-	             while(!trouve){  
-	          	
-	                if(view.getAlphabet().get(i).equals(view.getLettre2().getText())) {
-	              	  
-	              	  if(view.getAlphabet().get(25).equals(view.getLettre2().getText())) {
-	              		  view.getLettre2().setText("A");
-	              	  }else {
-	              		  view.getLettre2().setText(new String((String)view.getAlphabet().get(i+1)));
-	              	  }
-	              	  
-	              	  checkIfCodeIsValidated();
-
-	              	  trouve = true;  
-	                }
-	     
-	                i++;
-	             } 
+	        	
+	        	if(false == alpha_fait) {
+		        	 boolean trouve = false;
+		      	   	 int i = 0;
+		      	   
+		             while(!trouve){  
+		          	
+		                if(view.getAlphabet().get(i).equals(view.getLettre2().getText())) {
+		              	  
+		              	  if(view.getAlphabet().get(25).equals(view.getLettre2().getText())) {
+		              		  view.getLettre2().setText("A");
+		              	  }else {
+		              		  view.getLettre2().setText(new String((String)view.getAlphabet().get(i+1)));
+		              	  }
+		              	  
+		              	  checkIfCodeIsValidated();
+	
+		              	  trouve = true;  
+		                }
+		     
+		                i++;
+		             }
+	        	}else {
+	        		event.consume();
+	        	}
 	        }
 	        
 	        if (source.equals(view.getBouton_up3())) {
-	        	 boolean trouve = false;
-	      	   	 int i = 0;
-	      	   
-	             while(!trouve){  
-	          	
-	                if(view.getAlphabet().get(i).equals(view.getLettre3().getText())) {
-	              	  
-	              	  if(view.getAlphabet().get(25).equals(view.getLettre3().getText())) {
-	              		  view.getLettre3().setText("A");
-	              	  }else {
-	              		  view.getLettre3().setText(new String((String)view.getAlphabet().get(i+1)));
-	              	  }
-	              	  
-	              	  checkIfCodeIsValidated();
-
-	              	  trouve = true;  
-	                }
-	     
-	                i++;
-	             } 
+	        	
+	        	if(false == alpha_fait) {
+		        	 boolean trouve = false;
+		      	   	 int i = 0;
+		      	   
+		             while(!trouve){  
+		          	
+		                if(view.getAlphabet().get(i).equals(view.getLettre3().getText())) {
+		              	  
+		              	  if(view.getAlphabet().get(25).equals(view.getLettre3().getText())) {
+		              		  view.getLettre3().setText("A");
+		              	  }else {
+		              		  view.getLettre3().setText(new String((String)view.getAlphabet().get(i+1)));
+		              	  }
+		              	  
+		              	  checkIfCodeIsValidated();
+	
+		              	  trouve = true;  
+		                }
+		     
+		                i++;
+		             }
+	        	}else {
+	        		event.consume();
+	        	}
 	        }
 	        
 	        if (source.equals(view.getBouton_up4())) {
-	        	 boolean trouve = false;
-	      	     int i = 0;
-	      	   
-	             while(!trouve){  
-	          	
-	                if(view.getAlphabet().get(i).equals(view.getLettre4().getText())) {
-	              	  
-	              	  if(view.getAlphabet().get(25).equals(view.getLettre4().getText())) {
-	              		  view.getLettre4().setText("A");
-	              	  }else {
-	              		  view.getLettre4().setText(new String((String)view.getAlphabet().get(i+1)));
-	              	  }
-	              	  
-	              	  checkIfCodeIsValidated();
-
-	              	  trouve = true;  
-	                }
-	     
-	                i++;
-	             } 
+	        	if(false == alpha_fait) {
+		        	 boolean trouve = false;
+		      	     int i = 0;
+		      	   
+		             while(!trouve){  
+		          	
+		                if(view.getAlphabet().get(i).equals(view.getLettre4().getText())) {
+		              	  
+		              	  if(view.getAlphabet().get(25).equals(view.getLettre4().getText())) {
+		              		  view.getLettre4().setText("A");
+		              	  }else {
+		              		  view.getLettre4().setText(new String((String)view.getAlphabet().get(i+1)));
+		              	  }
+		              	  
+		              	  checkIfCodeIsValidated();
+	
+		              	  trouve = true;  
+		                }
+		     
+		                i++;
+		             }
+	        	}else {
+	        		event.consume();
+	        	}
 	        }
 	        
 	        if (source.equals(view.getBouton_down1())) {
-	        	 boolean trouve = false;
-	      	     int i = 0;
-	      	   
-	             while(!trouve){  
-	          	
-	                if(view.getAlphabet().get(i).equals(view.getLettre1().getText())) {
-	              	  
-	              	  if(view.getAlphabet().get(0).equals(view.getLettre1().getText())) {
-	              		  view.getLettre1().setText("Z");
-	              	  }else {
-	              		  view.getLettre1().setText(new String((String)view.getAlphabet().get(i-1)));
-	              	  }
-
-	              	  checkIfCodeIsValidated();
-
-	              	  trouve = true;  
-	                }
-	     
-	                i++;
-	             }  
+	        	if(false == alpha_fait) {
+		        	 boolean trouve = false;
+		      	     int i = 0;
+		      	   
+		             while(!trouve){  
+		          	
+		                if(view.getAlphabet().get(i).equals(view.getLettre1().getText())) {
+		              	  
+		              	  if(view.getAlphabet().get(0).equals(view.getLettre1().getText())) {
+		              		  view.getLettre1().setText("Z");
+		              	  }else {
+		              		  view.getLettre1().setText(new String((String)view.getAlphabet().get(i-1)));
+		              	  }
+	
+		              	  checkIfCodeIsValidated();
+	
+		              	  trouve = true;  
+		                }
+		     
+		                i++;
+		             }
+	        	}else {
+	        		event.consume();
+	        	}
 	        }
 
 	        if (source.equals(view.getBouton_down2())) {
-	        	boolean trouve = false;
-	     	    int i = 0;
-	     	   
-	            while(!trouve){  
-	         	
-	               if(view.getAlphabet().get(i).equals(view.getLettre2().getText())) {
-	             	  
-	             	  if(view.getAlphabet().get(0).equals(view.getLettre2().getText())) {
-	             		  view.getLettre2().setText("Z");
-	             	  }else {
-	             		  view.getLettre2().setText(new String((String)view.getAlphabet().get(i-1)));
-	             	  }
-	             	  
-	              	  checkIfCodeIsValidated();
-
-	             	  trouve = true;  
-	               }
-	    
-	               i++;
-	            }  
+	        	if(false == alpha_fait) {
+		        	boolean trouve = false;
+		     	    int i = 0;
+		     	   
+		            while(!trouve){  
+		         	
+		               if(view.getAlphabet().get(i).equals(view.getLettre2().getText())) {
+		             	  
+		             	  if(view.getAlphabet().get(0).equals(view.getLettre2().getText())) {
+		             		  view.getLettre2().setText("Z");
+		             	  }else {
+		             		  view.getLettre2().setText(new String((String)view.getAlphabet().get(i-1)));
+		             	  }
+		             	  
+		              	  checkIfCodeIsValidated();
+	
+		             	  trouve = true;  
+		               }
+		    
+		               i++;
+		            }
+	        	}
 	        }
 	        
 	        if (source.equals(view.getBouton_down3())) {
-	        	boolean trouve = false;
-	     	    int i = 0;
-	     	   
-	            while(!trouve){  
-	         	
-	               if(view.getAlphabet().get(i).equals(view.getLettre3().getText())) {
-	             	  
-	             	  if(view.getAlphabet().get(0).equals(view.getLettre3().getText())) {
-	             		  view.getLettre3().setText("Z");
-	             	  }else {
-	             		  view.getLettre3().setText(new String((String)view.getAlphabet().get(i-1)));
-	             	  }
-	             	  
-	              	  checkIfCodeIsValidated();
-
-	             	  trouve = true;  
-	               }
-	    
-	               i++;
-	            }  
+	        	if(false == alpha_fait) {
+		        	boolean trouve = false;
+		     	    int i = 0;
+		     	   
+		            while(!trouve){  
+		         	
+		               if(view.getAlphabet().get(i).equals(view.getLettre3().getText())) {
+		             	  
+		             	  if(view.getAlphabet().get(0).equals(view.getLettre3().getText())) {
+		             		  view.getLettre3().setText("Z");
+		             	  }else {
+		             		  view.getLettre3().setText(new String((String)view.getAlphabet().get(i-1)));
+		             	  }
+		             	  
+		              	  checkIfCodeIsValidated();
+	
+		             	  trouve = true;  
+		               }
+		    
+		               i++;
+		            }
+	        	}
 	        }
 	        
 	        if (source.equals(view.getBouton_down4())) {
-	        	boolean trouve = false;
-	     	    int i = 0;
-	     	   
-	            while(!trouve){  
-	         	
-	               if(view.getAlphabet().get(i).equals(view.getLettre4().getText())) {
-	             	  
-	             	  if(view.getAlphabet().get(0).equals(view.getLettre4().getText())) {
-	             		  view.getLettre4().setText("Z");
-	             	  }else {
-	             		  view.getLettre4().setText(new String((String)view.getAlphabet().get(i-1)));
-	             	  }
-	             	  
-	              	  checkIfCodeIsValidated();
-
-	             	  trouve = true;  
-	               }
-	    
-	               i++;
-	            }  
+	        	if(false == alpha_fait) {
+		        	boolean trouve = false;
+		     	    int i = 0;
+		     	   
+		            while(!trouve){  
+		         	
+		               if(view.getAlphabet().get(i).equals(view.getLettre4().getText())) {
+		             	  
+		             	  if(view.getAlphabet().get(0).equals(view.getLettre4().getText())) {
+		             		  view.getLettre4().setText("Z");
+		             	  }else {
+		             		  view.getLettre4().setText(new String((String)view.getAlphabet().get(i-1)));
+		             	  }
+		             	  
+		              	  checkIfCodeIsValidated();
+	
+		             	  trouve = true;  
+		               }
+		    
+		               i++;
+		            }
+	        	}
 	        }
 	        
 	        if (source.equals(view.getBoutton_rouge())) {
@@ -633,16 +663,16 @@ public class Engine implements EventHandler{
   		String choixDeLEnigme = listeEnigmesCables.get(gen.nextInt(listeEnigmesCables.size()));
 	  	nomDeLEnigme = choixDeLEnigme;
 	  	if(nomDeLEnigme == "Cut red cable") {
-	  		libelleDeLIndice = "Vous devez couper le câble rouge";
+	  		libelleDeLIndice = "Indice: (255,0,0)";
 	  	}
 	  	else if(nomDeLEnigme == "Cut green cable") {
-	  		libelleDeLIndice = "Vous devez couper le câble vert";
+	  		libelleDeLIndice = "Indice: (0,255,0)";
 	  	}
 	  	else if(nomDeLEnigme == "Cut blue cable") {
-	  		libelleDeLIndice = "Vous devez couper le câble bleu";
+	  		libelleDeLIndice = "Indice: (0,0,255)";
 	  	}
 	  	else {
-	  		libelleDeLIndice = "Vous devez couper le câble jaune";
+	  		libelleDeLIndice = "Indice: (255,255,0)";
 	  	}
 	  	
 	  	modules.get(moduleEnCours).getEnigmeBoard().getEnigme().setName(nomDeLEnigme);
@@ -897,9 +927,13 @@ public class Engine implements EventHandler{
 	  }
 
 	  public void checkIfCodeIsValidated(){
-		  
+
 	  	  if(view.getLettre1().getText().equals(lettre1) && view.getLettre2().getText().equals(lettre2) && view.getLettre3().getText().equals(lettre3) && view.getLettre4().getText().equals(lettre4)){
 	  		  System.out.println("L'opérateur a passé le pavé alphabétique avec succès.");
+	  		  view.getTextLogs().setText(view.getTextLogs().getText()+">> L'opérateur a passé le pavé alphabétique avec succès.\n");
+	  		  view.getRec_check3().setFill(new ImagePattern(view.getCheck()));
+	  		  view.getCamembert().setFill(new ImagePattern(view.getCamembert_img3()));
+	  		  alpha_fait = true;
 	  		  revealModule(moduleEnCours);
 	  	  }
 	  }
