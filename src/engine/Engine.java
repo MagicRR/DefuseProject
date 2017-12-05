@@ -96,6 +96,7 @@ public class Engine implements EventHandler{
 		        		view.getRec_check1().setFill(new ImagePattern(view.getCheck()));
 		        		view.getCamembert().setFill(new ImagePattern(view.getCamembert_img2()));
 		        		view.setModule_alpha(true);
+		        		view.refreshAlpha();
 		        		// IF CABLES RESOLUS : SIMON
 			        	modules.get(2).setActive(false);
 			        	modules.get(3).setActive(true);
@@ -123,6 +124,7 @@ public class Engine implements EventHandler{
 		        		view.getRec_check1().setFill(new ImagePattern(view.getCheck()));
 		        		view.getCamembert().setFill(new ImagePattern(view.getCamembert_img2()));
 		        		view.setModule_alpha(true);
+		        		view.refreshAlpha();
 		        		// IF CABLES RESOLUS : SIMON
 		        		modules.get(2).setActive(false);
 		        		modules.get(3).setActive(true);
@@ -151,6 +153,7 @@ public class Engine implements EventHandler{
 		        		view.getRec_check1().setFill(new ImagePattern(view.getCheck()));
 		        		view.getCamembert().setFill(new ImagePattern(view.getCamembert_img2()));
 		        		view.setModule_alpha(true);
+		        		view.refreshAlpha();
 		        		// IF CABLES RESOLUS : SIMON
 		        		modules.get(2).setActive(false);
 		        		modules.get(3).setActive(true);
@@ -178,6 +181,7 @@ public class Engine implements EventHandler{
 		        		view.getRec_check1().setFill(new ImagePattern(view.getCheck()));
 		        		view.getCamembert().setFill(new ImagePattern(view.getCamembert_img2()));
 		        		view.setModule_alpha(true);
+		        		view.refreshAlpha();
 		        		// IF CABLES RESOLUS : SIMON
 		        		modules.get(2).setActive(false);
 		        		modules.get(3).setActive(true);
@@ -1096,6 +1100,7 @@ public class Engine implements EventHandler{
 	  		  view.getRec_check3().setFill(new ImagePattern(view.getCheck()));
 	  		  view.getCamembert().setFill(new ImagePattern(view.getCamembert_img3()));
 	  		  alpha_fait = true;
+	  		  view.refreshCadenas();
 //	  		  revealModule(moduleEnCours);
 	  		  modules.get(3).setActive(false);
 	  		  modules.get(3).setResolved(true);
@@ -1113,6 +1118,7 @@ public class Engine implements EventHandler{
 	  	  		  	modules.get(4).setActive(false);
 	  	  		  	modules.get(4).setResolved(true);
 	  	  		  	modules.get(5).setActive(true);
+	  	  		  	view.refreshSimon();
 	  	  		  	launchingSimon();
 		      }
 	  }
