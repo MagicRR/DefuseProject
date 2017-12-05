@@ -45,9 +45,9 @@ public class Viewer extends HBox{
   private ReadService data;
   private GridPane gridpane_malette;
   private Boolean module_alpha = true;
-  private Boolean module_simon = false;
+  private Boolean module_simon = true;
   private Boolean module_cable = true;
-  private Boolean module_num = false;
+  private Boolean module_num = true;
   
   private final TextField timer = new TextField("01:00");
   private final Button boutton_rouge = new Button();
@@ -158,10 +158,11 @@ public class Viewer extends HBox{
 	  zone_cable_3.setOnAction(engine);
 	  zone_cable_4.setOnAction(engine);
 	  indice.setOnAction(engine);
-	  but_simon1.setOnAction(engine);
-	  but_simon2.setOnAction(engine);
-	  but_simon3.setOnAction(engine);
-	  but_simon4.setOnAction(engine);
+	  zone_chiffre_1.setOnAction(engine);
+	  zone_chiffre_2.setOnAction(engine);
+	  zone_chiffre_3.setOnAction(engine);
+	  zone_chiffre_4.setOnAction(engine);
+
 	  this.getChildren().addAll(boutton_rouge);
   }
 
@@ -595,6 +596,7 @@ public class Viewer extends HBox{
 	  textLogs.setCursor(Cursor.DEFAULT);
 	  textLogs.setEditable(false);
 	  textLogs.autosize();
+	  textLogs.setWrapText(true);
 	  textLogs.setPrefHeight(HardCodedParameters.defaultHeight/4);
 	  textLogs.setPrefWidth(3*HardCodedParameters.defaultWidth/4);
 	  textLogs.setLayoutY(3*HardCodedParameters.defaultHeight/4);
