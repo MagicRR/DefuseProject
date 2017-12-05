@@ -57,6 +57,8 @@ public class Engine implements EventHandler{
 	private String lettre3 = "D";
 	private String lettre4 = "E";
 	
+	private boolean defeat = false;
+	private boolean cable_fait = false;
 	private int moduleEnCours;
 	
 	// ACTIVER LES LOGS OU NON. 1 = DESACTIVE
@@ -69,264 +71,307 @@ public class Engine implements EventHandler{
 	@Override
 	public void handle(Event event) {
 		
-		final Object source = event.getSource();
-		System.out.println("In handler !!" +modules.get(moduleEnCours).getEnigmeBoard().getEnigme().getNameEnigme());
-		
-        if (source.equals(view.getBoutton_rouge())) {
-            view.getRec_bouton_rouge().setFill(new ImagePattern(view.getButton_green_img()));
-        }
-        
-        if (source.equals(view.getZone_cable_1())) {
-        	
-        	//Vérifie si c'est le bon cable à couper ou non
-        	if(modules.get(moduleEnCours).getEnigmeBoard().getEnigme().getNameEnigme()=="Cut red cable") {
-        		view.getRec_check1().setFill(new ImagePattern(view.getCheck()));
-        		view.getCamembert().setFill(new ImagePattern(view.getCamembert_img2()));
-        	}else {
-        		view.getRec_check1().setFill(new ImagePattern(view.getNoCheck()));
-        	}
-        	
-        	view.getRec_cable1().setFill(new ImagePattern(view.getCable_rouge_cut()));
-        }
-        
-        if (source.equals(view.getZone_cable_2())) {
-        	
-        	//Vérifie si c'est le bon cable à couper ou non
-        	if(modules.get(moduleEnCours).getEnigmeBoard().getEnigme().getNameEnigme()=="Cut yellow cable") {
-        		view.getRec_check1().setFill(new ImagePattern(view.getCheck()));
-        		view.getCamembert().setFill(new ImagePattern(view.getCamembert_img2()));
-        	}else {
-        		view.getRec_check1().setFill(new ImagePattern(view.getNoCheck()));
-        	}
-        	
-        	view.getRec_cable2().setFill(new ImagePattern(view.getCable_jaune_cut()));
-        }
-        
-        if (source.equals(view.getZone_cable_3())) {
-           	
-        	//Vérifie si c'est le bon cable à couper ou non
-        	if(modules.get(moduleEnCours).getEnigmeBoard().getEnigme().getNameEnigme()=="Cut green cable") {
-        		view.getRec_check1().setFill(new ImagePattern(view.getCheck()));
-        		view.getCamembert().setFill(new ImagePattern(view.getCamembert_img2()));
-        	}else {
-        		view.getRec_check1().setFill(new ImagePattern(view.getNoCheck()));
-        	}
-        	
-        	view.getRec_cable3().setFill(new ImagePattern(view.getCable_vert_cut()));
-        }
-        
-        if (source.equals(view.getZone_cable_4())) {
-           	
-        	//Vérifie si c'est le bon cable à couper ou non
-        	if(modules.get(moduleEnCours).getEnigmeBoard().getEnigme().getNameEnigme()=="Cut blue cable") {
-        		view.getRec_check1().setFill(new ImagePattern(view.getCheck()));
-        		view.getCamembert().setFill(new ImagePattern(view.getCamembert_img2()));
-        	}else {
-        		view.getRec_check1().setFill(new ImagePattern(view.getNoCheck()));
-        	}
-        	
-        	view.getRec_cable4().setFill(new ImagePattern(view.getCable_bleu_cut()));
-        }
-        
-        if (source.equals(view.getIndice())) {
-        	view.getTextLogs().setText(modules.get(moduleEnCours).getEnigmeBoard().getEnigme().getIndice().getIndiceText());
-        }
-        
-        if (source.equals(view.getBouton_up1())) {
-        	
-        	   boolean trouve = false;
-        	   int i = 0;
-        	   
-               while(!trouve){  
-            	
-                  if(view.getAlphabet().get(i).equals(view.getLettre1().getText())) {
-                	  
-                	  if(view.getAlphabet().get(25).equals(view.getLettre1().getText())) {
-                		  view.getLettre1().setText("A");
-                	  }else {
-                		  view.getLettre1().setText(new String((String)view.getAlphabet().get(i+1)));
-                	  }
-                	  
-                	  checkIfCodeIsValidated();
+		if(true == defeat) {
+    		  event.consume();
+		}else {
+			final Object source = event.getSource();
+			System.out.println("In handler !!" +modules.get(moduleEnCours).getEnigmeBoard().getEnigme().getNameEnigme());
+			
+	        if (source.equals(view.getBoutton_rouge())) {
+	            view.getRec_bouton_rouge().setFill(new ImagePattern(view.getButton_green_img()));
+	        }
+	        
+	        if (source.equals(view.getZone_cable_1())) {
+	        	
+	        	if(false == cable_fait) {
+	        		//Vérifie si c'est le bon cable à couper ou non
+		        	if(modules.get(moduleEnCours).getEnigmeBoard().getEnigme().getNameEnigme()=="Cut red cable") {
+		        		view.getRec_check1().setFill(new ImagePattern(view.getCheck()));
+		        		view.getCamembert().setFill(new ImagePattern(view.getCamembert_img2()));
+		        		view.setModule_alpha(true);
+		        	}else {
+		        		view.getRec_check1().setFill(new ImagePattern(view.getNoCheck()));
+		      		  	view.getTextLogs().setText("/n>>Vous avez échoué");
 
-                	  trouve = true;  
-                  }
-       
-                  i++;
-               } 
-        }
-        
-        if (source.equals(view.getBouton_up2())) {
-        	 boolean trouve = false;
-      	   	 int i = 0;
-      	   
-             while(!trouve){  
-          	
-                if(view.getAlphabet().get(i).equals(view.getLettre2().getText())) {
-              	  
-              	  if(view.getAlphabet().get(25).equals(view.getLettre2().getText())) {
-              		  view.getLettre2().setText("A");
-              	  }else {
-              		  view.getLettre2().setText(new String((String)view.getAlphabet().get(i+1)));
-              	  }
-              	  
-              	  checkIfCodeIsValidated();
+		        		defeat();
+		        	}
+		        	cable_fait = true;
+		        	
+		        	view.getRec_cable1().setFill(new ImagePattern(view.getCable_rouge_cut()));
+	        	}else {
+	      		  event.consume();
+	        	}
+	        	
+	        }
+	        
+	        if (source.equals(view.getZone_cable_2())) {
+	        	
+	        	if(false == cable_fait) {
+	        		//Vérifie si c'est le bon cable à couper ou non
+		        	if(modules.get(moduleEnCours).getEnigmeBoard().getEnigme().getNameEnigme()=="Cut yellow cable") {
+		        		view.getRec_check2().setFill(new ImagePattern(view.getCheck()));
+		        		view.getCamembert().setFill(new ImagePattern(view.getCamembert_img2()));
+		        		view.setModule_alpha(true);
+		        	}else {
+		        		view.getRec_check2().setFill(new ImagePattern(view.getNoCheck()));
+		      		  	view.getTextLogs().setText("/n>>Vous avez échoué");
 
-              	  trouve = true;  
-                }
-     
-                i++;
-             } 
-        }
-        
-        if (source.equals(view.getBouton_up3())) {
-        	 boolean trouve = false;
-      	   	 int i = 0;
-      	   
-             while(!trouve){  
-          	
-                if(view.getAlphabet().get(i).equals(view.getLettre3().getText())) {
-              	  
-              	  if(view.getAlphabet().get(25).equals(view.getLettre3().getText())) {
-              		  view.getLettre3().setText("A");
-              	  }else {
-              		  view.getLettre3().setText(new String((String)view.getAlphabet().get(i+1)));
-              	  }
-              	  
-              	  checkIfCodeIsValidated();
+		        		defeat();
+		        	}
+		        	cable_fait = true;
 
-              	  trouve = true;  
-                }
-     
-                i++;
-             } 
-        }
-        
-        if (source.equals(view.getBouton_up4())) {
-        	 boolean trouve = false;
-      	     int i = 0;
-      	   
-             while(!trouve){  
-          	
-                if(view.getAlphabet().get(i).equals(view.getLettre4().getText())) {
-              	  
-              	  if(view.getAlphabet().get(25).equals(view.getLettre4().getText())) {
-              		  view.getLettre4().setText("A");
-              	  }else {
-              		  view.getLettre4().setText(new String((String)view.getAlphabet().get(i+1)));
-              	  }
-              	  
-              	  checkIfCodeIsValidated();
+		        	view.getRec_cable2().setFill(new ImagePattern(view.getCable_jaune_cut()));
+	        	}else {
+	      		  event.consume();
+	        	}
+	        	
+	        }
+	        
+	        if (source.equals(view.getZone_cable_3())) {
+	        	
+	        	if(false == cable_fait) {
+	        		//Vérifie si c'est le bon cable à couper ou non
+		        	if(modules.get(moduleEnCours).getEnigmeBoard().getEnigme().getNameEnigme()=="Cut green cable") {
+		        		view.getRec_check3().setFill(new ImagePattern(view.getCheck()));
+		        		view.getCamembert().setFill(new ImagePattern(view.getCamembert_img2()));
+		        		view.setModule_alpha(true);
+		        	}else {
+		        		view.getRec_check3().setFill(new ImagePattern(view.getNoCheck()));
+		      		  	view.getTextLogs().setText("/n>>Vous avez échoué");
 
-              	  trouve = true;  
-                }
-     
-                i++;
-             } 
-        }
-        
-        if (source.equals(view.getBouton_down1())) {
-        	 boolean trouve = false;
-      	     int i = 0;
-      	   
-             while(!trouve){  
-          	
-                if(view.getAlphabet().get(i).equals(view.getLettre1().getText())) {
-              	  
-              	  if(view.getAlphabet().get(0).equals(view.getLettre1().getText())) {
-              		  view.getLettre1().setText("Z");
-              	  }else {
-              		  view.getLettre1().setText(new String((String)view.getAlphabet().get(i-1)));
-              	  }
+		        		defeat();
+		        	}
+		        	cable_fait = true;
 
-              	  checkIfCodeIsValidated();
+		        	view.getRec_cable3().setFill(new ImagePattern(view.getCable_vert_cut()));
+	        	}else {
+	      		  event.consume();
+	        	}
+	        	
+	        }
+	        
+	        if (source.equals(view.getZone_cable_4())) {
+	        	
+	        	if(false == cable_fait) {
+	        		//Vérifie si c'est le bon cable à couper ou non
+		        	if(modules.get(moduleEnCours).getEnigmeBoard().getEnigme().getNameEnigme()=="Cut blue cable") {
+		        		view.getRec_check4().setFill(new ImagePattern(view.getCheck()));
+		        		view.getCamembert().setFill(new ImagePattern(view.getCamembert_img2()));
+		        		view.setModule_alpha(true);
+		        	}else {
+		        		view.getRec_check4().setFill(new ImagePattern(view.getNoCheck()));
+		      		  	view.getTextLogs().setText("/n>>Vous avez échoué");
 
-              	  trouve = true;  
-                }
-     
-                i++;
-             }  
-        }
+		        		defeat();
+		        	}
+		        	cable_fait = true;
 
-        if (source.equals(view.getBouton_down2())) {
-        	boolean trouve = false;
-     	    int i = 0;
-     	   
-            while(!trouve){  
-         	
-               if(view.getAlphabet().get(i).equals(view.getLettre2().getText())) {
-             	  
-             	  if(view.getAlphabet().get(0).equals(view.getLettre2().getText())) {
-             		  view.getLettre2().setText("Z");
-             	  }else {
-             		  view.getLettre2().setText(new String((String)view.getAlphabet().get(i-1)));
-             	  }
-             	  
-              	  checkIfCodeIsValidated();
+		        	view.getRec_cable4().setFill(new ImagePattern(view.getCable_bleu_cut()));
+	        	}else {
+	      		  event.consume();
+	        	}
+	        	
+	        }
+	        
+	        if (source.equals(view.getIndice())) {
+	        	view.getTextLogs().setText(modules.get(moduleEnCours).getEnigmeBoard().getEnigme().getIndice().getIndiceText());
+	        }
+	        
+	        if (source.equals(view.getBouton_up1())) {
+	        	
+	        	   boolean trouve = false;
+	        	   int i = 0;
+	        	   
+	               while(!trouve){  
+	            	
+	                  if(view.getAlphabet().get(i).equals(view.getLettre1().getText())) {
+	                	  
+	                	  if(view.getAlphabet().get(25).equals(view.getLettre1().getText())) {
+	                		  view.getLettre1().setText("A");
+	                	  }else {
+	                		  view.getLettre1().setText(new String((String)view.getAlphabet().get(i+1)));
+	                	  }
+	                	  
+	                	  checkIfCodeIsValidated();
 
-             	  trouve = true;  
-               }
-    
-               i++;
-            }  
-        }
-        
-        if (source.equals(view.getBouton_down3())) {
-        	boolean trouve = false;
-     	    int i = 0;
-     	   
-            while(!trouve){  
-         	
-               if(view.getAlphabet().get(i).equals(view.getLettre3().getText())) {
-             	  
-             	  if(view.getAlphabet().get(0).equals(view.getLettre3().getText())) {
-             		  view.getLettre3().setText("Z");
-             	  }else {
-             		  view.getLettre3().setText(new String((String)view.getAlphabet().get(i-1)));
-             	  }
-             	  
-              	  checkIfCodeIsValidated();
+	                	  trouve = true;  
+	                  }
+	       
+	                  i++;
+	               } 
+	        }
+	        
+	        if (source.equals(view.getBouton_up2())) {
+	        	 boolean trouve = false;
+	      	   	 int i = 0;
+	      	   
+	             while(!trouve){  
+	          	
+	                if(view.getAlphabet().get(i).equals(view.getLettre2().getText())) {
+	              	  
+	              	  if(view.getAlphabet().get(25).equals(view.getLettre2().getText())) {
+	              		  view.getLettre2().setText("A");
+	              	  }else {
+	              		  view.getLettre2().setText(new String((String)view.getAlphabet().get(i+1)));
+	              	  }
+	              	  
+	              	  checkIfCodeIsValidated();
 
-             	  trouve = true;  
-               }
-    
-               i++;
-            }  
-        }
-        
-        if (source.equals(view.getBouton_down4())) {
-        	boolean trouve = false;
-     	    int i = 0;
-     	   
-            while(!trouve){  
-         	
-               if(view.getAlphabet().get(i).equals(view.getLettre4().getText())) {
-             	  
-             	  if(view.getAlphabet().get(0).equals(view.getLettre4().getText())) {
-             		  view.getLettre4().setText("Z");
-             	  }else {
-             		  view.getLettre4().setText(new String((String)view.getAlphabet().get(i-1)));
-             	  }
-             	  
-              	  checkIfCodeIsValidated();
+	              	  trouve = true;  
+	                }
+	     
+	                i++;
+	             } 
+	        }
+	        
+	        if (source.equals(view.getBouton_up3())) {
+	        	 boolean trouve = false;
+	      	   	 int i = 0;
+	      	   
+	             while(!trouve){  
+	          	
+	                if(view.getAlphabet().get(i).equals(view.getLettre3().getText())) {
+	              	  
+	              	  if(view.getAlphabet().get(25).equals(view.getLettre3().getText())) {
+	              		  view.getLettre3().setText("A");
+	              	  }else {
+	              		  view.getLettre3().setText(new String((String)view.getAlphabet().get(i+1)));
+	              	  }
+	              	  
+	              	  checkIfCodeIsValidated();
 
-             	  trouve = true;  
-               }
-    
-               i++;
-            }  
-        }
-        
-        if (source.equals(view.getBoutton_rouge())) {
-        	
-            if(modules.get(1).isResolved() == true && modules.get(2).isResolved == true && modules.get(3).isResolved == true && modules.get(4).isResolved == true && modules.get(5).isResolved == true) {
-            	victory();
-            }
-            else {
-            	defeat();
-            }
-        }
-        
+	              	  trouve = true;  
+	                }
+	     
+	                i++;
+	             } 
+	        }
+	        
+	        if (source.equals(view.getBouton_up4())) {
+	        	 boolean trouve = false;
+	      	     int i = 0;
+	      	   
+	             while(!trouve){  
+	          	
+	                if(view.getAlphabet().get(i).equals(view.getLettre4().getText())) {
+	              	  
+	              	  if(view.getAlphabet().get(25).equals(view.getLettre4().getText())) {
+	              		  view.getLettre4().setText("A");
+	              	  }else {
+	              		  view.getLettre4().setText(new String((String)view.getAlphabet().get(i+1)));
+	              	  }
+	              	  
+	              	  checkIfCodeIsValidated();
+
+	              	  trouve = true;  
+	                }
+	     
+	                i++;
+	             } 
+	        }
+	        
+	        if (source.equals(view.getBouton_down1())) {
+	        	 boolean trouve = false;
+	      	     int i = 0;
+	      	   
+	             while(!trouve){  
+	          	
+	                if(view.getAlphabet().get(i).equals(view.getLettre1().getText())) {
+	              	  
+	              	  if(view.getAlphabet().get(0).equals(view.getLettre1().getText())) {
+	              		  view.getLettre1().setText("Z");
+	              	  }else {
+	              		  view.getLettre1().setText(new String((String)view.getAlphabet().get(i-1)));
+	              	  }
+
+	              	  checkIfCodeIsValidated();
+
+	              	  trouve = true;  
+	                }
+	     
+	                i++;
+	             }  
+	        }
+
+	        if (source.equals(view.getBouton_down2())) {
+	        	boolean trouve = false;
+	     	    int i = 0;
+	     	   
+	            while(!trouve){  
+	         	
+	               if(view.getAlphabet().get(i).equals(view.getLettre2().getText())) {
+	             	  
+	             	  if(view.getAlphabet().get(0).equals(view.getLettre2().getText())) {
+	             		  view.getLettre2().setText("Z");
+	             	  }else {
+	             		  view.getLettre2().setText(new String((String)view.getAlphabet().get(i-1)));
+	             	  }
+	             	  
+	              	  checkIfCodeIsValidated();
+
+	             	  trouve = true;  
+	               }
+	    
+	               i++;
+	            }  
+	        }
+	        
+	        if (source.equals(view.getBouton_down3())) {
+	        	boolean trouve = false;
+	     	    int i = 0;
+	     	   
+	            while(!trouve){  
+	         	
+	               if(view.getAlphabet().get(i).equals(view.getLettre3().getText())) {
+	             	  
+	             	  if(view.getAlphabet().get(0).equals(view.getLettre3().getText())) {
+	             		  view.getLettre3().setText("Z");
+	             	  }else {
+	             		  view.getLettre3().setText(new String((String)view.getAlphabet().get(i-1)));
+	             	  }
+	             	  
+	              	  checkIfCodeIsValidated();
+
+	             	  trouve = true;  
+	               }
+	    
+	               i++;
+	            }  
+	        }
+	        
+	        if (source.equals(view.getBouton_down4())) {
+	        	boolean trouve = false;
+	     	    int i = 0;
+	     	   
+	            while(!trouve){  
+	         	
+	               if(view.getAlphabet().get(i).equals(view.getLettre4().getText())) {
+	             	  
+	             	  if(view.getAlphabet().get(0).equals(view.getLettre4().getText())) {
+	             		  view.getLettre4().setText("Z");
+	             	  }else {
+	             		  view.getLettre4().setText(new String((String)view.getAlphabet().get(i-1)));
+	             	  }
+	             	  
+	              	  checkIfCodeIsValidated();
+
+	             	  trouve = true;  
+	               }
+	    
+	               i++;
+	            }  
+	        }
+	        
+	        if (source.equals(view.getBoutton_rouge())) {
+	        	
+	            if(modules.get(1).isResolved() == true && modules.get(2).isResolved == true && modules.get(3).isResolved == true && modules.get(4).isResolved == true && modules.get(5).isResolved == true) {
+	            	victory();
+	            }
+	            else {
+	            	defeat();
+	            }
+	        }
+		}        
 	}
 	
 	public Stage getPrimaryStage() {
@@ -873,5 +918,6 @@ public class Engine implements EventHandler{
 		  engineClock.cancel();
 		  view.getTimer().setText("BOOM");
 		  System.out.println("Partie terminée, l'opérateur a été tué par l'explosion.");
+		  defeat = true;
 	  }
 }

@@ -43,10 +43,10 @@ public class Viewer extends HBox{
 	
   private ReadService data;
   private GridPane gridpane_malette;
-  private Boolean module_alpha = true;
-  private Boolean module_simon = true;
+  private Boolean module_alpha = false;
+  private Boolean module_simon = false;
   private Boolean module_cable = true;
-  private Boolean module_num = true;
+  private Boolean module_num = false;
   
   private final TextField timer = new TextField("01:00");
   private final Button boutton_rouge = new Button();
@@ -444,7 +444,7 @@ public class Viewer extends HBox{
 	  }
 	  
 	  //Zone en bas à droite
-	  if(false == module_cable) {
+	  if(false == module_num) {
 		  Image image_block2 = new Image("/images/block.png");
 		  ImageView zone6 = new ImageView();
 		  zone6.setFitWidth(((3*HardCodedParameters.defaultWidth/4)/3)-20);
