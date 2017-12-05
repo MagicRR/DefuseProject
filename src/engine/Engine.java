@@ -91,7 +91,7 @@ public class Engine implements EventHandler{
 		        		view.setModule_alpha(true);
 		        	}else {
 		        		view.getRec_check1().setFill(new ImagePattern(view.getNoCheck()));
-		      		  	view.getTextLogs().setText("/n>>Vous avez échoué");
+		      		  	view.getTextLogs().setText(view.getTextLogs().getText()+">> Vous avez échoué\n");
 
 		        		defeat();
 		        	}
@@ -114,7 +114,7 @@ public class Engine implements EventHandler{
 		        		view.setModule_alpha(true);
 		        	}else {
 		        		view.getRec_check2().setFill(new ImagePattern(view.getNoCheck()));
-		      		  	view.getTextLogs().setText("/n>>Vous avez échoué");
+		      		  	view.getTextLogs().setText(view.getTextLogs().getText()+">> Vous avez échoué\n");
 
 		        		defeat();
 		        	}
@@ -137,7 +137,7 @@ public class Engine implements EventHandler{
 		        		view.setModule_alpha(true);
 		        	}else {
 		        		view.getRec_check3().setFill(new ImagePattern(view.getNoCheck()));
-		      		  	view.getTextLogs().setText("/n>>Vous avez échoué");
+		      		  	view.getTextLogs().setText(view.getTextLogs().getText()+">> Vous avez échoué\n");
 
 		        		defeat();
 		        	}
@@ -160,7 +160,7 @@ public class Engine implements EventHandler{
 		        		view.setModule_alpha(true);
 		        	}else {
 		        		view.getRec_check4().setFill(new ImagePattern(view.getNoCheck()));
-		      		  	view.getTextLogs().setText("/n>>Vous avez échoué");
+		      		  	view.getTextLogs().setText(view.getTextLogs().getText()+">> Vous avez échoué\n");
 
 		        		defeat();
 		        	}
@@ -174,7 +174,7 @@ public class Engine implements EventHandler{
 	        }
 	        
 	        if (source.equals(view.getIndice())) {
-	        	view.getTextLogs().setText(modules.get(moduleEnCours).getEnigmeBoard().getEnigme().getIndice().getIndiceText());
+	        	view.getTextLogs().setText(view.getTextLogs().getText()+">> "+modules.get(moduleEnCours).getEnigmeBoard().getEnigme().getIndice().getIndiceText()+"\n");
 	        }
 	        
 	        if (source.equals(view.getBouton_up1())) {

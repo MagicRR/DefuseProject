@@ -13,6 +13,7 @@ import javafx.scene.Cursor;
 import javafx.scene.Group;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.effect.Lighting;
 import javafx.scene.paint.Color;
@@ -131,7 +132,7 @@ public class Viewer extends HBox{
   private final Rectangle rec_check3 = new Rectangle(HardCodedParameters.defaultWidth/24,25);
   private final Rectangle rec_check4 = new Rectangle(HardCodedParameters.defaultWidth/24,25);
   private final Button indice = new Button("Demander un indice");
-  private final TextField textLogs = new TextField(">> Bienvenue !\n");;
+  private final TextArea textLogs = new TextArea(">> Bienvenue !\n");;
 
 
   public Viewer(final Engine engine){
@@ -597,7 +598,7 @@ public class Viewer extends HBox{
 	  textLogs.setPrefHeight(HardCodedParameters.defaultHeight/4);
 	  textLogs.setPrefWidth(3*HardCodedParameters.defaultWidth/4);
 	  textLogs.setLayoutY(3*HardCodedParameters.defaultHeight/4);
-	  textLogs.setAlignment(Pos.TOP_LEFT);
+	  //textLogs.setAlignment(Pos.TOP_LEFT);
 	  textLogs.setStyle("-fx-text-fill: green; -fx-control-inner-background: black;");
 	  
 	  logs_group.getChildren().addAll( textLogs);  
@@ -836,7 +837,7 @@ public class Viewer extends HBox{
 		return camembert;
 	}
 
-	public TextField getTextLogs() {
+	public TextArea getTextLogs() {
 		return textLogs;
 	}
 
