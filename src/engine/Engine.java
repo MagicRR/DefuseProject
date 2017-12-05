@@ -1098,7 +1098,7 @@ public class Engine implements EventHandler{
 	  		  System.out.println("L'opérateur a passé le pavé alphabétique avec succès.");
 	  		  view.getTextLogs().setText(view.getTextLogs().getText()+">> L'opérateur a passé le pavé alphabétique avec succès.\n");
 	  		  view.getRec_check2().setFill(new ImagePattern(view.getCheck()));
-	  		  view.getCamembert().setFill(new ImagePattern(view.getCamembert_img2()));
+	  		  view.getCamembert().setFill(new ImagePattern(view.getCamembert_img3()));
 	  		  alpha_fait = true;
 	  		  view.refreshCadenas();
 //	  		  revealModule(moduleEnCours);
@@ -1114,7 +1114,7 @@ public class Engine implements EventHandler{
 
 		      if(ordreDesTouchesPaveNumerique.equals(logs)) {
 	        		view.getRec_check3().setFill(new ImagePattern(view.getCheck()));
-	  	  		  	view.getCamembert().setFill(new ImagePattern(view.getCamembert_img3()));
+	  	  		  	view.getCamembert().setFill(new ImagePattern(view.getCamembert_img4()));
 	  	  		  	modules.get(4).setActive(false);
 	  	  		  	modules.get(4).setResolved(true);
 	  	  		  	modules.get(5).setActive(true);
