@@ -468,94 +468,115 @@ public class Engine implements EventHandler{
 	        
 	        if (source.equals(view.getZone_chiffre_1())) {
 	        	
-	        	length_logs = view.getTextLogs().getText().length();
-	        	
-	        	if(view.getTextLogs().getText(length_logs-6, length_logs).contains(">>")) {
-	        		if(view.getTextLogs().getText(length_logs-1, length_logs).equals("1") || 
-		        			(view.getTextLogs().getText(length_logs-1, length_logs).equals("2")) ||
-		        					(view.getTextLogs().getText(length_logs-1, length_logs).equals("3")) ||
-		        							(view.getTextLogs().getText(length_logs-1, length_logs).equals("4"))) {
-			        	view.getTextLogs().setText(view.getTextLogs().getText()+"1");
+	        	if(!modules.get(4).isResolved()) {
+	        		
+	        		length_logs = view.getTextLogs().getText().length();
+		        	
+		        	if(view.getTextLogs().getText(length_logs-6, length_logs).contains(">>")) {
+		        		if(view.getTextLogs().getText(length_logs-1, length_logs).equals("1") || 
+			        			(view.getTextLogs().getText(length_logs-1, length_logs).equals("2")) ||
+			        					(view.getTextLogs().getText(length_logs-1, length_logs).equals("3")) ||
+			        							(view.getTextLogs().getText(length_logs-1, length_logs).equals("4"))) {
+				        	view.getTextLogs().setText(view.getTextLogs().getText()+"1");
+			        	}
+		        	}	        	
+		        	else {
+			        	view.getTextLogs().setText(view.getTextLogs().getText()+"\n>> 1");
 		        	}
-	        	}	        	
-	        	else {
-		        	view.getTextLogs().setText(view.getTextLogs().getText()+"\n>> 1");
-	        	}
-	        	
-	        	nb_click_num++;
-	        	
-	        	if(0 == nb_click_num%4) {
-		        	checkIfNumIsValidated();  	
-	        	}
+		        	
+		        	nb_click_num++;
+		        	
+		        	if(0 == nb_click_num%4) {
+			        	checkIfNumIsValidated();  	
+		        	}
+	        	}else {
+		        	event.consume();
+		        }  	
 	        }
 	        
 	        if (source.equals(view.getZone_chiffre_2())) {
 	        	
-	        	length_logs = view.getTextLogs().getText().length();
+	        	if(!modules.get(4).isResolved()) {
 	        	
-	        	if(view.getTextLogs().getText(length_logs-6, length_logs).contains(">>")) {
-	        		if(view.getTextLogs().getText(length_logs-1, length_logs).equals("1") || 
-		        			(view.getTextLogs().getText(length_logs-1, length_logs).equals("2")) ||
-		        					(view.getTextLogs().getText(length_logs-1, length_logs).equals("3")) ||
-		        							(view.getTextLogs().getText(length_logs-1, length_logs).equals("4"))) {
-			        	view.getTextLogs().setText(view.getTextLogs().getText()+"2");
+		        	length_logs = view.getTextLogs().getText().length();
+		        	
+		        	if(view.getTextLogs().getText(length_logs-6, length_logs).contains(">>")) {
+		        		if(view.getTextLogs().getText(length_logs-1, length_logs).equals("1") || 
+			        			(view.getTextLogs().getText(length_logs-1, length_logs).equals("2")) ||
+			        					(view.getTextLogs().getText(length_logs-1, length_logs).equals("3")) ||
+			        							(view.getTextLogs().getText(length_logs-1, length_logs).equals("4"))) {
+				        	view.getTextLogs().setText(view.getTextLogs().getText()+"2");
+			        	}
+		        	}	        	
+		        	else {
+			        	view.getTextLogs().setText(view.getTextLogs().getText()+"\n>> 2");
 		        	}
-	        	}	        	
-	        	else {
-		        	view.getTextLogs().setText(view.getTextLogs().getText()+"\n>> 2");
-	        	}
-	        	
-	        	nb_click_num++;
-	        	
-	        	if(0 == nb_click_num%4) {
-		        	checkIfNumIsValidated();  	
-	        	}
+		        	
+		        	nb_click_num++;
+		        	
+		        	if(0 == nb_click_num%4) {
+			        	checkIfNumIsValidated();  	
+		        	}
+		        }else {
+		        	event.consume();
+		        }
 	        }
 
 	        if (source.equals(view.getZone_chiffre_3())) {
 	        	
-	        	length_logs = view.getTextLogs().getText().length();
+	        	if(!modules.get(4).isResolved()) {
+
 	        	
-	        	if(view.getTextLogs().getText(length_logs-6, length_logs).contains(">>")) {
-	        		if(view.getTextLogs().getText(length_logs-1, length_logs).equals("1") || 
-		        			(view.getTextLogs().getText(length_logs-1, length_logs).equals("2")) ||
-		        					(view.getTextLogs().getText(length_logs-1, length_logs).equals("3")) ||
-		        							(view.getTextLogs().getText(length_logs-1, length_logs).equals("4"))) {
-			        	view.getTextLogs().setText(view.getTextLogs().getText()+"3");
+		        	length_logs = view.getTextLogs().getText().length();
+		        	
+		        	if(view.getTextLogs().getText(length_logs-6, length_logs).contains(">>")) {
+		        		if(view.getTextLogs().getText(length_logs-1, length_logs).equals("1") || 
+			        			(view.getTextLogs().getText(length_logs-1, length_logs).equals("2")) ||
+			        					(view.getTextLogs().getText(length_logs-1, length_logs).equals("3")) ||
+			        							(view.getTextLogs().getText(length_logs-1, length_logs).equals("4"))) {
+				        	view.getTextLogs().setText(view.getTextLogs().getText()+"3");
+			        	}
+		        	}	        	
+		        	else {
+			        	view.getTextLogs().setText(view.getTextLogs().getText()+"\n>> 3");
 		        	}
-	        	}	        	
-	        	else {
-		        	view.getTextLogs().setText(view.getTextLogs().getText()+"\n>> 3");
-	        	}
-	        	
-	        	nb_click_num++;
-	        	
-	        	if(0 == nb_click_num%4) {
-		        	checkIfNumIsValidated();  	
-	        	}
+		        	
+		        	nb_click_num++;
+		        	
+		        	if(0 == nb_click_num%4) {
+			        	checkIfNumIsValidated();  	
+		        	}
+		        }else {
+		        	event.consume();
+		        }
 	        }
 
 	        if (source.equals(view.getZone_chiffre_4())) {
 	        	
-	        	length_logs = view.getTextLogs().getText().length();
+	        	if(!modules.get(4).isResolved()) {
 	        	
-	        	if(view.getTextLogs().getText(length_logs-6, length_logs).contains(">>")) {
-	        		if(view.getTextLogs().getText(length_logs-1, length_logs).equals("1") || 
-		        			(view.getTextLogs().getText(length_logs-1, length_logs).equals("2")) ||
-		        					(view.getTextLogs().getText(length_logs-1, length_logs).equals("3")) ||
-		        							(view.getTextLogs().getText(length_logs-1, length_logs).equals("4"))) {
-			        	view.getTextLogs().setText(view.getTextLogs().getText()+"4");
+		        	length_logs = view.getTextLogs().getText().length();
+		        	
+		        	if(view.getTextLogs().getText(length_logs-6, length_logs).contains(">>")) {
+		        		if(view.getTextLogs().getText(length_logs-1, length_logs).equals("1") || 
+			        			(view.getTextLogs().getText(length_logs-1, length_logs).equals("2")) ||
+			        					(view.getTextLogs().getText(length_logs-1, length_logs).equals("3")) ||
+			        							(view.getTextLogs().getText(length_logs-1, length_logs).equals("4"))) {
+				        	view.getTextLogs().setText(view.getTextLogs().getText()+"4");
+			        	}
+		        	}	        	
+		        	else {
+			        	view.getTextLogs().setText(view.getTextLogs().getText()+"\n>> 4");
+		        	}	 
+		        	
+		        	nb_click_num++;
+		        	
+		        	if(0 == nb_click_num%4) {
+			        	checkIfNumIsValidated();  	
 		        	}
-	        	}	        	
-	        	else {
-		        	view.getTextLogs().setText(view.getTextLogs().getText()+"\n>> 4");
-	        	}	 
-	        	
-	        	nb_click_num++;
-	        	
-	        	if(0 == nb_click_num%4) {
-		        	checkIfNumIsValidated();  	
-	        	}
+		        }else {
+		        	event.consume();
+		        }
 	        }
 	        
 	        if (source.equals(view.getBoutton_rouge())) {
@@ -1110,6 +1131,9 @@ public class Engine implements EventHandler{
 		      if(ordreDesTouchesPaveNumerique.equals(logs)) {
 	        		view.getRec_check4().setFill(new ImagePattern(view.getCheck()));
 	  	  		  	view.getCamembert().setFill(new ImagePattern(view.getCamembert_img4()));
+	  	  		  	modules.get(4).setActive(false);
+	  	  		  	modules.get(4).setResolved(true);
+	  	  		  	modules.get(5).setActive(true);
 		      }
 	  }
 	  
