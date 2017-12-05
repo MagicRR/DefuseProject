@@ -48,12 +48,11 @@ public class Engine implements EventHandler{
 //    private Timer countdown = new Timer();
     
     private Timer simonClock = new Timer();
-    
-	
+
     private boolean showSimonOrder = false;
     private int fourSteps;
     private int fourStepsPlusFour;
-    
+	
 	private int delaiMinuteur = 300;
 	private int finalCountdown;
 	private int finalCountdownFormatedMinutes;
@@ -64,7 +63,9 @@ public class Engine implements EventHandler{
 	private String lettre3 = "D";
 	private String lettre4 = "E";
 	
-	
+	private int length_logs;
+	private int	nb_click_num = 0;
+
 	private boolean cablesResolved = false;
 	private boolean defeat = false;
 	private boolean cable_fait = false;
@@ -85,7 +86,7 @@ public class Engine implements EventHandler{
     		  event.consume();
 		}else {
 			final Object source = event.getSource();
-			System.out.println("In handler !!" +modules.get(moduleEnCours).getEnigmeBoard().getEnigme().getNameEnigme());
+//			System.out.println("Module Actif : " +modules.get(moduleEnCours).getEnigmeBoard().getEnigme().getNameEnigme());
 			
 			if(true == cablesResolved) {
 	        	modules.get(2).setActive(false);
@@ -136,7 +137,7 @@ public class Engine implements EventHandler{
 		        	},0,1000);
 	        	}
 	        	else {
-	        		System.out.println("Le simon a dÈj‡ ÈtÈ montrÈ.");	
+	        		System.out.println("Le simon a d√©j√† √©t√© montr√©.");	
 	        	}
         		
         		showSimonOrder = true;
@@ -145,7 +146,7 @@ public class Engine implements EventHandler{
 	        if (source.equals(view.getZone_cable_1())) {
 	        	
 	        	if(false == cable_fait) {
-	        		//VÈrifie si c'est le bon cable ‡ couper ou non
+	        		//V√©rifie si c'est le bon cable √† couper ou non
 		        	if(modules.get(moduleEnCours).getEnigmeBoard().getEnigme().getNameEnigme()=="Cut red cable") {
 		        		view.getRec_check1().setFill(new ImagePattern(view.getCheck()));
 		        		view.getCamembert().setFill(new ImagePattern(view.getCamembert_img2()));
@@ -154,7 +155,7 @@ public class Engine implements EventHandler{
 		        		cablesResolved = true;
 		        	}else {
 		        		view.getRec_check1().setFill(new ImagePattern(view.getNoCheck()));
-		      		  	view.getTextLogs().setText(view.getTextLogs().getText()+">> Vous avez ÈchouÈ.\n");
+		      		  	view.getTextLogs().setText(view.getTextLogs().getText()+">> Vous avez √©chou√©.\n");
 
 		        		defeat();
 		        	}
@@ -170,16 +171,16 @@ public class Engine implements EventHandler{
 	        if (source.equals(view.getZone_cable_2())) {
 	        	
 	        	if(false == cable_fait) {
-	        		//VÈrifie si c'est le bon cable ‡ couper ou non
+	        		//V√©rifie si c'est le bon cable √† couper ou non
 		        	if(modules.get(moduleEnCours).getEnigmeBoard().getEnigme().getNameEnigme()=="Cut yellow cable") {
-		        		view.getRec_check2().setFill(new ImagePattern(view.getCheck()));
+		        		view.getRec_check1().setFill(new ImagePattern(view.getCheck()));
 		        		view.getCamembert().setFill(new ImagePattern(view.getCamembert_img2()));
 		        		view.setModule_alpha(true);
 		        		// IF CABLES RESOLUS : SIMON
 		        		cablesResolved = true;
 		        	}else {
-		        		view.getRec_check2().setFill(new ImagePattern(view.getNoCheck()));
-		      		  	view.getTextLogs().setText(view.getTextLogs().getText()+">> Vous avez ÈchouÈ.\n");
+		        		view.getRec_check1().setFill(new ImagePattern(view.getNoCheck()));
+		      		  	view.getTextLogs().setText(view.getTextLogs().getText()+">> Vous avez √©chou√©.\n");
 
 		        		defeat();
 		        	}
@@ -195,16 +196,16 @@ public class Engine implements EventHandler{
 	        if (source.equals(view.getZone_cable_3())) {
 	        	
 	        	if(false == cable_fait) {
-	        		//VÈrifie si c'est le bon cable ‡ couper ou non
+	        		//V√©rifie si c'est le bon cable √† couper ou non
 		        	if(modules.get(moduleEnCours).getEnigmeBoard().getEnigme().getNameEnigme()=="Cut green cable") {
-		        		view.getRec_check3().setFill(new ImagePattern(view.getCheck()));
+		        		view.getRec_check1().setFill(new ImagePattern(view.getCheck()));
 		        		view.getCamembert().setFill(new ImagePattern(view.getCamembert_img2()));
 		        		view.setModule_alpha(true);
 		        		// IF CABLES RESOLUS : SIMON
 		        		cablesResolved = true;
 		        	}else {
-		        		view.getRec_check3().setFill(new ImagePattern(view.getNoCheck()));
-		      		  	view.getTextLogs().setText(view.getTextLogs().getText()+">> Vous avez ÈchouÈ.\n");
+		        		view.getRec_check1().setFill(new ImagePattern(view.getNoCheck()));
+		      		  	view.getTextLogs().setText(view.getTextLogs().getText()+">> Vous avez √©chou√©.\n");
 
 		        		defeat();
 		        	}
@@ -220,16 +221,16 @@ public class Engine implements EventHandler{
 	        if (source.equals(view.getZone_cable_4())) {
 	        	
 	        	if(false == cable_fait) {
-	        		//VÈrifie si c'est le bon cable ‡ couper ou non
+	        		//V√©rifie si c'est le bon cable √† couper ou non
 		        	if(modules.get(moduleEnCours).getEnigmeBoard().getEnigme().getNameEnigme()=="Cut blue cable") {
-		        		view.getRec_check4().setFill(new ImagePattern(view.getCheck()));
+		        		view.getRec_check1().setFill(new ImagePattern(view.getCheck()));
 		        		view.getCamembert().setFill(new ImagePattern(view.getCamembert_img2()));
 		        		view.setModule_alpha(true);
 		        		// IF CABLES RESOLUS : SIMON
 		        		cablesResolved = true;
 		        	}else {
-		        		view.getRec_check4().setFill(new ImagePattern(view.getNoCheck()));
-		      		  	view.getTextLogs().setText(view.getTextLogs().getText()+">> Vous avez ÈchouÈ.\n");
+		        		view.getRec_check1().setFill(new ImagePattern(view.getNoCheck()));
+		      		  	view.getTextLogs().setText(view.getTextLogs().getText()+">> Vous avez √©chou√©.\n");
 
 		        		defeat();
 		        	}
@@ -247,10 +248,9 @@ public class Engine implements EventHandler{
 	        		showSimonOrder = true;
 	        	}
 	        	if(modules.get(2).isActive == true){
-	        		view.getTextLogs().setText(view.getTextLogs().getText()+">> "+modules.get(moduleEnCours).getEnigmeBoard().getEnigme().getIndice().getIndiceText()+"\n");
+	        		view.getTextLogs().setText(view.getTextLogs().getText()+">> "+modules.get(moduleEnCours).getEnigmeBoard().getEnigme().getIndice().getIndiceText()+".\n");
 	        	}
 	        }
-
 	        
 	        if (source.equals(view.getBouton_up1())) {
 	        	
@@ -466,6 +466,98 @@ public class Engine implements EventHandler{
 	        	}
 	        }
 	        
+	        if (source.equals(view.getZone_chiffre_1())) {
+	        	
+	        	length_logs = view.getTextLogs().getText().length();
+	        	
+	        	if(view.getTextLogs().getText(length_logs-6, length_logs).contains(">>")) {
+	        		if(view.getTextLogs().getText(length_logs-1, length_logs).equals("1") || 
+		        			(view.getTextLogs().getText(length_logs-1, length_logs).equals("2")) ||
+		        					(view.getTextLogs().getText(length_logs-1, length_logs).equals("3")) ||
+		        							(view.getTextLogs().getText(length_logs-1, length_logs).equals("4"))) {
+			        	view.getTextLogs().setText(view.getTextLogs().getText()+"1");
+		        	}
+	        	}	        	
+	        	else {
+		        	view.getTextLogs().setText(view.getTextLogs().getText()+"\n>> 1");
+	        	}
+	        	
+	        	nb_click_num++;
+	        	
+	        	if(0 == nb_click_num%4) {
+		        	checkIfNumIsValidated();  	
+	        	}
+	        }
+	        
+	        if (source.equals(view.getZone_chiffre_2())) {
+	        	
+	        	length_logs = view.getTextLogs().getText().length();
+	        	
+	        	if(view.getTextLogs().getText(length_logs-6, length_logs).contains(">>")) {
+	        		if(view.getTextLogs().getText(length_logs-1, length_logs).equals("1") || 
+		        			(view.getTextLogs().getText(length_logs-1, length_logs).equals("2")) ||
+		        					(view.getTextLogs().getText(length_logs-1, length_logs).equals("3")) ||
+		        							(view.getTextLogs().getText(length_logs-1, length_logs).equals("4"))) {
+			        	view.getTextLogs().setText(view.getTextLogs().getText()+"2");
+		        	}
+	        	}	        	
+	        	else {
+		        	view.getTextLogs().setText(view.getTextLogs().getText()+"\n>> 2");
+	        	}
+	        	
+	        	nb_click_num++;
+	        	
+	        	if(0 == nb_click_num%4) {
+		        	checkIfNumIsValidated();  	
+	        	}
+	        }
+
+	        if (source.equals(view.getZone_chiffre_3())) {
+	        	
+	        	length_logs = view.getTextLogs().getText().length();
+	        	
+	        	if(view.getTextLogs().getText(length_logs-6, length_logs).contains(">>")) {
+	        		if(view.getTextLogs().getText(length_logs-1, length_logs).equals("1") || 
+		        			(view.getTextLogs().getText(length_logs-1, length_logs).equals("2")) ||
+		        					(view.getTextLogs().getText(length_logs-1, length_logs).equals("3")) ||
+		        							(view.getTextLogs().getText(length_logs-1, length_logs).equals("4"))) {
+			        	view.getTextLogs().setText(view.getTextLogs().getText()+"3");
+		        	}
+	        	}	        	
+	        	else {
+		        	view.getTextLogs().setText(view.getTextLogs().getText()+"\n>> 3");
+	        	}
+	        	
+	        	nb_click_num++;
+	        	
+	        	if(0 == nb_click_num%4) {
+		        	checkIfNumIsValidated();  	
+	        	}
+	        }
+
+	        if (source.equals(view.getZone_chiffre_4())) {
+	        	
+	        	length_logs = view.getTextLogs().getText().length();
+	        	
+	        	if(view.getTextLogs().getText(length_logs-6, length_logs).contains(">>")) {
+	        		if(view.getTextLogs().getText(length_logs-1, length_logs).equals("1") || 
+		        			(view.getTextLogs().getText(length_logs-1, length_logs).equals("2")) ||
+		        					(view.getTextLogs().getText(length_logs-1, length_logs).equals("3")) ||
+		        							(view.getTextLogs().getText(length_logs-1, length_logs).equals("4"))) {
+			        	view.getTextLogs().setText(view.getTextLogs().getText()+"4");
+		        	}
+	        	}	        	
+	        	else {
+		        	view.getTextLogs().setText(view.getTextLogs().getText()+"\n>> 4");
+	        	}	 
+	        	
+	        	nb_click_num++;
+	        	
+	        	if(0 == nb_click_num%4) {
+		        	checkIfNumIsValidated();  	
+	        	}
+	        }
+	        
 	        if (source.equals(view.getBoutton_rouge())) {
 	        	
 	            view.getRec_bouton_rouge().setFill(new ImagePattern(view.getButton_green_img()));
@@ -507,7 +599,7 @@ public class Engine implements EventHandler{
   private String nomDuBoard;
   private String nomDeLEnigme;
   private String libelleDeLIndice;
-  private int ordreDesTouchesPaveNumerique;
+  private String ordreDesTouchesPaveNumerique;
   
   // FONCTION PURGE ARRAYS
   public void purgeArrays() {
@@ -524,10 +616,10 @@ public class Engine implements EventHandler{
   public void initialisationArrays() {
 	  
 	  listeEnigmeBoards.add("Bouton");
-	  listeEnigmeBoards.add("C‚bles");
+	  listeEnigmeBoards.add("C√¢bles");
 	  listeEnigmeBoards.add("Simon");
-	  listeEnigmeBoards.add("PavÈ NumÈrique");
-	  listeEnigmeBoards.add("PavÈ AlphabÈtique");
+	  listeEnigmeBoards.add("Pav√© Num√©rique");
+	  listeEnigmeBoards.add("Pav√© Alphab√©tique");
 	  
 	  listeEnigmesCables.add("Cut red cable");
 	  listeEnigmesCables.add("Cut green cable");
@@ -550,11 +642,11 @@ public class Engine implements EventHandler{
 	  touchesPaveNumerique.add(8);
 	  touchesPaveNumerique.add(9);
 	  
-	  listeEnigmesPaveNumerique.add("DÈcouverte de l'Amerique par Christophe Colomb.");
+	  listeEnigmesPaveNumerique.add("D√©couverte de l'Amerique par Christophe Colomb.");
 	  listeEnigmesPaveNumerique.add("Fin de la Seconde Guerre Mondiale.");
-	  listeEnigmesPaveNumerique.add("L'Homme a marchÈ sur la Lune.");
+	  listeEnigmesPaveNumerique.add("L'Homme a march√© sur la Lune.");
 	  listeEnigmesPaveNumerique.add("La France est championne du monde de football.");
-	  listeEnigmesPaveNumerique.add("Suite de quatre chiffres de 1 ‡ 4.");
+	  listeEnigmesPaveNumerique.add("Suite de quatre chiffres de 1 √† 4.");
 	  
 	  listeEnigmesBouton.add("Appuyer sur le bouton");
   	  listeEnigmesBouton.add("N'appuie pas sur le bouton");
@@ -618,7 +710,7 @@ public class Engine implements EventHandler{
 //		      }
 //		      
 //		      // ENIGME CABLES
-//		      else if(nomDuBoard == "C‚bles") {
+//		      else if(nomDuBoard == "C√¢bles") {
 //		    	  generationEnigmeCables();
 //		      }
 //		      
@@ -629,7 +721,7 @@ public class Engine implements EventHandler{
 //		      }
 //		      
 //		      // ENIGME PAVE NUMERIQUE
-//		      else if(nomDuBoard == "PavÈ NumÈrique") {
+//		      else if(nomDuBoard == "Pav√© Num√©rique") {
 //		    	  generationEnigmePaveNumerique();
 //		      }
 //		      
@@ -694,7 +786,7 @@ public class Engine implements EventHandler{
 	  }
 	  
 	  modules.get(2).setActive(true);
-	  
+
 	  //GAME STEP, TOUJOURS UTILE
 //      engineClock.schedule(new TimerTask(){
 //    	  
@@ -737,7 +829,7 @@ public class Engine implements EventHandler{
   		purgeArrays();
 		initialisationArrays();
 		
-		System.out.println("C‚bles");
+		System.out.println("C√¢bles");
   		
   		String choixDeLEnigme = listeEnigmesCables.get(gen.nextInt(listeEnigmesCables.size()));
 	  	nomDeLEnigme = choixDeLEnigme;
@@ -780,25 +872,19 @@ public class Engine implements EventHandler{
   	private void generationEnigmePaveNumerique() {
 		purgeArrays();
 		initialisationArrays();
-  	    nomDeLEnigme = "PavÈ NumÈrique";
+  	    nomDeLEnigme = "Pav√© Num√©rique";
   	  
   	    String choixDeLEnigme = listeEnigmesPaveNumerique.get(gen.nextInt(listeEnigmesPaveNumerique.size()));
   	    nomDeLEnigme = choixDeLEnigme;
   	  
-  	    if(nomDeLEnigme == "DÈcouverte de l'Amerique par Christophe Colomb.") {
-  		    ordreDesTouchesPaveNumerique = 1492;
+  	    if(nomDeLEnigme == "Trait√© d'Amiens") {
+  		    ordreDesTouchesPaveNumerique = "1423";
   	    }
-  	    else if(nomDeLEnigme == "Fin de la Seconde Guerre Mondiale.") {
-  	    	ordreDesTouchesPaveNumerique = 1945;
-  	    }
-  	    else if(nomDeLEnigme == "L'Homme a marchÈ sur la Lune.") { 
-  	    	ordreDesTouchesPaveNumerique = 1969;
-  	    }
-  	    else if(nomDeLEnigme == "La France est championne du monde de football.") {
-  	    	ordreDesTouchesPaveNumerique = 1998;
+  	    else if(nomDeLEnigme == "8500/60+1000-2/3") {
+  	    	ordreDesTouchesPaveNumerique = "1141";
   	    }
   	    else{
-  	    	ordreDesTouchesPaveNumerique = 1234;
+  	    	ordreDesTouchesPaveNumerique = "1234";
   	    }
   	    if(disableConsoleLogs != 1) {
   	    	System.out.println(ordreDesTouchesPaveNumerique);
@@ -810,7 +896,7 @@ public class Engine implements EventHandler{
 		purgeArrays();
 		initialisationArrays();
 
-	  	nomDeLEnigme = "PavÈ AlphabÈtique";
+	  	nomDeLEnigme = "Pav√© Alphab√©tique";
 	  	libelleDeLIndice = "Ecrivez le mot 'CODE'";
 	  	
 	  	//modules.get(moduleEnCours).getEnigmeBoard().getEnigme().setName(nomDeLEnigme);
@@ -842,7 +928,7 @@ public class Engine implements EventHandler{
 				  new EnigmeBoard(
 						  "Minuteur", 
 						  new Enigme(
-								  "Pas d'Ènigme",
+								  "Pas d'√©nigme",
 								  1, 
 								  new Indice(
 										  "Pas d'indice")
@@ -861,7 +947,7 @@ public class Engine implements EventHandler{
 				  new EnigmeBoard(
 						  "Abort", 
 						  new Enigme(
-								  "Pas d'Ènigme",
+								  "Pas d'√©nigme",
 								  1, 
 								  new Indice(
 										  "Pas d'indice")
@@ -876,16 +962,16 @@ public class Engine implements EventHandler{
   	
   	private void printingLogs(){
   		if(disableConsoleLogs != 1) {
-  			System.out.println("Module numÈro "+i+" initialisÈ. Ce module de type : '"+modules.get(i).getEnigmeBoard().getNameBoard()+
-  				  "' comporte une Ènigme de type : '"+modules.get(i).getEnigmeBoard().getEnigme().getNameEnigme()+
-  				  "' ainsi que l'indice suivant associÈ : "+modules.get(i).getEnigmeBoard().getEnigme().getIndice().getIndiceText()+
+  			System.out.println("Module num√©ro "+i+" initialis√©. Ce module de type : '"+modules.get(i).getEnigmeBoard().getNameBoard()+
+  				  "' comporte une √©nigme de type : '"+modules.get(i).getEnigmeBoard().getEnigme().getNameEnigme()+
+  				  "' ainsi que l'indice suivant associ√© : "+modules.get(i).getEnigmeBoard().getEnigme().getIndice().getIndiceText()+
   				  ".");
   		}
   	}
   	
   	private void printingMinuteurLog() {
   		if(disableConsoleLogs != 1) {
-  			System.out.println("Module numÈro "+i+" initialisÈ. Ce module de type : 'Minuteur' ne comporte pas d'Ènigme.");
+  			System.out.println("Module num√©ro "+i+" initialis√©. Ce module de type : 'Minuteur' ne comporte pas d'√©nigme.");
   		}
   	}
   	
@@ -898,8 +984,8 @@ public class Engine implements EventHandler{
 		engineClock.schedule(new TimerTask() {
 	  		  public void run() {
 	  			  data.setStepNumber(data.getStepNumber() + 1);
-//				  System.out.println("Le timer est ‡ : "+data.getStepNumber()+" secondes.");
-//				  System.out.println("La deathClock est ‡ : "+deathClock.getCompteARebours()+" secondes.");
+//				  System.out.println("Le timer est √† : "+data.getStepNumber()+" secondes.");
+//				  System.out.println("La deathClock est √† : "+deathClock.getCompteARebours()+" secondes.");
 	  			  
 	  			  // CALCUL DES MINUTES ET SECONDES
 	  			  finalCountdown = deathClock.getCompteARebours() - data.getStepNumber();
@@ -938,14 +1024,14 @@ public class Engine implements EventHandler{
 	  			  // PRINT, IF COUNTDOWN ECOULE = VOUS ETES MORT
 	  			  if(finalCountdownFormatedMinutes > 0 || finalCountdownFormatedSeconds > -1) {
 	  				  if(disableConsoleLogs != 1) {
-	  					System.out.println("Le final countdown formatÈ est ‡ : "+finalCountdownFormatedMinutes+" minutes et "+finalCountdownFormatedSeconds+" secondes.");
+	  					System.out.println("Le final countdown format√© est √† : "+finalCountdownFormatedMinutes+" minutes et "+finalCountdownFormatedSeconds+" secondes.");
 	  				  }
 	  				
 	  			  }
 	  			  else {
 	  				if(disableConsoleLogs != 1) {
 	  	  			  view.getTimer().setText("BOOM");
-	  					System.out.println("Partie terminÈe, vous Ítes mort.");
+	  					System.out.println("Partie termin√©e, vous √™tes mort.");
 	  				}
 	  			  }
 	  			  
@@ -959,7 +1045,7 @@ public class Engine implements EventHandler{
 	  
   	  public void abortMission() {
   		if(disableConsoleLogs != 1) {
-			System.out.println("Partie terminÈe, vous avez choisi la mort.");
+			System.out.println("Partie termin√©e, vous avez choisi la mort.");
 		}
   	  }
   	  
@@ -968,15 +1054,15 @@ public class Engine implements EventHandler{
 	  }
   	  
   	  public void initializingPaveNumerique() {
-  		  System.out.println("C'est bien un PavÈ NumÈrique");
+  		  System.out.println("C'est bien un Pav√© Num√©rique");
 	  }
   	  
   	  public void initializingPaveAlphabetique() {
-		  System.out.println("C'est bien un PavÈ AlphabÈtique");
+		  System.out.println("C'est bien un Pav√© Alphab√©tique");
 	  }
   	  
   	  public void initializingCables() {
-		  System.out.println("C'est bien des c‚bles");
+		  System.out.println("C'est bien des c√¢bles");
 	  }
   	  
   	  public void revealModule(int i) {
@@ -989,13 +1075,13 @@ public class Engine implements EventHandler{
   		  if (modules.get(moduleEnCours).getEnigmeBoard().getNameBoard().equals("Simon")) {
   			  initializingSimon();
 		  }
-  		  if (modules.get(moduleEnCours).getEnigmeBoard().getNameBoard().equals("PavÈ NumÈrique")) {
+  		  if (modules.get(moduleEnCours).getEnigmeBoard().getNameBoard().equals("Pav√© Num√©rique")) {
 			  initializingPaveNumerique();
 		  }
-  		  if (modules.get(moduleEnCours).getEnigmeBoard().getNameBoard().equals("PavÈ AlphabÈtique")) {
+  		  if (modules.get(moduleEnCours).getEnigmeBoard().getNameBoard().equals("Pav√© Alphab√©tique")) {
   			initializingPaveAlphabetique();
 		  }
-  		  if (modules.get(moduleEnCours).getEnigmeBoard().getNameBoard().equals("C‚bles")) {
+  		  if (modules.get(moduleEnCours).getEnigmeBoard().getNameBoard().equals("C√¢bles")) {
   			initializingCables();
 		  }
 		  
@@ -1008,8 +1094,8 @@ public class Engine implements EventHandler{
 	  public void checkIfCodeIsValidated(){
 
 	  	  if(view.getLettre1().getText().equals(lettre1) && view.getLettre2().getText().equals(lettre2) && view.getLettre3().getText().equals(lettre3) && view.getLettre4().getText().equals(lettre4)){
-	  		  System.out.println("L'opÈrateur a passÈ le pavÈ alphabÈtique avec succËs.");
-	  		  view.getTextLogs().setText(view.getTextLogs().getText()+">> L'opÈrateur a passÈ le pavÈ alphabÈtique avec succËs.\n");
+	  		  System.out.println("L'op√©rateur a pass√© le pav√© alphab√©tique avec succ√®s.");
+	  		  view.getTextLogs().setText(view.getTextLogs().getText()+">> L'op√©rateur a pass√© le pav√© alphab√©tique avec succ√®s.\n");
 	  		  view.getRec_check3().setFill(new ImagePattern(view.getCheck()));
 	  		  view.getCamembert().setFill(new ImagePattern(view.getCamembert_img3()));
 	  		  alpha_fait = true;
@@ -1017,10 +1103,20 @@ public class Engine implements EventHandler{
 	  	  }
 	  }
 	  
+	  public void checkIfNumIsValidated(){
+
+		      String logs = new String(view.getTextLogs().getText(length_logs-3,length_logs+1));
+
+		      if(ordreDesTouchesPaveNumerique.equals(logs)) {
+	        		view.getRec_check4().setFill(new ImagePattern(view.getCheck()));
+		      }
+	  }
+	  
+	  
 	  public void victory() {
 		  engineClock.cancel();
 		  view.getTimer().setText("VICTOIRE");
-		  System.out.println("L'opÈrateur a dÈsamorcÈ la bombe avec succËs.");
+		  System.out.println("L'op√©rateur a d√©samorc√© la bombe avec succ√®s.");
 	  }
 	  
 	  public void checkIfDefeat() {
@@ -1030,7 +1126,7 @@ public class Engine implements EventHandler{
 	  public void defeat() {
 		  engineClock.cancel();
 		  view.getTimer().setText("BOOM");
-		  System.out.println("Partie terminÈe, l'opÈrateur a ÈtÈ tuÈ par l'explosion.");
+		  System.out.println("Partie termin√©e, l'op√©rateur a √©t√© tu√© par l'explosion.");
 		  defeat = true;
 	  }
 }
