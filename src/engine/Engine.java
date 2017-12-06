@@ -771,22 +771,14 @@ public class Engine implements EventHandler{
 	  couleursSimon.add("Jaune");
 	  couleursSimon.add("Vert");
 	 
-	  touchesPaveNumerique.add(0);
 	  touchesPaveNumerique.add(1);
 	  touchesPaveNumerique.add(2);
 	  touchesPaveNumerique.add(3);
 	  touchesPaveNumerique.add(4);
-	  touchesPaveNumerique.add(5);
-	  touchesPaveNumerique.add(6);
-	  touchesPaveNumerique.add(7);
-	  touchesPaveNumerique.add(8);
-	  touchesPaveNumerique.add(9);
 	  
-	  listeEnigmesPaveNumerique.add("Découverte de l'Amerique par Christophe Colomb.");
-	  listeEnigmesPaveNumerique.add("Fin de la Seconde Guerre Mondiale.");
-	  listeEnigmesPaveNumerique.add("L'Homme a marché sur la Lune.");
-	  listeEnigmesPaveNumerique.add("La France est championne du monde de football.");
-	  listeEnigmesPaveNumerique.add("Suite de quatre chiffres de 1 à 4.");
+	  listeEnigmesPaveNumerique.add("Traité d'Amiens");
+	  listeEnigmesPaveNumerique.add("8500/60+1000-2/3");
+	  listeEnigmesPaveNumerique.add("Suite arithmétique N, avec i = 1 et quatre itérations à n = i + 1.");
 	  
 	  listeEnigmesBouton.add("Appuyer sur le bouton");
   	  listeEnigmesBouton.add("N'appuie pas sur le bouton");
@@ -1015,16 +1007,20 @@ public class Engine implements EventHandler{
   	    nomDeLEnigme = "Pavé Numérique";
   	    libelleDeLIndice = "Suite arithmétique N, avec i = 1 et quatre itérations à n = i + 1.";
   	  
+  	    
   	    String choixDeLEnigme = listeEnigmesPaveNumerique.get(gen.nextInt(listeEnigmesPaveNumerique.size()));
   	    nomDeLEnigme = choixDeLEnigme;
   	  
   	    if(nomDeLEnigme == "Traité d'Amiens") {
+  	  	    libelleDeLIndice = "Traité d'Amiens";
   		    ordreDesTouchesPaveNumerique = "1423";
   	    }
   	    else if(nomDeLEnigme == "8500/60+1000-2/3") {
+  	  	    libelleDeLIndice = "8500/60+1000-2/3.";
   	    	ordreDesTouchesPaveNumerique = "1141";
   	    }
   	    else{
+  	  	    libelleDeLIndice = "Suite arithmétique N, avec i = 1 et quatre itérations à n = i + 1.";
   	    	ordreDesTouchesPaveNumerique = "1234";
   	    }
   	    if(disableConsoleLogs != 1) {
@@ -1159,9 +1155,7 @@ public class Engine implements EventHandler{
 			  			  
 	  				}
 	  			  }
-	  			  
-	  			  
-	  			  
+	  			  		  
 	  			  // PRINT, IF COUNTDOWN ECOULE = VOUS ETES MORT
 	  			  if(finalCountdownFormatedMinutes > 0 || finalCountdownFormatedSeconds > -1) {
 	  				  if(disableConsoleLogs != 1) {
