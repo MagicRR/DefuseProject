@@ -219,38 +219,17 @@ public class Viewer extends HBox{
 		  code_alpha.setFitHeight(((3*HardCodedParameters.defaultHeight/4)/2)-15);
 		  code_alpha.setImage(image_alpha);
 		  gridpane_malette.add(code_alpha,0,1);
-		  GridPane.setMargin(code_alpha, new Insets(0, 0, 0, 20));
+		  GridPane.setMargin(code_alpha, new Insets(5000, 0, 0, 20));
 	  }else {
 		  
 	  }
-	 
-	  
-	  
-	  
-	  
+	   
 	  //Zone en haut au milieu
 	  rec_bouton_rouge.setFill(new ImagePattern(getButton_red_img()));
 	  boutton_rouge.setGraphic(rec_bouton_rouge);
 	  boutton_rouge.setStyle("-fx-background-color: transparent;");
 	  gridpane_malette.add(boutton_rouge,1,0);
 	  GridPane.setMargin(boutton_rouge, new Insets(0, 0, 0, ((3*HardCodedParameters.defaultWidth/4)/3)/15));
-	  
-	  
-	  
-	  //Zone en bas au milieu, gridpane simon	 	  
-	  if(false == module_simon) {
-		  Image image_block = new Image("/images/fond-bordure.jpg");
-		  ImageView zone4 = new ImageView();
-		  zone4.setFitWidth(((3*HardCodedParameters.defaultWidth/4)/3)-30);
-		  zone4.setFitHeight(((3*HardCodedParameters.defaultHeight/4)/2)-30);
-		  zone4.setFitHeight(((3*HardCodedParameters.defaultHeight/4)/2)-15);
-		  zone4.setImage(image_block);
-		  gridpane_malette.add(zone4,1,1);
-		  GridPane.setMargin(zone4, new Insets(0, 0, 0, 15));
-		  GridPane.setMargin(zone4, new Insets(8, 0, 0, 0));	  
-	  }else {
-		  
-	  }
 	  
 	    
 	  //Zone en haut à droite
@@ -267,7 +246,7 @@ public class Viewer extends HBox{
 		  GridPane gridpane_cable = new GridPane();
 		 
 		  //Background des cables
-		  BackgroundImage pose_cable= new BackgroundImage(new Image("/images/pose-cable.png",((3*HardCodedParameters.defaultWidth/4)/3)-20, ((3*HardCodedParameters.defaultHeight/4)/2)-8,false,true),
+		  BackgroundImage pose_cable = new BackgroundImage(new Image("/images/pose-cable.png",((3*HardCodedParameters.defaultWidth/4)/3)-20, ((3*HardCodedParameters.defaultHeight/4)/2)-8,false,true),
 			        BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT,
 			          BackgroundSize.DEFAULT);
 		  gridpane_cable.setBackground(new Background(pose_cable));
@@ -277,46 +256,33 @@ public class Viewer extends HBox{
 		  zone_cable_1.setGraphic(rec_cable1);
 		  zone_cable_1.setStyle("-fx-background-color: transparent;");
 		  gridpane_cable.add(zone_cable_1,0,0);
-		  GridPane.setMargin(zone_cable_1, new Insets(-20, 0, 0, ((3*HardCodedParameters.defaultWidth/4)/3)/15));
+		  GridPane.setMargin(zone_cable_1, new Insets(-5, 0, 0, ((3*HardCodedParameters.defaultWidth/4)/3)/10));
 		  
 		  //Deuxieme cable
 		  rec_cable2.setFill(new ImagePattern(cable_jaune));
 		  zone_cable_2.setGraphic(rec_cable2);
 		  zone_cable_2.setStyle("-fx-background-color: transparent;");
 		  gridpane_cable.add(zone_cable_2,0,1);
-		  GridPane.setMargin(zone_cable_2, new Insets(10, 0, 0, ((3*HardCodedParameters.defaultWidth/4)/3)/15));
+		  GridPane.setMargin(zone_cable_2, new Insets(20, 0, 0, ((3*HardCodedParameters.defaultWidth/4)/3)/9));
 		  
 		  //Troisième cable
 		  rec_cable3.setFill(new ImagePattern(cable_vert));
 		  zone_cable_3.setGraphic(rec_cable3);
 		  zone_cable_3.setStyle("-fx-background-color: transparent;");
 		  gridpane_cable.add(zone_cable_3,0,2);
-		  GridPane.setMargin(zone_cable_3, new Insets(-25, 0, 0, ((3*HardCodedParameters.defaultWidth/4)/3)/15));
+		  GridPane.setMargin(zone_cable_3, new Insets(-20, 0, 0, ((3*HardCodedParameters.defaultWidth/4)/3)/8));
 		  
 		  //Quatrieme cable
 		  rec_cable4.setFill(new ImagePattern(cable_bleu));
 		  zone_cable_4.setGraphic(rec_cable4);
 		  zone_cable_4.setStyle("-fx-background-color: transparent;");
 		  gridpane_cable.add(zone_cable_4,0,3);
-		  GridPane.setMargin(zone_cable_4, new Insets(-30, 0, 0, ((3*HardCodedParameters.defaultWidth/4)/3)/15));
+		  GridPane.setMargin(zone_cable_4, new Insets(-20, 0, 0, ((3*HardCodedParameters.defaultWidth/4)/3)/7));
 		  
-		  GridPane.setMargin(gridpane_cable, new Insets(5, 0, 0, -((3*HardCodedParameters.defaultWidth)/5)/15));
+		  GridPane.setMargin(gridpane_cable, new Insets(5, 0, 0, -((3*HardCodedParameters.defaultWidth)/5)/25));
 		  gridpane_malette.add(gridpane_cable,2,0);
 	  }
-	  
-	  //Zone en bas à droite
-	  if(false == module_num) {
-		  Image image_block2 = new Image("/images/fond-bordure.jpg");
-		  ImageView zone6 = new ImageView();
-		  zone6.setFitWidth(((3*HardCodedParameters.defaultWidth/4)/3)-20);
-		  zone6.setFitHeight(((3*HardCodedParameters.defaultHeight/4)/2)-15);
-		  zone6.setImage(image_block2);
-		  gridpane_malette.add(zone6,2,1);
-		  GridPane.setMargin(zone6, new Insets(0, 0, 0, -((HardCodedParameters.defaultWidth)/5)/9));
-	  }else {
-		
-	  } 
-	  
+	
 	  malette_group.getChildren().addAll(gridpane_malette);
 	  
 	  
