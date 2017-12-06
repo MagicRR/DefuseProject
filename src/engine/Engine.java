@@ -121,6 +121,7 @@ public class Engine implements EventHandler{
 						}
 						else {
 							defeat();
+			        		view.getRec_check4().setFill(new ImagePattern(view.getNoCheck()));
 							nb_click_simon = 0;
 						}
 					}	
@@ -152,6 +153,7 @@ public class Engine implements EventHandler{
 						}
 						else {
 							defeat();
+			        		view.getRec_check4().setFill(new ImagePattern(view.getNoCheck()));
 							nb_click_simon = 0;
 						}
 					}
@@ -183,6 +185,7 @@ public class Engine implements EventHandler{
 						}
 						else {
 							defeat();
+			        		view.getRec_check4().setFill(new ImagePattern(view.getNoCheck()));
 							nb_click_simon = 0;
 						}
 					}
@@ -215,6 +218,7 @@ public class Engine implements EventHandler{
 						}
 						else {
 							defeat();
+			        		view.getRec_check4().setFill(new ImagePattern(view.getNoCheck()));
 							nb_click_simon = 0;
 						}
 					}
@@ -731,6 +735,7 @@ public class Engine implements EventHandler{
   private ArrayList<String> couleursSimon = new ArrayList<String>();
   private ArrayList<Integer> touchesPaveNumerique = new ArrayList<Integer>();
   private ArrayList<String> listeEnigmesPaveNumerique = new ArrayList<String>();
+  private ArrayList<String> listeEnigmesPaveAlphabetique = new ArrayList<String>();
   
   private ArrayList<String> listeEnigmesBouton = new ArrayList<String>();
   
@@ -779,6 +784,10 @@ public class Engine implements EventHandler{
 	  listeEnigmesPaveNumerique.add("Traité d'Amiens");
 	  listeEnigmesPaveNumerique.add("8500/60+1000-2/3");
 	  listeEnigmesPaveNumerique.add("Suite arithmétique N, avec i = 1 et quatre itérations à n = i + 1.");
+	  
+	  listeEnigmesPaveAlphabetique.add("GIGN");
+	  listeEnigmesPaveAlphabetique.add("CODE");
+	  listeEnigmesPaveAlphabetique.add("PUSH");
 	  
 	  listeEnigmesBouton.add("Appuyer sur le bouton");
   	  listeEnigmesBouton.add("N'appuie pas sur le bouton");
@@ -960,9 +969,7 @@ public class Engine implements EventHandler{
   		
   		purgeArrays();
 		initialisationArrays();
-		
-		System.out.println("Câbles");
-  		
+		  		
   		String choixDeLEnigme = listeEnigmesCables.get(gen.nextInt(listeEnigmesCables.size()));
 	  	nomDeLEnigme = choixDeLEnigme;
 	  	if(nomDeLEnigme == "Cut red cable") {
@@ -1004,8 +1011,8 @@ public class Engine implements EventHandler{
   	private void generationEnigmePaveNumerique() {
 		purgeArrays();
 		initialisationArrays();
-  	    nomDeLEnigme = "Pavé Numérique";
-  	    libelleDeLIndice = "Suite arithmétique N, avec i = 1 et quatre itérations à n = i + 1.";
+
+		libelleDeLIndice = "Suite arithmétique N, avec i = 1 et quatre itérations à n = i + 1.";
   	  
   	    
   	    String choixDeLEnigme = listeEnigmesPaveNumerique.get(gen.nextInt(listeEnigmesPaveNumerique.size()));
@@ -1033,8 +1040,40 @@ public class Engine implements EventHandler{
 		purgeArrays();
 		initialisationArrays();
 
-	  	nomDeLEnigme = "Pavé Alphabétique";
-	  	libelleDeLIndice = "Unité d'élite de la gendarmerie francaise";
+	  	libelleDeLIndice = "Unité d'élite de la gendarmerie francaise";  	  
+  	    
+  	    String choixDeLEnigme = listeEnigmesPaveAlphabetique.get(gen.nextInt(listeEnigmesPaveAlphabetique.size()));
+  	    nomDeLEnigme = choixDeLEnigme;
+  	  
+  	    if(nomDeLEnigme == "PUSH") {
+  	  	    libelleDeLIndice = "PUSH";
+  		    lettre1 = "P";
+  		    lettre2 = "U";
+  		    lettre3 = "S";
+  		    lettre4 = "H";
+  		  	libelleDeLIndice = "Envoi des commits sur GitHub";  	  
+
+  	    }
+  	    else if(nomDeLEnigme == "GIGN") {
+  	  	    libelleDeLIndice = "GIGN";
+  	  	    lettre1 = "G";
+		    lettre2 = "I";
+		    lettre3 = "G";
+		    lettre4 = "N";
+		  	libelleDeLIndice = "Unité d'élite de la gendarmerie francaise";  	  
+
+  	    }
+  	    else{
+  	  	    libelleDeLIndice = "CODE";
+  	  	    lettre1 = "C";
+		    lettre2 = "O";
+		    lettre3 = "D";
+		    lettre4 = "E";
+		  	libelleDeLIndice = "Un mot de passe est un ...";  	  
+  	    }
+  	    if(disableConsoleLogs != 1) {
+  	    	System.out.println(ordreDesTouchesPaveNumerique);
+  	  }
 	  	
 	  	//modules.get(moduleEnCours).getEnigmeBoard().getEnigme().setName(nomDeLEnigme);
   	}
