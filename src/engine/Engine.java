@@ -788,7 +788,9 @@ public class Engine implements EventHandler{
 	  listeEnigmesPaveAlphabetique.add("GIGN");
 	  listeEnigmesPaveAlphabetique.add("CODE");
 	  listeEnigmesPaveAlphabetique.add("PUSH");
-	  
+	  listeEnigmesPaveAlphabetique.add("PULL");
+	  listeEnigmesPaveAlphabetique.add("ALAN");
+
 	  listeEnigmesBouton.add("Appuyer sur le bouton");
   	  listeEnigmesBouton.add("N'appuie pas sur le bouton");
   	  
@@ -1063,13 +1065,32 @@ public class Engine implements EventHandler{
 		  	libelleDeLIndice = "Unité d'élite de la gendarmerie francaise";  	  
 
   	    }
+  	    else if(nomDeLEnigme == "ALAN") {
+	  	    libelleDeLIndice = "ALAN";
+	  	    lettre1 = "A";
+		    lettre2 = "L";
+		    lettre3 = "A";
+		    lettre4 = "N";
+		  	libelleDeLIndice = "Aventurier perdu de Jumanji";  	  
+
+	    }
+  	    else if(nomDeLEnigme == "PULL") {
+	  	    libelleDeLIndice = "PULL";
+	  	    lettre1 = "P";
+		    lettre2 = "U";
+		    lettre3 = "L";
+		    lettre4 = "L";
+		  	libelleDeLIndice = "Récupération des commits de GitHub";  	  
+
+	    }
   	    else{
   	  	    libelleDeLIndice = "CODE";
   	  	    lettre1 = "C";
 		    lettre2 = "O";
 		    lettre3 = "D";
 		    lettre4 = "E";
-		  	libelleDeLIndice = "Un mot de passe est un ...";  	  
+		  	libelleDeLIndice = "Un mot de passe est un ...";
+		  	
   	    }
   	    if(disableConsoleLogs != 1) {
   	    	System.out.println(ordreDesTouchesPaveNumerique);
