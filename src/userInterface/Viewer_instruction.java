@@ -7,14 +7,12 @@ package userInterface;
 import tools.HardCodedParameters;
 
 import specifications.ReadService;
-import specifications.RequireReadService;
-import specifications.ViewerAccueilService;
-import specifications.ViewerInstructionService;
+import javafx.scene.Cursor;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.TextArea;
 import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundImage;
 import javafx.scene.layout.BackgroundPosition;
@@ -27,7 +25,6 @@ import javafx.scene.layout.Pane;
 import javafx.scene.layout.Priority;
 import javafx.stage.Stage;
 import engine.ControllerMain;
-import engine.Engine;
 import engine.InstruEngine;
 import javafx.geometry.Insets;
 
@@ -58,7 +55,7 @@ public class Viewer_instruction extends HBox{
 	  gridpane_accueil.setHgap(15);
 	  gridpane_accueil.setVgap(10);
 	  
-	  ColumnConstraints column1 = new ColumnConstraints(HardCodedParameters.defaultWidth,HardCodedParameters.defaultWidth, HardCodedParameters.defaultWidth);
+	  ColumnConstraints column1 = new ColumnConstraints(HardCodedParameters.defaultWidth, HardCodedParameters.defaultWidth, HardCodedParameters.defaultWidth);
 	  column1.setHgrow(Priority.ALWAYS);
 	  
 	  gridpane_accueil.getColumnConstraints().addAll(column1);	  
@@ -70,17 +67,24 @@ public class Viewer_instruction extends HBox{
 	  window.setBackground(new Background(fond_accueil));
 	 
 	  //Image du jeu
-	  Image accueil = new Image("/images/logo.png");
-	  ImageView accueil_image = new ImageView();
-	  accueil_image.setFitWidth(4*HardCodedParameters.defaultWidth/5);
-	  accueil_image.setFitHeight(HardCodedParameters.defaultWidth/2);
-	  accueil_image.setImage(accueil);
-	  GridPane.setMargin(accueil_image, new Insets(-1*HardCodedParameters.defaultHeight/15, 0, 0, 1*HardCodedParameters.defaultWidth/10));
-	  gridpane_accueil.add(accueil_image,0,0);
+	  
+	  //Logs
+	  TextArea textInstruction = new TextArea("NOW,\n DO IT BY YOURSELF.");
+	  textInstruction.setCursor(Cursor.DEFAULT);
+	  textInstruction.setEditable(false);
+	  textInstruction.autosize();
+	  textInstruction.setPrefHeight(1*HardCodedParameters.defaultWidth/4);
+	  textInstruction.setPrefWidth(1*HardCodedParameters.defaultWidth/3);
+	  textInstruction.setLayoutX(1*HardCodedParameters.defaultWidth/3);
+	  textInstruction.setLayoutY(1*HardCodedParameters.defaultHeight/2);
+	  textInstruction.setStyle("-fx-text-fill: green; -fx-control-inner-background: black;");
+	  
+	  GridPane.setMargin(textInstruction, new Insets(1*HardCodedParameters.defaultHeight/4, 1*HardCodedParameters.defaultWidth/3, 0, 1*HardCodedParameters.defaultWidth/3));
+	  gridpane_accueil.add(textInstruction,0,0);
 
 	  //Button retour
 	  retour.arm();
-	  GridPane.setMargin(retour, new Insets(-1*HardCodedParameters.defaultHeight/5, 0, 0, -50+1*HardCodedParameters.defaultWidth/2));
+	  GridPane.setMargin(retour, new Insets(50, 0, 0, -60+(1*HardCodedParameters.defaultWidth/2)));
 	  gridpane_accueil.add(retour,0,1);
 	
 	  
