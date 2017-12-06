@@ -50,7 +50,8 @@ public class Engine implements EventHandler{
     private boolean showSimonOrder = false;
     private int fourSteps;
     private int fourStepsPlusFour;
-	
+	private int s;
+    
 	private int delaiMinuteur = 300;
 	private int finalCountdown;
 	private int finalCountdownFormatedMinutes;
@@ -733,6 +734,7 @@ public class Engine implements EventHandler{
   private ArrayList<String> listeEnigmeBoards = new ArrayList<String>();
   private ArrayList<String> listeEnigmesCables = new ArrayList<String>();
   private ArrayList<String> couleursSimon = new ArrayList<String>();
+  private ArrayList<String> ordreSimon = new ArrayList<String>();
   private ArrayList<Integer> touchesPaveNumerique = new ArrayList<Integer>();
   private ArrayList<String> listeEnigmesPaveNumerique = new ArrayList<String>();
   private ArrayList<String> listeEnigmesPaveAlphabetique = new ArrayList<String>();
@@ -1321,58 +1323,227 @@ public class Engine implements EventHandler{
 		      }
 	  }
 	  
+//	  public void launchingSimon() {
+//        	fourSteps = data.getStepNumber();
+//        	fourStepsPlusFour = fourSteps + 4;
+//        	
+//        	if(showSimonOrder == false) {
+//        		simonClock.schedule(new TimerTask(){
+//	        		public void run() {
+//	        				if(fourSteps == fourStepsPlusFour - 4) {
+//	        					System.out.println("Simon rouge");
+//	        					view.getRec_simon1().setFill(new ImagePattern(view.getSimon_rouge_light()));
+//	        					view.getRec_simon2().setFill(new ImagePattern(view.getSimon_vert()));
+//	        					view.getRec_simon3().setFill(new ImagePattern(view.getSimon_jaune()));
+//	        					view.getRec_simon4().setFill(new ImagePattern(view.getSimon_bleu()));
+//	        				}
+//	        				if(fourSteps == fourStepsPlusFour - 3) {
+//	        					System.out.println("Simon vert");	
+//	        					view.getRec_simon2().setFill(new ImagePattern(view.getSimon_vert_light()));
+//	        					view.getRec_simon1().setFill(new ImagePattern(view.getSimon_rouge()));
+//	        					view.getRec_simon3().setFill(new ImagePattern(view.getSimon_jaune()));
+//	        					view.getRec_simon4().setFill(new ImagePattern(view.getSimon_bleu()));
+//	        				}
+//	        				if(fourSteps == fourStepsPlusFour - 2) {
+//	        					System.out.println("Simon jaune");
+//	        					view.getRec_simon3().setFill(new ImagePattern(view.getSimon_jaune_light()));
+//	        					view.getRec_simon2().setFill(new ImagePattern(view.getSimon_vert()));
+//	        					view.getRec_simon1().setFill(new ImagePattern(view.getSimon_rouge()));
+//	        					view.getRec_simon4().setFill(new ImagePattern(view.getSimon_bleu()));
+//	        				}
+//	        				if(fourSteps == fourStepsPlusFour - 1) {
+//	        					System.out.println("Simon bleu");	
+//	        					view.getRec_simon4().setFill(new ImagePattern(view.getSimon_bleu_light()));
+//	        					view.getRec_simon2().setFill(new ImagePattern(view.getSimon_vert()));
+//	        					view.getRec_simon3().setFill(new ImagePattern(view.getSimon_jaune()));
+//	        					view.getRec_simon1().setFill(new ImagePattern(view.getSimon_rouge()));
+//	        				}
+//	        				if(fourSteps == fourStepsPlusFour) {
+//	        					System.out.println("Aucun Simon");	
+//	        					view.getRec_simon4().setFill(new ImagePattern(view.getSimon_bleu()));
+//	        					view.getRec_simon2().setFill(new ImagePattern(view.getSimon_vert()));
+//	        					view.getRec_simon3().setFill(new ImagePattern(view.getSimon_jaune()));
+//	        					view.getRec_simon1().setFill(new ImagePattern(view.getSimon_rouge()));
+//	        				}
+//		        			fourSteps++;
+//	        		}
+//	        	},0,1000);
+//        	}
+//        	else {
+//        		System.out.println("Le simon a déjà été montré.");	
+//        	}
+//      		
+//      		showSimonOrder = true;
+//	  }
+	  
 	  public void launchingSimon() {
-        	fourSteps = data.getStepNumber();
-        	fourStepsPlusFour = fourSteps + 4;
-        	
-        	if(showSimonOrder == false) {
-        		simonClock.schedule(new TimerTask(){
-	        		public void run() {
-	        				if(fourSteps == fourStepsPlusFour - 4) {
-	        					System.out.println("Simon rouge");
-	        					view.getRec_simon1().setFill(new ImagePattern(view.getSimon_rouge_light()));
+	      	fourSteps = data.getStepNumber();
+	      	fourStepsPlusFour = fourSteps + 4;
+	      	
+	      	ordreSimon.clear();
+	      	
+	      	for(int s = 0; s < 4; s++){
+	      		ordreSimon.add(couleursSimon.get(gen.nextInt(couleursSimon.size())));
+	      	}
+
+			view.getTextLogs().setText(view.getTextLogs().getText()+">> Ordre du Simon : "+ordreSimon+".\n");
+	      	
+			i = 0;
+	      	
+	      	if(showSimonOrder == false) {
+	      		simonClock.schedule(new TimerTask(){
+		        		public void run() {	        			
+		        			System.out.println(data.getStepNumber());
+		        			if(data.getStepNumber()%2 == 0) {
+		        				if(fourSteps == fourStepsPlusFour - 4) {
+		        					if(ordreSimon.get(i) == "Rouge") {
+			        					System.out.println("Simon rouge");
+			        					view.getRec_simon1().setFill(new ImagePattern(view.getSimon_rouge_light()));
+			        					view.getRec_simon2().setFill(new ImagePattern(view.getSimon_vert()));
+			        					view.getRec_simon3().setFill(new ImagePattern(view.getSimon_jaune()));
+			        					view.getRec_simon4().setFill(new ImagePattern(view.getSimon_bleu()));
+		    	        			}
+		        					if(ordreSimon.get(i) == "Vert") {
+		        						System.out.println("Simon vert");	
+		        						view.getRec_simon2().setFill(new ImagePattern(view.getSimon_vert_light()));
+			        					view.getRec_simon1().setFill(new ImagePattern(view.getSimon_rouge()));
+			        					view.getRec_simon3().setFill(new ImagePattern(view.getSimon_jaune()));
+			        					view.getRec_simon4().setFill(new ImagePattern(view.getSimon_bleu()));
+		        					}
+		        					if(ordreSimon.get(i) == "Jaune") {
+		        						System.out.println("Simon jaune");
+			        					view.getRec_simon3().setFill(new ImagePattern(view.getSimon_jaune_light()));
+			        					view.getRec_simon2().setFill(new ImagePattern(view.getSimon_vert()));
+			        					view.getRec_simon1().setFill(new ImagePattern(view.getSimon_rouge()));
+			        					view.getRec_simon4().setFill(new ImagePattern(view.getSimon_bleu()));
+		        					}
+		        					if(ordreSimon.get(i) == "Bleu") {
+		        						System.out.println("Simon bleu");	
+			        					view.getRec_simon4().setFill(new ImagePattern(view.getSimon_bleu_light()));
+			        					view.getRec_simon2().setFill(new ImagePattern(view.getSimon_vert()));
+			        					view.getRec_simon3().setFill(new ImagePattern(view.getSimon_jaune()));
+			        					view.getRec_simon1().setFill(new ImagePattern(view.getSimon_rouge()));
+		        					}
+		        					i++;
+		        				}
+		        				if(fourSteps == fourStepsPlusFour - 3) {
+		        					if(ordreSimon.get(i) == "Rouge") {
+			        					System.out.println("Simon rouge");
+			        					view.getRec_simon1().setFill(new ImagePattern(view.getSimon_rouge_light()));
+			        					view.getRec_simon2().setFill(new ImagePattern(view.getSimon_vert()));
+			        					view.getRec_simon3().setFill(new ImagePattern(view.getSimon_jaune()));
+			        					view.getRec_simon4().setFill(new ImagePattern(view.getSimon_bleu()));
+		    	        			}
+		        					if(ordreSimon.get(i) == "Vert") {
+		        						System.out.println("Simon vert");	
+		        						view.getRec_simon2().setFill(new ImagePattern(view.getSimon_vert_light()));
+			        					view.getRec_simon1().setFill(new ImagePattern(view.getSimon_rouge()));
+			        					view.getRec_simon3().setFill(new ImagePattern(view.getSimon_jaune()));
+			        					view.getRec_simon4().setFill(new ImagePattern(view.getSimon_bleu()));
+		        					}
+		        					if(ordreSimon.get(i) == "Jaune") {
+		        						System.out.println("Simon jaune");
+			        					view.getRec_simon3().setFill(new ImagePattern(view.getSimon_jaune_light()));
+			        					view.getRec_simon2().setFill(new ImagePattern(view.getSimon_vert()));
+			        					view.getRec_simon1().setFill(new ImagePattern(view.getSimon_rouge()));
+			        					view.getRec_simon4().setFill(new ImagePattern(view.getSimon_bleu()));
+		        					}
+		        					if(ordreSimon.get(i) == "Bleu") {
+		        						System.out.println("Simon bleu");	
+			        					view.getRec_simon4().setFill(new ImagePattern(view.getSimon_bleu_light()));
+			        					view.getRec_simon2().setFill(new ImagePattern(view.getSimon_vert()));
+			        					view.getRec_simon3().setFill(new ImagePattern(view.getSimon_jaune()));
+			        					view.getRec_simon1().setFill(new ImagePattern(view.getSimon_rouge()));
+		        					}
+		        					i++;
+		        					
+		        				}
+		        				if(fourSteps == fourStepsPlusFour - 2) {
+		        					if(ordreSimon.get(i) == "Rouge") {
+			        					System.out.println("Simon rouge");
+			        					view.getRec_simon1().setFill(new ImagePattern(view.getSimon_rouge_light()));
+			        					view.getRec_simon2().setFill(new ImagePattern(view.getSimon_vert()));
+			        					view.getRec_simon3().setFill(new ImagePattern(view.getSimon_jaune()));
+			        					view.getRec_simon4().setFill(new ImagePattern(view.getSimon_bleu()));
+		    	        			}
+		        					if(ordreSimon.get(i) == "Vert") {
+		        						System.out.println("Simon vert");	
+		        						view.getRec_simon2().setFill(new ImagePattern(view.getSimon_vert_light()));
+			        					view.getRec_simon1().setFill(new ImagePattern(view.getSimon_rouge()));
+			        					view.getRec_simon3().setFill(new ImagePattern(view.getSimon_jaune()));
+			        					view.getRec_simon4().setFill(new ImagePattern(view.getSimon_bleu()));
+		        					}
+		        					if(ordreSimon.get(i) == "Jaune") {
+		        						System.out.println("Simon jaune");
+			        					view.getRec_simon3().setFill(new ImagePattern(view.getSimon_jaune_light()));
+			        					view.getRec_simon2().setFill(new ImagePattern(view.getSimon_vert()));
+			        					view.getRec_simon1().setFill(new ImagePattern(view.getSimon_rouge()));
+			        					view.getRec_simon4().setFill(new ImagePattern(view.getSimon_bleu()));
+		        					}
+		        					if(ordreSimon.get(i) == "Bleu") {
+		        						System.out.println("Simon bleu");	
+			        					view.getRec_simon4().setFill(new ImagePattern(view.getSimon_bleu_light()));
+			        					view.getRec_simon2().setFill(new ImagePattern(view.getSimon_vert()));
+			        					view.getRec_simon3().setFill(new ImagePattern(view.getSimon_jaune()));
+			        					view.getRec_simon1().setFill(new ImagePattern(view.getSimon_rouge()));
+		        					}
+		        					i++;
+		        				}
+		        				if(fourSteps == fourStepsPlusFour - 1) {
+		        					if(ordreSimon.get(i) == "Rouge") {
+			        					System.out.println("Simon rouge");
+			        					view.getRec_simon1().setFill(new ImagePattern(view.getSimon_rouge_light()));
+			        					view.getRec_simon2().setFill(new ImagePattern(view.getSimon_vert()));
+			        					view.getRec_simon3().setFill(new ImagePattern(view.getSimon_jaune()));
+			        					view.getRec_simon4().setFill(new ImagePattern(view.getSimon_bleu()));
+		    	        			}
+		        					if(ordreSimon.get(i) == "Vert") {
+		        						System.out.println("Simon vert");	
+		        						view.getRec_simon2().setFill(new ImagePattern(view.getSimon_vert_light()));
+			        					view.getRec_simon1().setFill(new ImagePattern(view.getSimon_rouge()));
+			        					view.getRec_simon3().setFill(new ImagePattern(view.getSimon_jaune()));
+			        					view.getRec_simon4().setFill(new ImagePattern(view.getSimon_bleu()));
+		        					}
+		        					if(ordreSimon.get(i) == "Jaune") {
+		        						System.out.println("Simon jaune");
+			        					view.getRec_simon3().setFill(new ImagePattern(view.getSimon_jaune_light()));
+			        					view.getRec_simon2().setFill(new ImagePattern(view.getSimon_vert()));
+			        					view.getRec_simon1().setFill(new ImagePattern(view.getSimon_rouge()));
+			        					view.getRec_simon4().setFill(new ImagePattern(view.getSimon_bleu()));
+		        					}
+		        					if(ordreSimon.get(i) == "Bleu") {
+		        						System.out.println("Simon bleu");	
+			        					view.getRec_simon4().setFill(new ImagePattern(view.getSimon_bleu_light()));
+			        					view.getRec_simon2().setFill(new ImagePattern(view.getSimon_vert()));
+			        					view.getRec_simon3().setFill(new ImagePattern(view.getSimon_jaune()));
+			        					view.getRec_simon1().setFill(new ImagePattern(view.getSimon_rouge()));
+		        					}
+		        					i++;
+		        				}
+		        				if(fourSteps == fourStepsPlusFour) {
+		        					System.out.println("Aucun Simon");	
+		        					view.getRec_simon4().setFill(new ImagePattern(view.getSimon_bleu()));
+		        					view.getRec_simon2().setFill(new ImagePattern(view.getSimon_vert()));
+		        					view.getRec_simon3().setFill(new ImagePattern(view.getSimon_jaune()));
+		        					view.getRec_simon1().setFill(new ImagePattern(view.getSimon_rouge()));
+		        				}
+			        			fourSteps++;
+		        			}
+		        			else {
+		        				view.getRec_simon4().setFill(new ImagePattern(view.getSimon_bleu()));
 	        					view.getRec_simon2().setFill(new ImagePattern(view.getSimon_vert()));
 	        					view.getRec_simon3().setFill(new ImagePattern(view.getSimon_jaune()));
-	        					view.getRec_simon4().setFill(new ImagePattern(view.getSimon_bleu()));
-	        				}
-	        				if(fourSteps == fourStepsPlusFour - 3) {
-	        					System.out.println("Simon vert");	
-	        					view.getRec_simon2().setFill(new ImagePattern(view.getSimon_vert_light()));
 	        					view.getRec_simon1().setFill(new ImagePattern(view.getSimon_rouge()));
-	        					view.getRec_simon3().setFill(new ImagePattern(view.getSimon_jaune()));
-	        					view.getRec_simon4().setFill(new ImagePattern(view.getSimon_bleu()));
-	        				}
-	        				if(fourSteps == fourStepsPlusFour - 2) {
-	        					System.out.println("Simon jaune");
-	        					view.getRec_simon3().setFill(new ImagePattern(view.getSimon_jaune_light()));
-	        					view.getRec_simon2().setFill(new ImagePattern(view.getSimon_vert()));
-	        					view.getRec_simon1().setFill(new ImagePattern(view.getSimon_rouge()));
-	        					view.getRec_simon4().setFill(new ImagePattern(view.getSimon_bleu()));
-	        				}
-	        				if(fourSteps == fourStepsPlusFour - 1) {
-	        					System.out.println("Simon bleu");	
-	        					view.getRec_simon4().setFill(new ImagePattern(view.getSimon_bleu_light()));
-	        					view.getRec_simon2().setFill(new ImagePattern(view.getSimon_vert()));
-	        					view.getRec_simon3().setFill(new ImagePattern(view.getSimon_jaune()));
-	        					view.getRec_simon1().setFill(new ImagePattern(view.getSimon_rouge()));
-	        				}
-	        				if(fourSteps == fourStepsPlusFour) {
-	        					System.out.println("Aucun Simon");	
-	        					view.getRec_simon4().setFill(new ImagePattern(view.getSimon_bleu()));
-	        					view.getRec_simon2().setFill(new ImagePattern(view.getSimon_vert()));
-	        					view.getRec_simon3().setFill(new ImagePattern(view.getSimon_jaune()));
-	        					view.getRec_simon1().setFill(new ImagePattern(view.getSimon_rouge()));
-	        				}
-		        			fourSteps++;
-	        		}
-	        	},0,1000);
-        	}
-        	else {
-        		System.out.println("Le simon a déjà été montré.");	
-        	}
-      		
-      		showSimonOrder = true;
-	  }
+		        			}
+		        		}
+		        	},0,1000);
+	      	}
+	      	else {
+	      		System.out.println("Le simon a déjà été montré.");	
+	      	}
+	    		
+	    		showSimonOrder = true;
+		  }
 	  
 	  
 	  public void victory() {

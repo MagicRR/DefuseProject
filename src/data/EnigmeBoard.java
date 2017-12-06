@@ -11,6 +11,7 @@ public class EnigmeBoard implements EnigmeBoardService{
 	private Enigme enigme;
 	private ArrayList<Cable> cables;
 	private Simon simon;
+	private ArrayList<OrdreSimon> ordreSimon;
 	private PaveNum paveNum;
 	private PaveAlpha paveAlpha;
 	private Button button;
@@ -105,9 +106,21 @@ public class EnigmeBoard implements EnigmeBoardService{
 		this.button = button;
 	}
 	
+	public ArrayList<OrdreSimon> getOrdreSimon() {
+		return ordreSimon;
+	}
+
+	public void setOrdreSimon(ArrayList<OrdreSimon> ordreSimon) {
+		this.ordreSimon = ordreSimon;
+	}
+
 	public class Cable{
 		String color;
 		Boolean isCut;
+	}
+	
+	public class OrdreSimon{
+		String color;
 	}
 	
 	public class Simon{
