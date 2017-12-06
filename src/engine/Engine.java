@@ -1294,6 +1294,9 @@ public class Engine implements EventHandler{
 	  	  		  	modules.get(5).setActive(true);
 	  	  		  	view.refreshSimon();
 	  	  		  	launchingSimon();
+		      }else {
+		    	  defeat();
+	        	  view.getRec_check3().setFill(new ImagePattern(view.getNoCheck()));
 		      }
 	  }
 	  
@@ -1369,7 +1372,7 @@ public class Engine implements EventHandler{
 	  public void defeat() {
 		  engineClock.cancel();
 		  view.getTimer().setText("BOOM");
-		  System.out.println("Partie terminée, l'opérateur a été tué par l'explosion.");
+          view.getTextLogs().setText(view.getTextLogs().getText()+"\n>> Partie terminée, l'opérateur a été tué par l'explosion.");
 		  defeat = true;
 	  }
 }
