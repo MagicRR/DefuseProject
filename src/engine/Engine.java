@@ -30,8 +30,6 @@ import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
-import javafx.scene.image.Image;
-import javafx.scene.paint.Color;
 import javafx.scene.paint.ImagePattern;
 import javafx.stage.Stage;
 
@@ -74,9 +72,11 @@ public class Engine implements EventHandler{
 
 	private boolean cablesResolved = false;
 	private boolean defeat = false;
+	private boolean victory = false;
 	private boolean pressAbortToWin = false;
 	private boolean cable_fait = false;
 	private boolean alpha_fait = false;
+	private boolean simon_fait = false;
 	private int moduleEnCours;
 	
 	// ACTIVER LES LOGS OU NON. 1 = DESACTIVE
@@ -97,92 +97,128 @@ public class Engine implements EventHandler{
 			
 
 			if (source.equals(view.getBut_simon1())) {
-				if(modules.get(5).isActive() == true) {
-					if (nb_click_simon%4 == 0) {
-						view.getRec_simon1().setFill(new ImagePattern(view.getSimon_rouge_light()));
-						view.getRec_simon2().setFill(new ImagePattern(view.getSimon_vert()));
-    					view.getRec_simon3().setFill(new ImagePattern(view.getSimon_jaune()));
-    					view.getRec_simon4().setFill(new ImagePattern(view.getSimon_bleu()));
-						view.getTextLogs().setText(view.getTextLogs().getText()+">> Bonne couleur.\n");
-						nb_click_simon++;
-						checkSimonRed = true;
-						if(checkSimonRed == true && checkSimonGreen == true && checkSimonYellow == true && checkSimonBlue == true) {
-							view.getRec_check4().setFill(new ImagePattern(view.getCheck()));
-							view.getCamembert().setFill(new ImagePattern(view.getCamembert_img5()));
-							victoryIsNear();
+				
+				if(simon_fait) {
+					event.consume();
+				}else {
+					if(modules.get(5).isActive() == true) {
+						
+						if (nb_click_simon%4 == 0) {
+							
+							view.getRec_simon1().setFill(new ImagePattern(view.getSimon_rouge_light()));
+							view.getRec_simon2().setFill(new ImagePattern(view.getSimon_vert()));
+	    					view.getRec_simon3().setFill(new ImagePattern(view.getSimon_jaune()));
+	    					view.getRec_simon4().setFill(new ImagePattern(view.getSimon_bleu()));
+	    					
+							nb_click_simon++;
+							checkSimonRed = true;
+							
+							if(checkSimonRed == true && checkSimonGreen == true && checkSimonYellow == true && checkSimonBlue == true) {
+								view.getRec_check4().setFill(new ImagePattern(view.getCheck()));
+								view.getCamembert().setFill(new ImagePattern(view.getCamembert_img5()));
+								victoryIsNear();
+							}
 						}
-					}
-					else {
-						view.getTextLogs().setText(view.getTextLogs().getText()+">> Mauvaise couleur : recommencez.\n");
-						nb_click_simon = 0;
-					}
+						else {
+							defeat();
+							nb_click_simon = 0;
+						}
+					}	
 				}
 			}
+			
 			if (source.equals(view.getBut_simon2())) {
-				if(modules.get(5).isActive() == true) {
-					if (nb_click_simon%4 == 1) {
-						view.getRec_simon2().setFill(new ImagePattern(view.getSimon_vert_light()));
-						view.getRec_simon1().setFill(new ImagePattern(view.getSimon_rouge()));
-    					view.getRec_simon3().setFill(new ImagePattern(view.getSimon_jaune()));
-    					view.getRec_simon4().setFill(new ImagePattern(view.getSimon_bleu()));
-						view.getTextLogs().setText(view.getTextLogs().getText()+">> Bonne couleur.\n");
-						nb_click_simon++;
-						checkSimonGreen = true;
-						if(checkSimonRed == true && checkSimonGreen == true && checkSimonYellow == true && checkSimonBlue == true) {
-							view.getRec_check4().setFill(new ImagePattern(view.getCheck()));
-							view.getCamembert().setFill(new ImagePattern(view.getCamembert_img5()));
-							victoryIsNear();
+				
+				if(simon_fait) {
+					event.consume();
+				}else {
+					if(modules.get(5).isActive() == true) {
+						
+						if (nb_click_simon%4 == 1) {
+							
+							view.getRec_simon2().setFill(new ImagePattern(view.getSimon_vert_light()));
+							view.getRec_simon1().setFill(new ImagePattern(view.getSimon_rouge()));
+	    					view.getRec_simon3().setFill(new ImagePattern(view.getSimon_jaune()));
+	    					view.getRec_simon4().setFill(new ImagePattern(view.getSimon_bleu()));
+							
+							nb_click_simon++;
+							checkSimonGreen = true;
+							
+							if(checkSimonRed == true && checkSimonGreen == true && checkSimonYellow == true && checkSimonBlue == true) {
+								view.getRec_check4().setFill(new ImagePattern(view.getCheck()));
+								view.getCamembert().setFill(new ImagePattern(view.getCamembert_img5()));
+								victoryIsNear();
+							}
 						}
-					}
-					else {
-						view.getTextLogs().setText(view.getTextLogs().getText()+">> Mauvaise couleur : recommencez.\n");
-						nb_click_simon = 0;
+						else {
+							defeat();
+							nb_click_simon = 0;
+						}
 					}
 				}
 			}
+			
 			if (source.equals(view.getBut_simon3())) {
-				if(modules.get(5).isActive() == true) {
-					if (nb_click_simon%4 == 2) {
-						view.getRec_simon3().setFill(new ImagePattern(view.getSimon_jaune_light()));
-						view.getRec_simon2().setFill(new ImagePattern(view.getSimon_vert()));
-    					view.getRec_simon1().setFill(new ImagePattern(view.getSimon_rouge()));
-    					view.getRec_simon4().setFill(new ImagePattern(view.getSimon_bleu()));
-						view.getTextLogs().setText(view.getTextLogs().getText()+">> Bonne couleur.\n");
-						nb_click_simon++;
-						checkSimonYellow = true;
-						if(checkSimonRed == true && checkSimonGreen == true && checkSimonYellow == true && checkSimonBlue == true) {
-							view.getRec_check4().setFill(new ImagePattern(view.getCheck()));
-							view.getCamembert().setFill(new ImagePattern(view.getCamembert_img5()));
-							victoryIsNear();
+				
+				if(simon_fait) {
+					event.consume();
+				}else {
+					if(modules.get(5).isActive() == true) {
+						
+						if (nb_click_simon%4 == 2) {
+							
+							view.getRec_simon3().setFill(new ImagePattern(view.getSimon_jaune_light()));
+							view.getRec_simon2().setFill(new ImagePattern(view.getSimon_vert()));
+	    					view.getRec_simon1().setFill(new ImagePattern(view.getSimon_rouge()));
+	    					view.getRec_simon4().setFill(new ImagePattern(view.getSimon_bleu()));
+							
+							nb_click_simon++;
+							checkSimonYellow = true;
+							
+							if(checkSimonRed == true && checkSimonGreen == true && checkSimonYellow == true && checkSimonBlue == true) {
+								view.getRec_check4().setFill(new ImagePattern(view.getCheck()));
+								view.getCamembert().setFill(new ImagePattern(view.getCamembert_img5()));
+								victoryIsNear();
+							}
+						}
+						else {
+							defeat();
+							nb_click_simon = 0;
 						}
 					}
-					else {
-						view.getTextLogs().setText(view.getTextLogs().getText()+">> Mauvaise couleur : recommencez.\n");
-						nb_click_simon = 0;
-					}
-				}
+				}		
 			}
+			
 			if (source.equals(view.getBut_simon4())) {
-				if(modules.get(5).isActive() == true) {
-					if (nb_click_simon%4 == 3) {
-						view.getRec_simon4().setFill(new ImagePattern(view.getSimon_bleu_light()));
-						view.getRec_simon2().setFill(new ImagePattern(view.getSimon_vert()));
-    					view.getRec_simon3().setFill(new ImagePattern(view.getSimon_jaune()));
-    					view.getRec_simon1().setFill(new ImagePattern(view.getSimon_rouge()));
-						view.getTextLogs().setText(view.getTextLogs().getText()+">> Bonne couleur.\n");
-						nb_click_simon++;
-						checkSimonBlue = true;
-						if(checkSimonRed == true && checkSimonGreen == true && checkSimonYellow == true && checkSimonBlue == true) {
-			        		view.getRec_check4().setFill(new ImagePattern(view.getCheck()));
-			        		view.getCamembert().setFill(new ImagePattern(view.getCamembert_img5()));
-							victoryIsNear();
+				
+
+				if(simon_fait) {
+					event.consume();
+				}else {
+					if(modules.get(5).isActive() == true) {
+						
+						if (nb_click_simon%4 == 3) {
+							
+							view.getRec_simon4().setFill(new ImagePattern(view.getSimon_bleu_light()));
+							view.getRec_simon2().setFill(new ImagePattern(view.getSimon_vert()));
+	    					view.getRec_simon3().setFill(new ImagePattern(view.getSimon_jaune()));
+	    					view.getRec_simon1().setFill(new ImagePattern(view.getSimon_rouge()));
+							
+							nb_click_simon++;
+							checkSimonBlue = true;
+							
+							if(checkSimonRed == true && checkSimonGreen == true && checkSimonYellow == true && checkSimonBlue == true) {
+				        		view.getRec_check4().setFill(new ImagePattern(view.getCheck()));
+				        		view.getCamembert().setFill(new ImagePattern(view.getCamembert_img5()));
+								victoryIsNear();
+							}
+						}
+						else {
+							defeat();
+							nb_click_simon = 0;
 						}
 					}
-					else {
-						view.getTextLogs().setText(view.getTextLogs().getText()+">> Mauvaise couleur : recommencez.\n");
-						nb_click_simon = 0;
-					}
-				}
+				}		
 			}
 			
 			
@@ -300,18 +336,22 @@ public class Engine implements EventHandler{
 	        }
 	        
 	        if (source.equals(view.getIndice())) {
-	        	if(modules.get(2).isActive == true){
-	        		view.getTextLogs().setText(view.getTextLogs().getText()+">> "+modules.get(2).getEnigmeBoard().getEnigme().getIndice().getIndiceText()+".\n");
-	        	}
-	        	if(modules.get(3).isActive == true){
-	        		view.getTextLogs().setText(view.getTextLogs().getText()+">> "+modules.get(3).getEnigmeBoard().getEnigme().getIndice().getIndiceText()+".\n");
-	        	}
-	        	if(modules.get(4).isActive == true){
-	        		view.getTextLogs().setText(view.getTextLogs().getText()+">> "+modules.get(4).getEnigmeBoard().getEnigme().getIndice().getIndiceText()+".\n");
-	        	}
-	        	if(modules.get(5).isActive == true){
-	        		launchingSimon();
-	        		view.getTextLogs().setText(view.getTextLogs().getText()+"\n>> "+modules.get(5).getEnigmeBoard().getEnigme().getIndice().getIndiceText()+".\n");
+	        	if(!victory) {
+	        		if(modules.get(2).isActive == true){
+		        		view.getTextLogs().setText(view.getTextLogs().getText()+">> "+modules.get(2).getEnigmeBoard().getEnigme().getIndice().getIndiceText()+".\n");
+		        	}
+		        	if(modules.get(3).isActive == true){
+		        		view.getTextLogs().setText(view.getTextLogs().getText()+">> "+modules.get(3).getEnigmeBoard().getEnigme().getIndice().getIndiceText()+".\n");
+		        	}
+		        	if(modules.get(4).isActive == true){
+		        		view.getTextLogs().setText(view.getTextLogs().getText()+">> "+modules.get(4).getEnigmeBoard().getEnigme().getIndice().getIndiceText()+".\n");
+		        	}
+		        	if(modules.get(5).isActive == true){
+		        		launchingSimon();
+		        		view.getTextLogs().setText(view.getTextLogs().getText()+"\n>> "+modules.get(5).getEnigmeBoard().getEnigme().getIndice().getIndiceText()+".\n");
+		        	}
+	        	}else {
+	        		event.consume();
 	        	}
 	        }
 	        
@@ -1286,8 +1326,11 @@ public class Engine implements EventHandler{
 	  }
 	  
 	  public void victoryIsNear() {
+		  victory = true;
+		  simon_fait = true;
+		  modules.get(5).setResolved(true);
 		  pressAbortToWin = true;
-		  view.getTextLogs().setText(view.getTextLogs().getText()+">> La victoire est proche, le dénouement imminent...\n");
+		  view.getTextLogs().setText(view.getTextLogs().getText()+"\n>> La victoire est proche, le dénouement imminent...\n");
 	  }
 	  
 	  public void defeat() {

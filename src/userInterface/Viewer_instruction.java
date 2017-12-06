@@ -69,7 +69,7 @@ public class Viewer_instruction extends HBox{
 	  //Image du jeu
 	  
 	  //Logs
-	  TextArea textInstruction = new TextArea("NOW,\n DO IT BY YOURSELF.");
+	  TextArea textInstruction = new TextArea("Désamorçer la bombe:\n 1: Couper le bon câble.\n 2: Trouver la bonne combinaison de lettre.\n 3: Trouver le bon code.\n 4: Résoudre le \"simon\".\nNOW, DO IT BY YOURSELF.");
 	  textInstruction.setCursor(Cursor.DEFAULT);
 	  textInstruction.setEditable(false);
 	  textInstruction.autosize();
