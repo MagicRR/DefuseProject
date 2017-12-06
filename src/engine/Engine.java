@@ -66,11 +66,15 @@ public class Engine implements EventHandler{
 	private int	nb_click_num = 0;
 	private int	nb_click_simon = 0;
 	
-	private boolean checkSimonRed = false;
-	private boolean checkSimonGreen = false;
-	private boolean checkSimonYellow = false;
-	private boolean checkSimonBlue = false;
-
+	private ArrayList<Boolean> checkSimons = new <Boolean>ArrayList();	
+	
+	private boolean checkSimon1 = false;
+	private boolean checkSimon2 = false;
+	private boolean checkSimon3 = false;
+	private boolean checkSimon4 = false;
+	private boolean checkSimon5 = false;
+	private boolean checkSimon6 = false;
+	
 	private boolean cablesResolved = false;
 	private boolean defeat = false;
 	private boolean victory = false;
@@ -79,6 +83,8 @@ public class Engine implements EventHandler{
 	private boolean alpha_fait = false;
 	private boolean simon_fait = false;
 	private int moduleEnCours;
+	
+	private ArrayList<String> ordreSimon = new ArrayList<String>();
 	
 	// ACTIVER LES LOGS OU NON. 1 = DESACTIVE
 	private int disableConsoleLogs = 1;
@@ -104,7 +110,10 @@ public class Engine implements EventHandler{
 				}else {
 					if(modules.get(5).isActive() == true) {
 						
-						if (nb_click_simon%4 == 0) {
+						System.out.println(nb_click_simon);
+						System.out.println(ordreSimon.get(nb_click_simon));
+						
+						if (ordreSimon.get(nb_click_simon).equals("Rouge")) {
 							
 							view.getRec_simon1().setFill(new ImagePattern(view.getSimon_rouge_light()));
 							view.getRec_simon2().setFill(new ImagePattern(view.getSimon_vert()));
@@ -112,9 +121,9 @@ public class Engine implements EventHandler{
 	    					view.getRec_simon4().setFill(new ImagePattern(view.getSimon_bleu()));
 	    					
 							nb_click_simon++;
-							checkSimonRed = true;
+							checkSimons.set(nb_click_simon, true);
 							
-							if(checkSimonRed == true && checkSimonGreen == true && checkSimonYellow == true && checkSimonBlue == true) {
+							if(checkSimons.get(0) == true && checkSimons.get(1) == true && checkSimons.get(2) == true && checkSimons.get(3) == true && checkSimons.get(4) == true && checkSimons.get(5) == true) {
 								view.getRec_check4().setFill(new ImagePattern(view.getCheck()));
 								view.getCamembert().setFill(new ImagePattern(view.getCamembert_img5()));
 								victoryIsNear();
@@ -136,7 +145,10 @@ public class Engine implements EventHandler{
 				}else {
 					if(modules.get(5).isActive() == true) {
 						
-						if (nb_click_simon%4 == 1) {
+						System.out.println(nb_click_simon);
+						System.out.println(ordreSimon.get(nb_click_simon));
+						
+						if (ordreSimon.get(nb_click_simon).equals("Vert")) {
 							
 							view.getRec_simon2().setFill(new ImagePattern(view.getSimon_vert_light()));
 							view.getRec_simon1().setFill(new ImagePattern(view.getSimon_rouge()));
@@ -144,9 +156,9 @@ public class Engine implements EventHandler{
 	    					view.getRec_simon4().setFill(new ImagePattern(view.getSimon_bleu()));
 							
 							nb_click_simon++;
-							checkSimonGreen = true;
+							checkSimons.set(nb_click_simon, true);
 							
-							if(checkSimonRed == true && checkSimonGreen == true && checkSimonYellow == true && checkSimonBlue == true) {
+							if(checkSimons.get(0) == true && checkSimons.get(1) == true && checkSimons.get(2) == true && checkSimons.get(3) == true && checkSimons.get(4) == true && checkSimons.get(5) == true) {
 								view.getRec_check4().setFill(new ImagePattern(view.getCheck()));
 								view.getCamembert().setFill(new ImagePattern(view.getCamembert_img5()));
 								victoryIsNear();
@@ -168,7 +180,10 @@ public class Engine implements EventHandler{
 				}else {
 					if(modules.get(5).isActive() == true) {
 						
-						if (nb_click_simon%4 == 2) {
+						System.out.println(nb_click_simon);
+						System.out.println(ordreSimon.get(nb_click_simon));
+						
+						if (ordreSimon.get(nb_click_simon).equals("Jaune")) {
 							
 							view.getRec_simon3().setFill(new ImagePattern(view.getSimon_jaune_light()));
 							view.getRec_simon2().setFill(new ImagePattern(view.getSimon_vert()));
@@ -176,9 +191,9 @@ public class Engine implements EventHandler{
 	    					view.getRec_simon4().setFill(new ImagePattern(view.getSimon_bleu()));
 							
 							nb_click_simon++;
-							checkSimonYellow = true;
+							checkSimons.set(nb_click_simon, true);
 							
-							if(checkSimonRed == true && checkSimonGreen == true && checkSimonYellow == true && checkSimonBlue == true) {
+							if(checkSimons.get(0) == true && checkSimons.get(1) == true && checkSimons.get(2) == true && checkSimons.get(3) == true && checkSimons.get(4) == true && checkSimons.get(5) == true) {
 								view.getRec_check4().setFill(new ImagePattern(view.getCheck()));
 								view.getCamembert().setFill(new ImagePattern(view.getCamembert_img5()));
 								victoryIsNear();
@@ -201,7 +216,10 @@ public class Engine implements EventHandler{
 				}else {
 					if(modules.get(5).isActive() == true) {
 						
-						if (nb_click_simon%4 == 3) {
+						System.out.println(nb_click_simon);
+						System.out.println(ordreSimon.get(nb_click_simon));
+						
+						if (ordreSimon.get(nb_click_simon).equals("Bleu")) {
 							
 							view.getRec_simon4().setFill(new ImagePattern(view.getSimon_bleu_light()));
 							view.getRec_simon2().setFill(new ImagePattern(view.getSimon_vert()));
@@ -209,9 +227,9 @@ public class Engine implements EventHandler{
 	    					view.getRec_simon1().setFill(new ImagePattern(view.getSimon_rouge()));
 							
 							nb_click_simon++;
-							checkSimonBlue = true;
+							checkSimons.set(nb_click_simon, true);
 							
-							if(checkSimonRed == true && checkSimonGreen == true && checkSimonYellow == true && checkSimonBlue == true) {
+							if(checkSimons.get(0) == true && checkSimons.get(1) == true && checkSimons.get(2) == true && checkSimons.get(3) == true && checkSimons.get(4) == true && checkSimons.get(5) == true) {
 				        		view.getRec_check4().setFill(new ImagePattern(view.getCheck()));
 				        		view.getCamembert().setFill(new ImagePattern(view.getCamembert_img5()));
 								victoryIsNear();
@@ -734,7 +752,6 @@ public class Engine implements EventHandler{
   private ArrayList<String> listeEnigmeBoards = new ArrayList<String>();
   private ArrayList<String> listeEnigmesCables = new ArrayList<String>();
   private ArrayList<String> couleursSimon = new ArrayList<String>();
-  private ArrayList<String> ordreSimon = new ArrayList<String>();
   private ArrayList<Integer> touchesPaveNumerique = new ArrayList<Integer>();
   private ArrayList<String> listeEnigmesPaveNumerique = new ArrayList<String>();
   private ArrayList<String> listeEnigmesPaveAlphabetique = new ArrayList<String>();
@@ -1377,12 +1394,21 @@ public class Engine implements EventHandler{
 //	  }
 	  
 	  public void launchingSimon() {
+		  
+		  	checkSimons.clear();
+			checkSimons.add(checkSimon1);
+			checkSimons.add(checkSimon2);
+			checkSimons.add(checkSimon3);
+			checkSimons.add(checkSimon4);
+			checkSimons.add(checkSimon5);
+			checkSimons.add(checkSimon6);
+		  
 	      	fourSteps = data.getStepNumber();
-	      	fourStepsPlusFour = fourSteps + 4;
+	      	fourStepsPlusFour = fourSteps + 6;
 	      	
 	      	ordreSimon.clear();
 	      	
-	      	for(int s = 0; s < 4; s++){
+	      	for(int s = 0; s < 6; s++){
 	      		ordreSimon.add(couleursSimon.get(gen.nextInt(couleursSimon.size())));
 	      	}
 
@@ -1391,10 +1417,76 @@ public class Engine implements EventHandler{
 			i = 0;
 	      	
 	      	if(showSimonOrder == false) {
+	      		
 	      		simonClock.schedule(new TimerTask(){
 		        		public void run() {	        			
-		        			System.out.println(data.getStepNumber());
+		        			
 		        			if(data.getStepNumber()%2 == 0) {
+		        				
+		        				if(fourSteps == fourStepsPlusFour - 6) {
+		        					
+		        					if(ordreSimon.get(i) == "Rouge") {
+			        					System.out.println("Simon rouge");
+			        					view.getRec_simon1().setFill(new ImagePattern(view.getSimon_rouge_light()));
+			        					view.getRec_simon2().setFill(new ImagePattern(view.getSimon_vert()));
+			        					view.getRec_simon3().setFill(new ImagePattern(view.getSimon_jaune()));
+			        					view.getRec_simon4().setFill(new ImagePattern(view.getSimon_bleu()));
+		    	        			}
+		        					if(ordreSimon.get(i) == "Vert") {
+		        						System.out.println("Simon vert");	
+		        						view.getRec_simon2().setFill(new ImagePattern(view.getSimon_vert_light()));
+			        					view.getRec_simon1().setFill(new ImagePattern(view.getSimon_rouge()));
+			        					view.getRec_simon3().setFill(new ImagePattern(view.getSimon_jaune()));
+			        					view.getRec_simon4().setFill(new ImagePattern(view.getSimon_bleu()));
+		        					}
+		        					if(ordreSimon.get(i) == "Jaune") {
+		        						System.out.println("Simon jaune");
+			        					view.getRec_simon3().setFill(new ImagePattern(view.getSimon_jaune_light()));
+			        					view.getRec_simon2().setFill(new ImagePattern(view.getSimon_vert()));
+			        					view.getRec_simon1().setFill(new ImagePattern(view.getSimon_rouge()));
+			        					view.getRec_simon4().setFill(new ImagePattern(view.getSimon_bleu()));
+		        					}
+		        					if(ordreSimon.get(i) == "Bleu") {
+		        						System.out.println("Simon bleu");	
+			        					view.getRec_simon4().setFill(new ImagePattern(view.getSimon_bleu_light()));
+			        					view.getRec_simon2().setFill(new ImagePattern(view.getSimon_vert()));
+			        					view.getRec_simon3().setFill(new ImagePattern(view.getSimon_jaune()));
+			        					view.getRec_simon1().setFill(new ImagePattern(view.getSimon_rouge()));
+		        					}
+		        					i++;
+		        				}
+		        				if(fourSteps == fourStepsPlusFour - 5) {
+		        					if(ordreSimon.get(i) == "Rouge") {
+			        					System.out.println("Simon rouge");
+			        					view.getRec_simon1().setFill(new ImagePattern(view.getSimon_rouge_light()));
+			        					view.getRec_simon2().setFill(new ImagePattern(view.getSimon_vert()));
+			        					view.getRec_simon3().setFill(new ImagePattern(view.getSimon_jaune()));
+			        					view.getRec_simon4().setFill(new ImagePattern(view.getSimon_bleu()));
+		    	        			}
+		        					if(ordreSimon.get(i) == "Vert") {
+		        						System.out.println("Simon vert");	
+		        						view.getRec_simon2().setFill(new ImagePattern(view.getSimon_vert_light()));
+			        					view.getRec_simon1().setFill(new ImagePattern(view.getSimon_rouge()));
+			        					view.getRec_simon3().setFill(new ImagePattern(view.getSimon_jaune()));
+			        					view.getRec_simon4().setFill(new ImagePattern(view.getSimon_bleu()));
+		        					}
+		        					if(ordreSimon.get(i) == "Jaune") {
+		        						System.out.println("Simon jaune");
+			        					view.getRec_simon3().setFill(new ImagePattern(view.getSimon_jaune_light()));
+			        					view.getRec_simon2().setFill(new ImagePattern(view.getSimon_vert()));
+			        					view.getRec_simon1().setFill(new ImagePattern(view.getSimon_rouge()));
+			        					view.getRec_simon4().setFill(new ImagePattern(view.getSimon_bleu()));
+		        					}
+		        					if(ordreSimon.get(i) == "Bleu") {
+		        						System.out.println("Simon bleu");	
+			        					view.getRec_simon4().setFill(new ImagePattern(view.getSimon_bleu_light()));
+			        					view.getRec_simon2().setFill(new ImagePattern(view.getSimon_vert()));
+			        					view.getRec_simon3().setFill(new ImagePattern(view.getSimon_jaune()));
+			        					view.getRec_simon1().setFill(new ImagePattern(view.getSimon_rouge()));
+		        					}
+		        					i++;
+		        					
+		        				}
 		        				if(fourSteps == fourStepsPlusFour - 4) {
 		        					if(ordreSimon.get(i) == "Rouge") {
 			        					System.out.println("Simon rouge");
@@ -1456,7 +1548,6 @@ public class Engine implements EventHandler{
 			        					view.getRec_simon1().setFill(new ImagePattern(view.getSimon_rouge()));
 		        					}
 		        					i++;
-		        					
 		        				}
 		        				if(fourSteps == fourStepsPlusFour - 2) {
 		        					if(ordreSimon.get(i) == "Rouge") {
