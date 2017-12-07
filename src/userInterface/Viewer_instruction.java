@@ -69,22 +69,23 @@ public class Viewer_instruction extends HBox{
 	  //Image du jeu
 	  
 	  //Logs
-	  TextArea textInstruction = new TextArea("Désamorçer la bombe:\n 1: Couper le bon câble.\n 2: Trouver la bonne combinaison de lettre.\n 3: Trouver le bon code.\n 4: Résoudre le \"simon\".\nNOW, DO IT BY YOURSELF.");
+	  TextArea textInstruction = new TextArea("Désamorçer la bombe:\n\n 1: Couper le bon câble.\n 2: Trouver la bonne combinaison de lettre.\n 3: Trouver le bon code.\n 4: Résoudre le \"simon\".\n\nNOW, DO IT BY YOURSELF.");
 	  textInstruction.setCursor(Cursor.DEFAULT);
 	  textInstruction.setEditable(false);
 	  textInstruction.autosize();
-	  textInstruction.setPrefHeight(1*HardCodedParameters.defaultWidth/4);
-	  textInstruction.setPrefWidth(1*HardCodedParameters.defaultWidth/3);
+	  textInstruction.setPrefHeight(3*HardCodedParameters.defaultHeight/8);
+	  textInstruction.setPrefWidth(1*HardCodedParameters.defaultWidth/4);
 	  textInstruction.setLayoutX(1*HardCodedParameters.defaultWidth/3);
 	  textInstruction.setLayoutY(1*HardCodedParameters.defaultHeight/2);
-	  textInstruction.setStyle("-fx-text-fill: green; -fx-control-inner-background: black;");
+	  textInstruction.getStylesheets().add("/css/transparent-text-area.css");
+	  textInstruction.setStyle("-fx-text-fill: black; -fx-font: bold 20 arial;");
 	  
-	  GridPane.setMargin(textInstruction, new Insets(1*HardCodedParameters.defaultHeight/4, 1*HardCodedParameters.defaultWidth/3, 0, 1*HardCodedParameters.defaultWidth/3));
+	  GridPane.setMargin(textInstruction, new Insets(-25+2*HardCodedParameters.defaultHeight/5, 1*HardCodedParameters.defaultWidth/3, 0, 1*HardCodedParameters.defaultWidth/3));
 	  gridpane_accueil.add(textInstruction,0,0);
 
 	  //Button retour
 	  retour.arm();
-	  GridPane.setMargin(retour, new Insets(50, 0, 0, -60+(1*HardCodedParameters.defaultWidth/2)));
+	  GridPane.setMargin(retour, new Insets(0, 0, 0, -60+(1*HardCodedParameters.defaultWidth/2)));
 	  gridpane_accueil.add(retour,0,1);
 	
 	  

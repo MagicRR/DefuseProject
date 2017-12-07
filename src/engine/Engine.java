@@ -110,9 +110,6 @@ public class Engine implements EventHandler{
 				}else {
 					if(modules.get(5).isActive() == true) {
 						
-						System.out.println(nb_click_simon);
-						System.out.println(ordreSimon.get(nb_click_simon));
-						
 						if (ordreSimon.get(nb_click_simon).equals("Rouge")) {
 							
 							view.getRec_simon1().setFill(new ImagePattern(view.getSimon_rouge_light()));
@@ -122,6 +119,10 @@ public class Engine implements EventHandler{
 	    					
 							nb_click_simon++;
 							checkSimons.set(nb_click_simon, true);
+							
+//							for(int i = 0; i<checkSimons.size();i++) {
+//								System.out.println(checkSimons.get(i));
+//							}
 							
 							if(checkSimons.get(0) == true && checkSimons.get(1) == true && checkSimons.get(2) == true && checkSimons.get(3) == true && checkSimons.get(4) == true && checkSimons.get(5) == true) {
 								view.getRec_check4().setFill(new ImagePattern(view.getCheck()));
@@ -144,9 +145,6 @@ public class Engine implements EventHandler{
 					event.consume();
 				}else {
 					if(modules.get(5).isActive() == true) {
-						
-						System.out.println(nb_click_simon);
-						System.out.println(ordreSimon.get(nb_click_simon));
 						
 						if (ordreSimon.get(nb_click_simon).equals("Vert")) {
 							
@@ -180,9 +178,6 @@ public class Engine implements EventHandler{
 				}else {
 					if(modules.get(5).isActive() == true) {
 						
-						System.out.println(nb_click_simon);
-						System.out.println(ordreSimon.get(nb_click_simon));
-						
 						if (ordreSimon.get(nb_click_simon).equals("Jaune")) {
 							
 							view.getRec_simon3().setFill(new ImagePattern(view.getSimon_jaune_light()));
@@ -215,9 +210,6 @@ public class Engine implements EventHandler{
 					event.consume();
 				}else {
 					if(modules.get(5).isActive() == true) {
-						
-						System.out.println(nb_click_simon);
-						System.out.println(ordreSimon.get(nb_click_simon));
 						
 						if (ordreSimon.get(nb_click_simon).equals("Bleu")) {
 							
@@ -1426,28 +1418,28 @@ public class Engine implements EventHandler{
 		        				if(fourSteps == fourStepsPlusFour - 6) {
 		        					
 		        					if(ordreSimon.get(i) == "Rouge") {
-			        					System.out.println("Simon rouge");
+//			        					System.out.println("Simon rouge");
 			        					view.getRec_simon1().setFill(new ImagePattern(view.getSimon_rouge_light()));
 			        					view.getRec_simon2().setFill(new ImagePattern(view.getSimon_vert()));
 			        					view.getRec_simon3().setFill(new ImagePattern(view.getSimon_jaune()));
 			        					view.getRec_simon4().setFill(new ImagePattern(view.getSimon_bleu()));
 		    	        			}
 		        					if(ordreSimon.get(i) == "Vert") {
-		        						System.out.println("Simon vert");	
+//		        						System.out.println("Simon vert");	
 		        						view.getRec_simon2().setFill(new ImagePattern(view.getSimon_vert_light()));
 			        					view.getRec_simon1().setFill(new ImagePattern(view.getSimon_rouge()));
 			        					view.getRec_simon3().setFill(new ImagePattern(view.getSimon_jaune()));
 			        					view.getRec_simon4().setFill(new ImagePattern(view.getSimon_bleu()));
 		        					}
 		        					if(ordreSimon.get(i) == "Jaune") {
-		        						System.out.println("Simon jaune");
+//		        						System.out.println("Simon jaune");
 			        					view.getRec_simon3().setFill(new ImagePattern(view.getSimon_jaune_light()));
 			        					view.getRec_simon2().setFill(new ImagePattern(view.getSimon_vert()));
 			        					view.getRec_simon1().setFill(new ImagePattern(view.getSimon_rouge()));
 			        					view.getRec_simon4().setFill(new ImagePattern(view.getSimon_bleu()));
 		        					}
 		        					if(ordreSimon.get(i) == "Bleu") {
-		        						System.out.println("Simon bleu");	
+//		        						System.out.println("Simon bleu");	
 			        					view.getRec_simon4().setFill(new ImagePattern(view.getSimon_bleu_light()));
 			        					view.getRec_simon2().setFill(new ImagePattern(view.getSimon_vert()));
 			        					view.getRec_simon3().setFill(new ImagePattern(view.getSimon_jaune()));
